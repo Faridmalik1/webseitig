@@ -78,7 +78,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <ModalProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <WouterRouter base={process.env.NEXT_PUBLIC_BASE_URL ?? ""}>
             <Router />
             <ContactModal />
             <ChatWidget />
