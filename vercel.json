@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "artifacts/sds-website/.next",
+  "framework": "nextjs",
+  "installCommand": "pnpm install"
+}
