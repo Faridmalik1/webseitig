@@ -174,7 +174,7 @@ Answer based only on the knowledge above:`;
     const response = await fetch('https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${import.meta.env.VITE_HUGGINGFACE_API_KEY}`,
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_HUGGINGFACE_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

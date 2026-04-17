@@ -20,7 +20,7 @@ const INPUT_STYLE: React.CSSProperties = {
   border: "1px solid rgba(255,255,255,0.1)",
 };
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000/api").replace(/\/$/, "");
+const API_BASE_URL = "/api";
 
 export function ContactModal() {
   const { isOpen, close } = useModal();
