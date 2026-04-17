@@ -1,4 +1,4 @@
 {
-  "/agb/page": "app/agb/page.js",
-  "/page": "app/page.js"
+  "/api/leads/stats/route": "app/api/leads/stats/route.js",
+  "/api/leads/route": "app/api/leads/route.js"
 }

@@ -155,8 +155,12 @@ export async function sendLeadEmails(data: LeadFormData): Promise<void> {
     );
   }
 
-  await Promise.all(jobs);
-  console.info("Lead emails sent", { name: data.name, adminEmail });
+  try {
+    await Promise.all(jobs);
+    console.info("Lead emails sent", { name: data.name, adminEmail });
+  } catch (err) {
+    console.error("Failed to send lead emails", err, { data });
+  }
 }
 
 export async function sendContactEmails(data: ContactFormData): Promise<void> {
@@ -167,10 +171,14 @@ export async function sendContactEmails(data: ContactFormData): Promise<void> {
     return;
   }
   const fromEmail = process.env.SMTP_USER!;
-  await transport.sendMail({
-    from: `"web.seitig" <${fromEmail}>`,
-    to: adminEmail,
-    subject: `Kontaktanfrage: ${data.name}`,
-    html: `<p><b>Name:</b> ${data.name}</p><p><b>E-Mail:</b> ${data.email}</p><p><b>Nachricht:</b> ${data.message ?? ""}</p>`,
-  });
+  try {
+    await transport.sendMail({
+      from: `"web.seitig" <${fromEmail}>`,
+      to: adminEmail,
+      subject: `Kontaktanfrage: ${data.name}`,
+      html: `<p><b>Name:</b> ${data.name}</p><p><b>E-Mail:</b> ${data.email}</p><p><b>Nachricht:</b> ${data.message ?? ""}</p>`,
+    });
+  } catch (err) {
+    console.error("Failed to send contact email", err, { data });
+  }
 }

@@ -57,7 +57,11 @@ export async function POST(request: NextRequest) {
       branche: data.branche,
     });
 
-    await sendLeadEmails(data);
+    try {
+      await sendLeadEmails(data);
+    } catch (err) {
+      console.error("Lead saved but email notification failed", err, { leadId: lead._id });
+    }
 
     return NextResponse.json({ success: true, id: lead._id }, { status: 201 });
   } catch (err) {

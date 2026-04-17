@@ -6,12 +6,14 @@ type AppRouteHandlerRoutes = "/api/contact" | "/api/healthz" | "/api/leads" | "/
 type PageRoutes = "/Agb" | "/Datenschutz" | "/Impressum" | "/not-found"
 type LayoutRoutes = "/"
 type RedirectRoutes = never
-type RewriteRoutes = never
+type RewriteRoutes = "/@vite/[[...path]]" | "/_vite/[[...path]]" | "/crm/[[...path]]"
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
 
 interface ParamMap {
   "/": {}
+  "/_vite/[[...path]]": { "path"?: string[]; }
+  "/@vite/[[...path]]": { "path"?: string[]; }
   "/agb": {}
   "/Agb": {}
   "/api/contact": {}
@@ -19,6 +21,7 @@ interface ParamMap {
   "/api/leads": {}
   "/api/leads/[id]": { "id": string; }
   "/api/leads/stats": {}
+  "/crm/[[...path]]": { "path"?: string[]; }
   "/datenschutz": {}
   "/Datenschutz": {}
   "/impressum": {}

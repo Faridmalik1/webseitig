@@ -67,7 +67,11 @@ leadsRouter.post("/leads", async (req, res) => {
       branche: data.branche,
     });
 
-    await sendLeadEmails(data);
+    try {
+      await sendLeadEmails(data);
+    } catch (err) {
+      req.log.error({ err, leadId: lead._id }, "Lead saved but email notification failed");
+    }
 
     res.status(201).json({ success: true, id: lead._id });
   } catch (err) {
