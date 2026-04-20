@@ -13,6 +13,7 @@ import {
   type StatsResponse,
 } from "@/lib/api-client";
 import LeadDrawer from "@/components/crm/LeadDrawer";
+import Link from "next/link";
 
 const STATUS_LABELS: Record<string, string> = {
   alle: "Alle",
@@ -117,7 +118,7 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
       setLeads((previous) => previous.map((item) => (item._id === updated._id ? updated : item)));
       if (selectedLead?._id === updated._id) setSelectedLead(updated);
       void fetchData();
-    } catch {}
+    } catch { }
   }
 
   async function handleDelete(lead: Lead) {
@@ -137,12 +138,15 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
   return (
     <div className="min-h-screen bg-[#171717] flex flex-col">
       <header className="border-b border-white/[0.07] px-4 sm:px-6 py-4 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-2">
-          <span className="text-base sm:text-lg font-black tracking-tight text-white">
+        <Link
+          href="/"
+          className="text-white flex gap-3 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
+        >
+          <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
+          <div style={{ fontFamily: "var(--font-paytone)" }}>
             web<span className="text-[#C8E646]">.</span>seitig
-          </span>
-          <span className="text-white/20 text-sm hidden sm:inline">/ CRM</span>
-        </div>
+          </div>
+        </Link>
         <button
           onClick={() => void logout()}
           className="text-xs text-white/30 hover:text-white/60 transition"
@@ -184,11 +188,10 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
               <button
                 key={key}
                 onClick={() => setStatusFilter(key)}
-                className={`shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                  statusFilter === key
+                className={`shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${statusFilter === key
                     ? "bg-[#C8E646] text-[#171717]"
                     : "bg-white/[0.04] text-white/50 hover:text-white/80 hover:bg-white/[0.07]"
-                }`}
+                  }`}
               >
                 {label}
               </button>

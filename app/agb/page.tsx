@@ -3,12 +3,15 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { Navbar } from "@/components/marketing/Navbar";
+import { Footer } from "@/components/marketing/Footer";
 
 export default function Agb() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
+      <Navbar />
       <div className="max-w-[800px] mx-auto px-6 py-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm font-semibold mb-10 hover:opacity-80 transition-opacity">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
 
@@ -16,7 +19,7 @@ export default function Agb() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-4xl font-extrabold mb-8"
+          className="text-4xl mb-8"
         >
           Allgemeine Geschäftsbedingungen (AGB)
         </motion.h1>
@@ -34,7 +37,7 @@ export default function Agb() {
           className="space-y-8 text-white/70 leading-relaxed"
         >
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"> <span className="text-[#C8E646]">1.</span> Geltungsbereich</h2>
+            <h2 className="text-white text-lg mb-3"> <span className="text-[#C8E646]">1.</span> Geltungsbereich</h2>
             <p>
               Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Snow Dream Studios GmbH (nachfolgend «web.seitig» oder «Anbieter») und ihren Kunden (nachfolgend «Kunde») im Rahmen der Erstellung, Gestaltung und Betreuung von Websites sowie damit verbundener Dienstleistungen.
               Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Kunden werden nicht Vertragsbestandteil, auch wenn web.seitig ihnen nicht ausdrücklich widerspricht, es sei denn, ihrer Geltung wird ausdrücklich schriftlich zugestimmt.
@@ -42,12 +45,12 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">2.</span> Leistungsumfang</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">2.</span> Leistungsumfang</h2>
             <p>
               web.seitig erbringt Dienstleistungen im Bereich der Erstellung professioneller Websites für Schweizer KMU. Der genaue Leistungsumfang ergibt sich aus dem jeweiligen Angebot bzw. der Auftragsbestätigung.
             </p>
 
-            <h4 className="text-white font-bold text-base mt-4 mb-2">Standardleistungen umfassen:</h4>
+            <h4 className="text-white text-base mt-4 mb-2">Standardleistungen umfassen:</h4>
 
             <ul className="list-disc pl-6 space-y-1">
               <li>Konzeption und Gestaltung der Website nach Kundenvorgaben</li>
@@ -64,7 +67,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">3.</span> Vertragsabschluss</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">3.</span> Vertragsabschluss</h2>
             <p>
               Ein Vertrag kommt zustande durch die schriftliche Auftragsbestätigung seitens web.seitig nach Eingang der Bestellung des Kunden. Angebote von web.seitig sind freibleibend und unverbindlich, sofern sie nicht ausdrücklich als verbindlich gekennzeichnet sind.
               Das kostenlose Erstgespräch (15 Minuten) stellt kein bindendes Angebot dar. Nach dem Gespräch erhalten Interessenten ein individuelles, schriftliches Angebot. Erst nach dessen Annahme durch den Kunden kommt ein Vertragsverhältnis zustande.
@@ -72,7 +75,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3">
+            <h2 className="text-white text-lg mb-3">
               <span className="text-[#C8E646]">4.</span> Preise und Zahlungsbedingungen
             </h2>
 
@@ -80,10 +83,10 @@ export default function Agb() {
               Alle Preise verstehen sich in Schweizer Franken (CHF) und, sofern nicht anders angegeben, zuzüglich der gesetzlichen Mehrwertsteuer.
             </p>
 
-            <p className="font-semibold mb-3">Aktuelle Pakete:</p>
+            <p className="mb-3">Aktuelle Pakete:</p>
 
             <div className="bg-gray-800 p-4 rounded mb-4">
-              <p className="font-semibold mb-2">
+              <p className="mb-2">
                 Starter – CHF 179/Monat
               </p>
               <p>
@@ -93,7 +96,7 @@ export default function Agb() {
             </div>
 
             <div className="bg-gray-800 p-4 rounded">
-              <p className="font-semibold mb-2">
+              <p className="mb-2">
                 Business Pro – CHF 149/Monat
               </p>
               <p>
@@ -105,7 +108,7 @@ export default function Agb() {
             </div>
 
             <div className="mt-4">
-              <p className="font-semibold mb-3">Zahlungsmodalitäten:</p>
+              <p className=" mb-3">Zahlungsmodalitäten:</p>
               <ul className="list-disc pl-6 space-y-2 text-white">
                 <li>
                   Die monatliche Gebühr wird jeweils zu Beginn des Abrechnungsmonats in Rechnung gestellt.
@@ -124,7 +127,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-4">
+            <h2 className="text-white text-lg mb-4">
               <span className="text-[#C8E646]">5.</span> Mitwirkungspflichten des Kunden
             </h2>
 
@@ -147,7 +150,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">6.</span> Lieferung und Abnahme</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">6.</span> Lieferung und Abnahme</h2>
             <div className="space-y-2">
               <p>
                 Nach Fertigstellung der Website erhält der Kunde einen Freigabe-Link zur Überprüfung. Der Kunde hat 5 Arbeitstage Zeit, Mängel oder Änderungswünsche zu melden. Werden innerhalb dieser Frist keine Mängel gemeldet, gilt die Website als abgenommen.
@@ -159,7 +162,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">7.</span> Nutzungsrechte und Urheberrecht</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">7.</span> Nutzungsrechte und Urheberrecht</h2>
             <div className="space-y-2">
               <p>
                 Mit vollständiger Bezahlung erhält der Kunde ein einfaches, nicht übertragbares Nutzungsrecht an der erstellten Website für den vertraglich vorgesehenen Zweck.
@@ -175,7 +178,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">8.</span> Gewährleistung und Haftung</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">8.</span> Gewährleistung und Haftung</h2>
             <div className="space-y-2">
               <p>
                 web.seitig gewährleistet, dass die erstellten Websites zum Zeitpunkt der Abnahme den vereinbarten Spezifikationen entsprechen. Technische Mängel werden innerhalb angemessener Frist behoben.
@@ -190,7 +193,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">9.</span> Vertragsdauer und Kündigung</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">9.</span> Vertragsdauer und Kündigung</h2>
             <div className="space-y-2">
               <p>
                 Verträge laufen zunächst für eine Mindestlaufzeit von 12 Monaten. Danach verlängern sie sich automatisch um jeweils 12 weitere Monate, sofern sie nicht mit einer Frist von 3 Monaten zum Ende der Laufzeit schriftlich gekündigt werden.
@@ -205,7 +208,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">10.</span> Datenschutz</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">10.</span> Datenschutz</h2>
             <div className="space-y-2">
               <p>
                 Der Umgang mit personenbezogenen Daten erfolgt gemäss unserer Datenschutzerklärung und den geltenden datenschutzrechtlichen Bestimmungen, insbesondere dem Schweizer Datenschutzgesetz (DSG).
@@ -214,7 +217,7 @@ export default function Agb() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3"><span className="text-[#C8E646]">11.</span> Schlussbestimmungen</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">11.</span> Schlussbestimmungen</h2>
             <div className="space-y-2">
               <p>
                 Es gilt ausschliesslich Schweizer Recht unter Ausschluss des Kollisionsrechts. Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist Zürich, Schweiz.
@@ -238,6 +241,7 @@ export default function Agb() {
 
         </motion.div>
       </div>
+      <Footer />
     </div>
   );
 }

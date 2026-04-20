@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useModal } from "../shared/modal-context";
+import { navigate } from "next/dist/client/components/segment-cache/navigation";
+import Link from "next/link";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,21 +23,22 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#0000001F] backdrop-blur-md shadow-lg shadow-black/20" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0000001F] backdrop-blur-md shadow-lg shadow-black/20" : "bg-transparent"
+        }`}
       data-testid="navbar"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between gap-3">
 
         {/* Logo */}
-        <button
-          onClick={() => scrollTo("home")}
-          className="text-white font-bold text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
-          data-testid="logo"
+        <Link
+          href="/"
+          className="text-white flex gap-2 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
         >
-          web<span className="text-[#C8E646]">.</span>seitig
-        </button>
+          <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
+          <div style={{ fontFamily: "var(--font-paytone)" }}>
+            web<span className="text-[#C8E646]">.</span>seitig
+          </div>
+        </Link>
 
         {/* Right side */}
         <div className="flex items-center gap-2 sm:gap-3">

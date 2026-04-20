@@ -16,7 +16,7 @@ const testimonials = [
     role: "Kosmetikstudio",
     city: "Hamburg",
     quote:
-      "Endlich eine Website ohne 5.000€ im Voraus. Der monatliche Betrag ist überschaubar — und der Service ist top.",
+      "Endlich eine Website ohne 5.000 CHF im Voraus. Der monatliche Betrag ist überschaubar — und der Service ist top.",
     image: "/testimonial2.svg",
   },
   {

@@ -13,7 +13,21 @@ body {
   margin: 0;
   background: #171717;
   color: white;
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-outfit);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-paytone);
+  font-weight: 100;
+  letter-spacing: 0.5px;
+}
+
+p, span, li, a, button, input, textarea, label {
+  font-family: var(--font-outfit);
 }
 
 a {

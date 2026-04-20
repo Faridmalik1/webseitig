@@ -39,29 +39,71 @@ const faqs = [
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(2);
+  const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
-  const handleSend = () => {
-    if (question.trim()) {
+  const handleSend = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      setEmailError("E-Mail ist erforderlich.");
+      return;
+    }
+
+    setEmailError(null);
+
+    if (!question.trim()) {
+      setError("Frage ist erforderlich.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/faq-inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          question: question.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as
+          | { error?: string; details?: string }
+          | null;
+        throw new Error(payload?.details ?? payload?.error ?? "Message could not be sent.");
+      }
+
       setSent(true);
+      setEmail("");
       setQuestion("");
       setTimeout(() => setSent(false), 3000);
+    } catch (submitError) {
+      setError(
+        submitError instanceof Error ? submitError.message : "Something went wrong.",
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <section id="faq" className="bg-[#171717] py-20 md:py-28">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-
-        {/* Heading */}
-        <h2 className="text-white font-extrabold text-[2rem] md:text-[2.8rem] text-center mb-12">
-          Häufig gestellte Fragen
+        <h2 className="text-white text-[2rem] md:text-[2.8rem] text-center mb-12">
+           Häufig gestellte Fragen
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 items-start">
-
-          {/* Left — accordion */}
           <div className="flex flex-col divide-y divide-white/[0.07]">
             {faqs.map((faq, i) => {
               const isOpen = open === i;
@@ -71,16 +113,15 @@ export function FAQ() {
                     className="w-full flex items-center gap-4 py-5 text-start group"
                     onClick={() => setOpen(isOpen ? null : i)}
                   >
-                    {/* Line + number */}
                     <div className="flex items-center gap-2 shrink-0">
                       <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full" />
-                      <span className="text-[#C8F135] text-lg font-semibold tracking-widest">
+                      <span className="text-[#C8F135] text-lg font-extrabold tracking-widest">
                         {faq.num}
                       </span>
                     </div>
 
                     <span
-                      className={`flex-1 text-sm font-semibold transition-colors ${
+                      className={`flex-1 text-base transition-colors ${
                         isOpen ? "text-white" : "text-white/70 group-hover:text-white"
                       }`}
                     >
@@ -97,7 +138,7 @@ export function FAQ() {
                   </button>
 
                   <AnimatePresence initial={false}>
-                    {isOpen && (
+                    {isOpen ? (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
@@ -105,18 +146,17 @@ export function FAQ() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-white/45 text-sm leading-relaxed pb-5 ps-[3.5rem]">
+                        <p className="text-white/45 text-base leading-relaxed pb-5 ps-[3.5rem]">
                           {faq.a}
                         </p>
                       </motion.div>
-                    )}
+                    ) : null}
                   </AnimatePresence>
                 </div>
               );
             })}
           </div>
 
-          {/* Right — Noch Fragen? card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,42 +168,77 @@ export function FAQ() {
               border: "1px solid rgba(200,230,70,0.15)",
             }}
           >
-            <h3 className="text-white font-extrabold text-[1.4rem] mb-2">
-              Noch Fragen?
-            </h3>
+            <h3 className="text-white text-[1.4rem] mb-2">Noch Fragen?</h3>
             <p className="text-white/50 text-sm leading-relaxed mb-5">
               Schreib uns einfach — wir antworten schnell und unkompliziert.
             </p>
 
-            <textarea
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Uw vraag..."
-              rows={4}
-              className="w-full rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
-              style={{
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
-            />
+            <form onSubmit={handleSend}>              
 
-            <button
-              onClick={handleSend}
-              className="w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] font-bold text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 mb-3"
-            >
-              {sent ? "Gesendet ✓" : (
-                <>
-                Frage senden 
-                <ArrowUpRight size={16} />
-                </>
-              )}
-            </button>
+              <textarea
+                required
+                value={question}
+                onChange={(event) => setQuestion(event.target.value)}
+                placeholder="Deine Frage..."
+                rows={4}
+                className="w-full rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
+              />
+
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  if (event.target.value.trim()) {
+                    setEmailError(null);
+                  }
+                }}
+                placeholder="Deine E-Mail"
+                className="w-full rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
+              />
+
+              {emailError ? (
+                <p className="-mt-1 mb-3 px-1 text-sm text-red-300">
+                  {emailError}
+                </p>
+              ) : null}
+
+              {/* {error ? (
+                <p className="mb-3 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                  {error}
+                </p>
+              ) : null} */}
+
+              <button
+                type="submit"
+                disabled={loading || !question.trim()}
+                className="w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 mb-3 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {loading ? (
+                  "Wird gesendet..."
+                ) : sent ? (
+                  "Gesendet ✓"
+                ) : (
+                  <>
+                    Frage senden
+                    <ArrowUpRight size={16} />
+                  </>
+                )}
+              </button>
+            </form>
 
             <p className="text-[#C8E646] text-xs text-center">
               Antwort innerhalb von 24h per WhatsApp
             </p>
           </motion.div>
-
         </div>
       </div>
     </section>

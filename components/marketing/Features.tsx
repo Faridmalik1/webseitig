@@ -32,10 +32,10 @@ export function Features() {
 
         {/* Badge + heading */}
         <div className="text-center mb-14 md:mb-18">
-          <p className="text-[#C8E646] text-sm font-semibold mb-5 tracking-wide">
+          <p className="text-[#C8E646] text-sm mb-5 tracking-wide">
             So funktioniert es
           </p>
-          <h2 className="text-white font-extrabold text-[2rem] md:text-[2.8rem] leading-tight mb-4">
+          <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight mb-4">
            Einfacher als Sie denken.
           </h2>
           <p className="text-white/45 text-base md:text-lg">
@@ -61,12 +61,12 @@ export function Features() {
               {/* Line + number */}
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-8 h-[2px] bg-[#C8F135] rounded-full" />
-                <span className="text-[#C8F135] text-lg font-bold tracking-widest">
+                <span className="text-[#C8F135] text-lg tracking-widest">
                   {step.num}
                 </span>
               </div>
 
-              <h3 className="text-white font-bold text-base leading-snug mb-3">
+              <h3 className="text-white text-base leading-snug mb-3">
                 {step.title}
               </h3>
               <p className="text-white/40 text-sm leading-relaxed">

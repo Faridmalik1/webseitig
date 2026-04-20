@@ -31,10 +31,10 @@ export function About() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
 
         <div className="text-center mb-12 md:mb-16">
-          <p className="text-[#C8E646] text-sm font-semibold mb-5 tracking-wide">
+          <p className="text-[#C8E646] text-sm mb-5 tracking-wide">
             Kommt Ihnen das bekannt vor?
           </p>
-          <h2 className="text-white font-extrabold text-[2rem] md:text-[2.8rem] leading-tight">
+          <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
             Warum Sie noch keine Website haben
           </h2>
         </div>
@@ -54,7 +54,7 @@ export function About() {
   transition-all duration-300
 `}
             >
-              <h3 className="text-white font-bold text-[1.1rem] mb-3">{pain.title}</h3>
+              <h3 className="text-white text-[1.1rem] mb-3">{pain.title}</h3>
               <p className="text-white/45 text-sm leading-relaxed">{pain.desc}</p>
             </motion.div>
           ))}

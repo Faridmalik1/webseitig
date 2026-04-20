@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useModal } from "../shared/modal-context";
 
 const logos = [
   { id: 1, img: "/logos/logo1.svg" },
@@ -15,6 +16,7 @@ const logos = [
 ];
 
 export function Services() {
+  const { open } = useModal();
   return (
     <section id="services" className="bg-[#171717] pb-20 md:pb-28">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
@@ -25,7 +27,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="text-white font-extrabold text-[1.9rem] md:text-[2.4rem] text-center mb-10"
+          className="text-white text-[1.9rem] md:text-[2.4rem] text-center mb-10"
         >
           Unternehme, wo üs vertraue
         </motion.h2>
@@ -70,15 +72,23 @@ export function Services() {
         </motion.div>
 
         {/* "Mehr anzeigen" button */}
-        <div className="flex justify-center mt-8">
+        {/* <div className="flex justify-center mt-8">
           <a
             href="#"
-            className="inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
+            className="inline-flex items-center gap-2 bg-[#C8E646] text-black! text-sm px-6 py-2.5 rounded-full no-underline hover:bg-[#d4f050] hover:!text-black active:scale-95 transition-all duration-200"
           >
             Mehr anzeigen
-            {/* <span className="text-base">↗</span> */}
             <ArrowUpRight size={16} />
           </a>
+        </div> */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={open}
+            className="inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+          >
+            Kostenlose Beratung anfragen
+            {/* <ArrowUpRight size={16} /> */}
+          </button>
         </div>
       </div>
     </section>

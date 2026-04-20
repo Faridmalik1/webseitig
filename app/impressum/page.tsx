@@ -3,12 +3,15 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { Navbar } from "@/components/marketing/Navbar";
+import { Footer } from "@/components/marketing/Footer";
 
 export default function Impressum() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
+      <Navbar />
       <div className="max-w-[800px] mx-auto px-6 py-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm font-semibold mb-10 hover:opacity-80 transition-opacity">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
 
@@ -16,7 +19,7 @@ export default function Impressum() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-4xl font-extrabold mb-2"
+          className="text-4xl mb-2"
         >
           Impressum
         </motion.h1>
@@ -31,7 +34,7 @@ export default function Impressum() {
           className="space-y-8 text-white/70 leading-relaxed"
         >
           <section className="mt-4">
-            <h2 className="text-white font-bold text-lg mb-2">Angaben zum Unternehmen</h2>
+            <h2 className="text-white text-lg mb-2">Angaben zum Unternehmen</h2>
             <div className="bg-gray-800 p-4 rounded my-4">
               <p>
                 Snow Dream Studios GmbH <br />
@@ -42,7 +45,7 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-2">Kontaktdaten</h2>
+            <h2 className="text-white text-lg mb-2">Kontaktdaten</h2>
             <div className="bg-gray-800 p-4 rounded my-4">
               <p>E-Mail: <a href="mailto:hallo@web-seitig.ch" className="text-[#C8E646] hover:underline">hallo@web-seitig.ch</a></p>
               <p>Web: <a href="https://web-seitig.ch" className="text-[#C8E646] hover:underline">web-seitig.ch</a></p>
@@ -53,13 +56,13 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3">Verantwortlich für den Inhalt</h2>
+            <h2 className="text-white text-lg mb-3">Verantwortlich für den Inhalt</h2>
             <p className="mb-1">Snow Dream Studios GmbH, vertreten durch die Geschäftsführung.</p>
             <p>Alle Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäss den geltenden gesetzlichen Vorschriften für eigene Inhalte auf unserer Website verantwortlich.</p>
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3">Haftung für Links</h2>
+            <h2 className="text-white text-lg mb-3">Haftung für Links</h2>
             <p className="mb-1">
               Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
             </p>
@@ -69,7 +72,7 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3">Urheberrecht und Nutzungsrechte</h2>
+            <h2 className="text-white text-lg mb-3">Urheberrecht und Nutzungsrechte</h2>
             <p className="mb-1">
               Die durch uns erstellten Inhalte und Werke auf dieser Website unterliegen dem Schweizer Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
             </p>
@@ -86,20 +89,21 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3">Anwendbares Recht und Gerichtsstand</h2>
+            <h2 className="text-white text-lg mb-3">Anwendbares Recht und Gerichtsstand</h2>
             <p className="mb-1">
               Für alle Streitigkeiten aus oder im Zusammenhang mit diesem Internetauftritt gilt ausschliesslich Schweizer Recht. Gerichtsstand ist Zürich, Schweiz.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white font-bold text-lg mb-3">Letzte Aktualisierung</h2>
+            <h2 className="text-white text-lg mb-3">Letzte Aktualisierung</h2>
             <p className="mb-1">
               April 2025
             </p>
           </section>
         </motion.div>
       </div>
+      <Footer />
     </div>
   );
 }

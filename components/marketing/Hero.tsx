@@ -48,10 +48,10 @@ export function Hero() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="lg:col-span-2"
           >
-            <p className="text-[#C8E646] text-sm font-semibold mb-4 sm:mb-5 tracking-wide">
+            <p className="text-[#C8E646] text-sm mb-4 sm:mb-5 tracking-wide">
               Professionelle Websites für Schweizer KMU
             </p>
-            <h1 className="text-[2.4rem] sm:text-[2.8rem] md:text-[3.6rem] font-extrabold leading-[1.05] text-white mb-5 sm:mb-6">
+            <h1 className="text-[2.4rem] sm:text-[2.8rem] md:text-[3.6rem] leading-[1.05] text-white mb-5 sm:mb-6">
               Ihre Website. Fertig. In 7 Tagen.
             </h1>
             <p className="text-white/55 text-base md:text-lg leading-relaxed max-w-[480px] mb-7 sm:mb-8">
@@ -60,7 +60,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
                 onClick={open}
-                className="inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-bold text-[15px] px-7 py-3.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
+                className="inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] text-[15px] px-7 py-3.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
                 data-testid="hero-cta"
               >
                 Jetzt kostenlos starten
@@ -81,7 +81,7 @@ export function Hero() {
             className="flex justify-center lg:justify-end mt-4 lg:mt-0"
           >
             <div
-              className="relative w-[260px] sm:w-[300px] rounded-2xl px-8 py-4 shadow-2xl"
+              className="relative w-[240px] sm:w-[280px] rounded-2xl px-8 py-4 shadow-2xl"
               style={{
                 background: "#1e1e1e",
                 border: "1px solid rgba(255,255,255,0.07)",
@@ -95,21 +95,21 @@ export function Hero() {
                   background: "radial-gradient(circle at 70% 30%, rgba(100,160,30,0.12) 0%, transparent 70%)",
                 }}
               />
-              <p className="text-white/40 text-xs font-semibold uppercase tracking-widest mb-2">
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-2">
                 AB NUR
               </p>
               <div className="flex gap-2 items-center">
-                <p className="text-[#C8E646] text-[3rem] font-extrabold leading-none mb-1">
+                <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
                 CHF
               </p>
-              <p className="text-[#C8E646] text-[3rem] font-extrabold leading-none mb-1">
+              <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
                 149
               </p>
               </div>
               <p className="text-white/50 text-sm mb-4">
                 pro Monat
               </p>
-              <p className="text-white/30 text-xs font-medium italic">
+              <p className="text-white/30 text-xs italic">
                 inkl. Hosting & Support
               </p>
             </div>
@@ -135,7 +135,7 @@ export function Hero() {
                 alt={f.label}
                 className="w-5 h-5 object-contain"
               />
-              <p className="text-white/55 text-xs leading-snug max-w-[140px]">
+              <p className="text-white/55 text-base leading-snug max-w-[180px]">
                 {f.label}
               </p>
             </div>

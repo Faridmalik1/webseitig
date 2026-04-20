@@ -62,7 +62,7 @@ function ProjectImage({ name }: { name: string }) {
       </svg>
       {/* Subtle overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c]/60 to-transparent pointer-events-none rounded-xl"/>
-      <span className="absolute bottom-3 left-4 text-[#C8E646] text-xs font-semibold opacity-60">{name}</span>
+      <span className="absolute bottom-3 left-4 text-[#C8E646] text-xs opacity-60">{name}</span>
     </div>
   );
 }
@@ -96,10 +96,10 @@ export function Portfolio() {
         {/* Header row */}
         <div className="flex items-start justify-between mb-10">
           <div>
-            <p className="text-[#C8E646] text-sm font-semibold mb-3 tracking-wide">
+            <p className="text-[#C8E646] text-sm mb-3 tracking-wide">
               Unsere Arbeit
             </p>
-            <h2 className="text-white font-extrabold text-[2rem] md:text-[2.8rem] leading-tight">
+            <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
               Ausgewählte Projekte
             </h2>
           </div>
@@ -107,7 +107,7 @@ export function Portfolio() {
             key={project.num}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[#C8E646] font-extrabold text-[3.5rem] md:text-[4.5rem] leading-none opacity-70 select-none"
+            className="text-[#C8E646] text-[3.5rem] md:text-[4.5rem] leading-none opacity-70 font-bold select-none"
           >
             {project.num}
           </motion.span>
@@ -134,7 +134,7 @@ export function Portfolio() {
 
                 {/* Right — details */}
                 <div className="p-8 flex flex-col justify-center">
-                  <h3 className="text-white font-extrabold text-[1.6rem] mb-3">
+                  <h3 className="text-white text-[1.6rem] mb-3">
                     {project.name}
                   </h3>
                   <p className="text-white/45 text-sm leading-relaxed mb-6">
@@ -142,7 +142,7 @@ export function Portfolio() {
                   </p>
 
                   <div className="mb-5">
-                    <p className="text-white font-semibold text-sm mb-2">Tech-Stack</p>
+                    <p className="text-white text-sm mb-2">Tech-Stack</p>
                     <div className="flex flex-wrap gap-2">
                       {project.stack.map((tag) => (
                         <span
@@ -156,8 +156,8 @@ export function Portfolio() {
                   </div>
 
                   <div className="flex items-center justify-between pt-4 border-t border-white/[0.07]">
-                    <p className="text-white font-semibold text-sm">Zeitleiste</p>
-                    <p className="text-[#C8E646] font-bold text-sm">{project.days}</p>
+                    <p className="text-white text-sm">Zeitleiste</p>
+                    <p className="text-[#C8E646] text-sm">{project.days}</p>
                   </div>
                 </div>
               </div>

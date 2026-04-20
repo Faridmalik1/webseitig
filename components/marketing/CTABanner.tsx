@@ -8,8 +8,9 @@ export function CTABanner() {
   const { open } = useModal();
 
   return (
+    <div className="mx-6">
     <section
-      className="relative overflow-hidden max-w-[1200px] rounded-2xl mx-auto px-6 md:px-8 py-20 md:py-24 text-center bg-[#C8F135]"
+      className="relative overflow-hidden max-w-[1200px] rounded-3xl mx-auto px-6 md:px-8 py-20 md:py-24 text-center bg-[#C8F135]"
     >
       <img
         src="/Progress_Left.svg"
@@ -41,7 +42,8 @@ export function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="text-[#171717]/65 text-base md:text-lg mb-8 max-w-[500px] mx-auto"
+          className="text-[#737373] text-base md:text-xl font-medium mb-8 max-w-[500px] mx-auto"
+          style={{ fontFamily: "var(--font-outfit)" }}
         >
           Kostenlose Beratung. Kein Druck. Kein Risiko. In 15 Minuten weisst du, was möglich ist.
         </motion.p>
@@ -52,12 +54,13 @@ export function CTABanner() {
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.2 }}
           onClick={open}
-          className="inline-flex items-center gap-2 bg-[#171717] text-white font-bold text-[15px] px-8 py-4 rounded-full hover:bg-[#2a2a2a] active:scale-95 transition-all duration-200"
+                    className="inline-flex items-center gap-2 bg-[#171717] text-white font-bold text-sm sm:text-lg px-6 sm:px-8 py-2 sm:py-4 rounded-full hover:bg-[#2a2a2a] active:scale-95 transition-all duration-200"
         >
           Jetzt kostenlos starten
           <ArrowRight size={20} />
         </motion.button>
       </div>
     </section>
+    </div>
   );
 }

@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Paytone_One, Outfit } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const paytonOne = Paytone_One({
   subsets: ["latin"],
-  variable: "--font-body",
+  weight: "400",
+  variable: "--font-paytone",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
   title: "web.seitig",
   description: "Single Next.js 16 app for homepage, lead capture, and CRM.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable}`}
+        className={`${paytonOne.variable} ${outfit.variable}`}
         suppressHydrationWarning
       >
         {children}

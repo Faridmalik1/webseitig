@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createLead, listLeads } from "@/lib/leads";
 import { requireAuth } from "@/lib/auth";
+import { sendLeadCaptureEmails } from "@/lib/email";
 import { createLeadSchema, leadQuerySchema } from "@/lib/validations/lead";
 
 export async function GET(request: Request) {
@@ -37,5 +38,30 @@ export async function POST(request: Request) {
   }
 
   const lead = await createLead(parsed.data);
-  return NextResponse.json({ success: true, lead }, { status: 201 });
+
+  try {
+    const emailResult = await sendLeadCaptureEmails({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone,
+      branche: parsed.data.branche,
+    });
+
+    return NextResponse.json({ success: true, lead, ...emailResult }, { status: 201 });
+  } catch (error) {
+    console.error("Lead saved but email sending failed.", error);
+
+    return NextResponse.json(
+      {
+        success: true,
+        lead,
+        adminSent: false,
+        senderSent: false,
+        ...(process.env.NODE_ENV !== "production" && error instanceof Error
+          ? { emailError: error.message }
+          : {}),
+      },
+      { status: 201 },
+    );
+  }
 }

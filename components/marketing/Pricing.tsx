@@ -39,15 +39,15 @@ export function Pricing() {
           className="text-center mb-14"
         >
           <div
-            className="inline-block w-full max-w-[700px] rounded-2xl px-8 py-10 mb-2"
+            className="inline-block w-full max-w-[700px] rounded-2xl px-8 mb-2"
           // style={{
           //   border: "1.5px dashed rgba(255,255,255,0.15)",
           // }}
           >
-            <p className="text-[#C8E646] text-sm font-semibold mb-5 tracking-wide">
+            <p className="text-[#C8E646] text-base mb-5 tracking-wide">
               Preise
             </p>
-            <h2 className="text-white font-extrabold text-[1.6rem] sm:text-[2rem] md:text-[2.8rem] leading-tight break-words">
+            <h2 className="text-white text-[1.6rem] sm:text-[2rem] md:text-[2.8rem] leading-tight break-words">
               Transparent. Fair. Ohne Überraschungen.
             </h2>
           </div>
@@ -72,11 +72,11 @@ export function Pricing() {
   transition-all duration-300
 "
           >
-            <h3 className="text-white font-bold text-xl mb-4">Starter</h3>
+            <h3 className="text-white text-xl mb-4">Starter</h3>
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-[#C8F135] font-extrabold text-[2.8rem] leading-none">CHF 179</span>
+              <span className="text-[#C8F135] text-[2.8rem] leading-none font-extrabold">CHF 179</span>
               <span className="text-white/40 text-sm ms-1">/ Monat</span>
             </div>
             <p className="text-white/35 text-xs mb-8">
@@ -87,7 +87,9 @@ export function Pricing() {
             <ul className="space-y-3 flex-1 mb-8">
               {starterFeatures.map((f, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <Check size={15} className="text-white/60 shrink-0" strokeWidth={2.5} />
+                  <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
+                  <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
+                  </span>
                   <span className="text-white/65 text-sm">{f}</span>
                 </li>
               ))}
@@ -96,7 +98,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-3.5 rounded-full border border-[#C8F135] text-white font-semibold text-sm hover:border-white/40 hover:bg-white/5 transition-all duration-200"
+              className="w-full py-3.5 rounded-full border border-[#C8F135] text-white text-sm hover:border-white/40 hover:bg-white/5 transition-all duration-200"
             >
               Jetzt starten
             </button>
@@ -119,16 +121,16 @@ export function Pricing() {
 "
           >
             <div className="absolute top-0 right-0">
-              <div className="bg-[#C8E646] py-2 text-[#171717] text-xs font-bold px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
+              <div className="bg-[#C8E646] py-2 text-[#171717] text-xs px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
                 Meistgewählt
               </div>
             </div>
 
-            <h3 className="text-white font-bold text-xl mb-4">Business Pro</h3>
+            <h3 className="text-white text-xl mb-4">Business Pro</h3>
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-[#C8E646] font-extrabold text-[2.8rem] leading-none">CHF 249</span>
+              <span className="text-[#C8E646] text-[2.8rem] leading-none font-extrabold">CHF 249</span>
               <span className="text-white/40 text-sm ms-1">/ Monat</span>
             </div>
             <p className="text-white/35 text-xs mb-8">
@@ -139,7 +141,9 @@ export function Pricing() {
             <ul className="space-y-3 flex-1 mb-8">
               {proFeatures.map((f, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <Check size={15} className="text-[#C8E646] shrink-0" strokeWidth={2.5} />
+                  <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
+                  <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
+                  </span>
                   <span className="text-white/65 text-sm">{f}</span>
                 </li>
               ))}
@@ -148,7 +152,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-3.5 rounded-full bg-[#C8E646] text-[#171717] font-bold text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
+              className="w-full py-3.5 rounded-full bg-[#C8E646] text-[#171717] text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
             >
               Jetzt starten
             </button>
