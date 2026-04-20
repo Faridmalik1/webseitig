@@ -7,62 +7,125 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const projects = [
   {
     num: "01",
-    name: "Elektriker Müller",
-    desc: "Lokaler Elektriker-Betrieb aus Zürich. Moderne Website mit Online-Anfrage-Formular, Google Maps-Integration und mobiloptimiertem Design.",
-    stack: ["WordPress", "Google Maps", "SEO"],
+    name: "BewegungsHaus Zurich",
+    image: "/projects/BewegungsHaus.svg",
+    desc: "BewegungsHaus Zürich bietet individuelle Physiotherapie, Massage und Rehabilitation in Winterthur – modern, professionell und von allen Schweizer Krankenkassen anerkannt.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum", "Lorem Ipsum"],
     days: "6 Tage",
-    image: null,
   },
   {
     num: "02",
-    name: "Kosmetikstudio Bella",
-    desc: "Kosmetikstudio in Basel mit Online-Terminbuchung, Bildergalerie und Preisliste. Inklusive Instagram-Feed-Integration.",
-    stack: ["React", "Calendly", "Lightbox"],
-    days: "7 Tage",
-    image: null,
+    name: "Autoglanz",
+    image: "/projects/autoglanz.svg",
+    desc: "Autoglanz bietet exklusive Fahrzeugaufbereitung auf höchstem Niveau. Wir bewahren den Wert Ihres Automobils durch professionelle Lackveredelung, Leidenschaft und höchste Präzision.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
   },
   {
     num: "03",
-    name: "Schreinerei Baumgartner",
-    desc: "Traditionsreiche Schreinerei aus Bern. Portfolio-Website mit Projektreferenzen, Kontaktformular und SSL-Zertifikat.",
-    stack: ["Next.js", "Framer", "Cloudflare"],
-    days: "5 Tage",
-    image: null,
+    name: "Alpentreu",
+    image: "/projects/alpentreu.svg",
+    desc: "AlpenTreu bietet erstklassige Architekturberatung und Planung für Ihr Bauvorhaben. Mit Präzision und Verlässlichkeit begleiten wir Sie von der Vision bis zur Realisierung.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "04",
+    name: "Aurelia Beaute",
+    image: "/projects/aureliebeaute.svg",
+    desc: "Exklusive Pflege und professionelle Behandlungen in entspannter Wohlfühlatmosphäre – entdecken Sie Ihre natürliche Schönheit bei Aurelia Beaute.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "05",
+    name: "Clean Swiss Pro",
+    image: "/projects/Cleanswiss.svg",
+    desc: "Clean Swiss Pro bietet erstklassige Reinigungsdienstleistungen für Privat- und Geschäftskunden. Wir garantieren höchste Sauberkeit, Zuverlässigkeit und Professionalität für Ihr Objekt.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "06",
+    name: "MaxPeak",
+    image: "/projects/maxpeak.svg",
+    desc: "MaxPeak bietet professionelles Personal Training und individuelles Coaching für maximale Erfolge. Erreichen Sie Ihre sportlichen Ziele mit hocheffektiven Trainingsplänen und Expertenwissen.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "07",
+    name: "Voltarc",
+    image: "/projects/Voltarcag.svg",
+    desc: " Professionelle Elektroinstallationen, Photovoltaik und Smart-Home. Höchste Präzision und Sicherheit für Ihre elektrischen Projekte.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "08",
+    name: "Veloce Vins",
+    image: "/projects/velocevins.svg",
+    desc: "Veloce Vins bietet eine exquisite Auswahl edler Weine und privaten Sommelier-Service. Entdecken Sie exklusive Raritäten und erstklassige Qualität für Kenner.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "09",
+    name: "HolzForm",
+    image: "/projects/manufaktur.svg",
+    desc: "HolzForm fertigt exklusive Massivholzmöbel und individuelle Innenausbauten nach Maß. Wir vereinen traditionelles Handwerk mit modernem Design für zeitlose, langlebige Unikate.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
+  },
+  {
+    num: "10",
+    name: "WeissWerk",
+    image: "/projects/velocevins.svg",
+    desc: "WeissWerk bietet erstklassige Malerarbeiten und kreative Farbkonzepte für Ihre Räume. Wir garantieren höchste Qualität, Präzision und langlebige Ergebnisse für Ihr Zuhause.",
+    stack: ["Lorem Ipsum", "Lorem Ipsum"],
+    days: "6 Tage",
   },
 ];
 
-function ProjectImage({ name }: { name: string }) {
+function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="w-full h-full min-h-[240px] rounded-xl overflow-hidden relative flex items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #1a2a0d 0%, #0d1a06 60%, #1a1a1a 100%)" }}
+      className="rounded-4xl overflow-hidden flex flex-col"
+      style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
     >
-      {/* Laptop mockup SVG */}
-      <svg viewBox="0 0 320 200" className="w-[80%] opacity-80" fill="none">
-        {/* Screen */}
-        <rect x="40" y="10" width="240" height="150" rx="8" fill="#222" stroke="#444" strokeWidth="2"/>
-        {/* Screen content */}
-        <rect x="48" y="18" width="224" height="134" rx="4" fill="#1a1a1a"/>
-        {/* Fake website header */}
-        <rect x="48" y="18" width="224" height="22" rx="4" fill="#2a2a2a"/>
-        <rect x="55" y="24" width="40" height="10" rx="3" fill="#C8E646" opacity="0.7"/>
-        <rect x="200" y="24" width="60" height="10" rx="3" fill="#3a3a3a"/>
-        {/* Fake hero */}
-        <rect x="55" y="50" width="100" height="16" rx="3" fill="#fff" opacity="0.8"/>
-        <rect x="55" y="72" width="80" height="10" rx="3" fill="#555"/>
-        <rect x="55" y="88" width="50" height="10" rx="3" fill="#555"/>
-        <rect x="55" y="108" width="70" height="20" rx="6" fill="#C8E646" opacity="0.8"/>
-        {/* Right card */}
-        <rect x="180" y="48" width="80" height="92" rx="6" fill="#2a2a2a" stroke="#3a3a3a" strokeWidth="1"/>
-        <rect x="188" y="58" width="30" height="8" rx="2" fill="#888" opacity="0.5"/>
-        <rect x="188" y="70" width="60" height="22" rx="3" fill="#C8E646" opacity="0.3"/>
-        {/* Base */}
-        <path d="M20 162 H300 L290 175 H30 Z" fill="#2a2a2a" stroke="#444" strokeWidth="1"/>
-        <rect x="130" y="158" width="60" height="4" rx="2" fill="#444"/>
-      </svg>
-      {/* Subtle overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c]/60 to-transparent pointer-events-none rounded-xl"/>
-      <span className="absolute bottom-3 left-4 text-[#C8E646] text-xs opacity-60">{name}</span>
+      {/* Project image */}
+      <div className="w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+        <img
+          src={project.image}
+          alt={project.name}
+          className="w-full h-full object-cover rounded-3xl object-top"
+        />
+      </div>
+
+      {/* Details */}
+      <div className="p-6 flex flex-col flex-1">
+        <h3 className="text-white text-[1.4rem] font-semibold mb-2">{project.name}</h3>
+        <p className="text-white/45 text-sm leading-relaxed mb-5">{project.desc}</p>
+
+        <div className="mb-5">
+          <p className="text-white text-sm mb-2 font-medium">Tech-Stack</p>
+          <div className="flex flex-wrap gap-2">
+            {project.stack.map((tag, i) => (
+              <span
+                key={i}
+                className="text-white/60 text-xs border border-white/15 rounded-full px-3 py-1"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-auto flex items-center justify-between pt-4">
+          <p className="text-white text-xl font-medium">Zeitleiste</p>
+          <p className="text-[#C8E646] text-xl">{project.days}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -70,139 +133,91 @@ function ProjectImage({ name }: { name: string }) {
 export function Portfolio() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [isLg, setIsLg] = useState(false);
 
-  const goTo = useCallback((idx: number) => {
-    setDirection(idx > current ? 1 : -1);
-    setCurrent(idx);
-  }, [current]);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    setIsLg(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsLg(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
-  const prev = () => goTo((current - 1 + projects.length) % projects.length);
-  const next = () => goTo((current + 1) % projects.length);
+  const total = projects.length;
+
+  const goTo = useCallback(
+    (idx: number) => {
+      setDirection(idx > current ? 1 : -1);
+      setCurrent(idx);
+    },
+    [current]
+  );
+
+  const prev = () => goTo((current - 1 + total) % total);
+  const next = () => goTo((current + 1) % total);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setDirection(1);
-      setCurrent((prev) => (prev + 1) % projects.length);
+      setCurrent((c) => (c + 1) % total);
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [total]);
 
-  const project = projects[current];
+  // On lg: show current and next (looping). On mobile: show only current.
+  const visibleProjects = isLg
+    ? [projects[current], projects[(current + 1) % total]]
+    : [projects[current]];
 
   return (
     <section id="portfolio" className="bg-[#171717] py-20 md:py-28">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
 
-        {/* Header row */}
+        {/* Header */}
         <div className="flex items-start justify-between mb-10">
           <div>
-            <p className="text-[#C8E646] text-sm mb-3 tracking-wide">
-              Unsere Arbeit
-            </p>
+            <p className="text-[#C8E646] text-sm mb-3 tracking-wide">Unsere Arbeit</p>
             <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
               Ausgewählte Projekte
             </h2>
           </div>
-          <motion.span
-            key={project.num}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[#C8E646] text-[3.5rem] md:text-[4.5rem] leading-none opacity-70 font-bold select-none"
-          >
-            {project.num}
-          </motion.span>
         </div>
 
-        {/* Carousel card */}
-        <div className="relative overflow-hidden rounded-2xl" style={{ minHeight: 280 }}>
-          <AnimatePresence mode="wait" initial={false}>
+        {/* Cards grid */}
+        <div className="relative overflow-hidden" style={{ minHeight: 520 }}>
+          <AnimatePresence mode="sync" initial={false}>
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: direction * 60 }}
+              initial={{ opacity: 0, x: direction * 40 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -60 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="rounded-2xl overflow-hidden"
-              style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
+              exit={{ opacity: 0, x: direction * -40, position: "absolute" }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-5"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-
-                {/* Left — image */}
-                <div className="p-5">
-                  <ProjectImage name={project.name} />
-                </div>
-
-                {/* Right — details */}
-                <div className="p-8 flex flex-col justify-center">
-                  <h3 className="text-white text-[1.6rem] mb-3">
-                    {project.name}
-                  </h3>
-                  <p className="text-white/45 text-sm leading-relaxed mb-6">
-                    {project.desc}
-                  </p>
-
-                  <div className="mb-5">
-                    <p className="text-white text-sm mb-2">Tech-Stack</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.stack.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-white/60 text-xs border border-white/15 rounded-full px-3 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-white/[0.07]">
-                    <p className="text-white text-sm">Zeitleiste</p>
-                    <p className="text-[#C8E646] text-sm">{project.days}</p>
-                  </div>
-                </div>
-              </div>
+              {visibleProjects.map((project) => (
+                <ProjectCard key={project.num} project={project} />
+              ))}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Navigation: arrows + dots */}
+        {/* Navigation */}
         <div className="flex items-center justify-center gap-4 mt-6">
-          {/* Prev arrow */}
-          <button
-            onClick={prev}
-            className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:bg-white/10 active:scale-90"
-            style={{ border: "1.5px solid rgba(255,255,255,0.18)" }}
-            aria-label="Vorheriges Projekt"
-          >
-            <ChevronLeft size={16} className="text-white/60" strokeWidth={2} />
-          </button>
-
-          {/* Dots */}
           <div className="flex gap-2">
             {projects.map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === current
+                className={`rounded-full transition-all duration-300 ${i === current
                     ? "bg-[#C8E646] w-5 h-2.5"
                     : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
-                }`}
+                  }`}
                 aria-label={`Slide ${i + 1}`}
               />
             ))}
           </div>
-
-          {/* Next arrow */}
-          <button
-            onClick={next}
-            className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:bg-white/10 active:scale-90"
-            style={{ border: "1.5px solid rgba(255,255,255,0.18)" }}
-            aria-label="Nächstes Projekt"
-          >
-            <ChevronRight size={16} className="text-white/60" strokeWidth={2} />
-          </button>
         </div>
+
       </div>
     </section>
   );

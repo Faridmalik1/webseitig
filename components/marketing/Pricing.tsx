@@ -98,7 +98,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-3.5 rounded-full border border-[#C8F135] text-white text-sm hover:border-white/40 hover:bg-white/5 transition-all duration-200"
+              className="group w-full py-3.5 rounded-full border border-[#C8F135] text-white text-sm hover:bg-[#C8F135] hover:text-black transition-all duration-200"
             >
               Jetzt starten
             </button>

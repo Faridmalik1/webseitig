@@ -83,12 +83,17 @@ export function Services() {
         </div> */}
         <div className="flex justify-center mt-8">
           <button
-            onClick={open}
-            className="inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
-          >
-            Kostenlose Beratung anfragen
-            {/* <ArrowUpRight size={16} /> */}
-          </button>
+  onClick={open}
+  className="group inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+>
+  Kostenlose Beratung anfragen
+
+  <ArrowUpRight
+    size={16}
+    strokeWidth={2}
+    className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
+  />
+</button>
         </div>
       </div>
     </section>

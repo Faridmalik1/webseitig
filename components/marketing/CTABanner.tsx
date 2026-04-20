@@ -49,16 +49,23 @@ export function CTABanner() {
         </motion.p>
 
         <motion.button
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: 0.2 }}
-          onClick={open}
-                    className="inline-flex items-center gap-2 bg-[#171717] text-white font-bold text-sm sm:text-lg px-6 sm:px-8 py-2 sm:py-4 rounded-full hover:bg-[#2a2a2a] active:scale-95 transition-all duration-200"
-        >
-          Jetzt kostenlos starten
-          <ArrowRight size={20} />
-        </motion.button>
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.45, delay: 0.2 }}
+  onClick={open}
+  className="group inline-flex items-center gap-2 bg-[#171717] text-white font-bold text-sm sm:text-lg 
+  px-6 sm:px-8 py-2 sm:py-4 rounded-full hover:bg-[#2a2a2a] active:scale-95 
+  transition-all duration-200"
+>
+  Jetzt kostenlos starten
+  <ArrowRight
+    size={20}
+    strokeWidth={2}
+    className="transition-transform duration-300 ease-out 
+    group-hover:translate-x-1"
+  />
+</motion.button>
       </div>
     </section>
     </div>

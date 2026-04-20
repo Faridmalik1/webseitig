@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useModal } from "../shared/modal-context";
 import { navigate } from "next/dist/client/components/segment-cache/navigation";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -44,13 +45,19 @@ export function Navbar() {
         <div className="flex items-center gap-2 sm:gap-3">
           {/* CTA — hidden on small mobile, shown from sm breakpoint */}
           <button
-            onClick={open}
-            className="hidden sm:inline-flex items-center bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
-            data-testid="button-cta"
-          >
-            <span className="hidden md:inline">Kostenlose Beratung anfragen</span>
-            <span className="md:hidden">Kostenlos starten</span>
-          </button>
+  onClick={open}
+  className="group hidden sm:inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+  data-testid="button-cta"
+>
+  <span className="hidden md:inline">Kostenlose Beratung anfragen</span>
+  <span className="md:hidden">Kostenlos starten</span>
+
+  <ArrowUpRight
+    size={16}
+    strokeWidth={2}
+    className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
+  />
+</button>
 
           {/* Mobile menu button */}
           {/* <button

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useModal } from "../shared/modal-context";
 
 const features = [
@@ -60,12 +60,15 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
                 onClick={open}
-                className="inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] text-[15px] px-7 py-3.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
-                data-testid="hero-cta"
+                className="group inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] text-[15px] px-7 py-3.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
               >
                 Jetzt kostenlos starten
-                <ArrowRight size={16} className="text-[#171717]" strokeWidth={2} />
-                {/* <span className="text-lg">→</span> */}
+
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={2}
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
+                />
               </button>
               <p className="text-white/40 text-sm">
                 Bereits über 40 Unternehmen in der Schweiz vertrauen uns
@@ -100,11 +103,11 @@ export function Hero() {
               </p>
               <div className="flex gap-2 items-center">
                 <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
-                CHF
-              </p>
-              <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
-                149
-              </p>
+                  CHF
+                </p>
+                <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
+                  149
+                </p>
               </div>
               <p className="text-white/50 text-sm mb-4">
                 pro Monat

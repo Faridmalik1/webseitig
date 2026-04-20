@@ -218,21 +218,29 @@ export function FAQ() {
               ) : null} */}
 
               <button
-                type="submit"
-                disabled={loading || !question.trim()}
-                className="w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 mb-3 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {loading ? (
-                  "Wird gesendet..."
-                ) : sent ? (
-                  "Gesendet ✓"
-                ) : (
-                  <>
-                    Frage senden
-                    <ArrowUpRight size={16} />
-                  </>
-                )}
-              </button>
+  type="submit"
+  disabled={loading || !question.trim()}
+  className="group w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] text-sm font-semibold 
+  hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 
+  flex items-center justify-center gap-2 mb-3 whitespace-nowrap
+  disabled:cursor-not-allowed disabled:opacity-50"
+>
+  {loading ? (
+    "Wird gesendet..."
+  ) : sent ? (
+    "Gesendet ✓"
+  ) : (
+    <>
+      Frage senden
+      <ArrowUpRight
+        size={16}
+        strokeWidth={2}
+        className="transition-transform duration-300 ease-out 
+        group-hover:translate-x-1 group-hover:rotate-45"
+      />
+    </>
+  )}
+</button>
             </form>
 
             <p className="text-[#C8E646] text-xs text-center">
