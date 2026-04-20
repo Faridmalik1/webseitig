@@ -32,7 +32,7 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-white flex gap-2 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
+          className="text-white flex items-center gap-2 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
         >
           <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
           <div style={{ fontFamily: "var(--font-paytone)" }}>
