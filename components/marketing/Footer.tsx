@@ -22,78 +22,77 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row sm:justify-between py-6 gap-6">
 
-  {/* Logo */}
-  <div className="flex items-center gap-2 ">
-    <div className="w-8 h-8 rounded-md flex items-center justify-center">
-      <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
-    </div>
-    <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
-      web<span className="text-[#C8E646]">.</span>seitig
-    </span>
-  </div>
+          {/* Logo */}
+          <div className="flex items-center gap-2 ">
+            <div className="w-8 h-8 rounded-md flex items-center justify-center">
+              <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
+            </div>
+            <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
+              web<span className="text-[#C8E646]">.</span>seitig
+            </span>
+          </div>
 
-  {/* Links */}
-  <div className="relative w-full sm:w-auto">
+          {/* Links */}
+          <div className="relative w-full sm:w-auto">
 
-    {/* ✅ Grid on mobile, flex on desktop */}
-    <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-center sm:flex sm:items-center sm:gap-4">
+            {/* ✅ Grid on mobile, flex on desktop */}
+            <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-center sm:flex sm:items-center sm:gap-4">
 
-      {[...legalLinks, { label: "Kontakt", action: scrollToFaq }].map((item, index, arr) => (
-  <span key={item.label} className="flex items-center gap-4">
-    {item.href ? (
-      <Link
-        href={item.href}
-        className="text-white/70 text-sm hover:text-white transition-colors"
-      >
-        {item.label}
-      </Link>
-    ) : (
-      <button
-        onClick={item.action}
-        className="text-white/70 text-sm hover:text-white transition-colors"
-      >
-        {item.label}
-      </button>
-    )}
+              {[...legalLinks, { label: "Kontakt", action: scrollToFaq }].map((item, index, arr) => (
+                <span key={item.label} className="flex items-center gap-4">
+                  {"href" in item ? (
+                    <Link
+                      href={item.href}
+                      className="text-white/70 text-sm hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={item.action}
+                      className="text-white/70 text-sm hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  )}
+                  {index < arr.length - 1 && (
+                    <span className="text-[#C8E646] text-sm">•</span>
+                  )}
+                </span>
+              ))}
 
-    {index < arr.length - 1 && (
-      <span className="text-[#C8E646] text-sm">•</span>
-    )}
-  </span>
-))}
-
-      {/* <button
+              {/* <button
         onClick={scrollToFaq}
         className="text-white/70 text-sm hover:text-white transition-colors"
       >
         Kontakt
       </button> */}
 
-    </div>
+            </div>
 
-    {/* Scroll to top button (unchanged) */}
-    <button
-      onClick={scrollToTop}
-      className="absolute -top-10 right-2 w-9 h-9 rounded-full flex items-center justify-center 
+            {/* Scroll to top button (unchanged) */}
+            <button
+              onClick={scrollToTop}
+              className="absolute -top-10 right-2 w-9 h-9 rounded-full flex items-center justify-center 
       transition-all duration-200 active:scale-90 group z-10"
-      style={{
-        background: `
+              style={{
+                background: `
           linear-gradient(#141414, #141414) padding-box,
           linear-gradient(to right, #ffffff 50%, #C8E646 50%) border-box
         `,
-        border: "1.5px solid transparent"
-      }}
-      aria-label="Nach oben scrollen"
-    >
-      <ChevronUp
-        size={18}
-        className="text-[#C8E646] group-hover:scale-110 transition-transform"
-        strokeWidth={3}
-      />
-    </button>
+                border: "1.5px solid transparent"
+              }}
+              aria-label="Nach oben scrollen"
+            >
+              <ChevronUp
+                size={18}
+                className="text-[#C8E646] group-hover:scale-110 transition-transform"
+                strokeWidth={3}
+              />
+            </button>
 
-  </div>
-</div>
+          </div>
+        </div>
 
         {/* Divider */}
         <div className="border-t border-white/[0.07]" />
