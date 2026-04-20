@@ -56,27 +56,17 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 
 ### SDS Website (`artifacts/sds-website`)
 - **Preview path**: `/`
-- **Type**: Next.js 15 (App Router) — full-stack, single port, Vercel-ready
+- **Type**: React + Vite single-page landing website (German language only)
 - **Design**: Dark theme, bg `#171717`, card `#1c1c1c`, lime accent `#C8E646`
 - **Features**:
   - Pixel-perfect German landing page (web.seitig brand)
   - Sections: Navbar, Hero, About, Services, Features, Pricing, Portfolio, Testimonials, FAQ, CTABanner, Footer
   - ContactModal: name + optional email + phone + branche dropdown, Framer Motion animations, real API POST
-  - Legal pages: Impressum, Datenschutz, AGB (Next.js file-based routes)
+  - Legal pages: Impressum, Datenschutz, AGB (Wouter routes)
   - Footer: logo, legal links, scroll-to-top, Kontakt scrolls to #faq
   - Portfolio: autoplay 4.5s, prev/next arrows, dot navigation
   - ModalProvider context (`src/lib/modal-context.tsx`) — opens from Navbar, Hero, Pricing, CTABanner
-  - **Built-in API routes** (`src/app/api/`):
-    - `POST /api/leads` — create lead (MongoDB + SMTP)
-    - `GET /api/leads` — list leads (X-Admin-Key required)
-    - `GET /api/leads/stats` — count by status (X-Admin-Key required)
-    - `PATCH /api/leads/[id]` — update lead (X-Admin-Key required)
-    - `DELETE /api/leads/[id]` — delete lead (X-Admin-Key required)
-    - `POST /api/contact` — contact form
-    - `GET /api/healthz` — health check
-  - **Shared libs** in `src/lib/`: `mongodb.ts`, `mailer.ts`; model: `src/models/Lead.ts`
-  - **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`
-  - **Deployment**: Deploy directly to Vercel — no separate API server needed
+  - API: contact form POSTs to `/api/leads`
 
 ### API Server (`artifacts/api-server`)
 - **Preview path**: `/api`
