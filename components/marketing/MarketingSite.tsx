@@ -2,6 +2,7 @@
 
 import { About } from "@/components/marketing/About";
 import { CTABanner } from "@/components/marketing/CTABanner";
+import { ChatWidget } from "@/components/ChatWidget";
 import { ContactModal } from "@/components/marketing/ContactModal";
 import { FAQ } from "@/components/marketing/FAQ";
 import { Features } from "@/components/marketing/Features";
@@ -32,6 +33,7 @@ export function MarketingSite() {
         </main>
         <Footer />
         <ContactModal />
+        <ChatWidget />
       </div>
     </ModalProvider>
   );
