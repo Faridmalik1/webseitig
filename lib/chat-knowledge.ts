@@ -158,6 +158,12 @@ export function getAnswer(question: string): Promise<string> {
 }
 
 async function callAIAPI(question: string): Promise<string> {
+  const huggingFaceApiKey = process.env.NEXT_PUBLIC_HUGGINGFACE_API_KEY;
+
+  if (!huggingFaceApiKey) {
+    return FALLBACK_ANSWER;
+  }
+
   const knowledgeText = KNOWN_ANSWERS.map(entry => `${entry.keywords.join(', ')}: ${entry.answer}`).join('\n');
   const prompt = `You are a chatbot for webseitig, a Swiss website design company. Your role is to answer questions ONLY using the provided knowledge below. Do not make up information or answer questions outside of webseitig services, pricing, contact, legal info, or related topics.
 
@@ -174,7 +180,7 @@ Answer based only on the knowledge above:`;
     const response = await fetch('https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${import.meta.env.VITE_HUGGINGFACE_API_KEY}`,
+        'Authorization': `Bearer ${huggingFaceApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
