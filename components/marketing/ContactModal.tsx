@@ -180,13 +180,14 @@ export function ContactModal() {
 
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-white">
-                      E-Mail <span className="font-normal text-white/30">(optional)</span>
+                      E-Mail 
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       placeholder="max@beispiel.de"
+                      required
                       className="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
                       style={INPUT_STYLE}
                     />
