@@ -53,7 +53,10 @@ export function FAQ() {
       setEmailError("E-Mail ist erforderlich.");
       return;
     }
-
+    if (!email.includes("@")) {
+      setEmailError("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+      return;
+    }
     setEmailError(null);
 
     if (!question.trim()) {
@@ -77,19 +80,34 @@ export function FAQ() {
       });
 
       if (!response.ok) {
-        const payload = (await response.json().catch(() => null)) as
-          | { error?: string; details?: string }
-          | null;
-        throw new Error(payload?.details ?? payload?.error ?? "Message could not be sent.");
+        const payload = (await response.json().catch(() => null)) as {
+          error?: string;
+          details?: string;
+        } | null;
+        throw new Error(
+          payload?.details ?? payload?.error ?? "Message could not be sent.",
+        );
       }
 
       setSent(true);
       setEmail("");
       setQuestion("");
       setTimeout(() => setSent(false), 3000);
+      // Show Success State
+      setSent(true);
+      //  Reset Form Fields
+      setQuestion("");
+      setEmail("");
+      //  Reset the "Sent" status after 5 seconds so they can type again
+      setTimeout(() => {
+        setSent(false);
+      }, 5000);
+
     } catch (submitError) {
       setError(
-        submitError instanceof Error ? submitError.message : "Something went wrong.",
+        submitError instanceof Error
+          ? submitError.message
+          : "Something went wrong.",
       );
     } finally {
       setLoading(false);
@@ -100,13 +118,14 @@ export function FAQ() {
     <section id="faq" className="bg-[#171717] py-20 md:py-28">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
         <h2 className="text-white text-[2rem] md:text-[2.8rem] text-center mb-12">
-           Häufig gestellte Fragen
+          Häufig gestellte Fragen
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 items-start">
           <div className="flex flex-col divide-y divide-white/[0.07]">
             {faqs.map((faq, i) => {
               const isOpen = open === i;
+              // const isOpen = openIndex === index;
               return (
                 <div key={i}>
                   <button
@@ -122,19 +141,23 @@ export function FAQ() {
 
                     <span
                       className={`flex-1 text-base transition-colors ${
-                        isOpen ? "text-white" : "text-white/70 group-hover:text-white"
+                        isOpen ? "text-[#C8F135]" : "text-white"
                       }`}
                     >
                       {faq.q}
                     </span>
 
-                    <span className="text-white/40 shrink-0">
-                      {isOpen ? (
-                        <Minus size={16} strokeWidth={2} />
-                      ) : (
-                        <Plus size={16} strokeWidth={2} />
-                      )}
-                    </span>
+                    <div
+                      className={`flex-shrink-0 w-8 h-8 rounded-full  
+                      flex items-center justify-center transition-transform duration-300 ${
+                        isOpen ? "rotate-45 " : ""
+                      }`}
+                    >
+                      <Plus
+                        size={18}
+                        className={`transition-colors duration-300 `}
+                      />
+                    </div>
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -173,8 +196,7 @@ export function FAQ() {
               Schreib uns einfach — wir antworten schnell und unkompliziert.
             </p>
 
-            <form onSubmit={handleSend}>              
-
+            <form onSubmit={handleSend}>
               <textarea
                 required
                 value={question}
@@ -218,29 +240,38 @@ export function FAQ() {
               ) : null} */}
 
               <button
-  type="submit"
-  disabled={loading || !question.trim()}
-  className="group w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] text-sm font-semibold 
+                type="submit"
+                disabled={loading || !question.trim()}
+                className="group w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] text-sm font-semibold 
   hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 
   flex items-center justify-center gap-2 mb-3 whitespace-nowrap
   disabled:cursor-not-allowed disabled:opacity-50"
->
-  {loading ? (
-    "Wird gesendet..."
-  ) : sent ? (
-    "Gesendet ✓"
-  ) : (
-    <>
-      Frage senden
-      <ArrowUpRight
-        size={16}
-        strokeWidth={2}
-        className="transition-transform duration-300 ease-out 
+              >
+                {loading ? (
+                  "Wird gesendet..."
+                ) : sent ? (
+                  "Gesendet ✓"
+                ) : (
+                  <>
+                    Frage senden
+                    <ArrowUpRight
+                      size={16}
+                      strokeWidth={2}
+                      className="transition-transform duration-300 ease-out 
         group-hover:translate-x-1 group-hover:rotate-45"
-      />
-    </>
-  )}
-</button>
+                    />
+                  </>
+                )}
+              </button>
+              {sent && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center text-green-400 text-sm mt-2"
+                >
+                  Vielen Dank! Wir haben deine Nachricht erhalten.
+                </motion.p>
+              )}
             </form>
 
             <p className="text-[#C8E646] text-xs text-center">

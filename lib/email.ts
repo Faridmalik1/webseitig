@@ -228,7 +228,7 @@ function buildLeadSenderHtml(input: LeadCaptureEmailInput) {
 export async function sendFaqInquiryEmails(input: FaqInquiryEmailInput) {
   const { adminEmail, fromEmail } = getMailerConfig();
   const transporter = getTransporter();
-
+console.log("input",input)
   const result: FaqInquiryEmailResult = {
     adminSent: false,
     senderSent: false,
@@ -255,6 +255,7 @@ export async function sendFaqInquiryEmails(input: FaqInquiryEmailInput) {
   });
 
   result.senderSent = true;
+console.log("result",result)
 
   return result;
 }

@@ -50,3 +50,14 @@ textarea {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* Apply to all button elements */
+button {
+  cursor: pointer;
+}
+
+/* Apply to disabled buttons globally */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6; /* Optional: adds a visual cue that it is disabled */
+  pointer-events: none; /* Prevents clicks on disabled elements */
+}

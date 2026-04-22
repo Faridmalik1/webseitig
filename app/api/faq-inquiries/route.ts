@@ -5,7 +5,7 @@ import { createFaqInquirySchema } from "@/lib/validations/faq-inquiry";
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
   const parsed = createFaqInquirySchema.safeParse(body);
-
+console.log('parsed',parsed.data)
   if (!parsed.success) {
     return NextResponse.json(
       { error: "Invalid input.", details: parsed.error.flatten() },
