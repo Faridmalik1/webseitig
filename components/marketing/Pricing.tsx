@@ -9,7 +9,8 @@ const starterFeatures = [
   "Mobile-optimiert",
   "Kontaktformular",
   "SSL + Hosting inklusive",
-  "SEO-Grundlage",
+  "SEO-Grundlagen",
+  "Texte inklusive",
   "Lieferung in 7 Tagen",
 ];
 
@@ -18,9 +19,10 @@ const proFeatures = [
   "Blog / News-Bereich",
   "Google Maps & Bewertungen",
   "Speed-Optimierung",
-  "1 Std. Anderungen pro Monat",
-  "Prioritats-Support 24h",
+  "1 Std. Änderungen pro Monat",
+  "Prioritäts-Support 24h",
   "Google Analytics Setup",
+  "Mehrsprachige Seite auf Anfrage",
 ];
 
 export function Pricing() {
@@ -39,7 +41,7 @@ export function Pricing() {
           className="text-center mb-14"
         >
           <div
-            className="inline-block w-full max-w-[700px] rounded-2xl px-8 mb-2"
+            className="inline-block w-full max-w-[900px] rounded-2xl px-8 mb-2"
           // style={{
           //   border: "1.5px dashed rgba(255,255,255,0.15)",
           // }}
@@ -47,9 +49,12 @@ export function Pricing() {
             <p className="text-[#C8E646] text-base mb-5 tracking-wide">
               Preise
             </p>
-            <h2 className="text-white text-[1.6rem] sm:text-[2rem] md:text-[2.8rem] leading-tight break-words">
-              Transparent. Fair. Ohne Überraschungen.
+            <h2 className="text-white text-[1.6rem] sm:text-[2rem] md:text-[2.8rem] leading-tight break-words mb-2">
+              Was eine Agentur CHF 8'000 kostet — bei uns ab CHF 179 / Monat.
             </h2>
+            <p className="text-white/45 text-base md:text-lg">
+              Transparent. Fair. Ohne Überraschungen.
+            </p>
           </div>
         </motion.div>
 
@@ -80,7 +85,7 @@ export function Pricing() {
               <span className="text-white/40 text-sm ms-1">/ Monat</span>
             </div>
             <p className="text-white/35 text-xs mb-8">
-              12 Monate Laufzeit · keine Vorauszahlung
+              12 Monate · keine Vorauszahlung
             </p>
 
             {/* Features */}
@@ -134,7 +139,7 @@ export function Pricing() {
               <span className="text-white/40 text-sm ms-1">/ Monat</span>
             </div>
             <p className="text-white/35 text-xs mb-8">
-              12 Monate Laufzeit · kein Upfront
+              12 Monate · kein Upfront
             </p>
 
             {/* Features */}

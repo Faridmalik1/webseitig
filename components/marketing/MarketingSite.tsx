@@ -19,11 +19,11 @@ export function MarketingSite() {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <Portfolio />
         <About />
         <Services />
         <Features />
         <Pricing />
-        <Portfolio />
         <Testimonials />
         <FAQ />
         <CTABanner />

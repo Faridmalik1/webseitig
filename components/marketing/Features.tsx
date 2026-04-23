@@ -5,23 +5,23 @@ import { motion } from "framer-motion";
 const steps = [
   {
     num: "01",
-    title: "Kurzes Gespräch, 15 Minuten",
-    desc: "Wir lernen Ihr Unternehmen kennen. Ohne technischen Fachjargon, ohne Verkaufsdruck.",
+    title: "15-Minuten-Gespräch — kostenlos, unverbindlich",
+    desc: "Wir lernen Ihr Unternehmen kennen. Kein Fachjargon, kein Verkaufsdruck. Nur ein ehrliches Gespräch über das, was Sie wirklich brauchen.",
   },
   {
     num: "02",
-    title: "Wir bauen Ihren ersten Entwurf",
-    desc: "Innerhalb von 48 Stunden zeigen wir Ihnen ein fertiges Design. Sie geben Feedback — wir passen an.",
+    title: "Fertiger Entwurf in 48 Stunden",
+    desc: "Innerhalb von zwei Tagen sehen Sie, wie Ihre Website aussieht. Sie geben Feedback — wir passen an, bis Sie 100 % zufrieden sind.",
   },
   {
     num: "03",
     title: "Live in 7 Tagen",
-    desc: "Nach Ihrer Freigabe gehen wir live. Ihre Domain, Ihr Hosting — alles inklusive. Sie bezahlen erst jetzt.",
+    desc: "Nach Ihrer Freigabe gehen wir live. Domain, Hosting, SSL, Texte — alles inklusive. Sie bezahlen erst jetzt.",
   },
   {
     num: "04",
-    title: "Wir bleiben dabei",
-    desc: "Updates, Sicherheit, kleine Anpassungen — alles inklusive. Keine unerwarteten Rechnungen.",
+    title: "Wir bleiben bei Ihnen",
+    desc: "Updates, Sicherheit, kleine Änderungen — alles im Preis enthalten. Keine Überraschungsrechnungen. Kein versteckter Support.",
   },
 ];
 
@@ -36,10 +36,10 @@ export function Features() {
             So funktioniert es
           </p>
           <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight mb-4">
-           Einfacher als Sie denken.
+           Einfacher als Sie denken. Fertig in 7 Tagen.
           </h2>
           <p className="text-white/45 text-base md:text-lg">
-           Wir bauen, Sie genehmigen — in 7 Tagen sind Sie online.
+           Sie kümmern sich um Ihr Unternehmen. Wir bauen Ihre Website — von A bis Z.
           </p>
         </div>
 

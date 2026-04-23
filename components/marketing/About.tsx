@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 const pains = [
   {
     title: "Zu teuer",
-    desc: "Agenturen verlangen CHF 5.000 bis CHF 15.000 im Voraus. Das ist ein grosses Risiko — besonders wenn man noch wächst.",
+    desc: "CHF 5'000 bis CHF 15'000 im Voraus — nur für den Anfang. Traditionelle Agenturen verlangen hohe Anzahlungen, bevor auch nur eine Zeile Code existiert. Für ein wachsendes Unternehmen — oder jemanden, der gerade erst in der Schweiz durchstartet — ist das schlicht unzumutbar.",
     highlight: false,
   },
   {
     title: "Zu kompliziert",
-    desc: "Baukastensysteme klingen einfach, kosten aber viele Stunden. Und das Ergebnis sieht trotzdem unprofessionell aus.",
+    desc: "Stundenlang gebastelt. Trotzdem unprofessionell. Wix, Squarespace und Co. klingen einfach. In der Praxis kostet es Tage — und sieht am Ende trotzdem nicht aus wie eine echte Businesswebsite. Potenzielle Kunden merken das sofort.",
     highlight: false,
   },
   {
     title: "Keine Zeit",
-    desc: "Sie führen ein Unternehmen. Wer soll sich um Texte, Bilder, Hosting und Technik kümmern?",
+    desc: "Sie führen ein Unternehmen. Wer baut da nebenbei eine Website? Texte schreiben, Bilder suchen, Technik einrichten, Hosting konfigurieren — das ist ein eigener Fulltime-Job. Kein Unternehmer sollte das selbst machen müssen.",
     highlight: false,
   },
   {
     title: "Kein Vertrauen",
-    desc: "Sie haben bereits schlechte Erfahrungen gemacht. Viel versprochen, wenig geliefert.",
+    desc: "Schon schlechte Erfahrungen gemacht? Sie sind nicht allein. Viel versprochen, lang gewartet, wenig geliefert. Und am Ende eine Rechnung mit Posten, die niemand so besprochen hatte. Das muss nicht Ihre Realität sein. ",
     highlight: true,
   },
 ];
@@ -35,7 +35,8 @@ export function About() {
             Kommt Ihnen das bekannt vor?
           </p>
           <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
-            Warum Sie noch keine Website haben
+            Warum Sie — und so viele andere — immer noch ohne Website arbeiten.
+Und was das jeden Monat wirklich kostet.
           </h2>
         </div>
 

@@ -36,7 +36,7 @@ export function Footer() {
             href="/"
             className="flex items-center gap-1">
             <div className="flex items-center justify-center">
-              <img src="/FooterLogo.svg" alt="Logo" className="" />
+              <img src="/FooterLogo.svg" alt="Logo" className="w-36" />
             </div>
             {/* <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
               web<span className="text-[#C8E646]">.</span>seitig

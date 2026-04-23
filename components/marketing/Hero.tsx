@@ -5,9 +5,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useModal } from "../shared/modal-context";
 
 const features = [
-  { icon: "/electric_bolt.svg", label: "7 Tage bis zur fertigen Website" },
-  { icon: "/credit_card.svg", label: "Keine Vorauszahlung — nur monatlich bezahlen" },
-  { icon: "/headphones.svg", label: "Schweizer Team — persönlicher Ansprechpartner" },
+  { icon: "/electric_bolt.svg", label: "Website fertig in 7 Tagen — garantiert" },
+  { icon: "/credit_card.svg", label: "Keine Vorauszahlung — nur monatlich, kündbar" },
+  { icon: "/headphones.svg", label: "Schweizer Team — Ihr persönlicher Ansprechpartner" },
   { icon: "/cloud.svg", label: "Alles inklusive — Hosting, Updates, Support" },
 ];
 
@@ -49,29 +49,29 @@ export function Hero() {
             className="lg:col-span-2"
           >
             <p className="text-[#C8E646] text-sm mb-4 sm:mb-5 tracking-wide">
-              Professionelle Websites für Schweizer KMU
+              Für Selbstständige und KMU in der Schweiz
             </p>
             <h1 className="text-[2.4rem] sm:text-[2.8rem] md:text-[3.6rem] leading-[1.05] text-white mb-5 sm:mb-6">
-              Ihre Website. Fertig. In 7 Tagen.
+              Jeden Tag ohne Website verlieren Sie Kunden — an die Konkurrenz.
             </h1>
             <p className="text-white/55 text-base md:text-lg leading-relaxed max-w-[480px] mb-7 sm:mb-8">
-              Keine Agentur-Preise. Kein technischer Aufwand. Kein Vorauszahlungsrisiko. Professionelle Website inklusive Hosting, Updates und Support — monatlich kündbar nach 12 Monaten.
+              Wir bauen Ihre professionelle Website in 7 Tagen. Keine Vorauszahlung. Kein technisches Wissen. Alles inklusive — kündbar nach 12 Monaten.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
-                onClick={open}
-                className="group inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] text-[15px] px-7 py-3.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
-              >
-                Jetzt kostenlos starten
+  onClick={open}
+  className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8E646] text-[#171717] text-[15px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
+>
+  Jetzt kostenlos anfragen
 
-                <ArrowUpRight
-                  size={16}
-                  strokeWidth={2}
-                  className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
-                />
-              </button>
+  <ArrowUpRight
+    size={16}
+    strokeWidth={2}
+    className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
+  />
+</button>
               <p className="text-white/40 text-sm">
-                Bereits über 40 Unternehmen in der Schweiz vertrauen uns
+                Über 40 Unternehmen in der Schweiz vertrauen uns — von Zürich bis St. Gallen.
               </p>
             </div>
           </motion.div>
@@ -99,21 +99,21 @@ export function Hero() {
                 }}
               />
               <p className="text-white/40 text-xs uppercase tracking-widest mb-2">
-                AB NUR
+                AB NUR 
               </p>
               <div className="flex gap-2 items-center">
                 <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
                   CHF
                 </p>
                 <p className="text-[#C8E646] font-extrabold text-[3rem] leading-none mb-1">
-                  149
+                  179
                 </p>
               </div>
               <p className="text-white/50 text-sm mb-4">
-                pro Monat
+                Monat
               </p>
               <p className="text-white/30 text-xs italic">
-                inkl. Hosting & Support
+                inkl. Hosting, Updates & Support
               </p>
             </div>
           </motion.div>

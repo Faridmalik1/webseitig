@@ -198,7 +198,7 @@ export function Portfolio() {
           <div>
             <p className="text-[#C8E646] text-sm mb-3 tracking-wide">Unsere Arbeit</p>
             <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
-              Ausgewählte Projekte
+              Ausgewählte Projekte — alle in 7 Tagen geliefert.
             </h2>
           </div>
         </div>

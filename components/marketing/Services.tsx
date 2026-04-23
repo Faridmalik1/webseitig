@@ -5,14 +5,14 @@ import { ArrowUpRight } from "lucide-react";
 import { useModal } from "../shared/modal-context";
 
 const logos = [
-  { id: 1, img: "/logos/logo1.svg" },
-  { id: 2, img: "/logos/logo2.svg" },
-  { id: 3, img: "/logos/logo3.svg" },
-  { id: 4, img: "/logos/logo4.svg" },
-  { id: 5, img: "/logos/logo5.svg" },
-  { id: 6, img: "/logos/logo6.svg" },
-  { id: 7, img: "/logos/logo7.svg" },
-  { id: 8, img: "/logos/logo8.svg" },
+  { id: 1, img: "/services/logo1.svg" },
+  { id: 2, img: "/services/logo2.svg" },
+  { id: 3, img: "/services/logo3.svg" },
+  { id: 4, img: "/services/logo4.svg" },
+  { id: 5, img: "/services/logo5.svg" },
+  { id: 6, img: "/services/logo6.svg" },
+  { id: 7, img: "/services/logo7.svg" },
+  { id: 8, img: "/services/logo8.svg" },
 ];
 
 export function Services() {
@@ -29,7 +29,7 @@ export function Services() {
           transition={{ duration: 0.45 }}
           className="text-white text-[1.9rem] md:text-[2.4rem] text-center mb-10"
         >
-          Unternehme, wo üs vertraue
+          Unternehmen, die uns vertrauen — quer durch die Schweiz.
         </motion.h2>
 
         {/* Logos card container */}

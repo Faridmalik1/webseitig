@@ -34,7 +34,7 @@ export function CTABanner() {
           transition={{ duration: 0.45 }}
           className="font-extrabold text-[1.5rem] md:text-[3rem] text-[#171717] leading-tight mb-4"
         >
-          Bereit für deine neue Website?
+          Jede Woche ohne Website ist eine Woche, in der Ihre Mitbewerber die Kunden bekommen.
         </motion.h2>
 
         <motion.p
@@ -45,7 +45,7 @@ export function CTABanner() {
           className="text-[#737373] text-base md:text-xl font-medium mb-8 max-w-[500px] mx-auto"
           style={{ fontFamily: "var(--font-outfit)" }}
         >
-          Kostenlose Beratung. Kein Druck. Kein Risiko. In 15 Minuten weisst du, was möglich ist.
+          Kostenlose Beratung. Kein Druck. In 15 Minuten wissen Sie genau, was möglich ist.
         </motion.p>
 
         <motion.button

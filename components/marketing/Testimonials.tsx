@@ -4,27 +4,27 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Michael K.",
-    role: "Elektriker",
-    city: "München",
+    name: "Mirela T.",
+    role: "Coiffeursalon",
+    city: "Zürich",
     quote:
-      "Ich hab nicht geglaubt, dass das in 7 Tagen klappt. Aber die haben geliefert. Meine Kunden fragen jetzt aktiv nach der Website.",
+      "Ich hab 11 Jahre lang nur über Weiterempfehlung gearbeitet. Irgendwann fragt ein neuer Kunde: ‚Haben Sie eine Website?' und ich stehe da. Das war mir peinlich ehrlich gesagt. Seit ich die Seite habe, buchen Leute die ich gar nicht kenne — einfach weil sie mich bei Google gefunden haben.",
     image: "/testimonial1.svg",
   },
   {
-    name: "Sandra K.",
-    role: "Kosmetikstudio",
-    city: "Hamburg",
+    name: "Linh N.",
+    role: "Nagelstudio",
+    city: "Bern",
     quote:
-      "Endlich eine Website ohne 5.000 CHF im Voraus. Der monatliche Betrag ist überschaubar — und der Service ist top.",
+      "Ich hab Instagram, aber das reicht irgendwann nicht mehr. Kunden wollten Preise sehen, Fotos, wie man bucht. Das musste ich immer einzeln erklären. Jetzt schicke ich einfach den Link. Die Website hat sich im ersten Monat schon bezahlt gemacht.",
     image: "/testimonial2.svg",
   },
   {
-    name: "Thomas R.",
-    role: "Schreinerei",
-    city: "Stuttgart",
+    name: "Marco S.",
+    role: "Personal Trainer",
+    city: "St. Gallen",
     quote:
-      "Als Handwerker hat man keine Zeit für Technik. Webseitig kümmert sich um alles. Ich ruf an, die machen's.",
+      "Meine Kunden fragen mich manchmal warum eine Stunde so viel kostet. Wenn ich dann eine saubere Website habe mit meinen Methoden, Referenzen, einem richtigen Foto von mir — dann stellen sie die Frage seltener. Das klingt komisch aber es stimmt. Eine professionelle Website ist auch Preisrechtfertigung.",
     image: "/testimonial3.svg",
   },
 ];
@@ -54,7 +54,7 @@ export function Testimonials() {
           transition={{ duration: 0.4 }}
           className="text-white font-extrabold text-[1.6rem] md:text-[2rem] text-center tracking-wide mb-12"
         >
-          Kundenstimmen
+         Was unsere Kunden sagen — in ihren eigenen Worten.
         </motion.h2>
 
         {/* Three columns */}

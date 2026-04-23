@@ -8,32 +8,32 @@ const faqs = [
   {
     num: "01",
     q: "Was passiert nach den 12 Monaten?",
-    a: "Nein. Du schickst uns dein Logo und ein paar Infos — wir  machen den Rest. Texte, Bilder, Technik: alles bei uns.",
+    a: "Nach 12 Monaten gehört Ihnen die Website zu 100 % — egal was. Sie können einfach weiter bei uns bleiben, oder Sie nehmen die Dateien mit und hosten selbst. Kein Anruf den Sie fürchten müssen, kein Vertrag der sich automatisch verlängert, keine Gebühr die plötzlich auftaucht. Die meisten bleiben — weil es einfacher ist und weil der Service stimmt. Aber die Entscheidung liegt bei Ihnen. So wie es sein sollte.",
   },
   {
     num: "02",
     q: "Gehört mir die Website wirklich?",
-    a: "Ja. Du bekommst vollen Zugang zu allen Dateien, dem Hosting-Panel und der Domain. Die Website gehört dir.",
+    a: "Ja. In den ersten 12 Monaten kümmern wir uns um alles — Hosting, Updates, Technik, Sicherheit. Ab Monat 13 gehört Ihnen die Website vollständig: alle Dateien, alle Rechte, ohne Einschränkung. Sie sind nicht von uns abhängig. Sie bleiben, weil Sie zufrieden sind — nicht weil Sie keine andere Wahl haben. Das ist der Unterschied zu den meisten Agenturen.",
   },
   {
     num: "03",
     q: "Muss ich technisches Wissen mitbringen?",
-    a: "Nein. Du schickst uns dein Logo und ein paar Infos — wir machen den Rest. Texte, Bilder, Technik: alles bei uns.",
+    a: "Keines. Wirklich null. Sie sagen uns was Sie machen, wer Ihre Kunden sind und was Ihnen wichtig ist — den Rest übernehmen wir. Texte schreiben, Bilder auswählen, Technik einrichten, alles. Auch wenn Ihr Deutsch nicht perfekt ist, kein Problem — wir sind das gewohnt und machen das gerne für Sie. Viele unserer Kunden haben noch nie eine E-Mail wegen Ihrer Website schreiben müssen. Das ist der Punkt.",
   },
   {
     num: "04",
     q: "Wie schnell ist die Website wirklich fertig?",
-    a: "In der Regel 7 Tage nach deiner Freigabe des ersten Entwurfs. Oft auch schneller.",
+    a: "In 7 Werktagen — nach Ihrer Freigabe des Entwurfs. Nicht „in etwa zwei Wochen. Nicht sobald wir Kapazität haben. Sieben Tage. Wir sagen das, weil wir es einhalten. Wenn Sie wollen, fragen Sie unsere Kunden.",
   },
   {
     num: "05",
-    q: "Gibt es eine Einrichtungsgebür?",
-    a: "Nein. Kein Setup-Fee, kein Upfront. Du zahlst erst, wenn die Website live geht.",
+    q: "Gibt es eine Einrichtungsgebühr?",
+    a: "Nein — und das meinen wir ernst. Keine Setup-Gebühr, keine einmalige Startpauschale, kein Posten im Kleingedruckten. Sie zahlen ab dem Tag, an dem Ihre Website live geht — und nur die monatliche Rate, die wir Ihnen von Anfang an nennen. CHF 179 ist CHF 179. Nicht CHF 179 plus etwas.",
   },
   {
     num: "06",
     q: "Was ist, wenn mir das Design nicht gefällt?",
-    a: "Wir passen solange an, bis du zufrieden bist. Inklusive unbegrenzte Feedbackrunden vor dem Launch.",
+    a: "Dann überarbeiten wir. So oft wie nötig, bis es stimmt. Kein Nagelstudio fängt an, bevor Sie die Farbe gewählt haben. Wir auch nicht — erst Ihre Freigabe, dann geht's live. Nicht andersrum.",
   },
 ];
 
