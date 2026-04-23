@@ -267,16 +267,16 @@ export function FAQ() {
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-green-400 text-sm mt-2"
+                  className="text-center text-[#C8F135] text-sm mt-2"
                 >
-                  Vielen Dank! Wir haben deine Nachricht erhalten.
+                  Vielen Dank! Wir haben Ihre Nachricht erhalten. Unser Team wird sich in Kürze bei Ihnen melden.
                 </motion.p>
               )}
             </form>
 
-            <p className="text-[#C8E646] text-xs text-center">
+            {/* <p className="text-[#C8E646] text-xs text-center">
               Antwort innerhalb von 24h per WhatsApp
-            </p>
+            </p> */}
           </motion.div>
         </div>
       </div>

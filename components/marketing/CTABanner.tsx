@@ -32,7 +32,7 @@ export function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="font-extrabold text-[2rem] md:text-[3rem] text-[#171717] leading-tight mb-4"
+          className="font-extrabold text-[1.5rem] md:text-[3rem] text-[#171717] leading-tight mb-4"
         >
           Bereit für deine neue Website?
         </motion.h2>
