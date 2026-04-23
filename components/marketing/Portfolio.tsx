@@ -183,15 +183,16 @@ export function Portfolio() {
         </div>
 
         {/* Cards grid */}
-        <div className="relative overflow-hidden" style={{ minHeight: 520 }}>
+        <div className="relative overflow-hidden" style={{ minHeight: 560 }}>
           <AnimatePresence mode="sync" initial={false}>
             <motion.div
               key={current}
               initial={{ opacity: 0, x: direction * 40 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -40, position: "absolute" }}
+              exit={{ opacity: 0, x: direction * -40}}
               transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-5"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full"
+              style={{ position: "absolute", width: "100%" }}
             >
               {visibleProjects.map((project) => (
                 <ProjectCard key={project.num} project={project} />

@@ -28,6 +28,7 @@ export function ContactModal() {
   const [phone, setPhone] = useState("");
   const [branche, setBranche] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openUpwards, setOpenUpwards] = useState(false);
   const [hoveredBranche, setHoveredBranche] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -180,7 +181,7 @@ export function ContactModal() {
 
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-white">
-                      E-Mail 
+                      E-Mail
                     </label>
                     <input
                       type="email"
@@ -215,8 +216,17 @@ export function ContactModal() {
                     <div ref={dropdownRef} className="relative">
                       <button
                         type="button"
-                        onClick={() => setDropdownOpen((current) => !current)}
-                        className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm outline-none transition-colors"
+                        onClick={() => {
+                          if (dropdownRef.current) {
+                            const rect = dropdownRef.current.getBoundingClientRect();
+                            const spaceBelow = window.innerHeight - rect.bottom;
+
+                            setOpenUpwards(spaceBelow < 250); // threshold
+                          }
+
+                          setDropdownOpen((prev) => !prev);
+                        }}
+                        className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm outline-none hover:bg-[#C8F13533] hover:text-[#C8F135] transition-colors"
                         style={{
                           background: "rgba(255,255,255,0.06)",
                           border: `1px solid ${dropdownOpen ? "rgba(200,230,70,0.5)" : "rgba(255,255,255,0.1)"}`,
@@ -239,7 +249,9 @@ export function ContactModal() {
                             animate={{ opacity: 1, y: 0, scaleY: 1 }}
                             exit={{ opacity: 0, y: -6, scaleY: 0.95 }}
                             transition={{ duration: 0.18, ease: "easeOut" }}
-                            className="absolute left-0 right-0 top-[calc(100%+6px)] z-10 overflow-hidden rounded-2xl"
+                            className={`absolute left-0 right-0 z-10 overflow-y-auto rounded-2xl max-h-60
+  ${openUpwards ? "bottom-[calc(100%+6px)]" : "top-[calc(100%+6px)]"}
+`}
                             style={{
                               background: "#111111",
                               border: "1px solid rgba(255,255,255,0.08)",
@@ -266,13 +278,15 @@ export function ContactModal() {
                                     color: isSelected
                                       ? "#C8E646"
                                       : isHovered
-                                        ? "rgba(255,255,255,1)"
+                                        ? "#C8E646"
                                         : "rgba(255,255,255,0.65)",
+
                                     background: isSelected
                                       ? "rgba(200,230,70,0.1)"
                                       : isHovered
-                                        ? "rgba(255,255,255,0.06)"
+                                        ? "rgba(200,230,70,0.15)"
                                         : "transparent",
+
                                     border: isSelected
                                       ? "1px solid rgba(200,230,70,0.4)"
                                       : "1px solid transparent",

@@ -38,10 +38,10 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="rounded-2xl border border-white/[0.07] overflow-hidden"
+          className="rounded-2xl border border-dotted border-[#606060] overflow-hidden"
           style={{ background: "#1c1c1c" }}
         >
-          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/[0.07]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-dotted divide-[#606060]">
             {logos.slice(0, 4).map((logo) => (
               <div
                 key={logo.id}
@@ -55,7 +55,7 @@ export function Services() {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/[0.07] border-t border-white/[0.07]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-dotted divide-[#606060] border-t border-dotted border-[#606060]">
             {logos.slice(4, 8).map((logo) => (
               <div
                 key={logo.id}
