@@ -10,7 +10,7 @@ const projects = [
     name: "BewegungsHaus Zurich",
     image: "/projects/BewegungsHaus.svg",
     desc: "BewegungsHaus Zürich bietet individuelle Physiotherapie, Massage und Rehabilitation in Winterthur – modern, professionell und von allen Schweizer Krankenkassen anerkannt.",
-    stack: ["Next.js", "Tailwind CSS", "Vercel"],
+    stack: ["Next.js", "Node.js", "Sanity CMS"],
     days: "7 Tage",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     name: "Autoglanz",
     image: "/projects/autoglanz.svg",
     desc: "Autoglanz bietet exklusive Fahrzeugaufbereitung auf höchstem Niveau. Wir bewahren den Wert Ihres Automobils durch professionelle Lackveredelung, Leidenschaft und höchste Präzision.",
-    stack: ["HTML5", "Vanilla CSS", "JavaScript"],
+    stack: ["React", "GSAP", "Node.js"],
     days: "5 Tage",
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     name: "Alpentreu",
     image: "/projects/alpentreu.svg",
     desc: "AlpenTreu bietet erstklassige Architekturberatung und Planung für Ihr Bauvorhaben. Mit Präzision und Verlässlichkeit begleiten wir Sie von der Vision bis zur Realisierung.",
-    stack: ["Alpine.js", "Tailwind CSS", "Netlify"],
+    stack: ["Angular", "Node.js", "Contentful"],
     days: "9 Tage",
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     name: "Aurelia Beaute",
     image: "/projects/aureliebeaute.svg",
     desc: "Exklusive Pflege und professionelle Behandlungen in entspannter Wohlfühlatmosphäre – entdecken Sie Ihre natürliche Schönheit bei Aurelia Beaute.",
-    stack: ["Astro", "Vanilla CSS", "TypeScript"],
+    stack: ["WordPress", "Booksy API", "Elementor"],
     days: "6 Tage",
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     name: "Clean Swiss Pro",
     image: "/projects/Cleanswiss.svg",
     desc: "Clean Swiss Pro bietet erstklassige Reinigungsdienstleistungen für Privat- und Geschäftskunden. Wir garantieren höchste Sauberkeit, Zuverlässigkeit und Professionalität für Ihr Objekt.",
-    stack: ["Next.js", "Tailwind CSS", "Lucide Icons"],
+    stack: ["WordPress", "Elementor", "Contact Form 7"],
     days: "4 Tage",
   },
   {
@@ -50,7 +50,7 @@ const projects = [
     name: "MaxPeak",
     image: "/projects/maxpeak.svg",
     desc: "MaxPeak bietet professionelles Personal Training und individuelles Coaching für maximale Erfolge. Erreichen Sie Ihre sportlichen Ziele mit hocheffektiven Trainingsplänen und Expertenwissen.",
-    stack: ["React", "CSS Modules", "Firebase"],
+    stack: ["React", "Node.js", "Stripe API"],
     days: "8 Tage",
   },
   {
@@ -58,7 +58,7 @@ const projects = [
     name: "Voltarc",
     image: "/projects/Voltarcag.svg",
     desc: " Professionelle Elektroinstallationen, Photovoltaik und Smart-Home. Höchste Präzision und Sicherheit für Ihre elektrischen Projekte.",
-    stack: ["Next.js", "PostgreSQL", "Tailwind"],
+    stack: ["Next.js", "Node.js", "HubSpot CRM"],
     days: "7 Tage",
   },
   {
@@ -66,7 +66,7 @@ const projects = [
     name: "Veloce Vins",
     image: "/projects/velocevins.svg",
     desc: "Veloce Vins bietet eine exquisite Auswahl edler Weine und privaten Sommelier-Service. Entdecken Sie exklusive Raritäten und erstklassige Qualität für Kenner.",
-    stack: ["HTML5", "JavaScript", "Custom CSS"],
+    stack: ["Shopify", "Liquid", "Shopify Apps"],
     days: "6 Tage",
   },
   {
@@ -74,7 +74,7 @@ const projects = [
     name: "HolzForm",
     image: "/projects/manufaktur.svg",
     desc: "HolzForm fertigt exklusive Massivholzmöbel und individuelle Innenausbauten nach Maß. Wir vereinen traditionelles Handwerk mit modernem Design für zeitlose, langlebige Unikate.",
-    stack: ["Astro", "Tailwind CSS", "Cloudflare"],
+    stack: ["Shopify", "Liquid", "Sanity CMS"],
     days: "9 Tage",
   },
   {
@@ -82,7 +82,7 @@ const projects = [
     name: "WeissWerk",
     image: "/projects/velocevins.svg",
     desc: "WeissWerk bietet erstklassige Malerarbeiten und kreative Farbkonzepte für Ihre Räume. Wir garantieren höchste Qualität, Präzision und langlebige Ergebnisse für Ihr Zuhause.",
-    stack: ["Next.js", "Tailwind CSS", "Vercel"],
+    stack: ["WordPress", "Elementor", "Google Maps API"],
     days: "5 Tage",
   },
 ];
