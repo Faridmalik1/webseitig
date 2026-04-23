@@ -88,12 +88,6 @@ const projects = [
 ];
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
-
-  
-
-
-
-
   return (
     <div
       className="rounded-4xl overflow-hidden flex flex-col"
@@ -144,14 +138,6 @@ export function Portfolio() {
   const [isMd, setIsMd] = useState(false);
   const [containerHeight, setContainerHeight] = useState(560);
   const cardRef = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef<number>(0);
-const touchEndX = useRef<number>(0);
-  const handleSwipe = () => {
-  const delta = touchStartX.current - touchEndX.current;
-  if (Math.abs(delta) > 40) {
-    delta > 0 ? next() : prev();
-  }
-};
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
@@ -221,8 +207,6 @@ const touchEndX = useRef<number>(0);
         <div
           className="relative mb-6 mt-10"
           style={{ minHeight: containerHeight }}
-          onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
-onTouchEnd={(e) => { touchEndX.current = e.changedTouches[0].clientX; handleSwipe(); }}
         >
           <AnimatePresence mode="sync" initial={false}>
             <motion.div
@@ -243,36 +227,36 @@ onTouchEnd={(e) => { touchEndX.current = e.changedTouches[0].clientX; handleSwip
         </div>
 
         {/* Navigation */}
-        <div className="flex gap-2 items-center justify-center mb-3 sm:mb-0">
-  {projects.map((_, i) => (
-    <button
-      key={i}
-      onClick={() => goTo(i)}
-      className={`rounded-full transition-all duration-300 ${
-        i === current
-          ? "bg-[#C8E646] w-5 h-2.5"
-          : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
-      }`}
-      aria-label={`Slide ${i + 1}`}
-    />
-  ))}
-</div>
-
-<div className="hidden sm:flex items-center justify-center gap-3 sm:gap-4">
-  <button
+        <div className="flex items-center justify-center gap-3 sm:gap-4">
+          <button
             onClick={prev}
             className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
           >
             <ChevronLeft size={18} className="text-[#C8E646]" />
           </button>
 
-  <button
+          <div className="flex gap-2 items-center">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "bg-[#C8E646] w-5 h-2.5"
+                    : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
+                }`}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
             onClick={next}
             className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
           >
             <ChevronRight size={18} className="text-[#C8E646]" />
           </button>
-</div>
+        </div>
 
       </div>
     </section>
