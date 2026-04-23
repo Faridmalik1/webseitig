@@ -38,7 +38,7 @@ function getMailerConfig(): MailerConfig {
   const portValue = process.env.SMTP_PORT;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminEmail = process.env.ADMIN_EMAIL || "hello@snowdreamstudios.com";
   const fromEmail = process.env.SMTP_USER;
 
   if (!host || !portValue || !user || !pass || !adminEmail || !fromEmail) {

@@ -5,8 +5,11 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/marketing/Navbar";
 import { Footer } from "@/components/marketing/Footer";
+import { useDomain } from "@/lib/useDomain";
 
 export default function Impressum() {
+  const { contactEmail, contactUrl, domain } = useDomain();
+
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
@@ -47,8 +50,12 @@ export default function Impressum() {
           <section>
             <h2 className="text-white text-lg mb-2">Kontaktdaten</h2>
             <div className="bg-gray-800 p-4 rounded my-4">
-              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
-              <p>Web: <a href="https://web-seitig.ch" className="text-[#C8E646] hover:underline">web-seitig.ch</a></p>
+              <p>
+                E-Mail: <a href={`mailto:${contactEmail}`} className="text-[#C8E646] hover:underline">{contactEmail}</a>
+              </p>
+              <p>
+                Web: <a href={contactUrl} className="text-[#C8E646] hover:underline">{domain}</a>
+              </p>
             </div>
             <p>
               Für allgemeine Anfragen, Support oder Partnerschaftsanfragen erreichen Sie uns am schnellsten per E-Mail. Wir antworten in der Regel innerhalb von einem Werktag.

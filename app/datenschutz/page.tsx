@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/marketing/Navbar";
 import { Footer } from "@/components/marketing/Footer";
+import { useDomain } from "@/lib/useDomain";
 
 export default function Datenschutz() {
+  const { businessTerm } = useDomain();
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
@@ -93,7 +95,7 @@ export default function Datenschutz() {
                 <li>Name und Vorname</li>
                 <li>E-Mail-Adresse</li>
                 <li>Telefonnummer (optional)</li>
-                <li>Name Ihres Unternehmens</li>
+                <li>Name Ihres {businessTerm}</li>
                 <li>Inhalt Ihrer Anfrage</li>
               </ul>
               <p>

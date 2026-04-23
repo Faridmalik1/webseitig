@@ -18,8 +18,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "web.seitig",
-  description: "Single Next.js 16 app for homepage, lead capture, and CRM.",
+  title: "web.seitig | Ihre Website in 7 Tagen – Ohne Vorauszahlung",
+  description:
+    "Professionelle Websites für Schweizer KMU ab CHF 149/Monat. Kein Risiko, keine Vorauszahlung – nur Ergebnisse. Fertig in 7 Tagen. Jetzt kostenlose Beratung anfragen.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -36,6 +37,10 @@ export default function RootLayout({
         className={`${paytonOne.variable} ${outfit.variable}`}
         suppressHydrationWarning
       >
+        <ModalProvider>
+          {children}
+          <ContactModal />
+        </ModalProvider>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2P2YS88WWB"
           strategy="afterInteractive"
@@ -53,10 +58,6 @@ export default function RootLayout({
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           })(window, document, "clarity", "script", "wg5moz76ao");`}
         </Script>
-        <ModalProvider>
-          {children}
-          <ContactModal />
-        </ModalProvider>
       </body>
     </html>
   );

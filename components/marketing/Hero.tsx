@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useModal } from "../shared/modal-context";
+import { useDomain } from "../../lib/useDomain";
 
 const features = [
   { icon: "/electric_bolt.svg", label: "7 Tage bis zur fertigen Website" },
@@ -13,6 +14,7 @@ const features = [
 
 export function Hero() {
   const { open } = useModal();
+  const { businessTerm } = useDomain();
 
   return (
     <section
@@ -49,7 +51,7 @@ export function Hero() {
             className="lg:col-span-2"
           >
             <p className="text-[#C8E646] text-sm mb-4 sm:mb-5 tracking-wide">
-              Professionelle Websites für Schweizer KMU
+              Professionelle Websites für Schweizer {businessTerm}
             </p>
             <h1 className="text-[2.4rem] sm:text-[2.8rem] md:text-[3.6rem] leading-[1.05] text-white mb-5 sm:mb-6">
               Ihre Website. Fertig. In 7 Tagen.
