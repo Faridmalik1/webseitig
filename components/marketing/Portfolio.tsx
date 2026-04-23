@@ -56,7 +56,7 @@ const projects = [
   {
     num: "07",
     name: "Voltarc",
-    image: "/projects/Voltarcag.svg",
+    image: "/projects/voltarc.svg",
     desc: " Professionelle Elektroinstallationen, Photovoltaik und Smart-Home. Höchste Präzision und Sicherheit für Ihre elektrischen Projekte.",
     stack: ["Next.js", "Node.js", "HubSpot CRM"],
     days: "7 Tage",
