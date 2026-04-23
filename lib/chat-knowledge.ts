@@ -59,12 +59,12 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   {
     keywords: ["contact", "kontakt", "email", "telephone", "support"],
     answer:
-      "Sie können webseitig über hallo@web-seitig.ch kontaktieren. Die Website bietet ein Kontaktformular, mit dem Sie Anfragen schnell an das Team senden können.",
+      "Sie können webseitig über hello@web-seitig.ch kontaktieren. Die Website bietet ein Kontaktformular, mit dem Sie Anfragen schnell an das Team senden können.",
   },
   {
     keywords: ["impressum", "legal", "unternehmen", "adresse", "zürich"],
     answer:
-      "Im Impressum wird Snow Dream Studios GmbH genannt mit Sitz in Schärenmoosstrasse 77, 8052 Zürich. Kontakt per E-Mail: hallo@web-seitig.ch und Web: web-seitig.ch.",
+      "Im Impressum wird Snow Dream Studios GmbH genannt mit Sitz in Schärenmoosstrasse 77, 8052 Zürich. Kontakt per E-Mail: hello@web-seitig.ch und Web: web-seitig.ch.",
   },
   {
     keywords: ["datenschutz", "privacy", "data", "daten"],

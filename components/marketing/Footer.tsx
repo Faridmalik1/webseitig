@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { ChevronUp } from "lucide-react";
 
 const legalLinks = [
@@ -10,9 +11,17 @@ const legalLinks = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  const router = useRouter();
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const scrollToFaq = () =>
-    document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToFaq = () => {
+    if (pathname === "/") {
+      document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push("/#faq");
+    }
+  };
 
   const year = new Date().getFullYear();
 
@@ -23,14 +32,16 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row sm:justify-between py-6 gap-6">
 
           {/* Logo */}
-          <div className="flex items-center gap-2 ">
+          <Link
+            href="/"
+            className="flex items-center gap-1">
             <div className="w-8 h-8 rounded-md flex items-center justify-center">
               <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
             </div>
             <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
               web<span className="text-[#C8E646]">.</span>seitig
             </span>
-          </div>
+          </Link>
 
           {/* Links */}
           <div className="relative w-full sm:w-auto">

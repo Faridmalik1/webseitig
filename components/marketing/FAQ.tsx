@@ -38,7 +38,7 @@ const faqs = [
 ];
 
 export function FAQ() {
-  const [open, setOpen] = useState<number | null>(2);
+  const [open, setOpen] = useState<number | null>(0);
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
   const [sent, setSent] = useState(false);

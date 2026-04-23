@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -86,23 +86,32 @@ const projects = [
     days: "5 Tage",
   },
 ];
+
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+
+  
+
+
+
+
   return (
     <div
       className="rounded-4xl overflow-hidden flex flex-col"
       style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
     >
-      {/* Project image */}
-      <div className="w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+      <div
+        className="w-full overflow-hidden rounded-3xl border-2 border-[#3F3F3F]"
+        style={{ aspectRatio: "16/9" }}
+      >
         <img
           src={project.image}
           alt={project.name}
-          className="w-full h-full object-cover rounded-3xl object-top"
+          className="w-full h-full object-cover object-top"
         />
       </div>
 
       {/* Details */}
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-6 flex flex-col">
         <h3 className="text-white text-[1.4rem] font-semibold mb-2">{project.name}</h3>
         <p className="text-white/45 text-sm leading-relaxed mb-5">{project.desc}</p>
 
@@ -132,15 +141,42 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 export function Portfolio() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [isLg, setIsLg] = useState(false);
+  const [isMd, setIsMd] = useState(false);
+  const [containerHeight, setContainerHeight] = useState(560);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+const touchEndX = useRef<number>(0);
+  const handleSwipe = () => {
+  const delta = touchStartX.current - touchEndX.current;
+  if (Math.abs(delta) > 40) {
+    delta > 0 ? next() : prev();
+  }
+};
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    setIsLg(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsLg(e.matches);
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsMd(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMd(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
+
+  // Measure card grid height and update on resize or slide change
+  useEffect(() => {
+    const measure = () => {
+      if (cardRef.current) {
+        setContainerHeight(cardRef.current.offsetHeight);
+      }
+    };
+
+    // Small delay to let the DOM settle after animation starts
+    const timeout = setTimeout(measure, 50);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("resize", measure);
+    };
+  }, [current, isMd]);
 
   const total = projects.length;
 
@@ -163,8 +199,7 @@ export function Portfolio() {
     return () => clearInterval(timer);
   }, [total]);
 
-  // On lg: show current and next (looping). On mobile: show only current.
-  const visibleProjects = isLg
+  const visibleProjects = isMd
     ? [projects[current], projects[(current + 1) % total]]
     : [projects[current]];
 
@@ -183,15 +218,21 @@ export function Portfolio() {
         </div>
 
         {/* Cards grid */}
-        <div className="relative overflow-hidden" style={{ minHeight: 560 }}>
+        <div
+          className="relative mb-6 mt-10"
+          style={{ minHeight: containerHeight }}
+          onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+onTouchEnd={(e) => { touchEndX.current = e.changedTouches[0].clientX; handleSwipe(); }}
+        >
           <AnimatePresence mode="sync" initial={false}>
             <motion.div
               key={current}
+              ref={cardRef}
               initial={{ opacity: 0, x: direction * 40 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -40}}
+              exit={{ opacity: 0, x: direction * -40 }}
               transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full"
+              className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
               style={{ position: "absolute", width: "100%" }}
             >
               {visibleProjects.map((project) => (
@@ -202,21 +243,36 @@ export function Portfolio() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-center gap-4 mt-6">
-          <div className="flex gap-2">
-            {projects.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`rounded-full transition-all duration-300 ${i === current
-                    ? "bg-[#C8E646] w-5 h-2.5"
-                    : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
-                  }`}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+        <div className="flex gap-2 items-center justify-center mb-3 sm:mb-0">
+  {projects.map((_, i) => (
+    <button
+      key={i}
+      onClick={() => goTo(i)}
+      className={`rounded-full transition-all duration-300 ${
+        i === current
+          ? "bg-[#C8E646] w-5 h-2.5"
+          : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
+      }`}
+      aria-label={`Slide ${i + 1}`}
+    />
+  ))}
+</div>
+
+<div className="hidden sm:flex items-center justify-center gap-3 sm:gap-4">
+  <button
+            onClick={prev}
+            className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
+          >
+            <ChevronLeft size={18} className="text-[#C8E646]" />
+          </button>
+
+  <button
+            onClick={next}
+            className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
+          >
+            <ChevronRight size={18} className="text-[#C8E646]" />
+          </button>
+</div>
 
       </div>
     </section>

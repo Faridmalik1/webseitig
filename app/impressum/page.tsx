@@ -37,7 +37,7 @@ export default function Impressum() {
             <h2 className="text-white text-lg mb-2">Angaben zum Unternehmen</h2>
             <div className="bg-gray-800 p-4 rounded my-4">
               <p>
-                Snow Dream Studios GmbH <br />
+                Web<span className="text-[#C8F135]">.</span>Seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich
               </p>
@@ -47,7 +47,7 @@ export default function Impressum() {
           <section>
             <h2 className="text-white text-lg mb-2">Kontaktdaten</h2>
             <div className="bg-gray-800 p-4 rounded my-4">
-              <p>E-Mail: <a href="mailto:hallo@web-seitig.ch" className="text-[#C8E646] hover:underline">hallo@web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
               <p>Web: <a href="https://web-seitig.ch" className="text-[#C8E646] hover:underline">web-seitig.ch</a></p>
             </div>
             <p>

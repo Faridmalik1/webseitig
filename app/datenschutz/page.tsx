@@ -41,12 +41,12 @@ export default function Datenschutz() {
             </p>
             <div className="bg-gray-800 p-4 rounded mt-4">
               <p>
-                Snow Dream Studios GmbH <br />
+                Web<span className="text-[#C8F135]">.</span>Seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
                 
               </p>
-              <p>E-Mail: <a href="mailto:hallo@web-seitig.ch" className="text-[#C8E646] hover:underline">hallo@web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
                 <p>Web: <a href="https://web-seitig.ch" className="text-[#C8E646] hover:underline">web-seitig.ch</a></p>
             </div>
           </section>
@@ -177,7 +177,7 @@ export default function Datenschutz() {
 
             <div className="bg-gray-800 p-4 rounded mt-4">
               <p>
-                Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: hallo@web-seitig.ch <br />
+                Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: hello@web-seitig.ch <br />
                 Wir beantworten Ihre Anfrage innerhalb von 30 Tagen.
               </p>
             </div>
@@ -212,11 +212,11 @@ export default function Datenschutz() {
             </p>
             <div className="bg-gray-800 p-4 rounded my-4">
               <p>
-                Snow Dream Studios GmbH <br />
+                Web<span className="text-[#C8F135]">.</span>Seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>
-              <p>E-Mail: <a href="mailto:hallo@web-seitig.ch" className="text-[#C8E646] hover:underline">hallo@web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
             </div>
             <p>
               Beschwerden können Sie auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) richten: www.edoeb.admin.ch

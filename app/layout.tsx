@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Paytone_One, Outfit } from "next/font/google";
+import { ModalProvider } from "@/components/shared/modal-context";
+import { ContactModal } from "@/components/marketing/ContactModal";
 import "./globals.css";
 
 const paytonOne = Paytone_One({
@@ -33,7 +35,10 @@ export default function RootLayout({
         className={`${paytonOne.variable} ${outfit.variable}`}
         suppressHydrationWarning
       >
-        {children}
+        <ModalProvider>
+          {children}
+          <ContactModal />
+        </ModalProvider>
       </body>
     </html>
   );
