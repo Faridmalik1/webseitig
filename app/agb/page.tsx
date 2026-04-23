@@ -26,7 +26,7 @@ export default function Agb() {
         <div className="bg-gray-800 p-4 rounded mb-4">
           <p>
             Gültig ab 1. Januar 2025 · Stand: April 2025 <br />
-            Snow Dream Studios GmbH | web-seitig.ch
+             web-seitig.ch
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function Agb() {
           <section>
             <h2 className="text-white text-lg mb-3"> <span className="text-[#C8E646]">1.</span> Geltungsbereich</h2>
             <p>
-              Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Snow Dream Studios GmbH (nachfolgend «web.seitig» oder «Anbieter») und ihren Kunden (nachfolgend «Kunde») im Rahmen der Erstellung, Gestaltung und Betreuung von Websites sowie damit verbundener Dienstleistungen.
+              Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Web.seitig (nachfolgend «web.seitig» oder «Anbieter») und ihren Kunden (nachfolgend «Kunde») im Rahmen der Erstellung, Gestaltung und Betreuung von Websites sowie damit verbundener Dienstleistungen.
               Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Kunden werden nicht Vertragsbestandteil, auch wenn web.seitig ihnen nicht ausdrücklich widerspricht, es sei denn, ihrer Geltung wird ausdrücklich schriftlich zugestimmt.
             </p>
           </section>

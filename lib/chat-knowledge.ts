@@ -27,9 +27,9 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   },
   // Company and brand
   {
-    keywords: ["webseitig", "web-seitig", "snow dream studios", "company"] ,
+    keywords: ["webseitig", "web-seitig", "company"] ,
     answer:
-      "webseitig ist der Markenname von Snow Dream Studios GmbH. Wir bieten professionelle Website-Erstellung, Design, Hosting und laufende Betreuung für Schweizer KMU.",
+      "webseitig bieten professionelle Website-Erstellung, Design, Hosting und laufende Betreuung für Schweizer KMU.",
   },
   {
     keywords: ["service", "services", "offer", "angebote", "leistungen"],
@@ -64,7 +64,7 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   {
     keywords: ["impressum", "legal", "unternehmen", "adresse", "zürich"],
     answer:
-      "Im Impressum wird Snow Dream Studios GmbH genannt mit Sitz in Schärenmoosstrasse 77, 8052 Zürich. Kontakt per E-Mail: hello@web-seitig.ch und Web: web-seitig.ch.",
+      "Im Impressum wird webseitig genannt mit Sitz in Schärenmoosstrasse 77, 8052 Zürich. Kontakt per E-Mail: hello@web-seitig.ch und Web: web-seitig.ch.",
   },
   {
     keywords: ["datenschutz", "privacy", "data", "daten"],

@@ -31,9 +31,9 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-6 left-6 right-6 z-50 flex flex-col items-end gap-2 sm:bottom-6 sm:left-auto sm:right-6">
       {isOpen && (
-        <div className="w-[320px] rounded-3xl border border-slate-700 bg-slate-800 shadow-2xl">
+        <div className="w-full max-w-[320px] rounded-3xl border border-slate-700 bg-slate-800 shadow-2xl sm:w-[320px]">
           {/* Header */}
           <div className="flex items-center justify-between rounded-t-3xl bg-slate-950 px-4 py-3 text-white">
             <div className="flex items-center gap-2 text-sm font-semibold">
@@ -50,7 +50,7 @@ export function ChatWidget() {
           </div>
 
           {/* Messages */}
-          <div className="max-h-80 space-y-3 overflow-y-auto px-4 py-4 text-sm">
+          <div className="max-h-60 space-y-3 overflow-y-auto px-4 py-4 text-sm sm:max-h-80">
             {messages.length === 0 ? (
               <div className="text-slate-400">
                 Hallo! Ich bin der Chatbot von webseitig. Wie kann ich dir helfen? Frage mich nach Services, Preisen oder Kontakt.

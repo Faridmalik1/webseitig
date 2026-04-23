@@ -57,7 +57,7 @@ export default function Impressum() {
 
           <section>
             <h2 className="text-white text-lg mb-3">Verantwortlich für den Inhalt</h2>
-            <p className="mb-1">Snow Dream Studios GmbH, vertreten durch die Geschäftsführung.</p>
+            <p className="mb-1">Web.seitig, vertreten durch die Geschäftsführung.</p>
             <p>Alle Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäss den geltenden gesetzlichen Vorschriften für eigene Inhalte auf unserer Website verantwortlich.</p>
           </section>
 
@@ -82,7 +82,7 @@ export default function Impressum() {
             <div className="bg-gray-800 p-4 rounded my-4">
               <p>
                 Alle auf dieser Website verwendeten Marken, Logos und Markennamen sind Eigentum von <br />
-                Snow Dream Studios GmbH oder der jeweiligen Rechteinhaber und dürfen ohne ausdrückliche <br />
+                Web.seitig oder der jeweiligen Rechteinhaber und dürfen ohne ausdrückliche <br />
                 Genehmigung nicht verwendet werden.
               </p>
             </div>

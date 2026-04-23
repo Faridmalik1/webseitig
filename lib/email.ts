@@ -94,7 +94,7 @@ function buildEmailShell(content: string) {
   return `
     <div style="margin:0; padding:0; background:#0f0f0f;">
       <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
-        Snow Dream Studios inquiry update
+        WebSeitig inquiry update
       </div>
       <div style="background:
         radial-gradient(circle at top left, rgba(200,241,53,0.18), transparent 34%),
@@ -146,10 +146,10 @@ function buildSenderHtml(input: FaqInquiryEmailInput) {
 
   return buildEmailShell(`
     <h1 style="margin:0 0 14px; color:#ffffff; font-size:28px; line-height:1.15; font-weight:800;">
-      Wir haben Ihre Nachricht erhalten, und unser Team von Snow Dream Studios GmbH wird sich in Kürze bei Ihnen melden.
+      Wir haben Ihre Nachricht erhalten, und unser Team von webseitig wird sich in Kürze bei Ihnen melden.
     </h1>
     <p style="margin:0 0 14px; color:rgba(244,246,238,0.82); font-size:17px; line-height:1.75;">
-     Wir haben Ihre Nachricht erhalten, und unser Team von Snow Dream Studios GmbH wird sich in Kürze bei Ihnen melden.
+     Wir haben Ihre Nachricht erhalten, und unser Team von webseitig wird sich in Kürze bei Ihnen melden.
     </p>
     <p style="margin:0 0 26px; color:rgba(244,246,238,0.62); font-size:15px; line-height:1.75;">
       Wir schätzen Ihr Interesse und werden uns so schnell wie möglich mit der passenden Unterstützung für Ihre Anfrage bei Ihnen melden.
@@ -208,10 +208,11 @@ function buildLeadSenderHtml(input: LeadCaptureEmailInput) {
   const name = escapeHtml(input.name);
   const phone = escapeHtml(input.phone);
   const branche = escapeHtml(input.branche);
+  const email = input.email ? escapeHtml(input.email).replace('@', '&#64;') : "Not provided";
 
   return buildEmailShell(`
     <h1 style="margin:0 0 14px; color:#ffffff; font-size:28px; line-height:1.15; font-weight:800;">
-      Wir haben Ihre Nachricht erhalten, und unser Team von Snow Dream Studios GmbH wird sich in Kürze bei Ihnen melden.
+      Wir haben Ihre Nachricht erhalten, und unser Team von webseitig wird sich in Kürze bei Ihnen melden.
     </h1>
     <p style="margin:0 0 14px; color:rgba(244,246,238,0.82); font-size:17px; line-height:1.75;">
       Wir schätzen Ihr Interesse und werden uns so schnell wie möglich mit der passenden Unterstützung für Ihre Anfrage bei Ihnen melden.
@@ -219,6 +220,7 @@ function buildLeadSenderHtml(input: LeadCaptureEmailInput) {
     <div style="padding:22px; border-radius:22px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
       <p style="margin:0 0 12px; color:#C8F135; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Your Details</p>
       <p style="margin:0 0 8px; color:#f4f6ee; font-size:16px; line-height:1.7;"><strong>Name:</strong> ${name}</p>
+      <p style="margin:0 0 8px; color:#f4f6ee; font-size:16px; line-height:1.7;"><strong>Email:</strong> ${email}</p>
       <p style="margin:0 0 8px; color:#f4f6ee; font-size:16px; line-height:1.7;"><strong>Phone:</strong> ${phone}</p>
       <p style="margin:0; color:#f4f6ee; font-size:16px; line-height:1.7;"><strong>Industry:</strong> ${branche}</p>
     </div>
@@ -248,9 +250,9 @@ console.log("input",input)
   await transporter.sendMail({
     from: fromEmail,
     to: input.email,
-    subject: "Thanks for contacting Snow Dream Studios",
+    subject: "Vielen Dank für Ihre Kontaktaufnahme mit webseitig.",
     text:
-      "Thank you for reaching out. Our team at Snow Dream Studios will reach out to you soon.",
+      "Vielen Dank für Ihre Anfrage. Unser Team von webseitig wird sich in Kürze bei Ihnen melden.",
     html: buildSenderHtml(input),
   });
 
@@ -291,9 +293,9 @@ export async function sendLeadCaptureEmails(input: LeadCaptureEmailInput) {
   await transporter.sendMail({
     from: fromEmail,
     to: input.email,
-    subject: "Thanks for reaching out to Snow Dream Studios",
+    subject: "Vielen Dank für Ihre Kontaktaufnahme mit webseitig.",
     text:
-      "Thank you for reaching out. Our team at Snow Dream Studios will reach out to you soon.",
+      "Vielen Dank für Ihre Anfrage. Unser Team von webseitig wird sich in Kürze bei Ihnen melden.",
     html: buildLeadSenderHtml(input),
   });
 

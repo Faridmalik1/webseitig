@@ -201,9 +201,9 @@ export function FAQ() {
                 required
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-                placeholder="Deine Frage..."
+                placeholder="Uw vraag..."
                 rows={4}
-                className="w-full rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
+                className="w-full rounded-4xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -220,7 +220,7 @@ export function FAQ() {
                   }
                 }}
                 placeholder="Deine E-Mail"
-                className="w-full rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
+                className="w-full rounded-2xl px-4 py-3 text-sm text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -242,7 +242,7 @@ export function FAQ() {
               <button
                 type="submit"
                 disabled={loading || !question.trim()}
-                className="group w-full py-3 rounded-xl bg-[#C8E646] text-[#171717] text-sm font-semibold 
+                className="group w-full py-3 rounded-full bg-[#C8E646] text-[#171717] text-sm font-semibold 
   hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 
   flex items-center justify-center gap-2 mb-3 whitespace-nowrap
   disabled:cursor-not-allowed disabled:opacity-50"

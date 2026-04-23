@@ -35,12 +35,12 @@ export function Footer() {
           <Link
             href="/"
             className="flex items-center gap-1">
-            <div className="w-8 h-8 rounded-md flex items-center justify-center">
-              <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
+            <div className="flex items-center justify-center">
+              <img src="/FooterLogo.svg" alt="Logo" className="" />
             </div>
-            <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
+            {/* <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
               web<span className="text-[#C8E646]">.</span>seitig
-            </span>
+            </span> */}
           </Link>
 
           {/* Links */}
@@ -111,15 +111,7 @@ export function Footer() {
         {/* Copyright row */}
         <div className="py-4 flex flex-col sm:flex-row items-center justify-center gap-1 text-center">
           <p className="text-[#888888] text-base">
-            © {year} web.seitig — Ein Angebot von{" "}
-            <a
-              href="https://snowdreamstudios.ch"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[#888888] hover:text-white/70 transition-colors underline underline-offset-2"
-            >
-              Snow Dream Studios GmbH
-            </a>
+            © {year} Web.seitig. Alle Rechte vorbehalten.{" "}
           </p>
         </div>
 
