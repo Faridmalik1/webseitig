@@ -75,8 +75,8 @@ export function Testimonials() {
 
                 <div>
                   <div className="flex items-center gap-2">
-                    <p className="text-white font-semibold text-sm">{t.name}</p>
-                    <span className="text-white/30 text-xs">{t.role}</span>
+                    <p className="text-white text-sm">{t.name}</p>
+                    <span className="text-white/30 text-xs"> — {t.role}</span>
                   </div>
                   <div className="flex items-center gap-1 mt-0.5">
                     <svg width="10" height="10" viewBox="0 0 12 12" fill="none">

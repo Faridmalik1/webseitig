@@ -24,10 +24,13 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0000001F] backdrop-blur-md shadow-lg shadow-black/20" : "bg-transparent"
-        }`}
-      data-testid="navbar"
-    >
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+    bg-black/10 backdrop-blur-xl
+    border-b border-[#262626]
+    shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+  `}
+  data-testid="navbar"
+>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between gap-3">
 
         {/* Logo */}
