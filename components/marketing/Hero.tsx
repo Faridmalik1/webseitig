@@ -149,7 +149,7 @@ export function Hero() {
           {features.map((f, i) => (
             <div
               key={i}
-              className="flex flex-col items-center text-center gap-3 py-6 px-4"
+              className="flex flex-col items-center text-center gap-3 py-8 px-4"
             >
               <img
                 src={f.icon}
