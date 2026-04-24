@@ -41,19 +41,19 @@ export function Hero() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="lg:col-span-2"
           >
-            <p className="text-[#C8E646] text-[14px] md:text-[20px] mb-4 sm:mb-5 tracking-wide">
+            <p className="text-[#C8E646] text-[14px] md:text-[16px] mb-4 sm:mb-5 tracking-wide">
               Für Selbstständige und KMU in der Schweiz
             </p>
-            <h1 className="text-[28px] sm:text-[32px] lg:text-[68px] leading-[1.05] text-white mb-5 sm:mb-6">
+            <h1 className="text-[28px] sm:text-[32px] lg:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
               Jeden Tag ohne Website verlieren Sie Kunden — an die Konkurrenz.
             </h1>
-            <p className="text-[#888888] text-[16px] md:text-[24px] leading-relaxed max-w-[600px] mb-7 sm:mb-8">
+            <p className="text-[#888888] text-[16px] md:text-[20px] leading-relaxed max-w-[600px] mb-7 sm:mb-8">
               Wir bauen Ihre professionelle Website in 7 Tagen. Keine Vorauszahlung. Kein technisches Wissen. Alles inklusive — kündbar nach 12 Monaten.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
                 onClick={open}
-                className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8E646] text-[#171717] text-[16px] md:!text-[20px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
+                className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8E646] text-[#171717] text-[14px] md:!text-[20px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
               >
                 Jetzt kostenlos anfragen
 
@@ -63,11 +63,11 @@ export function Hero() {
                   className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
                 />
               </button>
-              <p className="text-[#888888] text-[16px] md:text-[20px]">
+              <p className="text-[#888888] text-[14px] md:text-[16px]">
                 Über 40 Unternehmen in der Schweiz vertrauen uns — von Zürich bis St. Gallen.
               </p>
             </div>
-            <div className="text-[#888888] flex gap-2 mt-6 text-[16px] md:text-[20px]">
+            <div className="text-[#888888] flex gap-2 mt-6 text-[14px] md:text-[16px]">
                <img
                 src="/star.svg"
                 alt="Stars"
@@ -112,7 +112,7 @@ export function Hero() {
                     
                   }}
                 />
-                <p className="text-[#888888] text-[14px] md:text-[18px] uppercase tracking-widest mb-2">
+                <p className="text-[#888888] text-[14px] md:text-[16px] uppercase tracking-widest mb-2">
                   AB NUR
                 </p>
                 <div className="flex gap-2 items-center">
@@ -140,7 +140,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="w-full bg-[#151515] border-y border-[#262626] mt-10 sm:mt-12"
+        className="w-full bg-[#151515] border-y border-[#262626] mt-16 lg:mt-4"
       >
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (

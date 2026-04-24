@@ -190,14 +190,14 @@ export function Portfolio() {
     : [projects[current]];
 
   return (
-    <section id="portfolio" className="bg-[#171717] py-20 md:py-28">
+    <section id="portfolio" className="bg-[#171717] py-12 md:py-18">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
 
         {/* Header */}
         <div className="flex items-start justify-between mb-10">
           <div>
-            <p className="text-[#C8E646] text-sm mb-3 tracking-wide">Unsere Arbeit</p>
-            <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
+            <p className="text-[#C8E646] text-[16px] md:text-[20px] tracking-wide">Unsere Arbeit</p>
+            <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[52px] leading-tight">
               Ausgewählte Projekte — alle in 7 Tagen geliefert.
             </h2>
           </div>
