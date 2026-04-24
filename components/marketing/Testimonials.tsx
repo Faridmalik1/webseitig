@@ -213,7 +213,7 @@ export function Testimonials() {
   );
 
   return (
-    <section id="testimonials" className="bg-[#0F0F0F] py-10 md:py-16 relative px-8">
+    <section id="testimonials" className="bg-[#0F0F0F] py-10 md:py-16 relative px-4 md:px-8">
       <div className="max-w-[1568px] mx-auto px-6 md:px-8">
         {/* Header row */}
         <div className="flex flex-col md:flex-row justify-between items-center w-full mb-8">
@@ -228,7 +228,7 @@ export function Testimonials() {
           </motion.h2>
 
           {/* Navigation Buttons */}
-          <div className="flex gap-3 shrink-0">
+          <div className="flex gap-3 shrink-0 self-end md:self-auto">
             <button
               onClick={() => step(-1)}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"

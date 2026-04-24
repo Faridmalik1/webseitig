@@ -19,9 +19,9 @@ export default function Agb() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-4xl mb-8"
+          className="text-[20px] sm:text-[24px] lg:text-[32px] mb-8"
         >
-          Allgemeine Geschäftsbedingungen (AGB)
+          Allgemeine Geschäftsbedingungen (AGB).
         </motion.h1>
         <div className="bg-gray-800 p-4 rounded mb-4">
           <p>

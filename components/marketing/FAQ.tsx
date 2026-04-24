@@ -115,7 +115,7 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-8">
+    <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-[1568px] mx-auto px-6 md:px-8">
         <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-center mb-12">
           Häufig gestellte Fragen

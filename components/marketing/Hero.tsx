@@ -18,7 +18,7 @@ export function Hero() {
     <div>
       <section
       id="home"
-      className="relative min-h-screen flex flex-col bg-[#0F0F0F] overflow-hidden px-16"
+      className="relative min-h-screen flex flex-col bg-[#0F0F0F] overflow-hidden px-8 md:px-16"
     >
       {/* <div
         aria-hidden

@@ -28,7 +28,7 @@ export function Navbar() {
     bg-black/10 backdrop-blur-xl
     border-b border-[#262626]
     shadow-[0_8px_32px_rgba(0,0,0,0.25)]
-    px-8
+    px-4 md:px-8
   `}
   data-testid="navbar"
 >

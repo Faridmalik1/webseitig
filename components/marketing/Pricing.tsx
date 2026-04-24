@@ -29,7 +29,7 @@ export function Pricing() {
   const { open } = useModal();
 
   return (
-    <section id="pricing" className="bg-[#0F0F0F] py-10 md:py-16 px-8">
+    <section id="pricing" className="bg-[#0F0F0F] py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         {/* Badge + heading — inside dashed border box */}

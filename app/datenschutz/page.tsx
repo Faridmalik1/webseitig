@@ -19,7 +19,7 @@ export default function Datenschutz() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-4xl mb-2"
+          className="text-[20px] sm:text-[24px] lg:text-[32px] mb-2"
         >
           Datenschutzerklärung
         </motion.h1>
