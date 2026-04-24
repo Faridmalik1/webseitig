@@ -10,7 +10,7 @@ export default function Impressum() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
-      <div className="max-w-[800px] mx-auto px-6 py-16">
+      <div className="max-w-[1568px] mx-auto px-6 py-16">
         <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
@@ -47,8 +47,8 @@ export default function Impressum() {
           <section>
             <h2 className="text-white text-lg mb-2">Kontaktdaten</h2>
             <div className="bg-gray-800 p-4 rounded my-4">
-              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
-              <p>Web: <a href="https://web-seitig.ch" className="text-[#C8E646] hover:underline">web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8E646] hover:underline">hello@webseitig.ch</a></p>
+              <p>Web: <a href="https://webseitig.ch" className="text-[#C8E646] hover:underline">webseitig.ch</a></p>
             </div>
             <p>
               Für allgemeine Anfragen, Support oder Partnerschaftsanfragen erreichen Sie uns am schnellsten per E-Mail. Wir antworten in der Regel innerhalb von einem Werktag.

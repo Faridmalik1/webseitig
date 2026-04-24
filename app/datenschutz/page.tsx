@@ -10,7 +10,7 @@ export default function Datenschutz() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
-      <div className="max-w-[800px] mx-auto px-6 py-16">
+      <div className="max-w-[1568px] mx-auto px-6 py-16">
         <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
@@ -46,8 +46,8 @@ export default function Datenschutz() {
                 8052 Zürich <br />
                 
               </p>
-              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
-                <p>Web: <a href="https://web-seitig.ch" className="text-[#C8E646] hover:underline">web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8E646] hover:underline">hello@webseitig.ch</a></p>
+                <p>Web: <a href="https://webseitig.ch" className="text-[#C8E646] hover:underline">webseitig.ch</a></p>
             </div>
           </section>
 
@@ -177,7 +177,7 @@ export default function Datenschutz() {
 
             <div className="bg-gray-800 p-4 rounded mt-4">
               <p>
-                Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: hello@web-seitig.ch <br />
+                Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: hello@webseitig.ch <br />
                 Wir beantworten Ihre Anfrage innerhalb von 30 Tagen.
               </p>
             </div>
@@ -216,7 +216,7 @@ export default function Datenschutz() {
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>
-              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8E646] hover:underline">hello@webseitig.ch</a></p>
             </div>
             <p>
               Beschwerden können Sie auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) richten: www.edoeb.admin.ch

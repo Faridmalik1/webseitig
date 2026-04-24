@@ -28,10 +28,11 @@ export function Navbar() {
     bg-black/10 backdrop-blur-xl
     border-b border-[#262626]
     shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+    px-8
   `}
   data-testid="navbar"
 >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between gap-3">
+      <div className="max-w-[1568px] mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between gap-3">
 
         {/* Logo */}
         <Link

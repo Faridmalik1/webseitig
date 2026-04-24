@@ -18,8 +18,8 @@ const logos = [
 export function Services() {
   const { open } = useModal();
   return (
-    <section id="services" className="bg-[#171717] pb-20 md:pb-28">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+    <section id="services" className="bg-[#0F0F0F] py-10 md:py-16 px-8">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         {/* Heading */}
         <motion.h2
@@ -27,7 +27,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="text-white text-[1.9rem] md:text-[2.4rem] text-center mb-10"
+          className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-center mb-10"
         >
           Unternehmen, die uns vertrauen — quer durch die Schweiz.
         </motion.h2>
@@ -84,7 +84,7 @@ export function Services() {
         <div className="flex justify-center mt-8">
           <button
   onClick={open}
-  className="group inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+  className="group inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
 >
   Kostenlose Beratung anfragen
 

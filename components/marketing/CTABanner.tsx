@@ -8,9 +8,9 @@ export function CTABanner() {
   const { open } = useModal();
 
   return (
-    <div className="mx-6">
+    <div className="mx-6 px-8 py-10 md:py-16">
     <section
-      className="relative overflow-hidden max-w-[1200px] rounded-3xl mx-auto px-6 md:px-8 py-20 md:py-24 text-center bg-[#C8F135]"
+      className="relative overflow-hidden max-w-[1568px] rounded-3xl mx-auto px-6 md:px-8 py-20 md:py-24 text-center bg-[#C8F135]"
     >
       <img
         src="/Progress_Left.svg"
@@ -32,7 +32,7 @@ export function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="font-extrabold text-[1.5rem] md:text-[3rem] text-[#171717] leading-tight mb-4"
+          className="text-[28px] sm:text-[28px] lg:text-[40px] text-[#171717] leading-tight mb-4"
         >
           Jede Woche ohne Website ist eine Woche, in der Ihre Mitbewerber die Kunden bekommen.
         </motion.h2>
@@ -54,8 +54,8 @@ export function CTABanner() {
   viewport={{ once: true }}
   transition={{ duration: 0.45, delay: 0.2 }}
   onClick={open}
-  className="group inline-flex items-center gap-2 bg-[#171717] text-white font-bold text-sm sm:text-lg 
-  px-6 sm:px-8 py-2 sm:py-4 rounded-full hover:bg-[#2a2a2a] active:scale-95 
+  className="group inline-flex items-center gap-2 bg-[#0F0F0F] text-white text-[16px] md:!text-[20px] 
+  px-6 sm:px-8 py-2 rounded-full hover:bg-[#2a2a2a] active:scale-95 
   transition-all duration-200"
 >
   Jetzt kostenlos starten

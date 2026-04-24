@@ -29,8 +29,8 @@ export function Pricing() {
   const { open } = useModal();
 
   return (
-    <section id="pricing" className="bg-[#171717] py-10 md:py-18">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+    <section id="pricing" className="bg-[#0F0F0F] py-10 md:py-16 px-8">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         {/* Badge + heading — inside dashed border box */}
         <motion.div
@@ -41,18 +41,18 @@ export function Pricing() {
           className="text-center mb-14"
         >
           <div
-            className="inline-block w-full max-w-[900px] rounded-2xl px-8 mb-2"
+            className="inline-block w-full max-w-[1200px] rounded-2xl px-8 mb-2"
           // style={{
           //   border: "1.5px dashed rgba(255,255,255,0.15)",
           // }}
           >
-            <p className="text-[#C8E646] text-base mb-5 tracking-wide">
+            <p className="text-[#C8E646] text-[16px] mb-5 tracking-wide">
               Preise
             </p>
-            <h2 className="text-white text-[1.6rem] sm:text-[2rem] md:text-[2.8rem] leading-tight break-words mb-2">
+            <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
               Was eine Agentur CHF 8'000 kostet — bei uns ab CHF 179 / Monat.
             </h2>
-            <p className="text-white/45 text-base md:text-lg">
+            <p className="text-[#888888] text-[16px] sm:text-[18px]">
               Transparent. Fair. Ohne Überraschungen.
             </p>
           </div>
@@ -69,7 +69,7 @@ export function Pricing() {
             transition={{ duration: 0.45, delay: 0.05 }}
             className="
   rounded-2xl p-8 flex flex-col
-  bg-[#1c1c1c]
+  bg-[#151515]
   border border-white/[0.07]
   hover:border-[#C8E646]
   hover:shadow-[0_0_0_1px_rgba(200,230,70,0.2),0_10px_30px_rgba(0,0,0,0.4)]
@@ -77,14 +77,14 @@ export function Pricing() {
   transition-all duration-300
 "
           >
-            <h3 className="text-white text-xl mb-4">Starter</h3>
+            <h3 className="text-white mb-4 text-[16px] sm:text-[20px]">Starter</h3>
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-[#C8F135] text-[2.8rem] leading-none font-extrabold">CHF 179</span>
-              <span className="text-white/40 text-sm ms-1">/ Monat</span>
+              <span className="text-[#C8F135] font-paytone text-[28px] sm:text-[32px] lg:text-[48px] leading-none">CHF 179</span>
+              <span className="text-[#737373] text-sm ms-1">/ Monat</span>
             </div>
-            <p className="text-white/35 text-xs mb-8">
+            <p className="text-[#737373] text-sm mb-8">
               12 Monate · keine Vorauszahlung
             </p>
 
@@ -93,9 +93,9 @@ export function Pricing() {
               {starterFeatures.map((f, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
-                  <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
+                    <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
                   </span>
-                  <span className="text-white/65 text-sm">{f}</span>
+                  <span className="text-[#888888] text-sm">{f}</span>
                 </li>
               ))}
             </ul>
@@ -103,7 +103,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="group w-full py-3.5 rounded-full border border-[#C8F135] text-white text-sm hover:bg-[#C8F135] hover:text-black transition-all duration-200"
+              className="group text-[#C8F135] w-full py-2 text-[14px] md:!text-[20px] rounded-full border border-[#C8F135] hover:bg-[#C8F135] hover:text-black transition-all duration-200"
             >
               Jetzt starten
             </button>
@@ -117,7 +117,7 @@ export function Pricing() {
             transition={{ duration: 0.45, delay: 0.12 }}
             className="
   rounded-2xl p-8 flex flex-col relative
-  bg-[#1c1c1c]
+  bg-[#151515]
   border border-white/[0.07]
   hover:border-[#C8E646]
   hover:shadow-[0_0_0_1px_rgba(200,230,70,0.25),0_12px_35px_rgba(0,0,0,0.5)]
@@ -126,19 +126,19 @@ export function Pricing() {
 "
           >
             <div className="absolute top-0 right-0">
-              <div className="bg-[#C8E646] py-2 text-[#171717] text-xs px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
+              <div className="bg-[#C8E646] text-[#171717] text-sm px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
                 Meistgewählt
               </div>
             </div>
 
-            <h3 className="text-white text-xl mb-4">Business Pro</h3>
+            <h3 className="text-white mb-4 text-[16px] sm:text-[20px]">Business Pro</h3>
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-[#C8E646] text-[2.8rem] leading-none font-extrabold">CHF 249</span>
-              <span className="text-white/40 text-sm ms-1">/ Monat</span>
+              <span className="text-[#C8F135] font-paytone text-[28px] sm:text-[32px] lg:text-[48px] leading-none">CHF 249</span>
+              <span className="text-[#888888] text-sm ms-1">/ Monat</span>
             </div>
-            <p className="text-white/35 text-xs mb-8">
+            <p className="text-[#888888] text-sm mb-8">
               12 Monate · kein Upfront
             </p>
 
@@ -147,9 +147,9 @@ export function Pricing() {
               {proFeatures.map((f, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
-                  <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
+                    <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
                   </span>
-                  <span className="text-white/65 text-sm">{f}</span>
+                  <span className="text-[#888888] text-sm">{f}</span>
                 </li>
               ))}
             </ul>
@@ -163,6 +163,30 @@ export function Pricing() {
             </button>
           </motion.div>
 
+        </div>
+        <div className="mt-8">
+          <div
+            className="
+    relative rounded-2xl
+    bg-black/10 backdrop-blur-xl
+    border border-[#262626]
+    px-6 md:px-10 py-6 md:py-8
+    overflow-hidden
+  "
+          >
+            <div className="absolute inset-0 bg-[#272727] opacity-60 pointer-events-none z-0" />
+
+  {/* content layer */}
+  <div className="relative z-10">
+    <h3 className="text-white text-lg md:text-xl text-center mb-3">
+      Unter beiden Plans — Risk Reversal Block:
+    </h3>
+
+    <p className="text-white text-sm md:text-base leading-relaxed max-w-[1000px] mx-auto px-6 md:px-8 text-center">
+      Nicht zufrieden mit dem Entwurf? Wir überarbeiten, bis Sie es sind. Kein Auftrag, keine Rechnung. Nach 12 Monaten können Sie monatlich kündigen — ohne Fragen, ohne versteckte Kosten.
+    </p>
+  </div>
+          </div>
         </div>
       </div>
     </section>

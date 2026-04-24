@@ -10,7 +10,7 @@ export default function Agb() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
-      <div className="max-w-[800px] mx-auto px-6 py-16">
+      <div className="max-w-[1568px] mx-auto px-6 py-16">
         <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
@@ -26,7 +26,7 @@ export default function Agb() {
         <div className="bg-gray-800 p-4 rounded mb-4">
           <p>
             Gültig ab 1. Januar 2025 · Stand: April 2025 <br />
-             web-seitig.ch
+             webseitig.ch
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function Agb() {
 
             <div className="bg-gray-800 p-4 rounded">
               <p className="mb-2">
-                Business Pro – CHF 149/Monat
+                Business Pro – CHF 249/Monat
               </p>
               <p>
                 Bis zu 10 Seiten, Blog-/News-Bereich, Google Maps & Bewertungen, <br />
@@ -235,7 +235,7 @@ export default function Agb() {
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>
-              <p>E-Mail: <a href="mailto:hello@web-seitig.ch" className="text-[#C8E646] hover:underline">hello@web-seitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8E646] hover:underline">hello@webseitig.ch</a></p>
             </div>
           </section>
 

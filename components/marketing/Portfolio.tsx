@@ -106,11 +106,11 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
       {/* Details */}
       <div className="p-6 flex flex-col">
-        <h3 className="text-white text-[1.4rem] font-semibold mb-2">{project.name}</h3>
-        <p className="text-white/45 text-sm leading-relaxed mb-5">{project.desc}</p>
+        <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">{project.name}</h3>
+        <p className="text-[#888888] sm:text-[14px] md:text-[16px]  leading-relaxed mb-5">{project.desc}</p>
 
         <div className="mb-5">
-          <p className="text-white text-sm mb-2 font-medium">Tech-Stack</p>
+          <p className="text-white sm:text-[16px] md:text-[20px] mb-2 font-medium">Tech-Stack</p>
           <div className="flex flex-wrap gap-2">
             {project.stack.map((tag, i) => (
               <span
@@ -124,8 +124,8 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         </div>
 
         <div className="mt-auto flex items-center justify-between pt-4">
-          <p className="text-white text-xl font-medium">Zeitleiste</p>
-          <p className="text-[#C8E646] text-xl">{project.days}</p>
+          <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium">Zeitleiste</p>
+          <p className="text-[#C8E646] text-[16px] sm:text-[18px] md:text-[20px] font-medium">{project.days}</p>
         </div>
       </div>
     </div>
@@ -177,21 +177,21 @@ export function Portfolio() {
   const prev = () => goTo((current - 1 + total) % total);
   const next = () => goTo((current + 1) % total);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setCurrent((c) => (c + 1) % total);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, [total]);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setDirection(1);
+  //     setCurrent((c) => (c + 1) % total);
+  //   }, 4500);
+  //   return () => clearInterval(timer);
+  // }, [total]);
 
   const visibleProjects = isMd
     ? [projects[current], projects[(current + 1) % total]]
     : [projects[current]];
 
   return (
-    <section id="portfolio" className="bg-[#171717] py-12 md:py-18">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+    <section id="portfolio" className="bg-[#0F0F0F] py-10 md:py-16 px-8">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         {/* Header */}
         <div className="flex items-start justify-between mb-10">
@@ -200,6 +200,9 @@ export function Portfolio() {
             <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[52px] leading-tight">
               Ausgewählte Projekte — alle in 7 Tagen geliefert.
             </h2>
+            <p className="text-white text-[16px] sm:text-[18px] mt-6">
+              (Projekte wie bisher, Zeitleiste-Label beibehalten — das ist ein starker Glaubwürdigkeits-Anker)
+            </p>
           </div>
         </div>
 
@@ -208,14 +211,14 @@ export function Portfolio() {
           className="relative mb-6 mt-10"
           style={{ minHeight: containerHeight }}
         >
-          <AnimatePresence mode="sync" initial={false}>
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current}
               ref={cardRef}
               initial={{ opacity: 0, x: direction * 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction * -40 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
+              transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
               className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
               style={{ position: "absolute", width: "100%" }}
             >

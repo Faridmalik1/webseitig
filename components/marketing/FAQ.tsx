@@ -13,7 +13,7 @@ const faqs = [
   {
     num: "02",
     q: "Gehört mir die Website wirklich?",
-    a: "Ja. In den ersten 12 Monaten kümmern wir uns um alles — Hosting, Updates, Technik, Sicherheit. Ab Monat 13 gehört Ihnen die Website vollständig: alle Dateien, alle Rechte, ohne Einschränkung. Sie sind nicht von uns abhängig. Sie bleiben, weil Sie zufrieden sind — nicht weil Sie keine andere Wahl haben. Das ist der Unterschied zu den meisten Agenturen.",
+    a: "Ja. In den ersten 12 Monaten kümmern wir uns um alles — Hosting, Updates, Technik, Sicherheit. Ab Monat 13 gehört Ihnen die Website vollständig: alle Dateien, alle Rechte, ohne Einschränkung. Sie sind nicht von uns abhängig. \nSie bleiben, weil Sie zufrieden sind — nicht weil Sie keine andere Wahl haben. Das ist der Unterschied zu den meisten Agenturen.",
   },
   {
     num: "03",
@@ -23,17 +23,17 @@ const faqs = [
   {
     num: "04",
     q: "Wie schnell ist die Website wirklich fertig?",
-    a: "In 7 Werktagen — nach Ihrer Freigabe des Entwurfs. Nicht „in etwa zwei Wochen. Nicht sobald wir Kapazität haben. Sieben Tage. Wir sagen das, weil wir es einhalten. Wenn Sie wollen, fragen Sie unsere Kunden.",
+    a: "In 7 Werktagen — nach Ihrer Freigabe des Entwurfs. \nNicht „in etwa zwei Wochen. Nicht sobald wir Kapazität haben. Sieben Tage. Wir sagen das, weil wir es einhalten. Wenn Sie wollen, fragen Sie unsere Kunden.",
   },
   {
     num: "05",
     q: "Gibt es eine Einrichtungsgebühr?",
-    a: "Nein — und das meinen wir ernst. Keine Setup-Gebühr, keine einmalige Startpauschale, kein Posten im Kleingedruckten. Sie zahlen ab dem Tag, an dem Ihre Website live geht — und nur die monatliche Rate, die wir Ihnen von Anfang an nennen. CHF 179 ist CHF 179. Nicht CHF 179 plus etwas.",
+    a: "Nein — und das meinen wir ernst. Keine Setup-Gebühr, keine einmalige Startpauschale, kein Posten im Kleingedruckten. Sie zahlen ab dem Tag, an dem Ihre Website live geht — und nur die monatliche Rate, die wir Ihnen von Anfang an nennen. CHF 179 ist CHF 179. \nNicht CHF 179 plus etwas.",
   },
   {
     num: "06",
     q: "Was ist, wenn mir das Design nicht gefällt?",
-    a: "Dann überarbeiten wir. So oft wie nötig, bis es stimmt. Kein Nagelstudio fängt an, bevor Sie die Farbe gewählt haben. Wir auch nicht — erst Ihre Freigabe, dann geht's live. Nicht andersrum.",
+    a: "Dann überarbeiten wir. So oft wie nötig, bis es stimmt. Kein Nagelstudio fängt an, bevor Sie die Farbe gewählt haben. Wir auch nicht — erst Ihre Freigabe, dann geht's live. \nNicht andersrum.",
   },
 ];
 
@@ -115,9 +115,9 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="bg-[#171717] py-20 md:py-28">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-        <h2 className="text-white text-[2rem] md:text-[2.8rem] text-center mb-12">
+    <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-8">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+        <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-center mb-12">
           Häufig gestellte Fragen
         </h2>
 
@@ -132,9 +132,9 @@ export function FAQ() {
                     className="w-full flex items-center gap-4 py-5 text-start group"
                     onClick={() => setOpen(isOpen ? null : i)}
                   >
-                    <div className="flex items-center gap-2 shrink-0">
-                      <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full" />
-                      <span className="text-[#C8F135] text-lg font-extrabold tracking-widest">
+                    <div className="flex items-end gap-2 shrink-0">
+                      <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full mb-2" />
+                      <span className="text-[#C8F135] text-[16px] sm:text-[20px] lg:text-[28px] font-bold tracking-widest">
                         {faq.num}
                       </span>
                     </div>
@@ -169,7 +169,7 @@ export function FAQ() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-white/45 text-base leading-relaxed pb-5 ps-[3.5rem]">
+                        <p className="text-[#888888] text-base leading-relaxed pb-5 ps-[3.5rem] whitespace-pre-line">
                           {faq.a}
                         </p>
                       </motion.div>
@@ -191,8 +191,8 @@ export function FAQ() {
               border: "1px solid rgba(200,230,70,0.15)",
             }}
           >
-            <h3 className="text-white text-[1.4rem] mb-2">Noch Fragen?</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-5">
+            <h3 className="text-white text-[24px] sm:text-[28px] mb-2">Noch Fragen?</h3>
+            <p className="text-[#888888] text-[14px] sm:text-[16px] leading-relaxed mb-5">
               Schreib uns einfach — wir antworten schnell und unkompliziert.
             </p>
 
@@ -242,7 +242,7 @@ export function FAQ() {
               <button
                 type="submit"
                 disabled={loading || !question.trim()}
-                className="group w-full py-3 rounded-full bg-[#C8E646] text-[#171717] text-sm font-semibold 
+                className="group w-full py-2 rounded-full bg-[#C8E646] text-[#171717] text-[16px] md:!text-[20px]  
   hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 
   flex items-center justify-center gap-2 mb-3 whitespace-nowrap
   disabled:cursor-not-allowed disabled:opacity-50"

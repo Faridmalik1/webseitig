@@ -15,9 +15,10 @@ export function Hero() {
   const { open } = useModal();
 
   return (
-    <section
+    <div>
+      <section
       id="home"
-      className="relative min-h-screen flex flex-col bg-[#171717] overflow-hidden"
+      className="relative min-h-screen flex flex-col bg-[#0F0F0F] overflow-hidden px-16"
     >
       {/* <div
         aria-hidden
@@ -30,7 +31,7 @@ export function Hero() {
       /> */}
 
       {/* Main hero content */}
-      <div className="relative flex-1 flex items-center max-w-[1200px] mx-auto w-full px-4 sm:px-6 md:px-8 pt-28 lg:pt-8 pb-0">
+      <div className="relative flex-1 flex items-center max-w-[1568px] mx-auto w-full  pt-28 lg:pt-8 pb-0">
 
         <div className="relative z-10 min-h-screen w-full grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
 
@@ -136,7 +137,9 @@ export function Hero() {
       </div>
 
       {/* Features bar — bottom strip */}
-      <motion.div
+      
+    </section>
+    <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
@@ -160,6 +163,6 @@ export function Hero() {
           ))}
         </div>
       </motion.div>
-    </section>
+    </div>
   );
 }

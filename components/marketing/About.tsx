@@ -27,14 +27,14 @@ const pains = [
 
 export function About() {
   return (
-    <section id="about" className="bg-[#171717] py-20 md:py-28">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+    <section id="about" className="bg-[#0F0F0F] py-10 px-8 md:py-16">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         <div className="text-center mb-12 md:mb-16">
-          <p className="text-[#C8E646] text-sm mb-5 tracking-wide">
+          <p className="text-[#C8E646] text-[16px] mb-5 tracking-wide">
             Kommt Ihnen das bekannt vor?
           </p>
-          <h2 className="text-white text-[2rem] md:text-[2.8rem] leading-tight">
+          <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight">
             Warum Sie — und so viele andere — immer noch ohne Website arbeiten.
 Und was das jeden Monat wirklich kostet.
           </h2>
@@ -55,8 +55,8 @@ Und was das jeden Monat wirklich kostet.
   transition-all duration-300
 `}
             >
-              <h3 className="text-white text-[1.1rem] mb-3">{pain.title}</h3>
-              <p className="text-white/45 text-sm leading-relaxed">{pain.desc}</p>
+              <h3 className="text-white text-[16px] sm:text-[20px] mb-3">{pain.title}</h3>
+              <p className="text-[#888888] text-[14px] sm:text-[16px] leading-relaxed">{pain.desc}</p>
             </motion.div>
           ))}
         </div>

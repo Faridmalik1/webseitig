@@ -15,7 +15,7 @@ import { Testimonials } from "@/components/marketing/Testimonials";
 
 export function MarketingSite() {
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-[#171717]">
+    <div className="min-h-[100dvh] flex flex-col bg-[#0F0F0F]">
       <Navbar />
       <main className="flex-grow">
         <Hero />
