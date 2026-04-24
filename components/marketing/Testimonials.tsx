@@ -82,7 +82,7 @@ export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const animFrameRef = useRef<number>();
+  const animFrameRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
   const pausedRef = useRef(false);
   const isStepping = useRef(false);
