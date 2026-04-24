@@ -24,7 +24,7 @@ export function Navbar() {
 
   return (
     <nav
-  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2
     bg-black/10 backdrop-blur-xl
     border-b border-[#262626]
     shadow-[0_8px_32px_rgba(0,0,0,0.25)]
@@ -49,7 +49,7 @@ export function Navbar() {
           {/* CTA — hidden on small mobile, shown from sm breakpoint */}
           <button
   onClick={open}
-  className="group hidden sm:inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-sm px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+  className="group hidden sm:inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
   data-testid="button-cta"
 >
   <span className="hidden md:inline">Kostenlose Beratung anfragen</span>

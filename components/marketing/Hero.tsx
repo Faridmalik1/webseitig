@@ -47,13 +47,13 @@ export function Hero() {
             <h1 className="text-[28px] sm:text-[32px] lg:text-[68px] leading-[1.05] text-white mb-5 sm:mb-6">
               Jeden Tag ohne Website verlieren Sie Kunden — an die Konkurrenz.
             </h1>
-            <p className="text-[#888888] text-[16px] sm:text-[24] leading-relaxed max-w-[480px] mb-7 sm:mb-8">
+            <p className="text-[#888888] text-[16px] md:text-[24px] leading-relaxed max-w-[600px] mb-7 sm:mb-8">
               Wir bauen Ihre professionelle Website in 7 Tagen. Keine Vorauszahlung. Kein technisches Wissen. Alles inklusive — kündbar nach 12 Monaten.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
                 onClick={open}
-                className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8E646] text-[#171717] text-[16px] md:text-[20px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
+                className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8E646] text-[#171717] text-[16px] md:!text-[20px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
               >
                 Jetzt kostenlos anfragen
 
@@ -63,11 +63,11 @@ export function Hero() {
                   className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
                 />
               </button>
-              <p className="text-[#888888] text-[16px] sm:text-[20]">
+              <p className="text-[#888888] text-[16px] md:text-[20px]">
                 Über 40 Unternehmen in der Schweiz vertrauen uns — von Zürich bis St. Gallen.
               </p>
             </div>
-            <div className="text-[#888888] flex gap-2 mt-6 text-[16px] sm:text-[20]">
+            <div className="text-[#888888] flex gap-2 mt-6 text-[16px] md:text-[20px]">
                <img
                 src="/star.svg"
                 alt="Stars"
@@ -109,16 +109,17 @@ export function Hero() {
                   className="absolute inset-0 rounded-2xl pointer-events-none"
                   style={{
                     background: "radial-gradient(circle at 70% 30%, rgba(100,160,30,0.12) 0%, transparent 70%)",
+                    
                   }}
                 />
                 <p className="text-[#888888] text-[14px] md:text-[18px] uppercase tracking-widest mb-2">
                   AB NUR
                 </p>
                 <div className="flex gap-2 items-center">
-                  <p className="text-[#C8E646] font-extrabold text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
+                  <p className="font-paytone text-[#C8E646] font-medium text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
                     CHF
                   </p>
-                  <p className="text-[#C8E646] font-extrabold text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
+                  <p className="font-paytone text-[#C8E646] font-medium text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
                     179
                   </p>
                 </div>
