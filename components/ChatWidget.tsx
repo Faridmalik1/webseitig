@@ -2,39 +2,58 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MessageSquare, X } from "lucide-react";
-import { getAnswer } from "@/lib/chat-knowledge";
+import { getAnswer, type LeadData } from "@/lib/chat-knowledge";
 // import { getAnswer } from "../lib/chat-knowledge";
+
+type ChatMessage = {
+  role: "user" | "assistant";
+  text: string;
+  options?: string[];
+};
 
 export function ChatWidget() {
   const [question, setQuestion] = useState("");
-  const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [leadData, setLeadData] = useState<LeadData | undefined>(undefined);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToBottom = () => {
-  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-};
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
-useEffect(() => {
-  scrollToBottom();
-}, [messages, loading]);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, loading]);
 
-  const canSend = question.trim().length > 0;
+  const canSend = question.trim().length > 0 && !loading;
 
-  async function sendQuestion() {
-    if (!canSend) return;
+  async function sendQuestion(presetQuestion?: string) {
+    const outgoingText = (presetQuestion ?? question).trim();
+    if (!outgoingText || loading) return;
 
-    const userMessage = { role: "user" as const, text: question.trim() };
+    const userMessage = { role: "user" as const, text: outgoingText };
     setMessages((prev) => [...prev, userMessage]);
     setLoading(true);
-    setQuestion("");
+
+    if (!presetQuestion) {
+      setQuestion("");
+    }
 
     try {
-      const answer = await getAnswer(userMessage.text);
-      setMessages((prev) => [...prev, { role: "assistant", text: answer }]);
+      const answer = await getAnswer(userMessage.text, leadData);
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", text: answer.message, options: answer.options },
+      ]);
+      setLeadData(answer.leadData);
     } catch (error) {
-      setMessages((prev) => [...prev, { role: "assistant", text: "Sorry, something went wrong. Please try again." }]);
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", text: "Sorry, something went wrong. Please try again." },
+      ]);
+      setLeadData(undefined);
     } finally {
       setLoading(false);
     }
@@ -43,11 +62,11 @@ useEffect(() => {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
       {isOpen && (
-        <div className="w-[calc(100vw-3rem)] max-w-[320px] h-[420px] flex flex-col rounded-3xl border border-slate-700 bg-slate-800 shadow-2xl sm:w-[320px]">
+        <div className="flex h-[420px] w-[calc(100vw-3rem)] max-w-[320px] flex-col rounded-3xl border border-white/10 bg-[#0F0F0F] shadow-2xl sm:w-[320px]">
           {/* Header */}
-          <div className="flex items-center justify-between rounded-t-3xl bg-slate-950 px-4 py-3 text-white">
+          <div className="flex items-center justify-between rounded-t-3xl bg-[#0F0F0F] border-b border-white/10 px-4 py-3 text-white">
             <div className="flex items-center gap-2 text-sm font-semibold">
-              <MessageSquare className="h-5 w-5 text-[#C8F135]" />
+              <MessageSquare className="h-5 w-5 text-[#C8E646]" />
               Seiten-Chat
             </div>
             <button
@@ -55,14 +74,14 @@ useEffect(() => {
               aria-label="Close chat"
               className="rounded-full border border-white/15 p-1 hover:bg-white/10"
             >
-              <X className="h-4 w-4 text-slate-400" />
+              <X className="h-4 w-4 text-[#888888]" />
             </button>
           </div>
 
           {/* Messages */}
           <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4 text-sm">
             {messages.length === 0 ? (
-              <div className="text-slate-400">
+              <div className="text-[#888888]">
                 Hallo! Ich bin der Chatbot von webseitig. Wie kann ich dir helfen? Frage mich nach Services, Preisen oder Kontakt.
               </div>
             ) : (
@@ -74,19 +93,33 @@ useEffect(() => {
                   <div
                     className={
                       msg.role === "user"
-                        ? "max-w-[80%] rounded-2xl bg-[#C8F135] px-3 py-2 text-black"
-                        : "max-w-[80%] rounded-2xl bg-slate-700 px-3 py-2 text-slate-200"
+                        ? "max-w-[80%] rounded-2xl bg-[#C8E646] px-3 py-2 text-black"
+                        : "max-w-[80%] rounded-2xl bg-white/5 px-3 py-2 text-white"
                     }
                   >
                     {msg.text}
+                    {msg.role === "assistant" && msg.options?.length ? (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {msg.options.map((option) => (
+                          <button
+                            key={`${idx}-${option}`}
+                            onClick={() => sendQuestion(option)}
+                            disabled={loading}
+                            className="rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-xs text-white hover:border-[#C8E646] hover:text-[#C8E646] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+                          >
+                            {option}
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ))
             )}
             {loading && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] rounded-2xl bg-slate-700 px-3 py-2 text-slate-400">
-                  Tippen…
+                <div className="max-w-[80%] rounded-2xl bg-white/5 px-3 py-2 text-[#888888]">
+                  Tippen...
                 </div>
               </div>
             )}
@@ -94,7 +127,7 @@ useEffect(() => {
           </div>
 
           {/* Input */}
-          <div className="rounded-b-3xl border-t border-slate-700 bg-slate-800 px-4 py-3">
+          <div className="rounded-b-3xl border-t border-white/10 bg-[#0F0F0F] px-4 py-3">
             <div className="flex items-center gap-2">
               <input
                 value={question}
@@ -102,13 +135,13 @@ useEffect(() => {
                 onKeyDown={(event) => {
                   if (event.key === "Enter") sendQuestion();
                 }}
-                className="min-w-0 flex-1 rounded-full border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-[#C8F135]"
+                className="min-w-0 flex-1 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder-[#888888] outline-none focus:border-[#C8E646]"
                 placeholder="Ask a question..."
               />
               <button
-                onClick={sendQuestion}
-                disabled={!canSend || loading}
-                className="shrink-0 rounded-full bg-[#C8F135] px-4 py-2 text-sm text-black transition hover:bg-[#B8E125] disabled:cursor-not-allowed disabled:opacity-50"
+                onClick={() => sendQuestion()}
+                disabled={!canSend}
+                className="shrink-0 rounded-full bg-[#C8E646] px-4 py-2 text-sm text-black transition hover:bg-[#d4f050] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Senden
               </button>
@@ -121,7 +154,7 @@ useEffect(() => {
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-label="Open site chat"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#B8E125] text-white shadow-xl"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#C8E646] text-black shadow-xl hover:bg-[#d4f050] transition"
       >
         <MessageSquare className="h-6 w-6 text-white" />
       </button>

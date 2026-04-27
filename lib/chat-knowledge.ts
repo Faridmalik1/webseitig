@@ -3,6 +3,22 @@ export type KnowledgeEntry = {
   answer: string;
 };
 
+export type LeadStep = "start" | "name" | "email" | "phone" | "branche" | "confirm";
+
+export type LeadData = {
+  step: LeadStep;
+  name?: string;
+  email?: string;
+  phone?: string;
+  branche?: string;
+};
+
+export type ChatResponse = {
+  message: string;
+  options?: string[];
+  leadData?: LeadData;
+};
+
 export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   // Conversational responses
   {
@@ -27,7 +43,7 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   },
   // Company and brand
   {
-    keywords: ["webseitig", "web-seitig", "company"] ,
+    keywords: ["webseitig", "web-seitig", "company"],
     answer:
       "webseitig bieten professionelle Website-Erstellung, Design, Hosting und laufende Betreuung für Schweizer KMU.",
   },
@@ -133,48 +149,362 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   },
 ];
 
+const FALLBACK_ANSWER =
+  "Das ist eine interessante Frage, aber ich habe nur Informationen zu webseitig und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
+
+const LEAD_START_OPTIONS = ["Ja, Formular starten", "Nein, danke"];
+const LEAD_CONFIRM_OPTIONS = ["Absenden", "Neu starten", "Abbrechen"];
+const BRANCHE_CHOICES = [
+  { value: "Handwerk & Bau", aliases: ["handwerk", "bau", "construction"] },
+  { value: "Gastronomie & Food", aliases: ["gastro", "restaurant", "food"] },
+  { value: "Kosmetik & Beauty", aliases: ["kosmetik", "beauty", "salon"] },
+  { value: "Gesundheit & Fitness", aliases: ["gesundheit", "fitness", "health"] },
+  { value: "Einzelhandel", aliases: ["einzelhandel", "retail", "shop"] },
+  { value: "Dienstleistung & Beratung", aliases: ["dienstleistung", "beratung", "service"] },
+  { value: "Immobilien", aliases: ["immobilien", "real estate"] },
+  { value: "Andere", aliases: ["andere", "sonstige", "other"] },
+];
+
+const BRANCHE_OPTIONS = BRANCHE_CHOICES.map((entry) => entry.value);
+const LEAD_INTENT_KEYWORDS = [
+  "form",
+  "formular",
+  "form submission",
+  "submit form",
+  "lead form",
+  "formular ausfuellen",
+  "formular ausfüllen",
+  "formular senden",
+  "anfrage stellen",
+  "anfrage senden",
+  "angebot anfragen",
+  "angebot anfordern",
+  "offerte",
+  "rueckruf",
+  "rückruf",
+  "projekt starten",
+  "kontakt",
+  "contact",
+  "anfrage",
+  "request",
+];
+
+function normalizeInput(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function normalizeForCompare(value: string): string {
+  return normalizeInput(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function isAffirmative(value: string): boolean {
+  const startsWithToken = ["ja", "yes", "ok", "okay", "klar"].some(
+    (token) => value === token || value.startsWith(`${token} `),
+  );
+
+  return (
+    startsWithToken ||
+    value.includes("formular starten") ||
+    value.includes("starten") ||
+    value.includes("absenden") ||
+    value.includes("senden")
+  );
+}
+
+function isNegative(value: string): boolean {
+  return (
+    value === "nein" ||
+    value === "no" ||
+    value.startsWith("nein") ||
+    value.startsWith("no") ||
+    value.includes("abbrechen") ||
+    value.includes("danke") && value.includes("nein")
+  );
+}
+
+function isSkipEmail(value: string): boolean {
+  return (
+    value === "skip" ||
+    value === "überspringen" ||
+    value === "ueberspringen" ||
+    value === "nein" ||
+    value === "keine"
+  );
+}
+
+function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isValidPhone(value: string): boolean {
+  const compact = value.replace(/\s+/g, "");
+  return /^[\d+()\-/.]{6,}$/.test(compact);
+}
+
+function isLeadIntent(normalizedQuestion: string): boolean {
+  return LEAD_INTENT_KEYWORDS.some((keyword) => normalizedQuestion.includes(keyword));
+}
+
+function resolveBranche(input: string): string | undefined {
+  const normalized = normalizeForCompare(input);
+  if (!normalized) {
+    return undefined;
+  }
+
+  for (const choice of BRANCHE_CHOICES) {
+    const normalizedValue = normalizeForCompare(choice.value);
+    if (
+      normalized === normalizedValue ||
+      normalized.includes(normalizedValue) ||
+      normalizedValue.includes(normalized)
+    ) {
+      return choice.value;
+    }
+
+    if (choice.aliases.some((alias) => normalized.includes(normalizeForCompare(alias)))) {
+      return choice.value;
+    }
+  }
+
+  return undefined;
+}
+
+function formatLeadSummary(leadData: LeadData): string {
+  return [
+    "Bitte bestaetige deine Angaben:",
+    `Name: ${leadData.name ?? "-"}`,
+    `E-Mail: ${leadData.email ?? "Nicht angegeben"}`,
+    `Telefon: ${leadData.phone ?? "-"}`,
+    `Branche: ${leadData.branche ?? "-"}`,
+  ].join("\n");
+}
+
+async function submitLeadForm(leadData: LeadData): Promise<ChatResponse> {
+  if (!leadData.name || !leadData.phone || !leadData.branche) {
+    return {
+      message:
+        "Ein paar Pflichtfelder fehlen noch. Wir starten das Formular neu. Wie ist dein Name?",
+      leadData: { step: "name" },
+    };
+  }
+
+  try {
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: leadData.name,
+        email: leadData.email,
+        phone: leadData.phone,
+        branche: leadData.branche,
+        source: "chatbot",
+      }),
+    });
+
+    if (!response.ok) {
+      const errorPayload = await response.json().catch(() => null);
+      console.error("Lead submission failed:", response.status, errorPayload);
+      return {
+        message:
+          "Die Uebermittlung hat gerade nicht geklappt. Bitte versuche es nochmal oder waehle Neu starten.",
+        options: LEAD_CONFIRM_OPTIONS,
+        leadData: { ...leadData, step: "confirm" },
+      };
+    }
+
+    return {
+      message:
+        "Perfekt, danke! Deine Anfrage wurde erfolgreich uebermittelt. Unser Team meldet sich so schnell wie moeglich.",
+    };
+  } catch (error) {
+    console.error("Lead submission error:", error);
+    return {
+      message:
+        "Ich konnte die Anfrage gerade nicht senden. Bitte versuche es in einem Moment erneut.",
+      options: LEAD_CONFIRM_OPTIONS,
+      leadData: { ...leadData, step: "confirm" },
+    };
+  }
+}
+
+async function handleLeadCollection(question: string, currentLeadData: LeadData): Promise<ChatResponse> {
+  const answer = question.trim();
+  const normalized = normalizeInput(answer);
+
+  switch (currentLeadData.step) {
+    case "start":
+      if (isAffirmative(normalized)) {
+        return {
+          message: "Super, dann legen wir los. Wie ist dein Name?",
+          leadData: { step: "name" },
+        };
+      }
+
+      if (isNegative(normalized)) {
+        return {
+          message:
+            "Alles klar. Wenn du spaeter eine Anfrage senden moechtest, sag einfach Bescheid.",
+        };
+      }
+
+      return {
+        message:
+          "Ich kann dein Lead-Formular direkt hier im Chat aufnehmen. Soll ich starten?",
+        options: LEAD_START_OPTIONS,
+        leadData: { step: "start" },
+      };
+
+    case "name":
+      if (answer.length < 2) {
+        return {
+          message: "Bitte gib einen gueltigen Namen ein.",
+          leadData: currentLeadData,
+        };
+      }
+
+      return {
+        message:
+          "Danke! Gib bitte deine E-Mail-Adresse ein (optional) oder waehle Ueberspringen.",
+        options: ["Ueberspringen"],
+        leadData: { ...currentLeadData, step: "email", name: answer },
+      };
+
+    case "email":
+      if (isSkipEmail(normalized) || answer.length === 0) {
+        return {
+          message: "Alles klar. Wie lautet deine Telefonnummer?",
+          leadData: { ...currentLeadData, step: "phone", email: undefined },
+        };
+      }
+
+      if (!isValidEmail(answer)) {
+        return {
+          message: "Bitte gib eine gueltige E-Mail-Adresse ein oder waehle Ueberspringen.",
+          options: ["Ueberspringen"],
+          leadData: currentLeadData,
+        };
+      }
+
+      return {
+        message: "Danke! Wie lautet deine Telefonnummer?",
+        leadData: { ...currentLeadData, step: "phone", email: answer },
+      };
+
+    case "phone":
+      if (!isValidPhone(answer)) {
+        return {
+          message: "Bitte gib eine gueltige Telefonnummer ein.",
+          leadData: currentLeadData,
+        };
+      }
+
+      return {
+        message: "Top. Waehle jetzt bitte deine Branche:",
+        options: BRANCHE_OPTIONS,
+        leadData: { ...currentLeadData, step: "branche", phone: answer },
+      };
+
+    case "branche": {
+      const branche = resolveBranche(answer);
+      if (!branche) {
+        return {
+          message: "Bitte waehle eine der Branchen-Optionen.",
+          options: BRANCHE_OPTIONS,
+          leadData: currentLeadData,
+        };
+      }
+
+      const completedLead: LeadData = {
+        ...currentLeadData,
+        step: "confirm",
+        branche,
+      };
+
+      return {
+        message: formatLeadSummary(completedLead),
+        options: LEAD_CONFIRM_OPTIONS,
+        leadData: completedLead,
+      };
+    }
+
+    case "confirm":
+      if (normalized.includes("neu starten") || normalized.includes("restart")) {
+        return {
+          message: "Kein Problem, wir starten neu. Wie ist dein Name?",
+          leadData: { step: "name" },
+        };
+      }
+
+      if (isNegative(normalized)) {
+        return {
+          message:
+            "Verstanden. Ich habe die Uebermittlung abgebrochen. Wenn du wieder starten willst, sag einfach Bescheid.",
+        };
+      }
+
+      if (isAffirmative(normalized)) {
+        return submitLeadForm(currentLeadData);
+      }
+
+      return {
+        message: "Bitte waehle eine Option zum Abschliessen.",
+        options: LEAD_CONFIRM_OPTIONS,
+        leadData: currentLeadData,
+      };
+
+    default:
+      return {
+        message: "Lass uns frisch starten. Wie ist dein Name?",
+        leadData: { step: "name" },
+      };
+  }
+}
 
 async function callAIAPI(question: string): Promise<string> {
   const relevant = KNOWN_ANSWERS
-  .filter(entry =>
-    entry.keywords.some(k =>
-      question.toLowerCase().includes(k)
-    )
-  )
-  .slice(0, 3); // limit to 3 matches
+    .filter((entry) => entry.keywords.some((k) => question.toLowerCase().includes(k)))
+    .slice(0, 3); // limit to 3 matches
 
-const knowledgeText = relevant.length
-  ? relevant.map(e => e.answer).join("\n")
-  : "No relevant knowledge found.";
+  const knowledgeText = relevant.length
+    ? relevant.map((e) => e.answer).join("\n")
+    : "No relevant knowledge found.";
 
   if (!relevant.length) {
     return FALLBACK_ANSWER;
   }
 
   try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question, knowledgeText }),
     });
 
     // First, read as text
     const responseText = await response.text();
 
-   let data;
-try {
-  data = JSON.parse(responseText);
-} catch (e) {
-  console.error("Failed to parse API response:", responseText);
-  return FALLBACK_ANSWER;
-}
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (e) {
+      console.error("Failed to parse API response:", responseText);
+      return FALLBACK_ANSWER;
+    }
 
     if (!response.ok) {
       const errorMsg = data?.error || responseText || "Unknown error";
-      
-      if (errorMsg.includes("loading") || errorMsg.includes("Loading") || 
-          errorMsg.includes("No Inference Provider") || errorMsg.includes("Not Found")) {
-        return 'Das Modell wird gerade geladen. Bitte versuche es in 20 Sekunden erneut.';
+
+      if (
+        errorMsg.includes("loading") ||
+        errorMsg.includes("Loading") ||
+        errorMsg.includes("No Inference Provider") ||
+        errorMsg.includes("Not Found")
+      ) {
+        return "Das Modell wird gerade geladen. Bitte versuche es in 20 Sekunden erneut.";
       }
 
       console.warn(`API route error (${response.status}): ${errorMsg}`);
@@ -182,39 +512,52 @@ try {
     }
 
     // Extract generated text (handle different possible formats)
-    const generatedText = data?.[0]?.generated_text || 
-                         data?.generated_text || 
-                         responseText;
+    const generatedText = data?.[0]?.generated_text || data?.generated_text || responseText;
 
-    return generatedText && generatedText.length > 15 
-      ? generatedText.trim() 
+    return generatedText && generatedText.length > 15
+      ? generatedText.trim()
       : FALLBACK_ANSWER;
-
   } catch (error) {
-    console.error('AI API fetch error:', error);
+    console.error("AI API fetch error:", error);
     return FALLBACK_ANSWER;
   }
 }
-const FALLBACK_ANSWER =
-  "Das ist eine interessante Frage, aber ich habe nur Informationen zu webseitig und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
 
-export function getAnswer(question: string): Promise<string> {
+export async function getAnswer(question: string, currentLeadData?: LeadData): Promise<ChatResponse> {
   const normalized = question.toLowerCase();
+
+  if (currentLeadData?.step) {
+    return handleLeadCollection(question, currentLeadData);
+  }
+
+  if (isLeadIntent(normalized)) {
+    return {
+      message:
+        "Gerne. Ich kann das gleiche Lead-Formular direkt im Chat fuer dich ausfuellen. Soll ich starten?",
+      options: LEAD_START_OPTIONS,
+      leadData: { step: "start" },
+    };
+  }
+
   // First, try exact keyword match
   const exactMatch = KNOWN_ANSWERS.find((entry) =>
-    entry.keywords.some((keyword) => normalized.includes(keyword))
+    entry.keywords.some((keyword) => normalized.includes(keyword)),
   );
-  if (exactMatch) return Promise.resolve(exactMatch.answer);
+  if (exactMatch) {
+    return { message: exactMatch.answer };
+  }
 
   // Fuzzy match: check if question contains parts of keywords
   const fuzzyMatch = KNOWN_ANSWERS.find((entry) =>
     entry.keywords.some((keyword) => {
-      const keywordParts = keyword.split(' ');
-      return keywordParts.some(part => normalized.includes(part) && part.length > 2);
-    })
+      const keywordParts = keyword.split(" ");
+      return keywordParts.some((part) => normalized.includes(part) && part.length > 2);
+    }),
   );
-  if (fuzzyMatch) return Promise.resolve(fuzzyMatch.answer);
+  if (fuzzyMatch) {
+    return { message: fuzzyMatch.answer };
+  }
 
   // If no match, call AI API
-  return callAIAPI(question);
+  return { message: await callAIAPI(question) };
 }

@@ -60,7 +60,22 @@ export async function POST(req: Request) {
       return asChatResponse(FALLBACK_CHAT_TEXT);
     }
 
-    return Response.json(data);
+    // Guard against null or malformed HF response
+    if (!data) {
+      console.error("HF returned empty/unparseable body");
+      return asChatResponse(FALLBACK_CHAT_TEXT);
+    }
+
+    const generatedText = Array.isArray(data)
+      ? data[0]?.generated_text
+      : data?.generated_text;
+
+    if (!generatedText || typeof generatedText !== "string") {
+      console.error("Unexpected HF response shape:", data);
+      return asChatResponse(FALLBACK_CHAT_TEXT);
+    }
+
+    return Response.json([{ generated_text: generatedText }]);
   } catch (error: unknown) {
     console.error("API route error:", error);
     return asChatResponse(FALLBACK_CHAT_TEXT);
