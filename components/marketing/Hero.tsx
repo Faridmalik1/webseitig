@@ -145,7 +145,8 @@ export function Hero() {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="w-full bg-[#0F0F0F]"
     >
-      <div className="max-w-[1728px] mx-auto bg-[#151515] rounded-lg">
+      <div className="w-full bg-[#151515]">
+        <div className="max-w-[1728px] mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center text-center gap-3 py-8 px-4">
@@ -156,6 +157,7 @@ export function Hero() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </motion.div>
     </div>
