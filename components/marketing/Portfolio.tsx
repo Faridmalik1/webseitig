@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -57,7 +57,7 @@ const projects = [
     num: "07",
     name: "Voltarc",
     image: "/projects/voltarc.svg",
-    desc: " Professionelle Elektroinstallationen, Photovoltaik und Smart-Home. Höchste Präzision und Sicherheit für Ihre elektrischen Projekte.",
+    desc: "Professionelle Elektroinstallationen, Photovoltaik und Smart-Home. Höchste Präzision und Sicherheit für Ihre elektrischen Projekte.",
     stack: ["Next.js", "Node.js", "HubSpot CRM"],
     days: "7 Tage",
   },
@@ -104,10 +104,13 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         />
       </div>
 
-      {/* Details */}
       <div className="p-6 flex flex-col">
-        <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">{project.name}</h3>
-        <p className="text-[#888888] sm:text-[14px] md:text-[16px]  leading-relaxed mb-5">{project.desc}</p>
+        <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">
+          {project.name}
+        </h3>
+        <p className="text-[#888888] sm:text-[14px] md:text-[16px] leading-relaxed mb-5">
+          {project.desc}
+        </p>
 
         <div className="mb-5">
           <p className="text-white sm:text-[16px] md:text-[20px] mb-2 font-medium">Tech-Stack</p>
@@ -125,7 +128,9 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
         <div className="mt-auto flex items-center justify-between pt-4">
           <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium">Zeitleiste</p>
-          <p className="text-[#C8E646] text-[16px] sm:text-[18px] md:text-[20px] font-medium">{project.days}</p>
+          <p className="text-[#C8E646] text-[16px] sm:text-[18px] md:text-[20px] font-medium">
+            {project.days}
+          </p>
         </div>
       </div>
     </div>
@@ -136,8 +141,6 @@ export function Portfolio() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isMd, setIsMd] = useState(false);
-  const [containerHeight, setContainerHeight] = useState(560);
-  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
@@ -147,24 +150,10 @@ export function Portfolio() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  // Measure card grid height and update on resize or slide change
-  useEffect(() => {
-    const measure = () => {
-      if (cardRef.current) {
-        setContainerHeight(cardRef.current.offsetHeight);
-      }
-    };
-
-    // Small delay to let the DOM settle after animation starts
-    const timeout = setTimeout(measure, 50);
-    window.addEventListener("resize", measure);
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener("resize", measure);
-    };
-  }, [current, isMd]);
-
   const total = projects.length;
+
+  // On desktop show pairs, step by 2. On mobile show 1, step by 1.
+  const step = 1;
 
   const goTo = useCallback(
     (idx: number) => {
@@ -174,20 +163,18 @@ export function Portfolio() {
     [current]
   );
 
-  const prev = () => goTo((current - 1 + total) % total);
-  const next = () => goTo((current + 1) % total);
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setDirection(1);
-  //     setCurrent((c) => (c + 1) % total);
-  //   }, 4500);
-  //   return () => clearInterval(timer);
-  // }, [total]);
+ const prev = () => goTo((current - 1 + total) % total);
+const next = () => goTo((current + 1) % total);
 
   const visibleProjects = isMd
-    ? [projects[current], projects[(current + 1) % total]]
-    : [projects[current]];
+  ? [
+      projects[current],
+      projects[(current + 1) % total]
+    ]
+  : [projects[current]];
+
+  // Dots: one per step
+ const dots = projects;
 
   return (
     <section id="portfolio" className="bg-[#0F0F0F] py-10 md:py-16 px-4 md:px-8">
@@ -206,21 +193,16 @@ export function Portfolio() {
           </div>
         </div>
 
-        {/* Cards grid */}
-        <div
-          className="relative mb-6 mt-10"
-          style={{ minHeight: containerHeight }}
-        >
+        {/* Cards grid — natural height, no absolute positioning */}
+        <div className="relative mt-10 mb-6 overflow-hidden">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current}
-              ref={cardRef}
               initial={{ opacity: 0, x: direction * 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction * -40 }}
               transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
               className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
-              style={{ position: "absolute", width: "100%" }}
             >
               {visibleProjects.map((project) => (
                 <ProjectCard key={project.num} project={project} />
@@ -230,7 +212,7 @@ export function Portfolio() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6">
           <button
             onClick={prev}
             className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
@@ -239,18 +221,18 @@ export function Portfolio() {
           </button>
 
           <div className="flex gap-2 items-center">
-            {projects.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === current
-                    ? "bg-[#C8E646] w-5 h-2.5"
-                    : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
-                }`}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
+           {dots.map((_, i) => (
+  <button
+    key={i}
+    onClick={() => goTo(i)}           // ← now directly go to that index
+    className={`rounded-full transition-all duration-300 ${
+      i === current                   // ← compare with current, not dotIndex
+        ? "bg-[#C8E646] w-5 h-2.5"
+        : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
+    }`}
+    aria-label={`Slide ${i + 1}`}
+  />
+))}
           </div>
 
           <button

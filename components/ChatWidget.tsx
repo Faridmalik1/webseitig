@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MessageSquare, X } from "lucide-react";
 import { getAnswer } from "../lib/chat-knowledge";
 
@@ -9,6 +9,15 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+};
+
+useEffect(() => {
+  scrollToBottom();
+}, [messages, loading]);
 
   const canSend = question.trim().length > 0;
 
@@ -33,7 +42,7 @@ export function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
       {isOpen && (
-        <div className="w-[calc(100vw-3rem)] max-w-[320px] rounded-3xl border border-slate-700 bg-slate-800 shadow-2xl sm:w-[320px]">
+        <div className="w-[calc(100vw-3rem)] max-w-[320px] h-[420px] flex flex-col rounded-3xl border border-slate-700 bg-slate-800 shadow-2xl sm:w-[320px]">
           {/* Header */}
           <div className="flex items-center justify-between rounded-t-3xl bg-slate-950 px-4 py-3 text-white">
             <div className="flex items-center gap-2 text-sm font-semibold">
@@ -50,7 +59,7 @@ export function ChatWidget() {
           </div>
 
           {/* Messages */}
-          <div className="max-h-60 space-y-3 overflow-y-auto px-4 py-4 text-sm sm:max-h-80">
+          <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4 text-sm">
             {messages.length === 0 ? (
               <div className="text-slate-400">
                 Hallo! Ich bin der Chatbot von webseitig. Wie kann ich dir helfen? Frage mich nach Services, Preisen oder Kontakt.
@@ -80,6 +89,7 @@ export function ChatWidget() {
                 </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input */}

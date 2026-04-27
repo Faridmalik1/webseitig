@@ -27,8 +27,9 @@ const steps = [
 
 export function Features() {
   return (
-    <section id="features" className="bg-[#151515] py-10 md:py-16 px-4 md:px-8">
-      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+    <section id="features" className="max-w-[1568px] mx-auto px-6 md:px-8">
+    <div  className="bg-[#151515] py-10 md:py-16 px-4 md:px-8 rounded-lg">
+      <div className="">
 
         {/* Badge + heading */}
         <div className="text-center mb-14 md:mb-18">
@@ -76,6 +77,7 @@ export function Features() {
           ))}
         </div>
       </div>
+    </div>
     </section>
   );
 }
