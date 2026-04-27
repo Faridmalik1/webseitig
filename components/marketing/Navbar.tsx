@@ -39,7 +39,7 @@ export function Navbar() {
           href="/"
           className="text-white flex items-center gap-2 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
         >
-          <img src="/NavbarLogo.svg" alt="Logo" className="h-36 w-36 " />
+          <img src="/NavbarLogo.svg" alt="Logo" className="h-36 w-36" />
           {/* <div style={{ fontFamily: "var(--font-paytone)" }}>
             web<span className="text-[#C8E646]">.</span>seitig
           </div> */}

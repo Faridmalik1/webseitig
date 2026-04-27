@@ -13,6 +13,7 @@ import {
   type StatsResponse,
 } from "@/lib/api-client";
 import LeadDrawer from "@/components/crm/LeadDrawer";
+import Pagination from "@/components/Pagination"; // adjust path as needed
 import Link from "next/link";
 
 const STATUS_LABELS: Record<string, string> = {
@@ -56,7 +57,7 @@ type DashboardProps = {
 };
 
 function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("de-CH", {
+  return new Date(iso).toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "2-digit",
     year: "2-digit",
@@ -74,9 +75,14 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
   const [searchInput, setSearchInput] = useState("");
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
+  // ── Pagination state ──────────────────────────────────────────────────────
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(10);
+  // ─────────────────────────────────────────────────────────────────────────
+
   async function logout() {
     await fetch("/api/auth/logout", { method: "POST" });
-    router.push("/crm");
+    router.push("/");
     router.refresh();
   }
 
@@ -85,13 +91,21 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
     try {
       const [statsData, leadData] = await Promise.all([
         getStats(),
-        getLeads({ status: statusFilter, search }),
+        getLeads({
+          status: statusFilter,
+          search,
+          // Pass pagination params to your API — add these fields to getLeads() if not already supported
+          page: currentPage,
+          limit: recordsPerPage,
+        }),
       ]);
       setStats(statsData);
       setLeads(leadData.leads);
       setTotal(leadData.total);
       setSelectedLead((current) =>
-        current ? leadData.leads.find((lead) => lead._id === current._id) ?? null : null,
+        current
+          ? leadData.leads.find((lead) => lead._id === current._id) ?? null
+          : null,
       );
     } catch (error: unknown) {
       if (error instanceof Error && error.message === "UNAUTHORIZED") {
@@ -101,11 +115,16 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
     } finally {
       setLoading(false);
     }
-  }, [router, search, statusFilter]);
+  }, [router, search, statusFilter, currentPage, recordsPerPage]);
 
   useEffect(() => {
     void fetchData();
   }, [fetchData]);
+
+  // Reset to page 1 whenever filters or search change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [statusFilter, search]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setSearch(searchInput), 350);
@@ -115,10 +134,12 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
   async function handleStatusChange(lead: Lead, status: LeadStatus) {
     try {
       const { lead: updated } = await updateLead(lead._id, { status });
-      setLeads((previous) => previous.map((item) => (item._id === updated._id ? updated : item)));
+      setLeads((previous) =>
+        previous.map((item) => (item._id === updated._id ? updated : item)),
+      );
       if (selectedLead?._id === updated._id) setSelectedLead(updated);
       void fetchData();
-    } catch { }
+    } catch {}
   }
 
   async function handleDelete(lead: Lead) {
@@ -131,7 +152,9 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
 
   async function handleNotesSave(lead: Lead, notes: string) {
     const { lead: updated } = await updateLead(lead._id, { notes });
-    setLeads((previous) => previous.map((item) => (item._id === updated._id ? updated : item)));
+    setLeads((previous) =>
+      previous.map((item) => (item._id === updated._id ? updated : item)),
+    );
     setSelectedLead(updated);
   }
 
@@ -140,12 +163,9 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
       <header className="border-b border-white/[0.07] px-4 sm:px-6 py-4 flex items-center justify-between shrink-0">
         <Link
           href="/"
-          className="text-white flex gap-3 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
+          className="text-white flex items-center gap-2 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
         >
-          <img src="/FooterLogo.svg" alt="Logo" className="w-6 h-6" />
-          <div style={{ fontFamily: "var(--font-paytone)" }}>
-            web<span className="text-[#C8E646]">.</span>seitig
-          </div>
+          <img src="/NavbarLogo.svg" alt="Logo" className="w-36" />
         </Link>
         <button
           onClick={() => void logout()}
@@ -156,6 +176,7 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
       </header>
 
       <div className="flex-1 px-4 sm:px-6 py-5 sm:py-6 max-w-7xl mx-auto w-full">
+        {/* ── Stats ── */}
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3 mb-6 sm:mb-8">
           {Object.entries({
             total: stats?.total ?? 0,
@@ -170,28 +191,34 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
               className="bg-[#1c1c1c] border border-white/[0.07] rounded-xl p-3 sm:p-4"
             >
               <div className="flex items-center gap-1.5 mb-1.5 sm:mb-2">
-                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${STAT_STYLES[key]?.dot}`} />
+                <span
+                  className={`w-1.5 h-1.5 rounded-full shrink-0 ${STAT_STYLES[key]?.dot}`}
+                />
                 <span className="text-[10px] sm:text-xs text-white/40 truncate">
                   {STAT_LABELS[key] ?? key}
                 </span>
               </div>
-              <div className={`text-xl sm:text-2xl font-bold ${STAT_STYLES[key]?.num}`}>
+              <div
+                className={`text-xl sm:text-2xl font-bold ${STAT_STYLES[key]?.num}`}
+              >
                 {value}
               </div>
             </div>
           ))}
         </div>
 
+        {/* ── Filters ── */}
         <div className="flex flex-col sm:flex-row gap-3 mb-4 sm:mb-5">
           <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-none">
             {Object.entries(STATUS_LABELS).map(([key, label]) => (
               <button
                 key={key}
                 onClick={() => setStatusFilter(key)}
-                className={`shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${statusFilter === key
+                className={`shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                  statusFilter === key
                     ? "bg-[#C8E646] text-[#171717]"
                     : "bg-white/[0.04] text-white/50 hover:text-white/80 hover:bg-white/[0.07]"
-                  }`}
+                }`}
               >
                 {label}
               </button>
@@ -207,6 +234,7 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
           />
         </div>
 
+        {/* ── Table ── */}
         <div className="bg-[#1c1c1c] border border-white/[0.07] rounded-2xl overflow-hidden">
           {loading ? (
             <div className="flex items-center justify-center py-16 text-white/30 text-sm">
@@ -218,80 +246,115 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
               <p className="text-white/30 text-sm">Keine Leads gefunden</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm min-w-[500px]">
-                <thead>
-                  <tr className="border-b border-white/[0.06]">
-                    {["Name", "Telefon", "Branche", "Status", "Datum", ""].map((heading) => (
-                      <th
-                        key={heading}
-                        className="text-left px-4 sm:px-5 py-3 text-[10px] sm:text-xs font-semibold text-white/30 uppercase tracking-widest whitespace-nowrap"
+            <>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm min-w-[500px]">
+                  <thead>
+                    <tr className="border-b border-white/[0.06]">
+                      {["Name", "Telefon", "Branche", "Status", "Datum", ""].map(
+                        (heading) => (
+                          <th
+                            key={heading}
+                            className="text-left px-4 sm:px-5 py-3 text-[10px] sm:text-xs font-semibold text-white/30 uppercase tracking-widest whitespace-nowrap"
+                          >
+                            {heading}
+                          </th>
+                        ),
+                      )}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {leads.map((lead) => (
+                      <tr
+                        key={lead._id}
+                        onClick={() => setSelectedLead(lead)}
+                        className="border-b border-white/[0.04] hover:bg-white/[0.02] cursor-pointer transition"
                       >
-                        {heading}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {leads.map((lead) => (
-                    <tr
-                      key={lead._id}
-                      onClick={() => setSelectedLead(lead)}
-                      className="border-b border-white/[0.04] hover:bg-white/[0.02] cursor-pointer transition"
-                    >
-                      <td className="px-4 sm:px-5 py-3">
-                        <div className="font-medium text-white text-sm">{lead.name}</div>
-                        {lead.email ? (
-                          <div className="text-xs text-white/30 mt-0.5 truncate max-w-[120px]">
-                            {lead.email}
+                        <td className="px-4 sm:px-5 py-3">
+                          <div className="font-medium text-white text-sm">
+                            {lead.name}
                           </div>
-                        ) : null}
-                      </td>
-                      <td className="px-4 sm:px-5 py-3 text-white/60 text-sm whitespace-nowrap">
-                        {lead.phone}
-                      </td>
-                      <td className="px-4 sm:px-5 py-3 text-white/60 text-sm">
-                        <span className="truncate block max-w-[100px]">{lead.branche}</span>
-                      </td>
-                      <td className="px-4 sm:px-5 py-3" onClick={(event) => event.stopPropagation()}>
-                        <select
-                          value={lead.status}
-                          onChange={(event) =>
-                            void handleStatusChange(lead, event.target.value as LeadStatus)
-                          }
-                          className={`text-xs font-semibold border rounded-lg px-2 py-1 outline-none cursor-pointer bg-transparent transition ${STATUS_COLORS[lead.status]}`}
+                          {lead.email ? (
+                            <div className="text-xs text-white/30 mt-0.5 truncate max-w-[120px]">
+                              {lead.email}
+                            </div>
+                          ) : null}
+                        </td>
+                        <td className="px-4 sm:px-5 py-3 text-white/60 text-sm whitespace-nowrap">
+                          {lead.phone}
+                        </td>
+                        <td className="px-4 sm:px-5 py-3 text-white/60 text-sm">
+                          <span className="truncate block max-w-[100px]">
+                            {lead.branche}
+                          </span>
+                        </td>
+                        <td
+                          className="px-4 sm:px-5 py-3"
+                          onClick={(event) => event.stopPropagation()}
                         >
-                          {(["neu", "kontakt", "qualifiziert", "gewonnen", "verloren"] as LeadStatus[]).map(
-                            (status) => (
-                              <option key={status} value={status} className="bg-[#1c1c1c] text-white">
+                          <select
+                            value={lead.status}
+                            onChange={(event) =>
+                              void handleStatusChange(
+                                lead,
+                                event.target.value as LeadStatus,
+                              )
+                            }
+                            className={`text-xs font-semibold border rounded-lg px-2 py-1 outline-none cursor-pointer bg-transparent transition ${STATUS_COLORS[lead.status]}`}
+                          >
+                            {(
+                              [
+                                "neu",
+                                "kontakt",
+                                "qualifiziert",
+                                "gewonnen",
+                                "verloren",
+                              ] as LeadStatus[]
+                            ).map((status) => (
+                              <option
+                                key={status}
+                                value={status}
+                                className="bg-[#1c1c1c] text-white"
+                              >
                                 {STATUS_LABELS[status]}
                               </option>
-                            ),
-                          )}
-                        </select>
-                      </td>
-                      <td className="px-4 sm:px-5 py-3 text-white/40 text-xs whitespace-nowrap">
-                        {formatDate(lead.createdAt)}
-                      </td>
-                      <td
-                        className="px-4 sm:px-5 py-3 text-right"
-                        onClick={(event) => event.stopPropagation()}
-                      >
-                        <button
-                          onClick={() => void handleDelete(lead)}
-                          className="text-white/20 hover:text-red-400 transition text-xs px-2 py-1 rounded"
+                            ))}
+                          </select>
+                        </td>
+                        <td className="px-4 sm:px-5 py-3 text-white/40 text-xs whitespace-nowrap">
+                          {formatDate(lead.createdAt)}
+                        </td>
+                        <td
+                          className="px-4 sm:px-5 py-3 text-right"
+                          onClick={(event) => event.stopPropagation()}
                         >
-                          X
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <div className="px-4 sm:px-5 py-3 text-xs text-white/25 border-t border-white/[0.04]">
-                {total} Lead{total !== 1 ? "s" : ""} gefunden
+                          <button
+                            onClick={() => void handleDelete(lead)}
+                            className="text-white/20 hover:text-red-400 transition text-xs px-2 py-1 rounded"
+                          >
+                            X
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </div>
+
+              {/* ── Pagination ── */}
+              <Pagination
+                recordsPerPage={recordsPerPage}
+                setRecordsPerPage={(value) => {
+                  setRecordsPerPage(value);
+                  setCurrentPage(1);
+                }}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                totalRecords={total}
+                className="border-t border-white/[0.04] bg-transparent"
+                recordsPerPageOptions={[10, 25, 50]}
+              />
+            </>
           )}
         </div>
       </div>

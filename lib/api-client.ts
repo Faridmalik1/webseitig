@@ -56,11 +56,13 @@ export async function getLeads(params?: {
   status?: string;
   search?: string;
   page?: number;
+  limit?: number;
 }): Promise<LeadsResponse> {
   const query = new URLSearchParams();
   if (params?.status && params.status !== "alle") query.set("status", params.status);
   if (params?.search) query.set("search", params.search);
   if (params?.page) query.set("page", String(params.page));
+  if (params?.limit) query.set("limit", String(params.limit));
   return request<LeadsResponse>(`/leads?${query.toString()}`);
 }
 
