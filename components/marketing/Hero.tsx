@@ -18,7 +18,7 @@ export function Hero() {
     <div>
       <section
         id="home"
-        className="relative flex flex-col bg-[#0F0F0F] overflow-hidden px-8 md:px-16 xl:max-h-[900px]"
+        className="relative flex flex-col bg-[#0F0F0F] py-12 md:py-18 px-4 md:px-8"
       >
         {/* <div
         aria-hidden
@@ -46,7 +46,7 @@ export function Hero() {
                 Für Selbstständige und KMU in der Schweiz
               </p>
               <h1 className="text-[28px] sm:text-[32px] lg:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
-                Jeden Tag ohne Website verlieren Sie Kunden — an die Konkurrenz.
+                Jeden Tag ohne Website <br /> verlieren Sie Kunden — an <br /> die Konkurrenz.
               </h1>
               <p className="text-[#888888] text-[16px] md:text-[20px] leading-relaxed max-w-[600px] mb-7 sm:mb-8">
                 Wir bauen Ihre professionelle Website in 7 Tagen. Keine Vorauszahlung. Kein technisches Wissen. Alles inklusive — kündbar nach 12 Monaten.
@@ -83,7 +83,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-              className="flex justify-center lg:justify-end mt-16 sm:mt-24 lg:mt-0 xl:mt-12"
+              className="flex justify-center lg:justify-center mt-16 sm:mt-24 lg:mt-0 xl:mt-12"
             >
               <div className="relative flex items-center justify-center">
                 {/* Decorative blob exactly behind the card */}
@@ -98,7 +98,7 @@ export function Hero() {
 
                 <div
                   className="relative z-10 w-[240px] sm:w-[280px] rounded-2xl px-8 py-4 
-  shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform"
+                  shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform"
                   style={{
                     border: "1px solid rgba(255,255,255,0.1)",
                     transform: "rotate(-14deg)",
@@ -136,33 +136,28 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Features bar — bottom strip */}
+        
+      </section>
+      {/* Features bar — bottom strip */}
         <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="w-full bg-[#151515] rounded-lg mt-8 lg:mt-0 max-w-[1568px] mx-auto"
-      >
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="w-full bg-[#0F0F0F]"
+    >
+      <div className="max-w-[1728px] mx-auto bg-[#151515] rounded-lg">
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center text-center gap-3 py-8 px-4"
-            >
-              <img
-                src={f.icon}
-                alt={f.label}
-                className="w-5 h-5 object-contain"
-              />
+            <div key={i} className="flex flex-col items-center text-center gap-3 py-8 px-4">
+              <img src={f.icon} alt={f.label} className="w-5 h-5 object-contain" />
               <p className="text-[#F5F4F0] text-[13px] sm:text-[14px] md:text-[16px] leading-tight max-w-[150px] sm:max-w-[240px] break-words">
                 {f.label}
               </p>
             </div>
           ))}
         </div>
-      </motion.div>
-      </section>
-      
+      </div>
+    </motion.div>
     </div>
   );
 }
