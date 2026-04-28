@@ -73,7 +73,7 @@ const projects = [
     num: "09",
     name: "HolzForm",
     image: "/projects/manufaktur.svg",
-    desc: "HolzForm fertigt exklusive Massivholzmöbel und individuelle Innenausbauten nach Maß. Wir vereinen traditionelles Handwerk mit modernem Design für zeitlose, langlebige Unikate.",
+    desc: "HolzForm fertigt exklusive Massivholzmöbel und individuelle Innenausbauten nach Mass. Wir vereinen traditionelles Handwerk mit modernem Design für zeitlose, langlebige Unikate.",
     stack: ["Shopify", "Liquid", "Sanity CMS"],
     days: "9 Tage",
   },

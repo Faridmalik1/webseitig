@@ -249,7 +249,7 @@ export function ContactModal() {
                             animate={{ opacity: 1, y: 0, scaleY: 1 }}
                             exit={{ opacity: 0, y: -6, scaleY: 0.95 }}
                             transition={{ duration: 0.18, ease: "easeOut" }}
-                            className={`absolute left-0 right-0 z-10 overflow-y-auto rounded-2xl max-h-60
+                            className={`absolute left-0 right-0 z-10 overflow-y-auto rounded-2xl max-h-60 p-2
   ${openUpwards ? "bottom-[calc(100%+6px)]" : "top-[calc(100%+6px)]"}
 `}
                             style={{
@@ -273,7 +273,7 @@ export function ContactModal() {
                                   }}
                                   onMouseEnter={() => setHoveredBranche(item)}
                                   onMouseLeave={() => setHoveredBranche(null)}
-                                  className="w-full px-5 py-3 text-left text-sm transition-all duration-150"
+                                  className="w-full px-5 py-3 text-left text-sm transition-all duration-150 rounded-full"
                                   style={{
                                     color: isSelected
                                       ? "#C8E646"
@@ -290,9 +290,9 @@ export function ContactModal() {
                                     border: isSelected
                                       ? "1px solid rgba(200,230,70,0.4)"
                                       : "1px solid transparent",
-                                    borderRadius: "10px",
-                                    margin: "3px 6px",
-                                    width: "calc(100% - 12px)",
+                                    // borderRadius: "10px",
+                                    // margin: "3px 6px",
+                                    // width: "calc(100% - 12px)",
                                     fontWeight: isSelected ? 600 : 400,
                                   }}
                                 >

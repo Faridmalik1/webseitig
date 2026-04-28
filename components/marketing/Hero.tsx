@@ -98,9 +98,9 @@ export function Hero() {
 
                 <div
                   className="relative z-10 w-[240px] sm:w-[280px] rounded-2xl px-8 py-4 
-                  shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform"
+                  shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform border border-[#707070]"
                   style={{
-                    border: "1px solid #707070",
+                    // border: "1px solid #707070",
                     transform: "rotate(-14deg)",
                     WebkitBackdropFilter: "blur(20px)",
                   }}
