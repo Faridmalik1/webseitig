@@ -89,7 +89,7 @@ export function Hero() {
                 {/* Decorative blob exactly behind the card */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-[20%] -translate-y-[100%] md:-translate-y-[100%] w-[200px] sm:w-[240px] h-[220px] sm:h-[240px] opacity-40 bg-no-repeat bg-contain z-0"
+                  className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-[20%] -translate-y-[100%] md:-translate-y-[100%] w-[200px] sm:w-[240px] h-[220px] sm:h-[240px] bg-no-repeat bg-contain z-0"
                   style={{
                     backgroundImage: "url('/HeroBg.svg')",
                     backgroundPosition: "center",
