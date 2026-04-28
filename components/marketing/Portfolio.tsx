@@ -90,7 +90,7 @@ const projects = [
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="rounded-4xl overflow-hidden flex flex-col"
+      className="rounded-4xl overflow-hidden flex flex-col h-full"
       style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
     >
       <div
@@ -104,34 +104,43 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         />
       </div>
 
-      <div className="p-6 flex flex-col">
+      <div className="p-6 flex flex-col flex-1">
         <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">
           {project.name}
         </h3>
-        <p className="text-[#888888] sm:text-[14px] md:text-[16px] leading-relaxed mb-5">
+        <p className="text-[#888888] sm:text-[14px] md:text-[16px] leading-relaxed mb-5 min-h-[78px]">
           {project.desc}
         </p>
 
-        <div className="mb-5">
-          <p className="text-white sm:text-[16px] md:text-[20px] mb-2 font-medium">Tech-Stack</p>
-          <div className="flex flex-wrap gap-2">
-            {project.stack.map((tag, i) => (
-              <span
-                key={i}
-                className="text-white/60 text-xs border border-white/15 rounded-full px-3 py-1"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
+        <div className="mt-auto">
+  {/* Tech Stack */}
+  <div className="mb-5">
+    <p className="text-white sm:text-[16px] md:text-[20px] mb-2 font-medium">
+      Tech-Stack
+    </p>
+    <div className="flex flex-wrap gap-2">
+      {project.stack.map((tag, i) => (
+        <span
+          key={i}
+          className="text-white/60 text-xs border border-white/15 rounded-full px-3 py-1"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  </div>
 
-        <div className="mt-auto flex items-center justify-between pt-4">
-          <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium">Zeitleiste</p>
-          <p className="text-[#C8E646] text-[16px] sm:text-[18px] md:text-[20px] font-medium">
-            {project.days}
-          </p>
-        </div>
+  {/* Timeline */}
+  <div className="flex items-center justify-between pt-4">
+    <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium">
+      Zeitleiste
+    </p>
+    <p className="text-[#C8E646] text-[16px] sm:text-[18px] md:text-[20px] font-medium">
+      {project.days}
+    </p>
+  </div>
+</div>
+
       </div>
     </div>
   );
@@ -202,7 +211,7 @@ const next = () => goTo((current + 1) % total);
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction * -40 }}
               transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
+              className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full items-stretch"
             >
               {visibleProjects.map((project) => (
                 <ProjectCard key={project.num} project={project} />

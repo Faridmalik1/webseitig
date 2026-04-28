@@ -174,7 +174,7 @@ export function ContactModal() {
                       onChange={(event) => setName(event.target.value)}
                       placeholder="Max Mustermann"
                       required
-                      className="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
+                      className="w-full rounded-full px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
                       style={INPUT_STYLE}
                     />
                   </div>
@@ -189,7 +189,7 @@ export function ContactModal() {
                       onChange={(event) => setEmail(event.target.value)}
                       placeholder="max@beispiel.de"
                       required
-                      className="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
+                      className="w-full rounded-full px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
                       style={INPUT_STYLE}
                     />
                   </div>
@@ -204,7 +204,7 @@ export function ContactModal() {
                       onChange={(event) => setPhone(event.target.value)}
                       placeholder="+41 79 000 00 00"
                       required
-                      className="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
+                      className="w-full rounded-full px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
                       style={INPUT_STYLE}
                     />
                   </div>
@@ -226,7 +226,7 @@ export function ContactModal() {
 
                           setDropdownOpen((prev) => !prev);
                         }}
-                        className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm outline-none hover:bg-[#C8F13533] hover:text-[#C8F135] transition-colors"
+                        className="flex w-full items-center justify-between rounded-full px-4 py-3 text-sm outline-none hover:bg-[#C8F13533] hover:text-[#C8F135] transition-colors"
                         style={{
                           background: "rgba(255,255,255,0.06)",
                           border: `1px solid ${dropdownOpen ? "rgba(200,230,70,0.5)" : "rgba(255,255,255,0.1)"}`,

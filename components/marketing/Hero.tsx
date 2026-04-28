@@ -100,7 +100,7 @@ export function Hero() {
                   className="relative z-10 w-[240px] sm:w-[280px] rounded-2xl px-8 py-4 
                   shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform"
                   style={{
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    border: "1px solid #707070",
                     transform: "rotate(-14deg)",
                     WebkitBackdropFilter: "blur(20px)",
                   }}
