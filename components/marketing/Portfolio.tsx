@@ -135,7 +135,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
     <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium">
       Zeitleiste
     </p>
-    <p className="text-[#C8E646] text-[16px] sm:text-[18px] md:text-[20px] font-medium">
+    <p className="text-[#C8F135] text-[16px] sm:text-[18px] md:text-[20px] font-medium">
       {project.days}
     </p>
   </div>
@@ -192,7 +192,7 @@ const next = () => goTo((current + 1) % total);
         {/* Header */}
         <div className="flex items-start justify-between mb-10">
           <div>
-            <p className="text-[#C8E646] text-[16px] md:text-[20px] tracking-wide">Unsere Arbeit</p>
+            <p className="text-[#C8F135] text-[16px] md:text-[20px] tracking-wide">Unsere Arbeit</p>
             <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[52px] leading-tight">
               Ausgewählte Projekte — alle in 7 Tagen geliefert.
             </h2>
@@ -224,9 +224,9 @@ const next = () => goTo((current + 1) % total);
         <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6">
           <button
             onClick={prev}
-            className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
+            className="w-9 h-9 rounded-full border border-[#C8F135] flex items-center justify-center hover:bg-[#C8F135]/10 transition-all duration-200"
           >
-            <ChevronLeft size={18} className="text-[#C8E646]" />
+            <ChevronLeft size={18} className="text-[#C8F135]" />
           </button>
 
           <div className="flex gap-2 items-center">
@@ -236,7 +236,7 @@ const next = () => goTo((current + 1) % total);
     onClick={() => goTo(i)}           // ← now directly go to that index
     className={`rounded-full transition-all duration-300 ${
       i === current                   // ← compare with current, not dotIndex
-        ? "bg-[#C8E646] w-5 h-2.5"
+        ? "bg-[#C8F135] w-5 h-2.5"
         : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
     }`}
     aria-label={`Slide ${i + 1}`}
@@ -246,9 +246,9 @@ const next = () => goTo((current + 1) % total);
 
           <button
             onClick={next}
-            className="w-9 h-9 rounded-full border border-[#C8E646] flex items-center justify-center hover:bg-[#C8E646]/10 transition-all duration-200"
+            className="w-9 h-9 rounded-full border border-[#C8F135] flex items-center justify-center hover:bg-[#C8F135]/10 transition-all duration-200"
           >
-            <ChevronRight size={18} className="text-[#C8E646]" />
+            <ChevronRight size={18} className="text-[#C8F135]" />
           </button>
         </div>
 

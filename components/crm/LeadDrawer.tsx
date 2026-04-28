@@ -120,7 +120,7 @@ export default function LeadDrawer({
                 href={`https://wa.me/${lead.phone.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm text-[#C8E646] hover:underline"
+                className="text-sm text-[#C8F135] hover:underline"
               >
                 {lead.phone}
               </a>
@@ -133,7 +133,7 @@ export default function LeadDrawer({
                 </div>
                 <a
                   href={`mailto:${lead.email}`}
-                  className="text-sm text-[#C8E646] hover:underline"
+                  className="text-sm text-[#C8F135] hover:underline"
                 >
                   {lead.email}
                 </a>
@@ -165,12 +165,12 @@ export default function LeadDrawer({
               onChange={(e) => setNotes(e.target.value)}
               rows={5}
               placeholder="Notizen zum Lead…"
-              className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#C8E646]/40 resize-none transition"
+              className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#C8F135]/40 resize-none transition"
             />
             <button
               onClick={handleSaveNotes}
               disabled={saving}
-              className="mt-2 px-4 py-2 bg-[#C8E646] hover:bg-[#d4ee56] text-[#171717] text-xs font-bold rounded-lg transition disabled:opacity-50"
+              className="mt-2 px-4 py-2 bg-[#C8F135] hover:bg-[#d4ee56] text-[#171717] text-xs font-bold rounded-lg transition disabled:opacity-50"
             >
               {saving ? "Speichert…" : saved ? "✓ Gespeichert" : "Speichern"}
             </button>

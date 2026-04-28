@@ -31,7 +31,7 @@ export function About() {
       <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         <div className="text-center mb-12 md:mb-16">
-          <p className="text-[#C8E646] text-[16px] mb-5 tracking-wide">
+          <p className="text-[#C8F135] text-[16px] mb-5 tracking-wide">
             Kommt Ihnen das bekannt vor?
           </p>
           <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight">
@@ -51,7 +51,7 @@ Und was das jeden Monat wirklich kostet.
               className={`
   rounded-2xl p-7 bg-[#1c1c1c]
   border border-white/[0.07]
-  hover:border-[#C8E646]
+  hover:border-[#C8F135]
   transition-all duration-300
 `}
             >

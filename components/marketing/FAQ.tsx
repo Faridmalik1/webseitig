@@ -242,7 +242,7 @@ export function FAQ() {
               <button
                 type="submit"
                 disabled={loading || !question.trim()}
-                className="group w-full py-2 rounded-full bg-[#C8E646] text-[#171717] text-[16px] md:!text-[20px]  
+                className="group w-full py-2 rounded-full bg-[#C8F135] text-[#171717] text-[16px] md:!text-[20px]  
   hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200 
   flex items-center justify-center gap-2 mb-3 whitespace-nowrap
   disabled:cursor-not-allowed disabled:opacity-50"
@@ -274,7 +274,7 @@ export function FAQ() {
               )}
             </form>
 
-            {/* <p className="text-[#C8E646] text-xs text-center">
+            {/* <p className="text-[#C8F135] text-xs text-center">
               Antwort innerhalb von 24h per WhatsApp
             </p> */}
           </motion.div>

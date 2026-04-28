@@ -11,7 +11,7 @@ export default function Datenschutz() {
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
       <div className="max-w-[1568px] mx-auto px-6 py-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#C8E646] text-sm mb-10 hover:opacity-80 transition-opacity">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-sm mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
 
@@ -35,7 +35,7 @@ export default function Datenschutz() {
           className="space-y-8 text-white/70 leading-relaxed"
         >
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">1.</span> Verantwortliche Stelle</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">1.</span> Verantwortliche Stelle</h2>
             <p>
               Verantwortlich für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne des Schweizer Datenschutzgesetzes (DSG) ist:
             </p>
@@ -46,13 +46,13 @@ export default function Datenschutz() {
                 8052 Zürich <br />
                 
               </p>
-              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8E646] hover:underline">hello@webseitig.ch</a></p>
-                <p>Web: <a href="https://webseitig.ch" className="text-[#C8E646] hover:underline">webseitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">hello@webseitig.ch</a></p>
+                <p>Web: <a href="https://webseitig.ch" className="text-[#C8F135] hover:underline">webseitig.ch</a></p>
             </div>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">2.</span> Grundsätze der Datenverarbeitung</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">2.</span> Grundsätze der Datenverarbeitung</h2>
             <p>
               Wir verarbeiten personenbezogene Daten nur, wenn dies gesetzlich erlaubt ist oder Sie Ihre Einwilligung erteilt haben. Wir halten uns an folgende Grundsätze:
             </p>
@@ -68,7 +68,7 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">3.</span> Erhobene Daten und Zwecke</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">3.</span> Erhobene Daten und Zwecke</h2>
             <h4 className="text-white text-base mb-2">Beim Besuch unserer Website</h4>
             <p>
               Beim Aufrufen unserer Website werden automatisch folgende technische Daten erfasst:
@@ -107,7 +107,7 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">4.</span> Cookies und Tracking</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">4.</span> Cookies und Tracking</h2>
             <h4 className="text-white text-base mt-4 mb-2">Technisch notwendige Cookies</h4>
             <p>
               Diese Cookies sind für den Betrieb der Website erforderlich und können nicht deaktiviert werden. Sie speichern keine personenbezogenen Daten und werden nach dem Schliessen des Browsers gelöscht.
@@ -126,7 +126,7 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">5.</span> Drittanbieter und Dienste</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">5.</span> Drittanbieter und Dienste</h2>
             <h4 className="text-white text-base mt-4 mb-2">Google Maps</h4>
             <p>
               Auf Kunden-Websites binden wir Google Maps ein. Dabei werden Daten an Google LLC (USA) übertragen. Grundlage ist ein Standardvertragsklausel-Abkommen gemäss DSG/DSGVO. Datenschutzerklärung: policies.google.com/privacy
@@ -146,7 +146,7 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">6.</span> Datenspeicherung und Löschung</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">6.</span> Datenspeicherung und Löschung</h2>
             <p>
               Wir speichern personenbezogene Daten nur so lange, wie dies für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.
             </p>
@@ -161,7 +161,7 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">7.</span> Ihre Rechte</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">7.</span> Ihre Rechte</h2>
             <p>
               Gemäss dem Schweizer Datenschutzgesetz (DSG) haben Sie folgende Rechte:
             </p>
@@ -184,7 +184,7 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">8.</span> Datensicherheit</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">8.</span> Datensicherheit</h2>
             <p>
               Wir setzen technische und organisatorische Sicherheitsmassnahmen ein, um Ihre Daten gegen Verlust, Zerstörung, Verfälschung und unberechtigten Zugriff zu schützen. Zu diesen Massnahmen gehören:
             </p>
@@ -199,14 +199,14 @@ export default function Datenschutz() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">9.</span> Änderungen dieser Datenschutzerklärung</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">9.</span> Änderungen dieser Datenschutzerklärung</h2>
             <p>
               Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, um sie an geänderte Rechtslage oder bei Änderungen unserer Dienstleistungen zu aktualisieren. Die jeweils aktuelle Version ist auf unserer Website abrufbar. Bei wesentlichen Änderungen informieren wir Sie per E-Mail.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8E646]">10.</span> Kontakt Datenschutz</h2>
+            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">10.</span> Kontakt Datenschutz</h2>
             <p>
               Bei Fragen zum Datenschutz oder zur Geltendmachung Ihrer Rechte wenden Sie sich bitte an:
             </p>
@@ -216,7 +216,7 @@ export default function Datenschutz() {
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>
-              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8E646] hover:underline">hello@webseitig.ch</a></p>
+              <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">hello@webseitig.ch</a></p>
             </div>
             <p>
               Beschwerden können Sie auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) richten: www.edoeb.admin.ch

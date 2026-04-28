@@ -69,7 +69,7 @@ export function CrmLoginForm() {
       <button
         type="submit"
         disabled={!key || loading}
-        className="mt-6 w-full bg-[#C8E646] hover:bg-[#d4ee56] text-[#171717] font-bold text-sm py-3 rounded-xl transition disabled:opacity-40 disabled:cursor-not-allowed"
+        className="mt-6 w-full bg-[#C8F135] hover:bg-[#d4ee56] text-[#171717] font-bold text-sm py-3 rounded-xl transition disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {loading ? "Wird gepruft..." : "Einloggen"}
       </button>

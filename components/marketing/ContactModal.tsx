@@ -150,7 +150,7 @@ export function ContactModal() {
                     className="mb-6 flex h-16 w-16 items-center justify-center rounded-full"
                     style={{ background: "rgba(200,230,70,0.18)" }}
                   >
-                    <Check size={28} className="text-[#C8E646]" strokeWidth={2.5} />
+                    <Check size={28} className="text-[#C8F135]" strokeWidth={2.5} />
                   </div>
                   <h2 className="mb-2 text-3xl font-extrabold text-white">Danke!</h2>
                   <p className="text-sm leading-relaxed text-white/50">
@@ -276,9 +276,9 @@ export function ContactModal() {
                                   className="w-full px-5 py-3 text-left text-sm transition-all duration-150 rounded-full"
                                   style={{
                                     color: isSelected
-                                      ? "#C8E646"
+                                      ? "#C8F135"
                                       : isHovered
-                                        ? "#C8E646"
+                                        ? "#C8F135"
                                         : "rgba(255,255,255,0.65)",
 
                                     background: isSelected
@@ -315,7 +315,7 @@ export function ContactModal() {
                   <button
                     type="submit"
                     disabled={loading || !name.trim() || !phone.trim() || !branche}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-[#C8E646] py-4 text-[15px] font-bold text-[#171717] transition-all duration-200 hover:bg-[#d4f050] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-[#C8F135] py-4 text-[15px] font-bold text-[#171717] transition-all duration-200 hover:bg-[#d4f050] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {loading ? (
                       <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-[#171717]/30 border-t-[#171717]" />

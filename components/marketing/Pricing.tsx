@@ -46,7 +46,7 @@ export function Pricing() {
           //   border: "1.5px dashed rgba(255,255,255,0.15)",
           // }}
           >
-            <p className="text-[#C8E646] text-[16px] mb-5 tracking-wide">
+            <p className="text-[#C8F135] text-[16px] mb-5 tracking-wide">
               Preise
             </p>
             <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
@@ -71,7 +71,7 @@ export function Pricing() {
   rounded-2xl p-8 flex flex-col
   bg-[#151515]
   border border-white/[0.07]
-  hover:border-[#C8E646]
+  hover:border-[#C8F135]
   hover:shadow-[0_0_0_1px_rgba(200,230,70,0.2),0_10px_30px_rgba(0,0,0,0.4)]
   hover:-translate-y-1
   transition-all duration-300
@@ -119,14 +119,14 @@ export function Pricing() {
   rounded-2xl p-8 flex flex-col relative
   bg-[#151515]
   border border-white/[0.07]
-  hover:border-[#C8E646]
+  hover:border-[#C8F135]
   hover:shadow-[0_0_0_1px_rgba(200,230,70,0.25),0_12px_35px_rgba(0,0,0,0.5)]
   hover:-translate-y-1
   transition-all duration-300
 "
           >
             <div className="absolute top-0 right-0">
-              <div className="bg-[#C8E646] text-[#171717] text-sm px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
+              <div className="bg-[#C8F135] text-[#171717] text-sm px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
                 Meistgewählt
               </div>
             </div>
@@ -157,7 +157,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-3.5 rounded-full bg-[#C8E646] text-[#171717] text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
+              className="w-full py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
             >
               Jetzt starten
             </button>

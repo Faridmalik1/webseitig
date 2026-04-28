@@ -216,7 +216,7 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
                 onClick={() => setStatusFilter(key)}
                 className={`shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   statusFilter === key
-                    ? "bg-[#C8E646] text-[#171717]"
+                    ? "bg-[#C8F135] text-[#171717]"
                     : "bg-white/[0.04] text-white/50 hover:text-white/80 hover:bg-white/[0.07]"
                 }`}
               >
@@ -230,7 +230,7 @@ export function CrmDashboard({ initialLeads, initialStats }: DashboardProps) {
             placeholder="Suchen..."
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
-            className="sm:ml-auto bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-2 text-sm text-white placeholder-white/25 outline-none focus:border-[#C8E646]/40 transition w-full sm:w-56"
+            className="sm:ml-auto bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-2 text-sm text-white placeholder-white/25 outline-none focus:border-[#C8F135]/40 transition w-full sm:w-56"
           />
         </div>
 

@@ -66,7 +66,7 @@ export function ChatWidget() {
           {/* Header */}
           <div className="flex items-center justify-between rounded-t-3xl bg-[#0F0F0F] border-b border-white/10 px-4 py-3 text-white">
             <div className="flex items-center gap-2 text-sm font-semibold">
-              <MessageSquare className="h-5 w-5 text-[#C8E646]" />
+              <MessageSquare className="h-5 w-5 text-[#C8F135]" />
               Seiten-Chat
             </div>
             <button
@@ -93,7 +93,7 @@ export function ChatWidget() {
                   <div
                     className={
                       msg.role === "user"
-                        ? "max-w-[80%] rounded-2xl bg-[#C8E646] px-3 py-2 text-black"
+                        ? "max-w-[80%] rounded-2xl bg-[#C8F135] px-3 py-2 text-black"
                         : "max-w-[80%] rounded-2xl bg-white/5 px-3 py-2 text-white"
                     }
                   >
@@ -105,7 +105,7 @@ export function ChatWidget() {
                             key={`${idx}-${option}`}
                             onClick={() => sendQuestion(option)}
                             disabled={loading}
-                            className="rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-xs text-white hover:border-[#C8E646] hover:text-[#C8E646] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-xs text-white hover:border-[#C8F135] hover:text-[#C8F135] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
                           >
                             {option}
                           </button>
@@ -135,13 +135,13 @@ export function ChatWidget() {
                 onKeyDown={(event) => {
                   if (event.key === "Enter") sendQuestion();
                 }}
-                className="min-w-0 flex-1 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder-[#888888] outline-none focus:border-[#C8E646]"
+                className="min-w-0 flex-1 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder-[#888888] outline-none focus:border-[#C8F135]"
                 placeholder="Ask a question..."
               />
               <button
                 onClick={() => sendQuestion()}
                 disabled={!canSend}
-                className="shrink-0 rounded-full bg-[#C8E646] px-4 py-2 text-sm text-black transition hover:bg-[#d4f050] disabled:cursor-not-allowed disabled:opacity-50"
+                className="shrink-0 rounded-full bg-[#C8F135] px-4 py-2 text-sm text-black transition hover:bg-[#d4f050] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Senden
               </button>
@@ -154,7 +154,7 @@ export function ChatWidget() {
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-label="Open site chat"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#C8E646] text-black shadow-xl hover:bg-[#d4f050] transition"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#C8F135] text-black shadow-xl hover:bg-[#d4f050] transition"
       >
         <MessageSquare className="h-6 w-6 text-white" />
       </button>

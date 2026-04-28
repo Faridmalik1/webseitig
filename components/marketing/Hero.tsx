@@ -42,7 +42,7 @@ export function Hero() {
               transition={{ duration: 0.55, ease: "easeOut" }}
               className="lg:col-span-2"
             >
-              <p className="text-[#C8E646] text-[14px] md:text-[16px] mb-4 sm:mb-5 tracking-wide">
+              <p className="text-[#C8F135] text-[14px] md:text-[16px] mb-4 sm:mb-5 tracking-wide">
                 Für Selbstständige und KMU in der Schweiz
               </p>
               <h1 className="text-[28px] sm:text-[32px] lg:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
@@ -54,7 +54,7 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <button
                   onClick={open}
-                  className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8E646] text-[#171717] text-[14px] md:!text-[20px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
+                  className="group inline-flex items-center gap-2 whitespace-nowrap bg-[#C8F135] text-[#171717] text-[14px] md:!text-[20px] px-7 py-3 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200"
                 >
                   Jetzt kostenlos anfragen
 
@@ -98,7 +98,7 @@ export function Hero() {
 
                 <div
                   className="relative z-10 w-[240px] sm:w-[280px] rounded-2xl px-8 py-4 
-                  shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform border border-[#707070]"
+                  shadow-2xl bg-black/30 backdrop-blur-xl will-change-transform ring-1 ring-white/20"
                   style={{
                     // border: "1px solid #707070",
                     transform: "rotate(-14deg)",
@@ -117,10 +117,10 @@ export function Hero() {
                     AB NUR
                   </p>
                   <div className="flex gap-2 items-center">
-                    <p className="font-paytone text-[#C8E646] font-medium text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
+                    <p className="font-paytone text-[#C8F135] font-medium text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
                       CHF
                     </p>
-                    <p className="font-paytone text-[#C8E646] font-medium text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
+                    <p className="font-paytone text-[#C8F135] font-medium text-[28px] sm:text-[32px] lg:text-[60px] leading-none mb-1">
                       179
                     </p>
                   </div>

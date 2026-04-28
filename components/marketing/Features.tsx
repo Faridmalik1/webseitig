@@ -32,7 +32,7 @@ export function Features() {
 
         {/* Badge + heading */}
         <div className="text-center mb-14 md:mb-18">
-          <p className="text-[#C8E646] text-[16px] mb-5 tracking-wide">
+          <p className="text-[#C8F135] text-[16px] mb-5 tracking-wide">
             So funktioniert es
           </p>
           <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight mb-4">

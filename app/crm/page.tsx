@@ -6,7 +6,7 @@ export default function CrmLoginPage() {
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
           <div className="text-2xl font-black tracking-tight text-white mb-1">
-            web<span className="text-[#C8E646]">.</span>seitig
+            web<span className="text-[#C8F135]">.</span>seitig
           </div>
           <div className="text-sm text-white/40">CRM - Interner Bereich</div>
         </div>

@@ -75,7 +75,7 @@ export function Services() {
         {/* <div className="flex justify-center mt-8">
           <a
             href="#"
-            className="inline-flex items-center gap-2 bg-[#C8E646] text-black! text-sm px-6 py-2.5 rounded-full no-underline hover:bg-[#d4f050] hover:!text-black active:scale-95 transition-all duration-200"
+            className="inline-flex items-center gap-2 bg-[#C8F135] text-black! text-sm px-6 py-2.5 rounded-full no-underline hover:bg-[#d4f050] hover:!text-black active:scale-95 transition-all duration-200"
           >
             Mehr anzeigen
             <ArrowUpRight size={16} />
@@ -84,7 +84,7 @@ export function Services() {
         <div className="flex justify-center mt-8">
           <button
   onClick={open}
-  className="group inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+  className="group inline-flex items-center gap-2 bg-[#C8F135] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
 >
   Kostenlose Beratung anfragen
 

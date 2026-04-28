@@ -41,7 +41,7 @@ export function Navbar() {
         >
           <img src="/NavbarLogo.svg" alt="Logo" className="h-36 w-36" />
           {/* <div style={{ fontFamily: "var(--font-paytone)" }}>
-            web<span className="text-[#C8E646]">.</span>seitig
+            web<span className="text-[#C8F135]">.</span>seitig
           </div> */}
         </Link>
 
@@ -50,7 +50,7 @@ export function Navbar() {
           {/* CTA — hidden on small mobile, shown from sm breakpoint */}
           <button
   onClick={open}
-  className="group hidden sm:inline-flex items-center gap-2 bg-[#C8E646] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+  className="group hidden sm:inline-flex items-center gap-2 bg-[#C8F135] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
   data-testid="button-cta"
 >
   <span className="hidden md:inline">Kostenlose Beratung anfragen</span>
@@ -106,7 +106,7 @@ export function Navbar() {
             ))}
             <button
               onClick={() => { open(); setMobileOpen(false); }}
-              className="mt-2 bg-[#C8E646] text-[#171717] font-bold text-sm py-3 rounded-full"
+              className="mt-2 bg-[#C8F135] text-[#171717] font-bold text-sm py-3 rounded-full"
             >
               Kostenlos starten
             </button>

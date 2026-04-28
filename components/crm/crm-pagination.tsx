@@ -68,7 +68,7 @@ export function CrmPagination({
         <button
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1 || totalPages === 0 || loading}
-          className="p-1.5 rounded-lg border border-white/10 hover:border-[#C8E646]/40 hover:bg-white/[0.03] disabled:opacity-40 disabled:cursor-not-allowed transition"
+          className="p-1.5 rounded-lg border border-white/10 hover:border-[#C8F135]/40 hover:bg-white/[0.03] disabled:opacity-40 disabled:cursor-not-allowed transition"
           aria-label="Previous page"
           title="Previous page"
         >
@@ -88,7 +88,7 @@ export function CrmPagination({
                 disabled={loading}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
                   currentPage === page
-                    ? "bg-[#C8E646] text-[#171717]"
+                    ? "bg-[#C8F135] text-[#171717]"
                     : "border border-white/10 text-white/60 hover:border-white/20 hover:bg-white/[0.03] disabled:cursor-not-allowed"
                 }`}
                 aria-label={`Page ${page}`}
@@ -103,7 +103,7 @@ export function CrmPagination({
         <button
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages || totalPages === 0 || loading}
-          className="p-1.5 rounded-lg border border-white/10 hover:border-[#C8E646]/40 hover:bg-white/[0.03] disabled:opacity-40 disabled:cursor-not-allowed transition"
+          className="p-1.5 rounded-lg border border-white/10 hover:border-[#C8F135]/40 hover:bg-white/[0.03] disabled:opacity-40 disabled:cursor-not-allowed transition"
           aria-label="Next page"
           title="Next page"
         >

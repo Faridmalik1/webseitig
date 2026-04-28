@@ -40,7 +40,7 @@ export function Footer() {
                 <img src="/FooterLogo.svg" alt="Logo" className="w-36" />
               </div>
               {/* <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
-              web<span className="text-[#C8E646]">.</span>seitig
+              web<span className="text-[#C8F135]">.</span>seitig
             </span> */}
             </Link>
 
@@ -68,7 +68,7 @@ export function Footer() {
                       </button>
                     )}
                     {index < arr.length - 1 && (
-                      <span className="text-[#C8E646] text-sm">•</span>
+                      <span className="text-[#C8F135] text-sm">•</span>
                     )}
                   </span>
                 ))}
@@ -90,7 +90,7 @@ export function Footer() {
                 style={{
                   background: `
           linear-gradient(#141414, #141414) padding-box,
-          linear-gradient(to right, #ffffff 50%, #C8E646 50%) border-box
+          linear-gradient(to right, #ffffff 50%, #C8F135 50%) border-box
         `,
                   border: "1.5px solid transparent"
                 }}
@@ -98,7 +98,7 @@ export function Footer() {
               >
                 <ChevronUp
                   size={18}
-                  className="text-[#C8E646] group-hover:scale-110 transition-transform"
+                  className="text-[#C8F135] group-hover:scale-110 transition-transform"
                   strokeWidth={3}
                 />
               </button>
