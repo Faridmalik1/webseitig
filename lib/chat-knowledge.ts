@@ -152,6 +152,17 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
 const FALLBACK_ANSWER =
   "Das ist eine interessante Frage, aber ich habe nur Informationen zu webseitig und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
 
+const COMPANY_CONTEXT = `
+webseitig ist eine Schweizer Webdesign-Agentur mit Sitz in Zürich (Schärenmoosstrasse 77, 8052 Zürich).
+Wir bieten professionelle Website-Erstellung, Design, Hosting und laufende Betreuung für Schweizer KMU.
+Unsere Pakete:
+- Starter: Bis zu 5 Seiten, Hosting, Domain inklusive.
+- Business Pro: Bis zu 10 Seiten, Google Maps Integration, SEO-Optimierung, erweiterter Support.
+Preise: Individuell nach Paket und Anforderungen. Erstgespräch ist kostenlos.
+Kontakt: hello@webseitig.ch.
+Mission: Moderne, mobile-optimierte Websites mit hoher Performance und nützlichen Funktionen wie Kontaktformularen.
+`;
+
 const LEAD_START_OPTIONS = ["Ja, Formular starten", "Nein, danke"];
 const LEAD_CONFIRM_OPTIONS = ["Absenden", "Neu starten", "Abbrechen"];
 const BRANCHE_CHOICES = [
@@ -187,6 +198,43 @@ const LEAD_INTENT_KEYWORDS = [
   "contact",
   "anfrage",
   "request",
+  "preise",
+  "interessiert",
+  "interested",
+  "services",
+  "leistungen",
+  "buchen",
+  "termin",
+  "gespräch",
+  "meeting",
+  "zusammenarbeit",
+  "kooperation",
+  "webseite",
+  "website",
+  "design",
+  "erstellen",
+  "bauen",
+  "hilfe",
+  "beratung",
+  "angebot",
+  "kaufen",
+  "buy",
+  "order",
+  "bestellen",
+  "webseite erstellen",
+  "projekt",
+  "zusammenarbeit",
+  "preis",
+  "kosten",
+  "investition",
+  "service",
+  "interested",
+  "interessiert",
+  "interesse",
+  "buche",
+  "buchen",
+  "leistung",
+  "pakete",
 ];
 
 function normalizeInput(value: string): string {
@@ -471,18 +519,20 @@ async function callAIAPI(question: string): Promise<string> {
 
   const knowledgeText = relevant.length
     ? relevant.map((e) => e.answer).join("\n")
-    : "No relevant knowledge found.";
+    : "";
 
-  if (!relevant.length) {
-    return FALLBACK_ANSWER;
-  }
+  const fullContext = `${COMPANY_CONTEXT}\n\nZusätzliches Wissen:\n${knowledgeText}`;
+
+  console.log("Calling AI API with context length:", fullContext.length);
 
   try {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question, knowledgeText }),
+      body: JSON.stringify({ question, knowledgeText: fullContext }),
     });
+
+    console.log("AI API response status:", response.status);
 
     // First, read as text
     const responseText = await response.text();
@@ -514,11 +564,20 @@ async function callAIAPI(question: string): Promise<string> {
     // Extract generated text (handle different possible formats)
     const generatedText = data?.[0]?.generated_text || data?.generated_text || responseText;
 
-    return generatedText && generatedText.length > 15
+    console.log("AI API final text extracted:", {
+      original: responseText.substring(0, 50) + "...",
+      extracted: generatedText?.substring(0, 50) + "..."
+    });
+
+    return generatedText && generatedText.trim().length > 0
       ? generatedText.trim()
       : FALLBACK_ANSWER;
-  } catch (error) {
-    console.error("AI API fetch error:", error);
+  } catch (error: any) {
+    console.error("AI API fetch error details:", {
+      message: error?.message || "No message",
+      stack: error?.stack || "No stack",
+      url: "/api/chat"
+    });
     return FALLBACK_ANSWER;
   }
 }
@@ -530,34 +589,36 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
     return handleLeadCollection(question, currentLeadData);
   }
 
+  // Broad lead intent check for starting the form
   if (isLeadIntent(normalized)) {
     return {
       message:
-        "Gerne. Ich kann das gleiche Lead-Formular direkt im Chat fuer dich ausfuellen. Soll ich starten?",
+        "Gerne! Ich kann deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehmen. Möchtest du das Formular jetzt starten?",
       options: LEAD_START_OPTIONS,
       leadData: { step: "start" },
     };
   }
 
-  // First, try exact keyword match
-  const exactMatch = KNOWN_ANSWERS.find((entry) =>
-    entry.keywords.some((keyword) => normalized.includes(keyword)),
-  );
-  if (exactMatch) {
-    return { message: exactMatch.answer };
+  const aiResponse = await callAIAPI(question);
+  
+  // Check if AI response suggests a form or inquiry
+  const lowerAI = aiResponse.toLowerCase();
+  const suggestsForm = [
+    "formular", 
+    "anfrage", 
+    "direkt hier im chat", 
+    "daten aufnehmen",
+    "möchtest du, dass ich deine daten",
+    "unverbindliche anfrage"
+  ].some(term => lowerAI.includes(term));
+  
+  if (suggestsForm) {
+    return {
+      message: aiResponse,
+      options: LEAD_START_OPTIONS,
+      leadData: { step: "start" },
+    };
   }
 
-  // Fuzzy match: check if question contains parts of keywords
-  const fuzzyMatch = KNOWN_ANSWERS.find((entry) =>
-    entry.keywords.some((keyword) => {
-      const keywordParts = keyword.split(" ");
-      return keywordParts.some((part) => normalized.includes(part) && part.length > 2);
-    }),
-  );
-  if (fuzzyMatch) {
-    return { message: fuzzyMatch.answer };
-  }
-
-  // If no match, call AI API
-  return { message: await callAIAPI(question) };
+  return { message: aiResponse };
 }
