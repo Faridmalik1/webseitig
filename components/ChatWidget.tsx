@@ -47,13 +47,16 @@ export function ChatWidget() {
         ...prev,
         { role: "assistant", text: answer.message, options: answer.options },
       ]);
-      setLeadData(answer.leadData);
+      // setLeadData(answer.leadData);
+      if (answer.leadData !== undefined) {
+  setLeadData(answer.leadData);
+}
     } catch (error) {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", text: "Sorry, something went wrong. Please try again." },
       ]);
-      setLeadData(undefined);
+      // setLeadData(undefined);
     } finally {
       setLoading(false);
     }

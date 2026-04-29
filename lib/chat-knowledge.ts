@@ -3,7 +3,7 @@ export type KnowledgeEntry = {
   answer: string;
 };
 
-export type LeadStep = "start" | "name" | "email" | "phone" | "branche" | "confirm";
+export type LeadStep = "start" | "name" | "email" | "phone" | "branche" | "confirm" | "skipped";
 
 export type LeadData = {
   step: LeadStep;
@@ -40,7 +40,7 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   {
     keywords: ["bye", "goodbye", "tschüss", "auf wiedersehen"],
     answer:
-      "Auf Wiedersehen! Besuche uns bald wieder auf web-seitig.ch.",
+      "Auf Wiedersehen! Besuche uns bald wieder auf webseitig.ch.",
   },
   // Company and brand
   {
@@ -74,14 +74,14 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
       "Testimonials auf der Website zeigen zufriedene Kundenerfahrungen und stärken das Vertrauen in die angebotenen Webdesign- und Betreuungslösungen.",
   },
   {
-    keywords: ["contact", "kontakt", "email", "telephone", "support"],
-    answer:
-      "Sie können webseitig über hello@webseitig.ch kontaktieren. Die Website bietet ein Kontaktformular, mit dem Sie Anfragen schnell an das Team senden können.",
-  },
+  keywords: ["contact", "kontakt", "email", "e-mail", "mail", "telephone", "support", "erreichen", "erreichbar"],
+  answer:
+    "Sie können webseitig direkt per E-Mail erreichen: hello@webseitig.ch. Weitere Infos finden Sie auf webseitig.ch.",
+},
   {
     keywords: ["impressum", "legal", "unternehmen", "adresse", "zürich"],
     answer:
-      "Im Impressum wird webseitig genannt mit Sitz in Schärenmoosstrasse 77, 8052 Zürich. Kontakt per E-Mail: hello@webseitig.ch und Web: web-seitig.ch.",
+      "Im Impressum wird webseitig genannt mit Sitz in Schärenmoosstrasse 77, 8052 Zürich. Kontakt per E-Mail: hello@webseitig.ch und Web: webseitig.ch.",
   },
   {
     keywords: ["datenschutz", "privacy", "data", "daten"],
@@ -358,6 +358,7 @@ async function handleLeadCollection(question: string, currentLeadData: LeadData)
         return {
           message:
             "Alles klar. Wenn du spaeter eine Anfrage senden moechtest, sag einfach Bescheid.",
+          leadData: { step: "skipped" },
         };
       }
 
@@ -454,6 +455,7 @@ async function handleLeadCollection(question: string, currentLeadData: LeadData)
         return {
           message:
             "Verstanden. Ich habe die Uebermittlung abgebrochen. Wenn du wieder starten willst, sag einfach Bescheid.",
+          leadData: { step: "skipped" },
         };
       }
 
@@ -544,30 +546,38 @@ async function callAIAPI(question: string): Promise<string> {
     return FALLBACK_ANSWER;
   }
 }
+// Add this function above callAIAPI
+function findKnownAnswer(question: string): string | undefined {
+  const normalized = question.toLowerCase();
+  const match = KNOWN_ANSWERS.find((entry) =>
+    entry.keywords.some((k) => normalized.includes(k))
+  );
+  return match?.answer;
+}
 
+// Then update getAnswer to check known answers BEFORE calling the AI:
 export async function getAnswer(question: string, currentLeadData?: LeadData): Promise<ChatResponse> {
   const normalized = question.toLowerCase();
+  const isSkipped = currentLeadData?.step === "skipped";
 
-  if (currentLeadData?.step) {
+  if (currentLeadData?.step && !isSkipped) {
     const leadResponse = await handleLeadCollection(question, currentLeadData);
-    
-    // If we are in the 'start' phase and the user asks something else (isFallback),
-    // try to answer with AI first.
+
+    // User was at the "start" prompt but typed something unrelated (not yes/no)
     if (currentLeadData.step === "start" && leadResponse.isFallback) {
-      const aiResponse = await callAIAPI(question);
-      if (aiResponse !== FALLBACK_ANSWER) {
-        return {
-          ...leadResponse,
-          message: `${aiResponse}\n\nMöchtest du trotzdem, dass ich deine Daten für eine Anfrage aufnehme?`,
-          isFallback: false,
-        };
-      }
+      const known = findKnownAnswer(question);
+      const aiResponse = known ?? await callAIAPI(question);
+      // Return the answer and remember they skipped the form
+      return {
+        message: aiResponse,
+        leadData: { step: "skipped" },
+      };
     }
-    
+
     return leadResponse;
   }
 
-  // Broad lead intent check for starting the form
+  // If user explicitly asks to start the form again, let them
   if (isLeadIntent(normalized)) {
     return {
       message:
@@ -577,23 +587,37 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
     };
   }
 
-  const aiResponse = await callAIAPI(question);
-  
-  // Check if AI response suggests a form or inquiry
-  const lowerAI = aiResponse.toLowerCase();
-  const suggestsForm = [
-    "direkt hier im chat aufnehmen", 
-    "daten für eine unverbindliche anfrage",
-    "formular jetzt starten"
-  ].some(term => lowerAI.includes(term));
-  
-  if (suggestsForm) {
-    return {
-      message: aiResponse,
-      options: LEAD_START_OPTIONS,
-      leadData: { step: "start" },
+  // Check known answers before AI
+  const known = findKnownAnswer(question);
+  if (known) {
+    return { 
+      message: known,
+      leadData: isSkipped ? { step: "skipped" } : undefined
     };
   }
 
-  return { message: aiResponse };
+  const aiResponse = await callAIAPI(question);
+
+  if (!isSkipped) {
+    // Check if AI response suggests a form or inquiry
+    const lowerAI = aiResponse.toLowerCase();
+    const suggestsForm = [
+      "direkt hier im chat aufnehmen",
+      "daten für eine unverbindliche anfrage",
+      "formular jetzt starten"
+    ].some(term => lowerAI.includes(term));
+
+    if (suggestsForm) {
+      return {
+        message: aiResponse,
+        options: LEAD_START_OPTIONS,
+        leadData: { step: "start" },
+      };
+    }
+  }
+
+  return { 
+    message: aiResponse,
+    leadData: isSkipped ? { step: "skipped" } : undefined 
+  };
 }
