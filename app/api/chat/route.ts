@@ -1,8 +1,9 @@
-const HUGGINGFACE_MODEL = "bilalRahib/TinyLLama-NSFW-Chatbot";
+// const HUGGINGFACE_MODEL = "tiiuae/falcon-rw-1b";
+const HUGGINGFACE_MODEL = "tiiuae/falcon-rw-1b";
 const HUGGINGFACE_URL = `https://api-inference.huggingface.co/models/${HUGGINGFACE_MODEL}`;
 
 const FALLBACK_CHAT_TEXT =
-  "Das ist eine interessante Frage, aber ich habe nur Informationen zu webseitig und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
+  "Ich habe nur Informationen zu Webseiten und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
 
 const MODEL_LOADING_TEXT =
   "Das Modell wird gerade geladen. Bitte versuche es in 20 Sekunden erneut.";
@@ -37,12 +38,28 @@ export async function POST(req: Request) {
       hfResponse = await fetch(HUGGINGFACE_URL, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
+  Authorization: `Bearer ${apiKey}`,
+  "Content-Type": "application/json",
+  "X-Wait-For-Model": "true",
+},
         cache: "no-store",
         body: JSON.stringify({
-          inputs: `<|system|>\nDu bist ein hilfreicher Assistent für webseitig (Schweizer Webdesign-Agentur).\nNutze folgendes Wissen: ${knowledgeText}.\n\nWICHTIG: Wenn der Nutzer Interesse an unseren Services zeigt, ein Angebot möchte oder eine Webseite kaufen will, MUSST du ihm anbieten, seine Daten direkt hier im Chat aufzunehmen. Sage: "Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"</s>\n<|user|>\n${question}</s>\n<|assistant|>\n`,
+         inputs: `
+Du bist ein hilfreicher Assistent für webseitig (Schweizer Webdesign-Agentur).
+
+Kontext:
+${knowledgeText}
+
+Anweisungen:
+1. Beantworte die Frage des Nutzers basierend auf dem Kontext.
+2. NUR wenn der Nutzer Interesse an unseren Dienstleistungen (Webseiten, Design, SEO, etc.) oder einer Zusammenarbeit zeigt, füge am Ende diesen Satz hinzu:
+"Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"
+
+Frage:
+${question}
+
+Antwort:
+`,
           parameters: {
             max_new_tokens: 200,
             temperature: 0.7,
@@ -80,15 +97,16 @@ export async function POST(req: Request) {
       return asChatResponse(FALLBACK_CHAT_TEXT);
     }
 
-    const generatedText = 
-      data?.choices?.[0]?.message?.content || 
-      data?.generated_text || 
-      (Array.isArray(data) ? data[0]?.generated_text : null);
+    const generatedText = Array.isArray(data)
+  ? data[0]?.generated_text
+  : data?.generated_text;
 
     if (!generatedText) {
       console.error("Unexpected HF response shape. Full body:", data || responseText);
       return asChatResponse(FALLBACK_CHAT_TEXT);
     }
+
+    console.log("FULL HF RESPONSE:", data);
 
     console.log("AI success, response length:", generatedText.length);
     return Response.json([{ generated_text: generatedText }]);

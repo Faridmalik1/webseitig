@@ -17,6 +17,7 @@ export type ChatResponse = {
   message: string;
   options?: string[];
   leadData?: LeadData;
+  isFallback?: boolean;
 };
 
 export const KNOWN_ANSWERS: KnowledgeEntry[] = [
@@ -150,7 +151,7 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
 ];
 
 const FALLBACK_ANSWER =
-  "Das ist eine interessante Frage, aber ich habe nur Informationen zu webseitig und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
+  "Ich habe nur Informationen zu Webseiten und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
 
 const COMPANY_CONTEXT = `
 webseitig ist eine Schweizer Webdesign-Agentur mit Sitz in Zürich (Schärenmoosstrasse 77, 8052 Zürich).
@@ -178,63 +179,24 @@ const BRANCHE_CHOICES = [
 
 const BRANCHE_OPTIONS = BRANCHE_CHOICES.map((entry) => entry.value);
 const LEAD_INTENT_KEYWORDS = [
-  "form",
   "formular",
-  "form submission",
-  "submit form",
-  "lead form",
-  "formular ausfuellen",
-  "formular ausfüllen",
-  "formular senden",
-  "anfrage stellen",
-  "anfrage senden",
-  "angebot anfragen",
-  "angebot anfordern",
-  "offerte",
-  "rueckruf",
-  "rückruf",
-  "projekt starten",
-  "kontakt",
-  "contact",
-  "anfrage",
-  "request",
-  "preise",
-  "interessiert",
-  "interested",
-  "services",
-  "leistungen",
-  "buchen",
-  "termin",
-  "gespräch",
-  "meeting",
-  "zusammenarbeit",
-  "kooperation",
-  "webseite",
-  "website",
-  "design",
-  "erstellen",
-  "bauen",
-  "hilfe",
-  "beratung",
   "angebot",
-  "kaufen",
-  "buy",
-  "order",
-  "bestellen",
-  "webseite erstellen",
+  "anfrage",
+  "offerte",
   "projekt",
   "zusammenarbeit",
-  "preis",
-  "kosten",
-  "investition",
+  "website",
+  "webseite",
   "service",
-  "interested",
-  "interessiert",
-  "interesse",
-  "buche",
+  "leistungen",
   "buchen",
-  "leistung",
-  "pakete",
+  "kaufen",
+  "bestellen",
+  "erstellen",
+  "bauen",
+  "design",
+  // "kontakt",
+  // "contact",
 ];
 
 function normalizeInput(value: string): string {
@@ -404,6 +366,7 @@ async function handleLeadCollection(question: string, currentLeadData: LeadData)
           "Ich kann dein Lead-Formular direkt hier im Chat aufnehmen. Soll ich starten?",
         options: LEAD_START_OPTIONS,
         leadData: { step: "start" },
+        isFallback: true, // Mark this so getAnswer can decide whether to override it
       };
 
     case "name":
@@ -586,7 +549,22 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
   const normalized = question.toLowerCase();
 
   if (currentLeadData?.step) {
-    return handleLeadCollection(question, currentLeadData);
+    const leadResponse = await handleLeadCollection(question, currentLeadData);
+    
+    // If we are in the 'start' phase and the user asks something else (isFallback),
+    // try to answer with AI first.
+    if (currentLeadData.step === "start" && leadResponse.isFallback) {
+      const aiResponse = await callAIAPI(question);
+      if (aiResponse !== FALLBACK_ANSWER) {
+        return {
+          ...leadResponse,
+          message: `${aiResponse}\n\nMöchtest du trotzdem, dass ich deine Daten für eine Anfrage aufnehme?`,
+          isFallback: false,
+        };
+      }
+    }
+    
+    return leadResponse;
   }
 
   // Broad lead intent check for starting the form
@@ -604,12 +582,9 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
   // Check if AI response suggests a form or inquiry
   const lowerAI = aiResponse.toLowerCase();
   const suggestsForm = [
-    "formular", 
-    "anfrage", 
-    "direkt hier im chat", 
-    "daten aufnehmen",
-    "möchtest du, dass ich deine daten",
-    "unverbindliche anfrage"
+    "direkt hier im chat aufnehmen", 
+    "daten für eine unverbindliche anfrage",
+    "formular jetzt starten"
   ].some(term => lowerAI.includes(term));
   
   if (suggestsForm) {
