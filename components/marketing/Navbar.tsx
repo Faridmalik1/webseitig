@@ -5,11 +5,26 @@ import { useModal } from "../shared/modal-context";
 import { navigate } from "next/dist/client/components/segment-cache/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { open } = useModal();
+  const router = useRouter();
+const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+  e.preventDefault();
+
+  if (pathname === "/") {
+    router.refresh();
+    window.location.reload();
+  } else {
+    router.push("/");
+  }
+  window.scrollTo(0, 0);
+};
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -17,10 +32,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMobileOpen(false);
-  };
 
   return (
     <nav
@@ -37,6 +48,7 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
+          onClick={handleLogoClick}
           className="text-white flex items-center gap-2 text-xl tracking-tight hover:opacity-80 transition-opacity shrink-0"
         >
           <img src="/NavbarLogo.svg" alt="Logo" className="h-36 w-36" />

@@ -526,13 +526,10 @@ async function callAIAPI(question: string): Promise<string> {
       return FALLBACK_ANSWER;
     }
 
-    // Extract generated text (handle different possible formats)
-    const generatedText = data?.[0]?.generated_text || data?.generated_text || responseText;
+    // Extract generated text
+    const generatedText = data?.answer || responseText;
 
-    console.log("AI API final text extracted:", {
-      original: responseText.substring(0, 50) + "...",
-      extracted: generatedText?.substring(0, 50) + "..."
-    });
+    console.log("AI API response text:", generatedText.substring(0, 100));
 
     return generatedText && generatedText.trim().length > 0
       ? generatedText.trim()

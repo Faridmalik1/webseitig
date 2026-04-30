@@ -14,6 +14,18 @@ export function Footer() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+  e.preventDefault();
+
+  if (pathname === "/") {
+    router.refresh();
+    window.location.reload();
+  } else {
+    router.push("/");
+  }
+    window.scrollTo(0, 0);
+};
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const scrollToFaq = () => {
     if (pathname === "/") {
@@ -35,6 +47,7 @@ export function Footer() {
             {/* Logo */}
             <Link
               href="/"
+              onClick={handleLogoClick}
               className="flex items-center gap-1">
               <div className="flex items-center justify-center">
                 <img src="/FooterLogo.svg" alt="Logo" className="w-36" />

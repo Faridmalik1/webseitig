@@ -1,117 +1,103 @@
-// const HUGGINGFACE_MODEL = "tiiuae/falcon-rw-1b";
-const HUGGINGFACE_MODEL = "tiiuae/falcon-rw-1b";
-const HUGGINGFACE_URL = `https://api-inference.huggingface.co/models/${HUGGINGFACE_MODEL}`;
+// const API_URL = "https://api.openai.com/v1/chat/completions";
+// const MODEL = "gpt-3.5-turbo";
 
-const FALLBACK_CHAT_TEXT =
-  "Ich habe nur Informationen zu Webseiten und unseren Website-Services. Wie kann ich dir bei Fragen zu Services, Preisen, Kontakt oder anderen Themen helfen?";
+const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+const MODEL = "openai/gpt-oss-120b";
 
 const MODEL_LOADING_TEXT =
   "Das Modell wird gerade geladen. Bitte versuche es in 20 Sekunden erneut.";
 
 function asChatResponse(text: string) {
-  return Response.json([{ generated_text: text }]);
+  return Response.json({ answer: text });
 }
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const question =
-      typeof body?.question === "string" ? body.question.trim() : "";
-    const knowledgeText =
-      typeof body?.knowledgeText === "string" ? body.knowledgeText.trim() : "";
+    const question = typeof body?.question === "string" ? body.question.trim() : "";
+    const knowledgeText = typeof body?.knowledgeText === "string" ? body.knowledgeText.trim() : "";
 
-    console.log(`[${new Date().toISOString()}] Chat API called:`, { question, knowledgeLength: knowledgeText.length });
+    console.log(`[${new Date().toISOString()}] Chat API called:`, { question });
 
     if (!question) {
       return Response.json({ error: "Question is required." }, { status: 400 });
     }
 
-    const apiKey = process.env.HUGGINGFACE_API_KEY;
-    console.log("HUGGINGFACE_API_KEY present:", !!apiKey);
+    // It will automatically use OpenAI if GROQ is not found
+    const apiKey = process.env.GROQ_API_KEY || process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      console.warn("Missing HUGGINGFACE_API_KEY, returning fallback answer.");
-      return asChatResponse(FALLBACK_CHAT_TEXT);
+      return asChatResponse("API-Schlüssel fehlt. Bitte trage deinen GROQ_API_KEY in die .env Datei ein.");
     }
 
-    let hfResponse: Response;
+    let apiResponse: Response;
     try {
-      hfResponse = await fetch(HUGGINGFACE_URL, {
+      console.log("DEBUG: Calling AI URL:", API_URL);
+
+      apiResponse = await fetch(API_URL, {
         method: "POST",
         headers: {
-  Authorization: `Bearer ${apiKey}`,
-  "Content-Type": "application/json",
-  "X-Wait-For-Model": "true",
-},
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
         cache: "no-store",
         body: JSON.stringify({
-         inputs: `
-Du bist ein hilfreicher Assistent für webseitig (Schweizer Webdesign-Agentur).
+          model: MODEL,
+          messages: [
+            {
+              role: "system",
+content: `Du bist ein hilfreicher und höflicher Assistent für webseitig (Schweizer Webdesign-Agentur).
 
-Kontext:
-${knowledgeText}
+WICHTIG: Antworte IMMER auf Schweizer Hochdeutsch (lokalisiertes Deutsch), egal in welcher Sprache der Nutzer schreibt. Wechsle niemals die Sprache.
+Sei stets freundlich, respektvoll und professionell in deiner Kommunikation.
 
-Anweisungen:
-1. Beantworte die Frage des Nutzers basierend auf dem Kontext.
-2. NUR wenn der Nutzer Interesse an unseren Dienstleistungen (Webseiten, Design, SEO, etc.) oder einer Zusammenarbeit zeigt, füge am Ende diesen Satz hinzu:
-"Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"
-
-Frage:
-${question}
-
-Antwort:
-`,
-          parameters: {
-            max_new_tokens: 200,
-            temperature: 0.7,
-            return_full_text: false,
-          },
+Beantworte Fragen basierend auf diesem Kontext: ${knowledgeText}.
+NUR wenn der Nutzer Interesse an unseren Dienstleistungen zeigt, füge am Ende hinzu: "Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"`
+//               role: "system",
+//               content: `Du bist ein hilfreicher und freundlicher Assistent für webseitig (Schweizer Webdesign-Agentur). 
+// Beantworte Fragen basierend auf diesem Kontext: ${knowledgeText}. 
+// NUR wenn der Nutzer Interesse an unseren Dienstleistungen zeigt, füge am Ende hinzu: "Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"`
+            },
+            {
+              role: "user",
+              content: question
+            }
+          ],
+          max_tokens: 500,
+          temperature: 0.7,
         }),
       });
-    } catch (fetchError: any) {
-      console.error("HF fetch failed details:", {
-        message: fetchError?.message,
-        stack: fetchError?.stack,
-        url: HUGGINGFACE_URL
-      });
-      return asChatResponse(FALLBACK_CHAT_TEXT);
+    } catch (error: any) {
+      console.error("DEBUG: AI fetch failed:", error.message);
+      return asChatResponse(`Fetch failed: ${error.message}`);
     }
 
-    const responseText = await hfResponse.text();
-    console.log("HF status:", hfResponse.status, "Response start:", responseText.substring(0, 100));
-
+    const responseText = await apiResponse.text();
     let data;
     try {
       data = JSON.parse(responseText);
     } catch (e) {
-      console.error("HF Response is not JSON:", responseText);
+      console.error("Response is not JSON:", responseText);
       data = null;
     }
 
-    if (!hfResponse.ok) {
-      const errorMsg = data?.error || responseText || "HF request failed";
-      console.error("HF ERROR:", hfResponse.status, errorMsg);
-      
-      if (errorMsg.toLowerCase().includes("loading")) {
-        return asChatResponse(MODEL_LOADING_TEXT);
-      }
-      return asChatResponse(FALLBACK_CHAT_TEXT);
+    if (!apiResponse.ok) {
+      const errorMsg = data?.error?.message || data?.error || responseText || "Request failed";
+      console.error("AI ERROR:", apiResponse.status, errorMsg);
+      return asChatResponse(`API Error (${apiResponse.status}): ${errorMsg}`);
     }
 
-    const generatedText = Array.isArray(data)
-  ? data[0]?.generated_text
-  : data?.generated_text;
+    // OpenAI / Groq standard response extraction
+    const generatedText = data?.choices?.[0]?.message?.content;
 
     if (!generatedText) {
-      console.error("Unexpected HF response shape. Full body:", data || responseText);
-      return asChatResponse(FALLBACK_CHAT_TEXT);
+      console.error("Unexpected response shape. Full body:", data || responseText);
+      return asChatResponse(`Unexpected response shape: ${JSON.stringify(data || responseText)}`);
     }
 
-    console.log("FULL HF RESPONSE:", data);
-
-    console.log("AI success, response length:", generatedText.length);
-    return Response.json([{ generated_text: generatedText }]);
+    console.log("AI SUCCESS RESPONSE:", generatedText.substring(0, 50) + "...");
+    return Response.json({ answer: generatedText });
   } catch (error: any) {
     console.error("API route error:", error?.message || error);
-    return asChatResponse(FALLBACK_CHAT_TEXT);
+    return Response.json({ answer: `Internal Server Error: ${error?.message || error}` });
   }
 }
