@@ -74,10 +74,10 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
       "Testimonials auf der Website zeigen zufriedene Kundenerfahrungen und stärken das Vertrauen in die angebotenen Webdesign- und Betreuungslösungen.",
   },
   {
-  keywords: ["contact", "kontakt", "email", "e-mail", "mail", "telephone", "support", "erreichen", "erreichbar"],
-  answer:
-    "Sie können webseitig direkt per E-Mail erreichen: hello@webseitig.ch. Weitere Infos finden Sie auf webseitig.ch.",
-},
+    keywords: ["contact", "kontakt", "email", "e-mail", "mail", "telephone", "support", "erreichen", "erreichbar"],
+    answer:
+      "Sie können webseitig direkt per E-Mail erreichen: hello@webseitig.ch. Weitere Infos finden Sie auf webseitig.ch.",
+  },
   {
     keywords: ["impressum", "legal", "unternehmen", "adresse", "zürich"],
     answer:
@@ -477,7 +477,12 @@ async function handleLeadCollection(question: string, currentLeadData: LeadData)
   }
 }
 
+const responseCache = new Map<string, string>();
+
 async function callAIAPI(question: string): Promise<string> {
+  if (responseCache.has(question)) {
+    return responseCache.get(question)!;
+  }
   const relevant = KNOWN_ANSWERS
     .filter((entry) => entry.keywords.some((k) => question.toLowerCase().includes(k)))
     .slice(0, 3); // limit to 3 matches
@@ -486,9 +491,10 @@ async function callAIAPI(question: string): Promise<string> {
     ? relevant.map((e) => e.answer).join("\n")
     : "";
 
-  const fullContext = `${COMPANY_CONTEXT}\n\nZusätzliches Wissen:\n${knowledgeText}`;
+  // const fullContext = `${COMPANY_CONTEXT}\n\nZusätzliches Wissen:\n${knowledgeText}`;
+  const fullContext = knowledgeText || COMPANY_CONTEXT.slice(0, 300);
 
-  console.log("Calling AI API with context length:", fullContext.length);
+  // console.log("Calling AI API with context length:", fullContext.length);
 
   try {
     const response = await fetch("/api/chat", {
@@ -497,7 +503,7 @@ async function callAIAPI(question: string): Promise<string> {
       body: JSON.stringify({ question, knowledgeText: fullContext }),
     });
 
-    console.log("AI API response status:", response.status);
+    // console.log("AI API response status:", response.status);
 
     // First, read as text
     const responseText = await response.text();
@@ -529,11 +535,19 @@ async function callAIAPI(question: string): Promise<string> {
     // Extract generated text
     const generatedText = data?.answer || responseText;
 
-    console.log("AI API response text:", generatedText.substring(0, 100));
+    // console.log("AI API response text:", generatedText.substring(0, 100));
 
-    return generatedText && generatedText.trim().length > 0
-      ? generatedText.trim()
-      : FALLBACK_ANSWER;
+    // return generatedText && generatedText.trim().length > 0
+    //   ? generatedText.trim()
+    //   : FALLBACK_ANSWER;
+    const finalText =
+      generatedText && generatedText.trim().length > 0
+        ? generatedText.trim()
+        : FALLBACK_ANSWER;
+
+    responseCache.set(question, finalText);
+
+    return finalText;
   } catch (error: any) {
     console.error("AI API fetch error details:", {
       message: error?.message || "No message",
@@ -543,16 +557,46 @@ async function callAIAPI(question: string): Promise<string> {
     return FALLBACK_ANSWER;
   }
 }
-// Add this function above callAIAPI
+// function findKnownAnswer(question: string): string | undefined {
+//   const normalized = question.toLowerCase();
+//   const match = KNOWN_ANSWERS.find((entry) =>
+//     entry.keywords.some((k) => normalized.includes(k))
+//   );
+//   return match?.answer;
+// }
+
 function findKnownAnswer(question: string): string | undefined {
   const normalized = question.toLowerCase();
-  const match = KNOWN_ANSWERS.find((entry) =>
-    entry.keywords.some((k) => normalized.includes(k))
-  );
-  return match?.answer;
+
+  let bestMatch: { answer: string; score: number } | null = null;
+
+  for (const entry of KNOWN_ANSWERS) {
+    let score = 0;
+
+    for (const keyword of entry.keywords) {
+      if (normalized.includes(keyword)) {
+        score++;
+      }
+    }
+
+    if (score > 0 && (!bestMatch || score > bestMatch.score)) {
+      bestMatch = { answer: entry.answer, score };
+    }
+  }
+
+  return bestMatch?.answer;
 }
 
-// Then update getAnswer to check known answers BEFORE calling the AI:
+function shouldCallAI(question: string): boolean {
+  const q = question.toLowerCase().trim();
+
+  if (q.length < 8) return false;
+
+  if (["ok", "hmm", "test", "hi", "hello"].includes(q)) return false;
+
+  return true;
+}
+
 export async function getAnswer(question: string, currentLeadData?: LeadData): Promise<ChatResponse> {
   const normalized = question.toLowerCase();
   const isSkipped = currentLeadData?.step === "skipped";
@@ -563,6 +607,19 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
     // User was at the "start" prompt but typed something unrelated (not yes/no)
     if (currentLeadData.step === "start" && leadResponse.isFallback) {
       const known = findKnownAnswer(question);
+      if (known) {
+        return {
+          message: known,
+          leadData: isSkipped ? { step: "skipped" } : undefined
+        };
+      }
+      if (!shouldCallAI(question)) {
+        return {
+          message: FALLBACK_ANSWER,
+          leadData: isSkipped ? { step: "skipped" } : undefined
+        };
+      }
+
       const aiResponse = known ?? await callAIAPI(question);
       // Return the answer and remember they skipped the form
       return {
@@ -587,7 +644,7 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
   // Check known answers before AI
   const known = findKnownAnswer(question);
   if (known) {
-    return { 
+    return {
       message: known,
       leadData: isSkipped ? { step: "skipped" } : undefined
     };
@@ -613,8 +670,8 @@ export async function getAnswer(question: string, currentLeadData?: LeadData): P
     }
   }
 
-  return { 
+  return {
     message: aiResponse,
-    leadData: isSkipped ? { step: "skipped" } : undefined 
+    leadData: isSkipped ? { step: "skipped" } : undefined
   };
 }
