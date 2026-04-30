@@ -93,16 +93,16 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       className="rounded-4xl overflow-hidden flex flex-col h-full"
       style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
     >
-      <div
-        className="w-full overflow-hidden rounded-3xl border-2 border-[#3F3F3F]"
-        style={{ aspectRatio: "16/9" }}
-      >
-        <img
-          src={project.image}
-          alt={project.name}
-          className="w-full h-full object-cover object-top"
-        />
-      </div>
+     <div
+  className="w-full overflow-hidden rounded-t-4xl rounded-b-3xl border-2 border-[#3F3F3F]"
+  style={{ aspectRatio: "16/9" }}
+>
+  <img
+    src={project.image}
+    alt={project.name}
+    className="w-full h-full object-cover block"
+  />
+</div>
 
       <div className="p-6 flex flex-col flex-1">
         <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">
