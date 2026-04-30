@@ -100,7 +100,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   <img
     src={project.image}
     alt={project.name}
-    className="w-full h-full object-cover block"
+    className="w-full h-full object-cover object-top block"
   />
 </div>
 
@@ -115,14 +115,14 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         <div className="mt-auto">
   {/* Tech Stack */}
   <div className="mb-5">
-    <p className="text-white sm:text-[16px] md:text-[20px] mb-2 font-medium">
+    <p className="text-white sm:text-[16px] md:text-[20px] mb-2 font-paytone">
       Tech-Stack
     </p>
     <div className="flex flex-wrap gap-2">
       {project.stack.map((tag, i) => (
         <span
           key={i}
-          className="text-white/60 text-xs border border-white/15 rounded-full px-3 py-1"
+          className="text-[#F5F4F0] sm:text-[14px] md:text-[16px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1"
         >
           {tag}
         </span>
@@ -132,10 +132,10 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
   {/* Timeline */}
   <div className="flex items-center justify-between pt-4">
-    <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium">
+    <p className="text-white text-[16px] font-paytone sm:text-[18px] md:text-[20px]">
       Zeitleiste
     </p>
-    <p className="text-[#C8F135] text-[16px] sm:text-[18px] md:text-[20px] font-medium">
+    <p className="text-[#C8F135] text-[16px] sm:text-[18px] md:text-[20px] font-paytone">
       {project.days}
     </p>
   </div>

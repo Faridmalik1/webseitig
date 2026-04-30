@@ -45,25 +45,24 @@ export async function POST(req: Request) {
           messages: [
             {
               role: "system",
-content: `Du bist ein hilfreicher und höflicher Assistent für webseitig (Schweizer Webdesign-Agentur).
-
-WICHTIG: Antworte IMMER auf Schweizer Hochdeutsch (lokalisiertes Deutsch), egal in welcher Sprache der Nutzer schreibt. Wechsle niemals die Sprache.
-Sei stets freundlich, respektvoll und professionell in deiner Kommunikation.
-
-Beantworte Fragen basierend auf diesem Kontext: ${knowledgeText}.
+              content: `Du bist ein Assistent für webseitig, eine Schweizer Webdesign-Agentur. Beantworte Fragen basierend auf diesem Kontext: ${knowledgeText}.
+Halte dich strikt an diese Regeln:
+- Antworte immer auf Deutsch
+- Maximal 2-4 kurze Sätze pro Antwort
+- Keine Emojis
+- Keine Aufzählungszeichen oder Listen
+- Kein Markdown, keine Sternchen, keine Fettschreibung
+- Kein einleitender Fülltext wie "Natürlich!" oder "Gerne!"
+- Direkt und sachlich antworten
 NUR wenn der Nutzer Interesse an unseren Dienstleistungen zeigt, füge am Ende hinzu: "Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"`
-//               role: "system",
-//               content: `Du bist ein hilfreicher und freundlicher Assistent für webseitig (Schweizer Webdesign-Agentur). 
-// Beantworte Fragen basierend auf diesem Kontext: ${knowledgeText}. 
-// NUR wenn der Nutzer Interesse an unseren Dienstleistungen zeigt, füge am Ende hinzu: "Möchtest du, dass ich deine Daten für eine unverbindliche Anfrage direkt hier im Chat aufnehme?"`
             },
             {
               role: "user",
               content: question
             }
           ],
-          max_tokens: 500,
-          temperature: 0.7,
+          max_tokens: 150,
+temperature: 0.3,
         }),
       });
     } catch (error: any) {
