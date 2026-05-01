@@ -49,8 +49,8 @@ export function ChatWidget() {
       ]);
       // setLeadData(answer.leadData);
       if (answer.leadData !== undefined) {
-  setLeadData(answer.leadData);
-}
+        setLeadData(answer.leadData);
+      }
     } catch (error) {
       setMessages((prev) => [
         ...prev,
@@ -153,13 +153,18 @@ export function ChatWidget() {
         </div>
       )}
 
-      {/* Toggle button */}
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-label="Open site chat"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#C8F135] text-black shadow-xl hover:bg-[#d4f050] transition"
+        className="flex h-18 w-18 items-center justify-center 
+             transition-all duration-200 ease-out 
+             hover:scale-110 hover:shadow-lg active:scale-95"
       >
-        <MessageSquare className="h-6 w-6 text-white" />
+        <img
+          src="/bot.svg"
+          alt="Bot icon"
+          className="h-full w-full pointer-events-none"
+        />
       </button>
     </div>
   );
