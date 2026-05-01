@@ -70,7 +70,7 @@ export function ChatWidget() {
           <div className="flex items-center justify-between rounded-t-3xl bg-[#0F0F0F] border-b border-white/10 px-4 py-3 text-white">
             <div className="flex items-center gap-2 text-sm font-semibold">
               <MessageSquare className="h-5 w-5 text-[#C8F135]" />
-              Seiten-Chat
+              Adrian
             </div>
             <button
               onClick={() => setIsOpen(false)}
