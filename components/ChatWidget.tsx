@@ -156,7 +156,7 @@ export function ChatWidget() {
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-label="Open site chat"
-        className="flex h-18 w-18 items-center justify-center 
+        className="flex h-20 w-20 items-center justify-center 
              transition-all duration-200 ease-out 
              hover:scale-110 hover:shadow-lg active:scale-95"
       >
