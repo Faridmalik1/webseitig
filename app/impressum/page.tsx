@@ -10,8 +10,8 @@ export default function Impressum() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
-      <div className="max-w-[1568px] mx-auto px-6 py-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-sm mb-10 hover:opacity-80 transition-opacity">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8 py-16 pt-28">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-[16px] sm:text-[18px] mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
 
@@ -19,11 +19,11 @@ export default function Impressum() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-4xl mb-2"
+          className="text-[20px] sm:text-[24px] lg:text-[32px] mb-2"
         >
           Impressum
         </motion.h1>
-        <p className="text-white/70 leading-relaxed">
+        <p className="text-white/70 text-[16px] sm:text-[18px] leading-relaxed">
           Angaben gemäss Art. 12 ZGB und anwendbarem Schweizer Recht
         </p>
 
@@ -34,8 +34,8 @@ export default function Impressum() {
           className="space-y-8 text-white/70 leading-relaxed"
         >
           <section className="mt-4">
-            <h2 className="text-white text-lg mb-2">Angaben zum Unternehmen</h2>
-            <div className="bg-gray-800 p-4 rounded my-4">
+            <h2 className="text-white text-[18px] sm:text-[20px]  mb-2">Angaben zum Unternehmen</h2>
+            <div className="bg-gray-800 p-4 rounded my-4 text-[16px] sm:text-[18px]">
               <p>
                 Web<span className="text-[#C8F135]">.</span>Seitig <br />
                 Schärenmoosstrasse 77 <br />
@@ -45,41 +45,41 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-2">Kontaktdaten</h2>
-            <div className="bg-gray-800 p-4 rounded my-4">
+            <h2 className="text-white text-[18px] sm:text-[20px]  mb-2">Kontaktdaten</h2>
+            <div className="bg-gray-800 p-4 rounded my-4 text-[16px] sm:text-[18px]">
               <p>E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">hello@webseitig.ch</a></p>
               <p>Web: <a href="https://webseitig.ch" className="text-[#C8F135] hover:underline">webseitig.ch</a></p>
             </div>
-            <p>
+            <p className="text-[16px] sm:text-[18px] ">
               Für allgemeine Anfragen, Support oder Partnerschaftsanfragen erreichen Sie uns am schnellsten per E-Mail. Wir antworten in der Regel innerhalb von einem Werktag.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3">Verantwortlich für den Inhalt</h2>
-            <p className="mb-1">Web.seitig, vertreten durch die Geschäftsführung.</p>
-            <p>Alle Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäss den geltenden gesetzlichen Vorschriften für eigene Inhalte auf unserer Website verantwortlich.</p>
+            <h2 className="text-white text-[18px] sm:text-[20px]  mb-3">Verantwortlich für den Inhalt</h2>
+            <p className="text-[16px] sm:text-[18px] mb-1">Web.seitig, vertreten durch die Geschäftsführung.</p>
+            <p className="text-[16px] sm:text-[18px] ">Alle Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäss den geltenden gesetzlichen Vorschriften für eigene Inhalte auf unserer Website verantwortlich.</p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3">Haftung für Links</h2>
-            <p className="mb-1">
+            <h2 className="text-white text-[18px] sm:text-[20px]  mb-3">Haftung für Links</h2>
+            <p className="text-[16px] sm:text-[18px] mb-1">
               Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
             </p>
-            <p>
+            <p className="text-[16px] sm:text-[18px] ">
               Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstösse überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3">Urheberrecht und Nutzungsrechte</h2>
-            <p className="mb-1">
+            <h2 className="text-white text-[18px] sm:text-[20px]  mb-3">Urheberrecht und Nutzungsrechte</h2>
+            <p className="text-[16px] sm:text-[18px] mb-1">
               Die durch uns erstellten Inhalte und Werke auf dieser Website unterliegen dem Schweizer Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
             </p>
-            <p className="mb-2">
+            <p className="text-[16px] sm:text-[18px] mb-2">
               Downloads und Kopien dieser Website sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Website nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
             </p>
-            <div className="bg-gray-800 p-4 rounded my-4">
+            <div className="bg-gray-800 p-4 rounded my-4 text-[16px] sm:text-[18px] ">
               <p>
                 Alle auf dieser Website verwendeten Marken, Logos und Markennamen sind Eigentum von <br />
                 Web.seitig oder der jeweiligen Rechteinhaber und dürfen ohne ausdrückliche <br />
@@ -89,15 +89,15 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3">Anwendbares Recht und Gerichtsstand</h2>
-            <p className="mb-1">
+            <h2 className="text-white text-[18px] sm:text-[20px] mb-3">Anwendbares Recht und Gerichtsstand</h2>
+            <p className="mb-1 text-[16px] sm:text-[18px] ">
               Für alle Streitigkeiten aus oder im Zusammenhang mit diesem Internetauftritt gilt ausschliesslich Schweizer Recht. Gerichtsstand ist Zürich, Schweiz.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3">Letzte Aktualisierung</h2>
-            <p className="mb-1">
+            <h2 className="text-white text-[18px] sm:text-[20px] mb-3">Letzte Aktualisierung</h2>
+            <p className="mb-1 text-[16px] sm:text-[18px] ">
               April 2025
             </p>
           </section>

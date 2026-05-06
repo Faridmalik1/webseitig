@@ -41,18 +41,18 @@ export function Pricing() {
           className="text-center mb-14"
         >
           <div
-            className="inline-block w-full max-w-[1200px] rounded-2xl px-8 mb-2"
+            className="inline-block w-full max-w-[1200px] rounded-3xl px-8 mb-2"
           // style={{
           //   border: "1.5px dashed rgba(255,255,255,0.15)",
           // }}
           >
-            <p className="text-[#C8F135] text-[16px] mb-5 tracking-wide">
+            <p className="text-[#C8F135] text-[16px] sm:text-[18px] mb-5 tracking-wide">
               Preise
             </p>
-            <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
-              Was eine Agentur CHF 8'000 kostet — bei uns ab CHF 179 / Monat.
-            </h2>
-            <p className="text-[#888888] text-[16px] sm:text-[18px]">
+            {/* <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
+              Was eine Agentur CHF 8'000 kostet. Bei uns ab CHF 179 / Monat.
+            </h2> */}
+            <p className="text-[#888888] text-[18px] sm:text-[20px]">
               Transparent. Fair. Ohne Überraschungen.
             </p>
           </div>
@@ -68,7 +68,7 @@ export function Pricing() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.05 }}
             className="
-  rounded-2xl p-8 flex flex-col
+  rounded-3xl p-8 flex flex-col
   bg-[#151515]
   border border-white/[0.07]
   hover:border-[#C8F135]
@@ -77,14 +77,14 @@ export function Pricing() {
   transition-all duration-300
 "
           >
-            <h3 className="text-white mb-4 text-[16px] sm:text-[20px]">Starter</h3>
+            <h3 className="text-white mb-4 text-[16px] sm:text-[20px] 3xl:text-[24px]">Starter</h3>
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
               <span className="text-[#C8F135] font-paytone text-[28px] sm:text-[32px] lg:text-[48px] leading-none">CHF 179</span>
-              <span className="text-[#737373] text-sm ms-1">/ Monat</span>
+              <span className="text-[#737373] text-[16px] sm:text-[18px] 3xl:text-[24px] ms-1">/ Monat</span>
             </div>
-            <p className="text-[#737373] text-sm mb-8">
+            <p className="text-[#737373] text-[16px] sm:text-[18px] 3xl:text-[24px] mb-8">
               12 Monate · keine Vorauszahlung
             </p>
 
@@ -95,7 +95,7 @@ export function Pricing() {
                   <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
                     <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
                   </span>
-                  <span className="text-[#888888] text-sm">{f}</span>
+                  <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">{f}</span>
                 </li>
               ))}
             </ul>
@@ -103,7 +103,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="group text-[#C8F135] w-full py-2 text-[14px] md:!text-[20px] rounded-full border border-[#C8F135] hover:bg-[#C8F135] hover:text-black transition-all duration-200"
+              className="w-full py-2 sm:py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-[16px] sm:text-[18px] 3xl:text-[24px] hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
             >
               Jetzt starten
             </button>
@@ -116,7 +116,7 @@ export function Pricing() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12 }}
             className="
-  rounded-2xl p-8 flex flex-col relative
+  rounded-3xl p-8 flex flex-col relative
   bg-[#151515]
   border border-white/[0.07]
   hover:border-[#C8F135]
@@ -126,20 +126,20 @@ export function Pricing() {
 "
           >
             <div className="absolute top-0 right-0">
-              <div className="bg-[#C8F135] text-[#171717] text-sm px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
+              <div className="bg-[#C8F135] text-[#171717] text-[16px] sm:text-[18px] 3xl:text-[24px] px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
                 Meistgewählt
               </div>
             </div>
 
-            <h3 className="text-white mb-4 text-[16px] sm:text-[20px]">Business Pro</h3>
+            <h3 className="text-white mb-4 text-[16px] sm:text-[20px] 3xl:text-[24px]">Business Pro</h3>
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
               <span className="text-[#C8F135] font-paytone text-[28px] sm:text-[32px] lg:text-[48px] leading-none">CHF 249</span>
-              <span className="text-[#888888] text-sm ms-1">/ Monat</span>
+              <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px] ms-1">/ Monat</span>
             </div>
-            <p className="text-[#888888] text-sm mb-8">
-              12 Monate · kein Upfront
+            <p className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px] mb-8">
+              12 Monate · keine Vorauszahlung
             </p>
 
             {/* Features */}
@@ -149,7 +149,7 @@ export function Pricing() {
                   <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
                     <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
                   </span>
-                  <span className="text-[#888888] text-sm">{f}</span>
+                  <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">{f}</span>
                 </li>
               ))}
             </ul>
@@ -157,7 +157,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-sm hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
+              className="w-full py-2 sm:py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-[16px] sm:text-[18px] 3xl:text-[24px] hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
             >
               Jetzt starten
             </button>
@@ -167,7 +167,7 @@ export function Pricing() {
         <div className="mt-8">
           <div
             className="
-    relative rounded-2xl
+    relative rounded-3xl
     bg-black/10 backdrop-blur-xl
     border border-[#262626]
     px-6 md:px-10 py-6 md:py-8
@@ -178,12 +178,12 @@ export function Pricing() {
 
   {/* content layer */}
   <div className="relative z-10">
-    <h3 className="text-white text-lg md:text-xl text-center mb-3">
-      Unter beiden Plans — Risk Reversal Block:
+    <h3 className="text-white text-lg md:text-xl 3xl:text-[28px] text-center mb-3">
+      Unter beiden Plans. Risk Reversal Block:
     </h3>
 
-    <p className="text-white text-sm md:text-base leading-relaxed max-w-[1000px] mx-auto px-6 md:px-8 text-center">
-      Nicht zufrieden mit dem Entwurf? Wir überarbeiten, bis Sie es sind. Kein Auftrag, keine Rechnung. Nach 12 Monaten können Sie monatlich kündigen — ohne Fragen, ohne versteckte Kosten.
+    <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed max-w-[1000px] mx-auto px-6 md:px-8 text-center">
+      Nicht zufrieden mit dem Entwurf? Wir überarbeiten, bis Sie es sind. Kein Auftrag, keine Rechnung. Nach 12 Monaten können Sie monatlich kündigen. Ohne Fragen, ohne versteckte Kosten.
     </p>
   </div>
           </div>

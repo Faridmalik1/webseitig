@@ -10,8 +10,8 @@ export default function Agb() {
   return (
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
-      <div className="max-w-[1568px] mx-auto px-6 py-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-sm mb-10 hover:opacity-80 transition-opacity">
+      <div className="max-w-[1568px] mx-auto px-6 md:px-8 py-16 pt-28">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-[16px] sm:text-[18px] mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
 

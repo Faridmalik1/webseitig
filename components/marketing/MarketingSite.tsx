@@ -2,7 +2,6 @@
 
 import { About } from "@/components/marketing/About";
 import { CTABanner } from "@/components/marketing/CTABanner";
-import { ChatWidget } from "@/components/ChatWidget";
 import { FAQ } from "@/components/marketing/FAQ";
 import { Features } from "@/components/marketing/Features";
 import { Footer } from "@/components/marketing/Footer";
@@ -29,7 +28,6 @@ export function MarketingSite() {
         <CTABanner />
       </main>
       <Footer />
-      <ChatWidget />
     </div>
   );
 }

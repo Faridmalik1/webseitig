@@ -29,7 +29,7 @@ export function Services() {
           transition={{ duration: 0.45 }}
           className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-center mb-10"
         >
-          Unternehmen, die uns vertrauen — quer durch die Schweiz.
+          Unternehmen, die uns vertrauen. Quer durch die Schweiz.
         </motion.h2>
 
         {/* Logos card container */}
@@ -38,7 +38,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="rounded-2xl border border-dotted border-[#606060] overflow-hidden"
+          className="rounded-3xl border border-dotted border-[#606060] overflow-hidden"
           style={{ background: "#1c1c1c" }}
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-dotted divide-[#606060]">
@@ -83,17 +83,17 @@ export function Services() {
         </div> */}
         <div className="flex justify-center mt-8">
           <button
-  onClick={open}
-  className="group inline-flex items-center gap-2 bg-[#C8F135] text-[#171717] font-semibold text-[16px] md:!text-[20px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
->
-  Kostenlose Beratung anfragen
+            onClick={open}
+            className="group inline-flex items-center gap-2 bg-[#C8F135] text-[#171717] font-semibold text-[16px] md:!text-[20px] 3xl:text-[24px] px-4 md:px-5 py-2.5 rounded-full hover:bg-[#d4f050] active:scale-95 transition-all duration-200 whitespace-nowrap"
+          >
+            Jetzt Website sichern
 
-  <ArrowUpRight
-    size={16}
-    strokeWidth={2}
-    className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
-  />
-</button>
+            <ArrowUpRight
+              size={16}
+              strokeWidth={2}
+              className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
+            />
+          </button>
         </div>
       </div>
     </section>

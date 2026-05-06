@@ -11,6 +11,27 @@ type ChatMessage = {
   options?: string[];
 };
 
+const QUICK_OPTIONS = [
+  "Pakete",
+  "Preise",
+  "Angebot",
+  "Projekt anfragen",
+  "Kontakt"
+];
+
+const LOCAL_ANSWERS: Record<string, string> = {
+  "pakete": "Wir bieten zwei Hauptpakete: Starter (CHF 179/Mt., bis 5 Seiten) und Business Pro (CHF 249/Mt., bis 10 Seiten). Beide enthalten Hosting und Domain.",
+  "preise": "Unsere Preise sind transparent: CHF 179/Mt. für Starter und CHF 249/Mt. für Business Pro. Keine Setup-Gebühr, keine versteckten Kosten.",
+  "zusammenarbeit": "Wir erstellen professionelle Websites für Schweizer KMU in nur 7 Werktagen. Persönlich, schnell und unkompliziert.",
+  "angebot": "Sie erhalten bei uns ein Fixpreis-Angebot ohne Vorauszahlung. Kontaktieren Sie uns für eine unverbindliche Beratung.",
+  "leistungen": "Unsere Leistungen umfassen Webdesign, Entwicklung, Hosting, SSL, SEO-Grundlagen und laufenden technischen Support.",
+  "dauer": "Ihre Website ist in nur 7 Werktagen nach Freigabe des Entwurfs fertig, sofern alle Inhalte vorliegen.",
+  "eigentum": "Nach 12 Monaten gehört die Website zu 100 % Ihnen. Sie können bei uns bleiben oder die Daten mitnehmen.",
+  "kontakt": "Sie erreichen uns unter hello@webseitig.ch oder über unser Kontaktformular. Wir antworten in der Regel innerhalb von 24h.",
+  "website": "Wir spezialisieren uns auf moderne, mobile-optimierte Websites für Schweizer Unternehmen.",
+  "webseite": "Wir spezialisieren uns auf moderne, mobile-optimierte Websites für Schweizer Unternehmen.",
+};
+
 export function ChatWidget() {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -39,6 +60,24 @@ export function ChatWidget() {
 
     if (!presetQuestion) {
       setQuestion("");
+    }
+
+    // Check local answers first to avoid accidental lead form triggers in chat-knowledge
+    const lowerText = outgoingText.toLowerCase();
+    const localMatch = Object.keys(LOCAL_ANSWERS).find(key => lowerText.includes(key));
+
+    // Special check for keywords that should trigger the lead form in chat-knowledge
+    const isLeadTrigger = lowerText.includes("formular") || lowerText.includes("projekt starten") || lowerText.includes("anfrage senden");
+
+    if (localMatch && !isLeadTrigger) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", text: LOCAL_ANSWERS[localMatch] },
+        ]);
+        setLoading(false);
+      }, 500);
+      return;
     }
 
     try {
@@ -82,10 +121,29 @@ export function ChatWidget() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4 text-sm">
+          <div className="flex-1 overflow-y-auto px-4 py-4 text-sm">
             {messages.length === 0 ? (
-              <div className="text-[#888888]">
-                Hallo! Ich bin der Chatbot von webseitig. Wie kann ich dir helfen? Frage mich nach Services, Preisen oder Kontakt.
+              <div className="flex h-full flex-col px-2">
+
+                <div className="text-[#888888] mb-5 text-sm">
+                  Hallo! Wie kann ich dir helfen? Wähle ein Thema oder schreibe deine Frage.
+                </div>
+
+                <div className="text-sm">
+                  <p className="text-[#888888] mb-3 font-medium">Beliebte Themen</p>
+                  <div className="flex flex-wrap gap-2">
+                    {QUICK_OPTIONS.map((option, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => sendQuestion(option)}
+                        disabled={loading}
+                        className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-white hover:border-[#C8F135] hover:bg-white/10 transition-all active:scale-95 text-sm"
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             ) : (
               messages.map((msg, idx) => (

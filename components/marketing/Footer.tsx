@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronUp } from "lucide-react";
 
-const legalLinks = [
+const links = [
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
   { label: "AGB", href: "/agb" },
+  { label: "Kontakt", href: "/#faq" }, // ✅ unified as Link
 ];
 
 export function Footer() {
@@ -15,97 +16,72 @@ export function Footer() {
   const router = useRouter();
 
   const handleLogoClick = (e: React.MouseEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (pathname === "/") {
-    router.refresh();
-    window.location.reload();
-  } else {
-    router.push("/");
-  }
-    window.scrollTo(0, 0);
-};
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const scrollToFaq = () => {
     if (pathname === "/") {
-      document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+      router.refresh();
+      window.location.reload();
     } else {
-      router.push("/#faq");
+      router.push("/");
     }
+    window.scrollTo(0, 0);
   };
+
+  const scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
   const year = new Date().getFullYear();
 
+  const linkClass =
+    "inline-flex items-center text-white/70 text-[16px] sm:text-[18px] 3xl:text-[24px] hover:text-white transition-colors leading-none";
+
   return (
     <footer className="w-full relative pt-8 overflow-visible">
-      <div className=" relative bg-[#151515] px-8">
-
-        <div className="max-w-[1568px] mx-auto px-4 md:px-8 ">
-          <div className="flex flex-col sm:flex-row sm:justify-between py-6 gap-6 ">
-
+      <div className="relative bg-[#151515] px-8">
+        <div className="max-w-[1568px] mx-auto px-4 md:px-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between py-6 gap-6">
+            
             {/* Logo */}
             <Link
               href="/"
               onClick={handleLogoClick}
-              className="flex items-center gap-1">
-              <div className="flex items-center justify-center">
-                <img src="/FooterLogo.svg" alt="Logo" className="w-36" />
-              </div>
-              {/* <span className="text-[#7E7E7E] text-xl tracking-tight" style={{ fontFamily: "var(--font-paytone)" }}>
-              web<span className="text-[#C8F135]">.</span>seitig
-            </span> */}
+              className="flex items-center"
+            >
+              <img src="/FooterLogo.svg" alt="Logo" className="w-36 2xl:w-48" />
             </Link>
 
             {/* Links */}
             <div className="relative w-full sm:w-auto">
+              
+              {/* 🔥 Clean layout (no grid issues) */}
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-x-3 gap-y-2 text-center">
+                
+                {links.map((item, index) => (
+                  <div key={item.label} className="flex items-center">
+                    
+                    <Link href={item.href} className={linkClass}>
+                      {item.label}
+                    </Link>
 
-              {/* ✅ Grid on mobile, flex on desktop */}
-              <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-center sm:flex sm:items-center sm:gap-4">
-
-                {[...legalLinks, { label: "Kontakt", action: scrollToFaq }].map((item, index, arr) => (
-                  <span key={item.label} className="flex items-center gap-4">
-                    {"href" in item ? (
-                      <Link
-                        href={item.href}
-                        className="text-white/70 text-base hover:text-white transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={item.action}
-                        className="text-white/70 text-sm hover:text-white transition-colors"
-                      >
-                        {item.label}
-                      </button>
+                    {/* Dot separator */}
+                    {index < links.length - 1 && (
+                      <span className="text-[#C8F135] text-sm mx-2">•</span>
                     )}
-                    {index < arr.length - 1 && (
-                      <span className="text-[#C8F135] text-sm">•</span>
-                    )}
-                  </span>
+                  </div>
                 ))}
-
-                {/* <button
-        onClick={scrollToFaq}
-        className="text-white/70 text-sm hover:text-white transition-colors"
-      >
-        Kontakt
-      </button> */}
-
               </div>
 
-              {/* Scroll to top button (unchanged) */}
+              {/* Scroll to top */}
               <button
                 onClick={scrollToTop}
                 className="absolute -top-10 right-2 w-9 h-9 rounded-full flex items-center justify-center 
-      transition-all duration-200 active:scale-90 group z-10"
+                transition-all duration-200 active:scale-90 group z-10"
                 style={{
                   background: `
-          linear-gradient(#141414, #141414) padding-box,
-          linear-gradient(to right, #ffffff 50%, #C8F135 50%) border-box
-        `,
-                  border: "1.5px solid transparent"
+                    linear-gradient(#141414, #141414) padding-box,
+                    linear-gradient(to right, #ffffff 50%, #C8F135 50%) border-box
+                  `,
+                  border: "1.5px solid transparent",
                 }}
                 aria-label="Nach oben scrollen"
               >
@@ -115,21 +91,19 @@ export function Footer() {
                   strokeWidth={3}
                 />
               </button>
-
             </div>
           </div>
 
           {/* Divider */}
           <div className="border-t border-white/[0.07]" />
 
-          {/* Copyright row */}
-          <div className="py-4 flex flex-col sm:flex-row items-center justify-center gap-1 text-center">
-            <p className="text-[#888888] text-base">
-              © {year} Web.seitig. Alle Rechte vorbehalten.{" "}
+          {/* Copyright */}
+          <div className="py-4 flex items-center justify-center text-center">
+            <p className="text-[#888888] text-base 3xl:text-[24px]">
+              © {year} Web.seitig. Alle Rechte vorbehalten.
             </p>
           </div>
         </div>
-
       </div>
     </footer>
   );

@@ -224,7 +224,7 @@ export function Testimonials() {
             transition={{ duration: 0.4 }}
             className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]"
           >
-            Was unsere Kunden sagen — in ihren eigenen Worten.
+            Was unsere Kunden sagen. In ihren eigenen Worten.
           </motion.h2>
 
           {/* Navigation Buttons */}
@@ -274,10 +274,10 @@ export function Testimonials() {
                   <TestimonialAvatar image={t.image} name={t.name} />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="text-white text-[16px] sm:text-[18px]">
+                      <p className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px]">
                         {t.name}
                       </p>
-                      <span className="text-[#888888] text-[14px] sm:text-[16px]">
+                      <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">
                         {" "}— {t.role}
                       </span>
                     </div>
@@ -285,9 +285,9 @@ export function Testimonials() {
                       <img
                         src="/location.svg"
                         alt="location"
-                        className="w-5 h-5"
+                        className="w-5 h-5 2xl:w-9 2xl:h-9"
                       />
-                      <p className="text-white text-[14px] sm:text-[16px]">
+                      <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px]">
                         {t.city}
                       </p>
                     </div>
@@ -295,7 +295,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-white text-sm leading-relaxed">
+                <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed">
                   "{t.quote}"
                 </p>
               </div>

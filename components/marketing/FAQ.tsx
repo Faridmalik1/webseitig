@@ -8,32 +8,32 @@ const faqs = [
   {
     num: "01",
     q: "Was passiert nach den 12 Monaten?",
-    a: "Nach 12 Monaten gehört Ihnen die Website zu 100 % — egal was. Sie können einfach weiter bei uns bleiben, oder Sie nehmen die Dateien mit und hosten selbst. Kein Anruf den Sie fürchten müssen, kein Vertrag der sich automatisch verlängert, keine Gebühr die plötzlich auftaucht. Die meisten bleiben — weil es einfacher ist und weil der Service stimmt. Aber die Entscheidung liegt bei Ihnen. So wie es sein sollte.",
+    a: "Nach 12 Monaten gehört Ihnen die Website zu 100 %. Egal was. Sie können einfach weiter bei uns bleiben, oder Sie nehmen die Dateien mit und hosten selbst. Kein Anruf den Sie fürchten müssen, kein Vertrag der sich automatisch verlängert, keine Gebühr die plötzlich auftaucht. Die meisten bleiben, weil es einfacher ist und weil der Service stimmt. Aber die Entscheidung liegt bei Ihnen. So wie es sein sollte.",
   },
   {
     num: "02",
     q: "Gehört mir die Website wirklich?",
-    a: "Ja. In den ersten 12 Monaten kümmern wir uns um alles — Hosting, Updates, Technik, Sicherheit. Ab Monat 13 gehört Ihnen die Website vollständig: alle Dateien, alle Rechte, ohne Einschränkung. Sie sind nicht von uns abhängig. \nSie bleiben, weil Sie zufrieden sind — nicht weil Sie keine andere Wahl haben. Das ist der Unterschied zu den meisten Agenturen.",
+    a: "Ja. In den ersten 12 Monaten kümmern wir uns um alles: Hosting, Updates, Technik, Sicherheit. Ab Monat 13 gehört Ihnen die Website vollständig: alle Dateien, alle Rechte, ohne Einschränkung. Sie sind nicht von uns abhängig. Sie bleiben, weil Sie zufrieden sind. Nicht weil Sie keine andere Wahl haben. Das ist der Unterschied zu den meisten Agenturen.",
   },
   {
     num: "03",
     q: "Muss ich technisches Wissen mitbringen?",
-    a: "Keines. Wirklich null. Sie sagen uns was Sie machen, wer Ihre Kunden sind und was Ihnen wichtig ist — den Rest übernehmen wir. Texte schreiben, Bilder auswählen, Technik einrichten, alles. Auch wenn Ihr Deutsch nicht perfekt ist, kein Problem — wir sind das gewohnt und machen das gerne für Sie. Viele unserer Kunden haben noch nie eine E-Mail wegen Ihrer Website schreiben müssen. Das ist der Punkt.",
+    a: "Keines. Wirklich null. Sie sagen uns was Sie machen, wer Ihre Kunden sind und was Ihnen wichtig ist. Den Rest übernehmen wir. Texte schreiben, Bilder auswählen, Technik einrichten, alles. Auch wenn Ihr Deutsch nicht perfekt ist, kein Problem. Wir sind das gewohnt und machen das gerne für Sie. Viele unserer Kunden haben noch nie eine E-Mail wegen Ihrer Website schreiben müssen. Das ist der Punkt. ",
   },
   {
     num: "04",
     q: "Wie schnell ist die Website wirklich fertig?",
-    a: "In 7 Werktagen — nach Ihrer Freigabe des Entwurfs. \nNicht „in etwa zwei Wochen. Nicht sobald wir Kapazität haben. Sieben Tage. Wir sagen das, weil wir es einhalten. Wenn Sie wollen, fragen Sie unsere Kunden.",
+    a: `In 7 Werktagen. Nach Ihrer Freigabe des Entwurfs. Nicht „in etwa zwei Wochen." Nicht sobald wir Kapazität haben. Sieben Tage. Wir sagen das, weil wir es einhalten. Wenn Sie wollen, fragen Sie unsere Kunden.`,
   },
   {
     num: "05",
     q: "Gibt es eine Einrichtungsgebühr?",
-    a: "Nein — und das meinen wir ernst. Keine Setup-Gebühr, keine einmalige Startpauschale, kein Posten im Kleingedruckten. Sie zahlen ab dem Tag, an dem Ihre Website live geht — und nur die monatliche Rate, die wir Ihnen von Anfang an nennen. CHF 179 ist CHF 179. \nNicht CHF 179 plus etwas.",
+    a: "Nein. Und das meinen wir ernst. Keine Setup-Gebühr, keine einmalige Startpauschale, kein Posten im Kleingedruckten. Sie zahlen ab dem Tag, an dem Ihre Website live geht. Nur die monatliche Rate, die wir Ihnen von Anfang an nennen. CHF 179 ist CHF 179. Nicht CHF 179 plus etwas.",
   },
   {
     num: "06",
     q: "Was ist, wenn mir das Design nicht gefällt?",
-    a: "Dann überarbeiten wir. So oft wie nötig, bis es stimmt. Kein Nagelstudio fängt an, bevor Sie die Farbe gewählt haben. Wir auch nicht — erst Ihre Freigabe, dann geht's live. \nNicht andersrum.",
+    a: "Dann überarbeiten wir. So oft wie nötig, bis es stimmt. Kein Nagelstudio fängt an, bevor Sie die Farbe gewählt haben. Wir auch nicht. Erst Ihre Freigabe, dann geht's live. Nicht andersrum.",
   },
 ];
 
@@ -133,14 +133,14 @@ export function FAQ() {
                     onClick={() => setOpen(isOpen ? null : i)}
                   >
                     <div className="flex items-end gap-2 shrink-0">
-                      <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full mb-2" />
-                      <span className="text-[#C8F135] text-[16px] sm:text-[20px] lg:text-[28px] font-bold tracking-widest">
+                      <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full mb-2 opacity-40"/>
+                      <span className="text-[#C8F135] text-[16px] sm:text-[20px] lg:text-[28px] opacity-40 font-bold tracking-widest">
                         {faq.num}
                       </span>
                     </div>
 
                     <span
-                      className={`flex-1 text-base transition-colors ${
+                      className={`flex-1 text-[18px] sm:text-[20px] 2xl:text-[24px] transition-colors ${
                         isOpen ? "text-[#C8F135]" : "text-white"
                       }`}
                     >
@@ -148,7 +148,7 @@ export function FAQ() {
                     </span>
 
                     <div
-                      className={`flex-shrink-0 w-8 h-8 rounded-full  
+                      className={`flex-shrink-0 w-9 h-9 rounded-full  
                       flex items-center justify-center transition-transform duration-300 ${
                         isOpen ? "rotate-45 " : ""
                       }`}
@@ -169,7 +169,7 @@ export function FAQ() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-[#888888] text-base leading-relaxed pb-5 ps-[3.5rem] whitespace-pre-line">
+                        <p className="text-[#888888] text-[16px] sm:text-[18px] 2xl:text-[24px] leading-relaxed pb-5 ps-[3.5rem] whitespace-pre-line">
                           {faq.a}
                         </p>
                       </motion.div>
@@ -192,8 +192,9 @@ export function FAQ() {
             }}
           >
             <h3 className="text-white text-[24px] sm:text-[28px] mb-2">Noch Fragen?</h3>
-            <p className="text-[#888888] text-[14px] sm:text-[16px] leading-relaxed mb-5">
-              Schreib uns einfach — wir antworten schnell und unkompliziert.
+            <p className="text-[#888888] text-[16px] sm:text-[18px] 2xl:text-[24px] leading-relaxed mb-5">
+              Schreiben Sie uns einfach. Wir antworten schnell und unkompliziert. <br/> / Ihre E-Mail
+
             </p>
 
             <form onSubmit={handleSend}>
@@ -201,9 +202,9 @@ export function FAQ() {
                 required
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-                placeholder="Uw vraag..."
+                placeholder="Ihre Frage..."
                 rows={4}
-                className="w-full rounded-4xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
+                className="w-full rounded-3xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -219,8 +220,8 @@ export function FAQ() {
                     setEmailError(null);
                   }
                 }}
-                placeholder="Deine E-Mail"
-                className="w-full rounded-2xl px-4 py-3 text-sm text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
+                placeholder="Ihre E-Mail"
+                className="w-full rounded-2xl px-4 py-3 text-base sm:text-xl text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -267,7 +268,7 @@ export function FAQ() {
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-[#C8F135] text-sm mt-2"
+                  className="text-center text-[#C8F135] text-base mt-2"
                 >
                   Vielen Dank! Wir haben Ihre Nachricht erhalten. Unser Team wird sich in Kürze bei Ihnen melden.
                 </motion.p>

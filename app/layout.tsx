@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Paytone_One, Outfit } from "next/font/google";
 import { ModalProvider } from "@/components/shared/modal-context";
 import { ContactModal } from "@/components/marketing/ContactModal";
+import { ChatWidget } from "@/components/ChatWidget";
 import "./globals.css";
 
 const paytonOne = Paytone_One({
@@ -40,6 +41,7 @@ export default function RootLayout({
         <ModalProvider>
           {children}
           <ContactModal />
+          <ChatWidget />
         </ModalProvider>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2P2YS88WWB"

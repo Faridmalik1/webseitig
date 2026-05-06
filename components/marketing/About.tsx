@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 const pains = [
   {
     title: "Zu teuer",
-    desc: "CHF 5'000 bis CHF 15'000 im Voraus — nur für den Anfang. Traditionelle Agenturen verlangen hohe Anzahlungen, bevor auch nur eine Zeile Code existiert. Für ein wachsendes Unternehmen — oder jemanden, der gerade erst in der Schweiz durchstartet — ist das schlicht unzumutbar.",
+    desc: "CHF 5'000 bis CHF 15'000 im Voraus, nur für den Anfang. Traditionelle Agenturen verlangen hohe Anzahlungen, bevor auch nur eine Zeile Code existiert. Für ein wachsendes Unternehmen oder jemanden, der gerade erst in der Schweiz durchstartet, ist das schlicht unzumutbar.",
     highlight: false,
   },
   {
     title: "Zu kompliziert",
-    desc: "Stundenlang gebastelt. Trotzdem unprofessionell. Wix, Squarespace und Co. klingen einfach. In der Praxis kostet es Tage — und sieht am Ende trotzdem nicht aus wie eine echte Businesswebsite. Potenzielle Kunden merken das sofort.",
+    desc: "Stundenlang gebastelt. Trotzdem unprofessionell. Wix, Squarespace und Co. klingen einfach. In der Praxis kostet es Tage. Und sieht am Ende trotzdem nicht aus wie eine echte Businesswebsite. Potenzielle Kunden merken das sofort.",
     highlight: false,
   },
   {
     title: "Keine Zeit",
-    desc: "Sie führen ein Unternehmen. Wer baut da nebenbei eine Website? Texte schreiben, Bilder suchen, Technik einrichten, Hosting konfigurieren — das ist ein eigener Fulltime-Job. Kein Unternehmer sollte das selbst machen müssen.",
+    desc: "Sie führen ein Unternehmen. Wer baut da nebenbei eine Website? Texte schreiben, Bilder suchen, Technik einrichten, Hosting konfigurieren. Das ist ein eigener Fulltime-Job. Kein Unternehmer sollte das selbst machen müssen.",
     highlight: false,
   },
   {
@@ -31,12 +31,11 @@ export function About() {
       <div className="max-w-[1568px] mx-auto px-6 md:px-8">
 
         <div className="text-center mb-12 md:mb-16">
-          <p className="text-[#C8F135] text-[16px] mb-5 tracking-wide">
-            Kommt Ihnen das bekannt vor?
+          <p className="text-[#C8F135] text-[16px] sm:text-[18px] 3xl:text-[24px] mb-5 tracking-wide">
+            Kennen Sie das?
           </p>
           <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight">
-            Warum Sie — und so viele andere — immer noch ohne Website arbeiten.
-Und was das jeden Monat wirklich kostet.
+            Warum Sie und so viele andere immer noch ohne Website arbeiten. Und was das jeden Monat wirklich kostet.
           </h2>
         </div>
 
@@ -55,8 +54,8 @@ Und was das jeden Monat wirklich kostet.
   transition-all duration-300
 `}
             >
-              <h3 className="text-white text-[16px] sm:text-[20px] mb-3">{pain.title}</h3>
-              <p className="text-[#888888] text-[14px] sm:text-[16px] leading-relaxed">{pain.desc}</p>
+              <h3 className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px] mb-3">{pain.title}</h3>
+              <p className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed">{pain.desc}</p>
             </motion.div>
           ))}
         </div>
