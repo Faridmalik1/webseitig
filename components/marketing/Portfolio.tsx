@@ -79,7 +79,7 @@ const projects = [
   {
     num: "10",
     name: "WeissWerk",
-    image: "/projects/velocevins.svg",
+    image: "/projects/weisswerk.svg",
     desc: "WeissWerk bietet erstklassige Malerarbeiten und kreative Farbkonzepte für Ihre Räume. Wir garantieren höchste Qualität, Präzision und langlebige Ergebnisse für Ihr Zuhause.",
     stack: ["WordPress", "Elementor", "Google Maps API"],
     days: "5 Tage",
