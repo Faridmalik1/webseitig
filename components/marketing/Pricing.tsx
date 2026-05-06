@@ -46,7 +46,7 @@ export function Pricing() {
           //   border: "1.5px dashed rgba(255,255,255,0.15)",
           // }}
           >
-            <p className="text-[#C8F135] text-[16px] sm:text-[18px] mb-5 tracking-wide">
+            <p className="text-[#C8F135] text-[16px] lg:text-[18px] 3xl:text-[24px] mb-5 tracking-wide">
               Preise
             </p>
             <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
@@ -59,7 +59,7 @@ export function Pricing() {
         </motion.div>
 
         {/* Two pricing cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
           {/* Starter */}
           <motion.div
@@ -68,7 +68,7 @@ export function Pricing() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.05 }}
             className="
-  rounded-3xl p-8 flex flex-col
+  rounded-[40px] p-8 flex flex-col
   bg-[#151515]
   border border-white/[0.07]
   hover:border-[#C8F135]
@@ -81,10 +81,10 @@ export function Pricing() {
 
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-[#C8F135] font-paytone text-[28px] sm:text-[32px] lg:text-[48px] leading-none">CHF 179</span>
-              <span className="text-[#737373] text-[16px] sm:text-[18px] 3xl:text-[24px] ms-1">/ Monat</span>
+              <span className="text-[#C8F135] font-paytone text-[28px] lg:text-[32px] xl:text-[48px] leading-none">CHF 179</span>
+              <span className="text-[#737373] text-[16px] lg:text-[18px] 3xl:text-[24px] ms-1">/ Monat</span>
             </div>
-            <p className="text-[#737373] text-[16px] sm:text-[18px] 3xl:text-[24px] mb-8">
+            <p className="text-[#737373] text-[16px] lg:text-[18px] 3xl:text-[24px] mb-8">
               12 Monate · keine Vorauszahlung
             </p>
 
@@ -95,7 +95,7 @@ export function Pricing() {
                   <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
                     <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
                   </span>
-                  <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">{f}</span>
+                  <span className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px]">{f}</span>
                 </li>
               ))}
             </ul>
@@ -103,7 +103,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-2 sm:py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-[16px] sm:text-[18px] 3xl:text-[24px] hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
+              className="w-full py-2 sm:py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-[16px] lg:text-[18px] 3xl:text-[24px] hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
             >
               Jetzt starten
             </button>
@@ -126,7 +126,7 @@ export function Pricing() {
 "
           >
             <div className="absolute top-0 right-0">
-              <div className="bg-[#C8F135] text-[#171717] text-[16px] sm:text-[18px] 3xl:text-[24px] px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
+              <div className="bg-[#C8F135] text-[#171717] text-[16px] lg:text-[18px] 3xl:text-[24px] px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
                 Meistgewählt
               </div>
             </div>
@@ -136,9 +136,9 @@ export function Pricing() {
             {/* Price */}
             <div className="flex items-baseline gap-1 mb-1">
               <span className="text-[#C8F135] font-paytone text-[28px] sm:text-[32px] lg:text-[48px] leading-none">CHF 249</span>
-              <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px] ms-1">/ Monat</span>
+              <span className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] ms-1">/ Monat</span>
             </div>
-            <p className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px] mb-8">
+            <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] mb-8">
               12 Monate · keine Vorauszahlung
             </p>
 
@@ -149,7 +149,7 @@ export function Pricing() {
                   <span className="w-5 h-5 rounded bg-[#C8F135] flex items-center justify-center shrink-0">
                     <Check size={15} className="text-black shrink-0" strokeWidth={2.5} />
                   </span>
-                  <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">{f}</span>
+                  <span className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px]">{f}</span>
                 </li>
               ))}
             </ul>
@@ -157,7 +157,7 @@ export function Pricing() {
             {/* CTA */}
             <button
               onClick={open}
-              className="w-full py-2 sm:py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-[16px] sm:text-[18px] 3xl:text-[24px] hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
+              className="w-full py-2 sm:py-3.5 rounded-full bg-[#C8F135] text-[#171717] text-[16px] lg:text-[18px] 3xl:text-[24px] hover:bg-[#d4f050] active:scale-[0.98] transition-all duration-200"
             >
               Jetzt starten
             </button>
@@ -167,7 +167,7 @@ export function Pricing() {
         <div className="mt-8">
           <div
             className="
-    relative rounded-3xl
+    relative rounded-[40px]
     bg-black/10 backdrop-blur-xl
     border border-[#262626]
     px-6 md:px-10 py-6 md:py-8
@@ -182,7 +182,7 @@ export function Pricing() {
       Unter beiden Plans. Risk Reversal Block:
     </h3> */}
 
-    <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed max-w-[1000px] mx-auto px-6 md:px-8 text-center">
+    <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed max-w-[1000px] mx-auto px-6 md:px-8 text-center">
       Nicht zufrieden mit dem Entwurf? Wir überarbeiten, bis Sie es sind. Kein Auftrag, keine Rechnung. Nach 12 Monaten können Sie monatlich kündigen. Ohne Fragen, ohne versteckte Kosten.
     </p>
   </div>

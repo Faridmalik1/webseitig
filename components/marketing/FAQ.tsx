@@ -117,41 +117,44 @@ export function FAQ() {
   return (
     <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-[1568px] mx-auto px-6 md:px-8">
-        <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-center mb-12">
+        <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-center mb-12">
           Häufig gestellte Fragen
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 items-start">
-          <div className="flex flex-col divide-y divide-white/[0.07]">
+          <div className="flex flex-col gap-4">
             {faqs.map((faq, i) => {
               const isOpen = open === i;
               // const isOpen = openIndex === index;
               return (
-                <div key={i}>
+                <div
+                  key={i}
+                  className="bg-[#151515] rounded-[20px] overflow-hidden"
+                >
                   <button
-                    className="w-full flex items-center gap-4 py-5 text-start group"
+                    className={`w-full flex items-center gap-4 py-5 text-start group px-4 ${
+                      isOpen ? "relative after:absolute after:left-5 after:right-5 after:bottom-0 after:h-[1px] after:bg-[#C8F135]/40" : ""
+                    }`}
                     onClick={() => setOpen(isOpen ? null : i)}
                   >
-                    <div className="flex items-end gap-2 shrink-0">
-                      <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full mb-2 opacity-40"/>
+                    <div className="flex items-end gap-2 shrink-0 ps-1">
+                      <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full mb-2 opacity-40" />
                       <span className="text-[#C8F135] text-[16px] sm:text-[20px] lg:text-[28px] opacity-40 font-bold tracking-widest">
                         {faq.num}
                       </span>
                     </div>
 
                     <span
-                      className={`flex-1 text-[18px] sm:text-[20px] 2xl:text-[24px] transition-colors ${
-                        isOpen ? "text-[#C8F135]" : "text-white"
-                      }`}
+                      className={`flex-1 text-[18px] lg:text-[20px] 3xl:text-[24px] transition-colors ${isOpen ? "text-[#C8F135]" : "text-white"
+                        }`}
                     >
                       {faq.q}
                     </span>
 
                     <div
                       className={`flex-shrink-0 w-9 h-9 rounded-full  
-                      flex items-center justify-center transition-transform duration-300 ${
-                        isOpen ? "rotate-45 " : ""
-                      }`}
+                      flex items-center justify-center transition-transform duration-300 ${isOpen ? "rotate-45 " : ""
+                        }`}
                     >
                       <Plus
                         size={18}
@@ -169,7 +172,7 @@ export function FAQ() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-[#888888] text-[16px] sm:text-[18px] 2xl:text-[24px] leading-relaxed pb-5 ps-[3.5rem] whitespace-pre-line">
+                        <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed py-5 ps-[1.5rem] whitespace-pre-line">
                           {faq.a}
                         </p>
                       </motion.div>
@@ -185,14 +188,14 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="rounded-2xl p-7 sticky top-24"
+            className="rounded-[40px] p-7 sticky top-24"
             style={{
               background: "linear-gradient(135deg, #1e2a0e 0%, #1c1c1c 60%)",
               border: "1px solid rgba(200,230,70,0.15)",
             }}
           >
             <h3 className="text-white text-[24px] sm:text-[28px] mb-2">Noch Fragen?</h3>
-            <p className="text-[#888888] text-[16px] sm:text-[18px] 2xl:text-[24px] leading-relaxed mb-5">
+            <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed mb-5">
               Schreiben Sie uns einfach. Wir antworten schnell und unkompliziert.
 
             </p>
@@ -206,8 +209,8 @@ export function FAQ() {
                 rows={4}
                 className="w-full rounded-3xl px-4 py-3 text-sm text-white/80 placeholder-white/25 resize-none outline-none transition-colors mb-4"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: "#0F0F0F",
+                  border: "1px solid #262626",
                 }}
               />
 
@@ -221,10 +224,10 @@ export function FAQ() {
                   }
                 }}
                 placeholder="Ihre E-Mail"
-                className="w-full rounded-2xl px-4 py-3 text-base sm:text-xl text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
+                className="w-full rounded-3xl px-4 py-3 text-base sm:text-xl text-white/80 placeholder-white/25 outline-none transition-colors mb-3"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: "#0F0F0F",
+                  border: "1px solid #262626",
                 }}
               />
 
@@ -265,7 +268,7 @@ export function FAQ() {
                 )}
               </button>
               {sent && (
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center text-[#C8F135] text-base mt-2"

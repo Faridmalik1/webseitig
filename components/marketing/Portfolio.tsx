@@ -110,11 +110,11 @@ const OFFSET = CLONES; // index of real project[0] inside extendedProjects
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="rounded-4xl overflow-hidden flex flex-col h-full rounded-tl-[15px] rounded-tr-[15px] sm:rounded-tl-[42px] sm:rounded-tr-[42px]"
+      className="rounded-4xl overflow-hidden flex flex-col h-full rounded-tl-[18px] rounded-tr-[18px] sm:rounded-tl-[42px] sm:rounded-tr-[42px]"
       style={{ background: "#1c1c1c", border: "1px solid #444444" }}
     >
       <div
-        className="w-full overflow-hidden rounded-tl-[15px] rounded-tr-[15px] sm:rounded-tl-[40px] sm:rounded-tr-[40px] rounded-bl-[15px] rounded-br-[15px] sm:rounded-bl-[40px] sm:rounded-br-[40px] border-3 md:border-4 border-[#3F3F3F]"
+        className="w-full overflow-hidden rounded-tl-[18px] rounded-tr-[18px] sm:rounded-tl-[42px] sm:rounded-tr-[42px] rounded-bl-[18px] rounded-br-[18px] sm:rounded-bl-[42px] sm:rounded-br-[42px] border-3 md:border-4 border-[#3F3F3F]"
         style={{ aspectRatio: "16/9" }}
       >
         <img
@@ -128,7 +128,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">
           {project.name}
         </h3>
-        <p className="text-[#888888] sm:text-[16px] md:text-[18px] 3xl:text-[24px] leading-relaxed mb-5 min-h-[78px]">
+        <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed mb-5 min-h-[78px]">
           {project.desc}
         </p>
 
@@ -174,23 +174,19 @@ export function Portfolio() {
   const [realIndex, setRealIndex] = useState(0);
   const [trackIndex, setTrackIndex] = useState(OFFSET);
   const [animated, setAnimated] = useState(true);
-  const [isMd, setIsMd] = useState(false);
   const jumping = useRef(false);
-  const [isLg, setIsLg] = useState(false);
 
 
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    setIsMd(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMd(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+ const getIsLg = () => {
+  if (typeof window === "undefined") return true; // assume desktop on SSR
+  return window.matchMedia("(min-width: 1024px)").matches;
+};
+
+const [isLg, setIsLg] = useState(getIsLg);
 
   useEffect(() => {
   const mq = window.matchMedia("(min-width: 1024px)");
-  setIsLg(mq.matches);
-  const handler = (e) => setIsLg(e.matches);
+  const handler = (e: any) => setIsLg(e.matches);
   mq.addEventListener("change", handler);
   return () => mq.removeEventListener("change", handler);
 }, []);
@@ -275,7 +271,7 @@ export function Portfolio() {
         <div className="flex items-start justify-between mb-10">
           <div>
             <p className="text-[#C8F135] text-[16px] md:text-[20px] 3xl:text-[24px] tracking-wide">Unsere Arbeit</p>
-            <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[52px] leading-tight">
+            <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] leading-tight">
               Ausgewählte Projekte. Alle in 7 Tagen geliefert.
             </h2>
           </div>

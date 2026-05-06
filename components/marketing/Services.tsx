@@ -27,7 +27,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-center mb-10"
+          className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-center mb-10"
         >
           Unternehmen, die uns vertrauen. Quer durch die Schweiz.
         </motion.h2>
@@ -38,7 +38,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="rounded-3xl border border-dotted border-[#606060] overflow-hidden"
+          className="rounded-[40px] border border-dotted border-[#606060] overflow-hidden"
           style={{ background: "#1c1c1c" }}
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-dotted divide-[#606060]">

@@ -64,11 +64,11 @@ export function Hero() {
                     className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
                   />
                 </button>
-                <p className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">
+                <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px]">
                   Über 40 Unternehmen in der Schweiz vertrauen uns. Von Zürich bis St. Gallen.
                 </p>
               </div>
-              <div className="text-[#888888] flex gap-2 items-center mt-6 text-[16px] sm:text-[18px] 3xl:text-[24px]">
+              <div className="text-[#888888] flex gap-2 items-center mt-6 text-[16px] lg:text-[18px] 3xl:text-[20px]">
                 <img
                   src="/star.svg"
                   alt="Stars"
@@ -107,7 +107,7 @@ export function Hero() {
                 >
                   <div
                     aria-hidden
-                    className="absolute inset-0 rounded-3xl pointer-events-none"
+                    className="absolute inset-0 rounded-[20px] pointer-events-none"
                     style={{
                       background: "radial-gradient(circle at 70% 30%, rgba(100,160,30,0.12) 0%, transparent 70%)",
 

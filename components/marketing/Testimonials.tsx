@@ -232,7 +232,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="text-white text-[28px] sm:text-[32px] lg:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]"
+            className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]"
           >
             Was unsere Kunden sagen. In ihren eigenen Worten.
           </motion.h2>
@@ -273,10 +273,10 @@ export function Testimonials() {
             {loopedTestimonials.map((t, i) => (
               <div
                 key={i}
-                className="rounded-2xl p-6 flex flex-col gap-4 flex-shrink-0 testimonial-card"
+                className="p-6 flex flex-col gap-4 border-r border-[#262626] flex-shrink-0 testimonial-card"
                 style={{
-                  background: "#1c1c1c",
-                  border: "1px solid rgba(255,255,255,0.07)",
+                  // background: "#1c1c1c",
+                  // border: "1px solid rgba(255,255,255,0.07)",
                 }}
               >
                 {/* Avatar + name */}
@@ -284,10 +284,10 @@ export function Testimonials() {
                   <TestimonialAvatar image={t.image} name={t.name} />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px]">
+                      <p className="text-white text-[18px] lg:text-[20px] 3xl:text-[24px]">
                         {t.name}
                       </p>
-                      <span className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px]">
+                      <span className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px]">
                         {" "}— {t.role}
                       </span>
                     </div>
@@ -297,7 +297,7 @@ export function Testimonials() {
                         alt="location"
                         className="w-5 h-5 2xl:w-9 2xl:h-9"
                       />
-                      <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px]">
+                      <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px]">
                         {t.city}
                       </p>
                     </div>
@@ -305,7 +305,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed">
+                <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed">
                   "{t.quote}"
                 </p>
               </div>

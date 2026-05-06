@@ -28,23 +28,23 @@ const steps = [
 export function Features() {
   return (
     <section id="features" className="bg-[#151515] py-10 md:py-16 px-4 md:px-8">
-      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+      <div className="max-w-[1568px] mx-auto">
 
         {/* Badge + heading */}
         <div className="text-center mb-14 md:mb-18">
-          <p className="text-[#C8F135] text-[16px] sm:text-[18px] 3xl:text-[24px] mb-5 tracking-wide">
+          <p className="text-[#C8F135] text-[16px] lg:text-[18px] 3xl:text-[24px] mb-5 tracking-wide">
             So funktioniert es
           </p>
-          <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight mb-4">
+          <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] leading-tight mb-4">
            Einfacher als Sie denken. Fertig in 7 Tagen.
           </h2>
-          <p className="text-white/45 text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed">
+          <p className="text-white/45 text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed">
            Sie kümmern sich um Ihr Unternehmen. Wir bauen Ihre Website: von A bis Z.
           </p>
         </div>
 
         {/* Steps row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2  xl:grid-cols-4 gap-0">
           {steps.map((step, i) => (
             <motion.div
               key={i}
@@ -69,7 +69,7 @@ export function Features() {
               <h3 className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px] leading-snug mb-3">
                 {step.title}
               </h3>
-              <p className="text-[#888888] text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed">
+              <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed">
                 {step.desc}
               </p>
             </motion.div>
