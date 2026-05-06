@@ -10,7 +10,7 @@ const testimonials = [
     role: "Coiffeursalon",
     city: "Zürich",
     quote:
-      "Ich hab 11 Jahre lang nur über Weiterempfehlung gearbeitet. Irgendwann fragt ein neuer Kunde: ‚Haben Sie eine Website?' und ich stehe da. Das war mir peinlich ehrlich gesagt. Seit ich die Seite habe, buchen Leute die ich gar nicht kenne — einfach weil sie mich bei Google gefunden haben.",
+      "Ich hab 11 Jahre lang nur über Weiterempfehlung gearbeitet. Irgendwann fragt ein neuer Kunde: ‚Haben Sie eine Website?' und ich stehe da. Das war mir peinlich ehrlich gesagt. Seit ich die Seite habe, buchen Leute die ich gar nicht kenne. Einfach weil sie mich bei Google gefunden haben.",
     image: "/services/logo1.svg",
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
     role: "Personal Trainer",
     city: "St. Gallen",
     quote:
-      "Meine Kunden fragen mich manchmal warum eine Stunde so viel kostet. Wenn ich dann eine saubere Website habe mit meinen Methoden, Referenzen, einem richtigen Foto von mir — dann stellen sie die Frage seltener. Das klingt komisch aber es stimmt. Eine professionelle Website ist auch Preisrechtfertigung.",
+      "Meine Kunden fragen mich manchmal warum eine Stunde so viel kostet. Wenn ich dann eine saubere Website habe mit meinen Methoden, Referenzen, einem richtigen Foto von mir. Dann stellen sie die Frage seltener. Das klingt komisch aber es stimmt. Eine professionelle Website ist auch Preisrechtfertigung.",
     image: "/services/logo3.svg",
   },
   {
@@ -34,7 +34,7 @@ const testimonials = [
     role: "Elektroinstallationen",
     city: "Winterthur",
     quote:
-      "Hab ehrlich gesagt nicht viel erwartet. In meiner Branche wird viel versprochen. Aber die 7 Tage haben die eingehalten — und seit die Website oben ist, fragen meine Kunden manchmal: ‚Hast du umgebaut?' Nein, ich hab einfach endlich eine ordentliche Website.",
+      "Hab ehrlich gesagt nicht viel erwartet. In meiner Branche wird viel versprochen. Aber die 7 Tage haben die eingehalten. Und seit die Website oben ist, fragen meine Kunden manchmal: ‚Hast du umgebaut?' Nein, ich hab einfach endlich eine ordentliche Website.",
     image: "/services/logo4.svg",
   },
   {
@@ -50,7 +50,7 @@ const testimonials = [
     role: "Maler- und Gipsergeschäft",
     city: "Zürich",
     quote:
-      "Ich bin aus Serbien, mein Deutsch ist okay aber für Texte nicht gut genug. Das war immer mein Problem mit Websites. Die haben das einfach übernommen. Jetzt schaut's aus wie ein richtiges Unternehmen — weil es ja auch eines ist.",
+      "Ich bin aus Serbien, mein Deutsch ist okay aber für Texte nicht gut genug. Das war immer mein Problem mit Websites. Die haben das einfach übernommen. Jetzt schaut's aus wie ein richtiges Unternehmen. Weil es ja auch eines ist.",
     image: "/services/logo6.svg",
   },
   {
@@ -182,8 +182,12 @@ export function Testimonials() {
       const snapped = Math.round(offsetRef.current / cardStep) * cardStep;
       let target = snapped + dir * cardStep;
 
-      // Normalise into [0, oneSet)
-      target = ((target % oneSet) + oneSet) % oneSet;
+      // Choose the equivalent target that yields the shortest animation distance
+      // (allow target to be outside [0, oneSet) so animateTo moves through the loop smoothly)
+      const rawDiff = target - offsetRef.current;
+      // if shifting by oneSet reduces the distance, apply it
+      if (Math.abs(rawDiff + oneSet) < Math.abs(rawDiff)) target += oneSet;
+      else if (Math.abs(rawDiff - oneSet) < Math.abs(rawDiff)) target -= oneSet;
 
       animateTo(target, () => {
         // Resume auto-scroll after 2 seconds
@@ -201,7 +205,13 @@ export function Testimonials() {
       pausedRef.current = true;
 
       const cardStep = getCardWidth() + GAP;
-      const target = index * cardStep;
+      let target = index * cardStep;
+      const oneSet = getOneSetWidth();
+
+      // Pick the closest equivalent target (may be in the duplicated second copy)
+      const rawDiff = target - offsetRef.current;
+      if (Math.abs(rawDiff + oneSet) < Math.abs(rawDiff)) target += oneSet;
+      else if (Math.abs(rawDiff - oneSet) < Math.abs(rawDiff)) target -= oneSet;
 
       animateTo(target, () => {
         setTimeout(() => {
