@@ -193,7 +193,7 @@ export function FAQ() {
           >
             <h3 className="text-white text-[24px] sm:text-[28px] mb-2">Noch Fragen?</h3>
             <p className="text-[#888888] text-[16px] sm:text-[18px] 2xl:text-[24px] leading-relaxed mb-5">
-              Schreiben Sie uns einfach. Wir antworten schnell und unkompliziert. <br/> / Ihre E-Mail
+              Schreiben Sie uns einfach. Wir antworten schnell und unkompliziert.
 
             </p>
 

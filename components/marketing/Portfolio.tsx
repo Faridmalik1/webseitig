@@ -110,11 +110,11 @@ const OFFSET = CLONES; // index of real project[0] inside extendedProjects
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="rounded-4xl overflow-hidden flex flex-col h-full"
+      className="rounded-4xl overflow-hidden flex flex-col h-full rounded-tl-[40px] rounded-tr-[40px]"
       style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
     >
       <div
-        className="w-full overflow-hidden rounded-t-4xl rounded-b-3xl border-2 border-[#3F3F3F]"
+        className="w-full overflow-hidden rounded-tl-[40px] rounded-tr-[40px] rounded-b-3xl border-5 border-[#3F3F3F]"
         style={{ aspectRatio: "16/9" }}
       >
         <img
