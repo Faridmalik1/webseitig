@@ -110,11 +110,11 @@ const OFFSET = CLONES; // index of real project[0] inside extendedProjects
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="rounded-4xl overflow-hidden flex flex-col h-full rounded-tl-[40px] rounded-tr-[40px]"
-      style={{ background: "#1c1c1c", border: "1px solid rgba(255,255,255,0.07)" }}
+      className="rounded-4xl overflow-hidden flex flex-col h-full rounded-tl-[15px] rounded-tr-[15px] sm:rounded-tl-[42px] sm:rounded-tr-[42px]"
+      style={{ background: "#1c1c1c", border: "1px solid #444444" }}
     >
       <div
-        className="w-full overflow-hidden rounded-tl-[40px] rounded-tr-[40px] rounded-b-3xl border-5 border-[#3F3F3F]"
+        className="w-full overflow-hidden rounded-tl-[15px] rounded-tr-[15px] sm:rounded-tl-[40px] sm:rounded-tr-[40px] rounded-bl-[15px] rounded-br-[15px] sm:rounded-bl-[40px] sm:rounded-br-[40px] border-3 md:border-4 border-[#3F3F3F]"
         style={{ aspectRatio: "16/9" }}
       >
         <img
@@ -176,6 +176,8 @@ export function Portfolio() {
   const [animated, setAnimated] = useState(true);
   const [isMd, setIsMd] = useState(false);
   const jumping = useRef(false);
+  const [isLg, setIsLg] = useState(false);
+
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
@@ -185,11 +187,19 @@ export function Portfolio() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  useEffect(() => {
+  const mq = window.matchMedia("(min-width: 1024px)");
+  setIsLg(mq.matches);
+  const handler = (e) => setIsLg(e.matches);
+  mq.addEventListener("change", handler);
+  return () => mq.removeEventListener("change", handler);
+}, []);
+
   // Each card occupies (100 / perPage) % of the visible window.
   // The track width = extTotal cards, so each card is (1/extTotal) of the track.
   // translateX is expressed as % of the track, so:
   //   offset = trackIndex / extTotal * 100  (%)
-  const perPage = isMd ? 2 : 1;
+  const perPage = isLg ? 2 : 1;
 
   // The visible window shows `perPage` cards.
   // Track total width in "viewport units" = extTotal / perPage viewports wide.
