@@ -45,7 +45,7 @@ export function Hero() {
               <p className="text-[#C8F135] text-[14px] md:text-[16px] 3xl:text-[20px] mb-4 sm:mb-5 tracking-wide">
                 Für Selbstständige und KMU in der Schweiz
               </p>
-              <h1 className="text-[28px] sm:text-[32px] lg:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
+              <h1 className="text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
                 Jeden Tag ohne Website <br /> geht ein Kunde zur Konkurrenz. <br /> Nicht zu Ihnen.
               </h1>
               <p className="text-[#888888] text-[16px] sm:text-[20px] 3xl:text-[24px] leading-relaxed max-w-[600px] mb-7 sm:mb-8">

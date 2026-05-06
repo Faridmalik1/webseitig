@@ -23,7 +23,7 @@ export function CTABanner() {
         src="/Progress_Right.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -right-16 -bottom-10 rotate-30 w-[150px] md:w-[200px] h-auto z-0"
+        className="pointer-events-none absolute -right-16 -bottom-10 rotate-30 h-auto z-0"
       />
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
@@ -42,7 +42,7 @@ export function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="text-[#737373] text-base md:text-xl 3xl:text-[24px] font-medium mb-8 max-w-[500px] mx-auto"
+          className="text-[#737373] text-base md:text-xl 3xl:text-[24px] font-medium mb-8 max-w-[600px] mx-auto"
           style={{ fontFamily: "var(--font-outfit)" }}
         >
           Kostenlose Beratung. Kein Druck. Unverbindlich.
@@ -55,7 +55,7 @@ export function CTABanner() {
   transition={{ duration: 0.45, delay: 0.2 }}
   onClick={open}
   className="group inline-flex items-center gap-2 bg-[#0F0F0F] text-white text-[16px] md:!text-[20px] 3xl:text-[24px]
-  px-6 sm:px-8 py-2 rounded-full hover:bg-[#2a2a2a] active:scale-95 
+  px-8 sm:px-8 py-4 rounded-full active:scale-95 
   transition-all duration-200"
 >
   Jetzt kostenlos starten

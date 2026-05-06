@@ -157,7 +157,6 @@ export function FAQ() {
                         }`}
                     >
                       <Plus
-                        size={18}
                         className={`transition-colors duration-300 `}
                       />
                     </div>
@@ -188,10 +187,10 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="rounded-[40px] p-7 sticky top-24"
+            className="rounded-[40px] p-7 sticky top-24 bg-[#C8F135]/15"
             style={{
-              background: "linear-gradient(135deg, #1e2a0e 0%, #1c1c1c 60%)",
-              border: "1px solid rgba(200,230,70,0.15)",
+              // background: "linear-gradient(135deg, #1e2a0e 0%, #1c1c1c 60%)",
+              // border: "1px solid rgba(200,230,70,0.15)",
             }}
           >
             <h3 className="text-white text-[24px] sm:text-[28px] mb-2">Noch Fragen?</h3>

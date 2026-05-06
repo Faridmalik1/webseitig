@@ -305,7 +305,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed">
+                <p className="text-white text-[16px] lg:text-[16px] xl:text-[18px] 3xl:text-[24px] leading-relaxed">
                   "{t.quote}"
                 </p>
               </div>

@@ -44,20 +44,21 @@ export function Features() {
         </div>
 
         {/* Steps row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2  xl:grid-cols-4 gap-0">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`px-6 py-2 ${
-                i < steps.length - 1
-                  ? "border-b lg:border-b-0 lg:border-r border-white/[0.08]"
-                  : ""
-              }`}
-            >
+        {/* Steps row */}
+<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-0">
+  {steps.map((step, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: i * 0.1 }}
+      className={`px-6 py-2 border-white/[0.08]
+        ${i < steps.length - 1 ? "border-b" : ""}
+        ${i % 2 === 0 ? "lg:border-r lg:border-b-0" : "lg:border-b-0 lg:border-r-0"}
+        ${i < steps.length - 1 ? "xl:border-r xl:border-b-0" : "xl:border-r-0"}
+      `}
+    >
               {/* Line + number */}
               <div className="flex items-end gap-3 mb-5">
                 <div className="w-8 h-[2px] mb-2 bg-[#C8F135] rounded-full opacity-40" />

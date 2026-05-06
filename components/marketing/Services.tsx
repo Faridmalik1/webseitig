@@ -55,7 +55,7 @@ export function Services() {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-dotted divide-[#606060] border-t border-dotted border-[#606060]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-x-none sm:divide-y-none divide-dotted divide-[#606060] border-t border-dotted border-[#606060]">
             {logos.slice(4, 8).map((logo) => (
               <div
                 key={logo.id}

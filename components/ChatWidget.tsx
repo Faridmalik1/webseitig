@@ -121,7 +121,7 @@ export function ChatWidget() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-4 text-sm">
+          <div className="flex-1 overflow-y-auto px-4 py-4 text-sm flex flex-col gap-3">
             {messages.length === 0 ? (
               <div className="flex h-full flex-col px-2">
 
@@ -154,8 +154,8 @@ export function ChatWidget() {
                   <div
                     className={
                       msg.role === "user"
-                        ? "max-w-[80%] rounded-2xl bg-[#C8F135] px-3 py-2 text-black"
-                        : "max-w-[80%] rounded-2xl bg-white/5 px-3 py-2 text-white"
+                        ? "max-w-[80%] rounded-2xl bg-[#C8F135] px-3 py-2 text-black break-words"
+                        : "max-w-[80%] rounded-2xl bg-white/5 px-3 py-2 text-white break-words"
                     }
                   >
                     {msg.text}
@@ -187,6 +187,24 @@ export function ChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Quick Options Chips (Visible after first message, hidden during lead flow) */}
+          {messages.length > 0 && (!leadData?.step || leadData.step === "skipped") && (
+            <div className="px-4 pb-2 pt-2 overflow-hidden border-t border-white/5">
+              <div className="flex overflow-x-auto gap-2 scrollbar-none pb-1">
+                {QUICK_OPTIONS.map((option, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => sendQuestion(option)}
+                    disabled={loading}
+                    className="whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-[#888888] hover:border-[#C8F135] hover:text-white transition-all active:scale-95"
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Input */}
           <div className="rounded-b-3xl border-t border-white/10 bg-[#0F0F0F] px-4 py-3">
             <div className="flex items-center gap-2">
@@ -197,7 +215,7 @@ export function ChatWidget() {
                   if (event.key === "Enter") sendQuestion();
                 }}
                 className="min-w-0 flex-1 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder-[#888888] outline-none focus:border-[#C8F135]"
-                placeholder="Ask a question..."
+                placeholder="Frag Adrian..."
               />
               <button
                 onClick={() => sendQuestion()}
