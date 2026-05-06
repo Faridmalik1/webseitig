@@ -49,9 +49,9 @@ export function Pricing() {
             <p className="text-[#C8F135] text-[16px] sm:text-[18px] mb-5 tracking-wide">
               Preise
             </p>
-            {/* <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
+            <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[52px] leading-tight break-words mb-2">
               Was eine Agentur CHF 8'000 kostet. Bei uns ab CHF 179 / Monat.
-            </h2> */}
+            </h2>
             <p className="text-[#888888] text-[18px] sm:text-[20px]">
               Transparent. Fair. Ohne Überraschungen.
             </p>
@@ -178,9 +178,9 @@ export function Pricing() {
 
   {/* content layer */}
   <div className="relative z-10">
-    <h3 className="text-white text-lg md:text-xl 3xl:text-[28px] text-center mb-3">
+    {/* <h3 className="text-white text-lg md:text-xl 3xl:text-[28px] text-center mb-3">
       Unter beiden Plans. Risk Reversal Block:
-    </h3>
+    </h3> */}
 
     <p className="text-white text-[16px] sm:text-[18px] 3xl:text-[24px] leading-relaxed max-w-[1000px] mx-auto px-6 md:px-8 text-center">
       Nicht zufrieden mit dem Entwurf? Wir überarbeiten, bis Sie es sind. Kein Auftrag, keine Rechnung. Nach 12 Monaten können Sie monatlich kündigen. Ohne Fragen, ohne versteckte Kosten.
