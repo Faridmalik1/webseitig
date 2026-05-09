@@ -27,8 +27,8 @@ const pains = [
 
 export function About() {
   return (
-    <section id="about" className="bg-[#0F0F0F] py-10 px-4 md:px-8 md:py-16">
-      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+    <section id="about" className="bg-[#0F0F0F] py-10 px-6 md:px-8 md:py-16">
+      <div className="max-w-[1568px] mx-auto w-full">
 
         <div className="text-center mb-12 md:mb-16">
           <p className="text-[#C8F135] text-[16px] lg:text-[18px] 3xl:text-[24px] mb-5 tracking-wide">

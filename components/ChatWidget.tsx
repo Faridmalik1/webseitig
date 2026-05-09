@@ -38,7 +38,20 @@ export function ChatWidget() {
   const [leadData, setLeadData] = useState<LeadData | undefined>(undefined);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const savedChoice = window.localStorage.getItem("webseitig.analyticsConsent");
+    setBannerVisible(savedChoice === null);
+
+    const handleConsent = (e: any) => {
+      setBannerVisible(e.detail.visible);
+    };
+
+    window.addEventListener("webseitig:consent-changed" as any, handleConsent);
+    return () => window.removeEventListener("webseitig:consent-changed" as any, handleConsent);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -102,7 +115,13 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div 
+      className={`fixed right-6 z-[110] flex flex-col items-end gap-2 transition-all duration-300 ${
+        bannerVisible 
+          ? "bottom-[45vh] md:bottom-32" 
+          : "bottom-6"
+      }`}
+    >
       {isOpen && (
         <div className="flex h-[420px] w-[calc(100vw-3rem)] max-w-[320px] flex-col rounded-3xl border border-white/10 bg-[#0F0F0F] shadow-2xl sm:w-[320px]">
           {/* Header */}

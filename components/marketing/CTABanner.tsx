@@ -8,9 +8,9 @@ export function CTABanner() {
   const { open } = useModal();
 
   return (
-    <div className="mx-6 px-4 md:px-8 py-10 md:py-16">
+    <div className="px-6 md:px-8 py-10 md:py-16">
     <section
-      className="relative overflow-hidden max-w-[1568px] rounded-[40px] mx-auto px-6 md:px-8 py-20 md:py-24 text-center bg-[#C8F135]"
+      className="relative overflow-hidden max-w-[1568px] rounded-[40px] mx-auto w-full py-20 md:py-24 text-center bg-[#C8F135]"
     >
       <img
         src="/Progress_Left.svg"

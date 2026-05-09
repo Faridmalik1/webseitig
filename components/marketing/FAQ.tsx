@@ -115,8 +115,8 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-4 md:px-8">
-      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+    <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-6 md:px-8">
+      <div className="max-w-[1568px] mx-auto w-full">
         <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-center mb-12">
           Häufig gestellte Fragen
         </h2>
@@ -132,9 +132,8 @@ export function FAQ() {
                   className="bg-[#151515] rounded-[20px] overflow-hidden"
                 >
                   <button
-                    className={`w-full flex items-center gap-4 py-5 text-start group px-4 ${
-                      isOpen ? "relative after:absolute after:left-5 after:right-5 after:bottom-0 after:h-[1px] after:bg-[#C8F135]/40" : ""
-                    }`}
+                    className={`w-full flex items-center gap-4 py-5 text-start group px-4 ${isOpen ? "relative after:absolute after:left-5 after:right-5 after:bottom-0 after:h-[1px] after:bg-[#C8F135]/40" : ""
+                      }`}
                     onClick={() => setOpen(isOpen ? null : i)}
                   >
                     <div className="flex items-end gap-2 shrink-0 ps-1">
@@ -162,21 +161,20 @@ export function FAQ() {
                     </div>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen ? (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed py-5 ps-[1.5rem] whitespace-pre-line">
-                          {faq.a}
-                        </p>
-                      </motion.div>
-                    ) : null}
-                  </AnimatePresence>
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: isOpen ? "auto" : 0,
+                      opacity: isOpen ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                    aria-hidden={!isOpen}
+                  >
+                    <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed py-5 ps-[1.5rem] whitespace-pre-line">
+                      {faq.a}
+                    </p>
+                  </motion.div>
                 </div>
               );
             })}

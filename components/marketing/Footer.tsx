@@ -8,7 +8,7 @@ const links = [
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
   { label: "AGB", href: "/agb" },
-  { label: "Kontakt", href: "/#faq" }, // ✅ unified as Link
+  // { label: "Kontakt", href: "/#faq" }, // ✅ unified as Link
 ];
 
 export function Footer() {

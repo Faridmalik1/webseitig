@@ -47,7 +47,7 @@ const testimonials = [
   },
   {
     name: "Dragan M.",
-    role: "Maler- und Gipsergeschäft",
+    role: "Malerbetrieb",
     city: "Zürich",
     quote:
       "Ich bin aus Serbien, mein Deutsch ist okay aber für Texte nicht gut genug. Das war immer mein Problem mit Websites. Die haben das einfach übernommen. Jetzt schaut's aus wie ein richtiges Unternehmen. Weil es ja auch eines ist.",
@@ -223,8 +223,8 @@ export function Testimonials() {
   );
 
   return (
-    <section id="testimonials" className="bg-[#0F0F0F] py-10 md:py-16 relative px-4 md:px-8">
-      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+    <section id="testimonials" className="bg-[#0F0F0F] py-10 md:py-16 relative px-6 md:px-8">
+      <div className="max-w-[1568px] mx-auto w-full">
         {/* Header row */}
         <div className="flex flex-col md:flex-row justify-between items-center w-full mb-8">
           <motion.h2
@@ -291,16 +291,18 @@ export function Testimonials() {
                         {" "}— {t.role}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1 mt-0.5">
-                      <img
-                        src="/location.svg"
-                        alt="location"
-                        className="w-5 h-5 2xl:w-9 2xl:h-9"
-                      />
-                      <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px]">
-                        {t.city}
-                      </p>
-                    </div>
+                    <div className="flex items-center gap-1.5 mt-0.5 whitespace-nowrap">
+  <img
+    src="/location.svg"
+    alt=""
+    aria-hidden="true"
+    className="w-5 h-5 2xl:w-9 2xl:h-9 shrink-0"
+  />
+
+  <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-none">
+    {t.city}
+  </p>
+</div>
                   </div>
                 </div>
 

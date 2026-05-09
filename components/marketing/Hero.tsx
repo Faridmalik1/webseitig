@@ -18,7 +18,7 @@ export function Hero() {
     <div>
       <section
         id="home"
-        className="relative flex flex-col bg-[#0F0F0F] py-12 md:py-18 px-4 md:px-8"
+        className="relative flex flex-col bg-[#0F0F0F] py-12 md:py-18 px-6 md:px-8"
       >
         {/* <div
         aria-hidden
@@ -31,7 +31,7 @@ export function Hero() {
       /> */}
 
         {/* Main hero content */}
-        <div className="relative flex items-center max-w-[1568px] mx-auto px-6 md:px-8 w-full pt-28 xl:pt-16 pb-8 xl:pb-16">
+        <div className="relative flex items-center max-w-[1568px] mx-auto w-full pt-28 xl:pt-16 pb-8 xl:pb-16">
 
           <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center xl:mt-8">
 
@@ -46,7 +46,7 @@ export function Hero() {
                 Für Selbstständige und KMU in der Schweiz
               </p>
               <h1 className="text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
-                Jeden Tag ohne Website <br /> geht ein Kunde zur Konkurrenz. <br /> Nicht zu Ihnen.
+                Jeden Tag ohne Website <br />geht ein Kunde zur Konkurrenz. <br />Nicht zu Ihnen.
               </h1>
               <p className="text-[#888888] text-[16px] sm:text-[20px] 3xl:text-[24px] leading-relaxed max-w-[600px] mb-7 sm:mb-8">
                 Wir bauen Ihre professionelle Website in 7 Tagen. Keine Vorauszahlung. Kein technisches Wissen. Alles inklusive, kündbar nach 12 Monaten.

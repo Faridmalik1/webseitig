@@ -138,16 +138,24 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             <p className="text-white sm:text-[16px] md:text-[20px] 3xl:text-[24px] mb-2 font-paytone">
               Tech-Stack
             </p>
-            <div className="flex flex-wrap gap-2">
-              {project.stack.map((tag, i) => (
-                <span
-                  key={i}
-                  className="text-[#F5F4F0] sm:text-[16px] md:text-[18px] 3xl:text-[24px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <div
+  className="flex flex-wrap items-center gap-2"
+  aria-label={`Tech stack: ${project.stack.join(", ")}`}
+>
+  {project.stack.map((tag, i) => (
+    <div key={i} className="flex items-center gap-2">
+      <span className="text-[#F5F4F0] sm:text-[16px] md:text-[18px] 3xl:text-[24px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1">
+        {tag}
+      </span>
+
+      {/* {i < project.stack.length - 1 && (
+        <span className="text-[#888888]" aria-hidden="true">
+          •
+        </span>
+      )} */}
+    </div>
+  ))}
+</div>
           </div>
 
           {/* Timeline */}
@@ -265,8 +273,8 @@ useEffect(() => {
   );
 
   return (
-    <section id="portfolio" className="bg-[#0F0F0F] py-10 md:py-16 px-4 md:px-8">
-      <div className="max-w-[1568px] mx-auto px-6 md:px-8">
+    <section id="portfolio" className="bg-[#0F0F0F] py-10 md:py-16 px-6 md:px-8">
+      <div className="max-w-[1568px] mx-auto w-full ">
 
         {/* Header */}
         <div className="flex items-start justify-between mb-10">
@@ -297,7 +305,7 @@ useEffect(() => {
               <div
                 key={`${project.num}-${i}`}
                 style={{ width: `${100 / extTotal}%` }}
-                className="px-2.5 box-border"
+                className="px-0 md:px-2.5 box-border"
               >
                 <ProjectCard project={project} />
               </div>

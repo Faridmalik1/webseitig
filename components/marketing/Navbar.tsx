@@ -43,7 +43,7 @@ const pathname = usePathname();
   `}
   data-testid="navbar"
 >
-      <div className="max-w-[1568px] mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between gap-3">
+      <div className="max-w-[1568px] mx-auto w-full h-16 flex items-center justify-between gap-3">
 
         {/* Logo */}
         <Link
