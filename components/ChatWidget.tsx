@@ -118,7 +118,7 @@ export function ChatWidget() {
     <div 
       className={`fixed right-6 z-[110] flex flex-col items-end gap-2 transition-all duration-300 ${
         bannerVisible 
-          ? "bottom-[45vh] md:bottom-32" 
+          ? "bottom-[40vh] md:bottom-32" 
           : "bottom-6"
       }`}
     >
