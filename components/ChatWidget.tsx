@@ -257,7 +257,7 @@ export function ChatWidget() {
       >
         <img
           src="/bot.svg"
-          alt="Bot icon"
+          alt="webseitig"
           className="h-full w-full pointer-events-none"
         />
       </button>

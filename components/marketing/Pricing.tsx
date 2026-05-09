@@ -6,7 +6,7 @@ import { useModal } from "../shared/modal-context";
 
 const starterFeatures = [
   "Bis zu 5 Seiten",
-  "Mobile-optimiert",
+  "Mobile-Optimiert",
   "Kontaktformular",
   "SSL + Hosting inklusive",
   "SEO-Grundlagen",

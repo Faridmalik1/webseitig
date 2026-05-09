@@ -71,7 +71,7 @@ export function Hero() {
               <div className="text-[#888888] flex gap-2 items-center mt-6 text-[16px] lg:text-[18px] 3xl:text-[20px]">
                 <img
                   src="/star.svg"
-                  alt="Stars"
+                  alt="webseitig"
                   className="w-9 h-9 object-contain"
                 />
                 <p>5.0 Google-Bewertungen</p>
@@ -150,7 +150,7 @@ export function Hero() {
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center text-center gap-3 py-8 px-4">
-              <img src={f.icon} alt={f.label} className="w-9 h-9 object-contain" />
+              <img src={f.icon} alt="webseitig" className="w-9 h-9 object-contain" />
               <p className="text-[#F5F4F0] text-[16px] sm:text-[18px] md:text-[20px] 3xl:text-[24px] leading-tight max-w-[150px] sm:max-w-[280px] break-words">
                 {f.label}
               </p>

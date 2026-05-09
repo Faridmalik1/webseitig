@@ -1,0 +1,17 @@
+{
+  "name": "web.seitig",
+  "short_name": "webseitig",
+  "description": "Ihre Website in 7 Tagen – Ohne Vorauszahlung",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0F0F",
+  "theme_color": "#C8F135",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

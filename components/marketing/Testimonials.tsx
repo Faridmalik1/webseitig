@@ -71,7 +71,7 @@ function TestimonialAvatar({ image, name }: { image: string; name: string }) {
     <div className="w-12 h-12 overflow-hidden shrink-0 flex items-center justify-center border border-[#888888] rounded-full">
       <img
         src={image}
-        alt={`${name} - Kundenstimme`}
+        alt="webseitig"
         className="w-[36px] h-[21px] object-contain"
       />
     </div>
@@ -274,10 +274,7 @@ export function Testimonials() {
               <div
                 key={i}
                 className="p-6 flex flex-col gap-4 border-r border-[#262626] flex-shrink-0 testimonial-card"
-                style={{
-                  // background: "#1c1c1c",
-                  // border: "1px solid rgba(255,255,255,0.07)",
-                }}
+                aria-hidden={i >= testimonials.length ? "true" : undefined}
               >
                 {/* Avatar + name */}
                 <div className="flex items-center gap-3">
@@ -291,18 +288,17 @@ export function Testimonials() {
                         {" "}— {t.role}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5 mt-0.5 whitespace-nowrap">
-  <img
-    src="/location.svg"
-    alt=""
-    aria-hidden="true"
-    className="w-5 h-5 2xl:w-9 2xl:h-9 shrink-0"
-  />
-
-  <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-none">
-    {t.city}
-  </p>
-</div>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <img
+                        src="/location.svg"
+                        alt="webseitig"
+                        aria-hidden="true"
+                        className="w-4 h-4 shrink-0"
+                      />
+                      <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-none">
+                        {t.city}
+                      </p>
+                    </div>
                   </div>
                 </div>
 

@@ -119,7 +119,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       >
         <img
           src={project.image}
-          alt={project.name}
+          alt="webseitig"
           className="w-full h-full object-cover object-top block"
         />
       </div>

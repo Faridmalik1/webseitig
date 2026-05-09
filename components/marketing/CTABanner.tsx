@@ -14,14 +14,14 @@ export function CTABanner() {
     >
       <img
         src="/Progress_Left.svg"
-        alt=""
+        alt="webseitig"
         aria-hidden
         className="pointer-events-none absolute -left-16 -top-10 w-[200px] md:w-[250px] h-auto z-0"
       />
 
       <img
         src="/Progress_Right.svg"
-        alt=""
+        alt="webseitig"
         aria-hidden
         className="pointer-events-none absolute -right-16 -bottom-10 rotate-30 h-auto z-0"
       />

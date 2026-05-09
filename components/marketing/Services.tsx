@@ -49,7 +49,7 @@ export function Services() {
               >
                 <img
                   src={logo.img}
-                  alt="company logo"
+                  alt="webseitig"
                   className="h-10 object-contain"
                 />
               </div>
@@ -63,7 +63,7 @@ export function Services() {
               >
                 <img
                   src={logo.img}
-                  alt="company logo"
+                  alt="webseitig"
                   className="h-10 object-contain"
                 />
               </div>

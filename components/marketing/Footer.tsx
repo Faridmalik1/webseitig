@@ -47,7 +47,7 @@ export function Footer() {
               onClick={handleLogoClick}
               className="flex items-center"
             >
-              <img src="/FooterLogo.svg" alt="Logo" className="w-36 2xl:w-48" />
+              <img src="/FooterLogo.svg" alt="webseitig" className="w-36 2xl:w-48" />
             </Link>
 
             {/* Links */}
@@ -100,7 +100,7 @@ export function Footer() {
           {/* Copyright */}
           <div className="py-4 flex items-center justify-center text-center">
             <p className="text-[#888888] text-base 3xl:text-[24px]">
-              © {year} Web.seitig. Alle Rechte vorbehalten.
+              © {year} web.seitig. Alle Rechte vorbehalten.
             </p>
           </div>
         </div>
