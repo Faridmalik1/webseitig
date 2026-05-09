@@ -87,8 +87,8 @@ export function ConsentManager() {
           aria-live="polite"
           aria-label="Cookie-Einstellungen"
         >
-          <div className="mx-auto flex max-w-[1568px] flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-3xl">
+          <div className="mx-auto flex max-w-[1568px] flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-5xl">
               <p className="text-[16px] font-semibold text-white md:text-[18px]">
                 Wir verwenden Cookies
               </p>
@@ -107,7 +107,7 @@ export function ConsentManager() {
                 onClick={() => saveChoice("rejected")}
                 className="rounded-full border border-white/20 px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
               >
-                Ablehnen
+                Mehr erfahren
               </button>
               <button
                 type="button"

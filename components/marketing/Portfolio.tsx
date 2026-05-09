@@ -277,12 +277,30 @@ useEffect(() => {
       <div className="max-w-[1568px] mx-auto w-full ">
 
         {/* Header */}
-        <div className="flex items-start justify-between mb-10">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mb-10">
+          <div className="mb-6 md:mb-0">
             <p className="text-[#C8F135] text-[16px] md:text-[20px] 3xl:text-[24px] tracking-wide">Unsere Arbeit</p>
             <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] leading-tight">
               Ausgewählte Projekte. Alle in 7 Tagen geliefert.
             </h2>
+          </div>
+
+          {/* Navigation Buttons (Top Right) - Only visible on Mobile/Tablet (lg:hidden) */}
+          <div className="flex gap-3 shrink-0 self-end md:self-auto lg:hidden">
+            <button
+              onClick={prev}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
+              aria-label="Previous project"
+            >
+              <ChevronLeft size={20} className="text-black" />
+            </button>
+            <button
+              onClick={next}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
+              aria-label="Next project"
+            >
+              <ChevronRight size={20} className="text-black" />
+            </button>
           </div>
         </div>
 
@@ -305,7 +323,7 @@ useEffect(() => {
               <div
                 key={`${project.num}-${i}`}
                 style={{ width: `${100 / extTotal}%` }}
-                className="px-0 md:px-2.5 box-border"
+                className="px-1 md:px-2.5 box-border"
               >
                 <ProjectCard project={project} />
               </div>
@@ -313,11 +331,12 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6">
+        {/* Navigation (Bottom) - Original position around dots, only visible on Desktop (lg:flex) */}
+        <div className="hidden lg:flex items-center justify-center gap-3 sm:gap-4 mt-8">
           <button
             onClick={prev}
             className="w-9 h-9 rounded-full border border-[#C8F135] flex items-center justify-center hover:bg-[#C8F135]/10 transition-all duration-200"
+            aria-label="Previous project"
           >
             <ChevronLeft size={18} className="text-[#C8F135]" />
           </button>
@@ -340,6 +359,7 @@ useEffect(() => {
           <button
             onClick={next}
             className="w-9 h-9 rounded-full border border-[#C8F135] flex items-center justify-center hover:bg-[#C8F135]/10 transition-all duration-200"
+            aria-label="Next project"
           >
             <ChevronRight size={18} className="text-[#C8F135]" />
           </button>
