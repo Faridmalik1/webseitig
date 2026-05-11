@@ -126,7 +126,7 @@ export function Pricing() {
 "
           >
             <div className="absolute top-0 right-0">
-              <div className="bg-[#C8F135] text-[#171717] text-[16px] lg:text-[18px] 3xl:text-[24px] px-5 py-[6px] rounded-bl-[14px] rounded-tr-[14px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
+              <div className="bg-[#C8F135] text-[#171717] text-[16px] lg:text-[18px] 3xl:text-[24px] px-5 py-2 rounded-bl-[14px] rounded-tr-[40px] shadow-[0_2px_6px_rgba(0,0,0,0.25)]">
                 Meistgewählt
               </div>
             </div>
