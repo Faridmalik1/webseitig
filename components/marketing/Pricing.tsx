@@ -116,7 +116,7 @@ export function Pricing() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12 }}
             className="
-  rounded-3xl p-8 flex flex-col relative
+  rounded-[40px] p-8 flex flex-col relative
   bg-[#151515]
   border border-white/[0.07]
   hover:border-[#C8F135]
