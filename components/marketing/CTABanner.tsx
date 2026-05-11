@@ -26,7 +26,7 @@ export function CTABanner() {
         className="pointer-events-none absolute -right-16 -bottom-10 rotate-30 h-auto z-0"
       />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto">
+      <div className="relative z-10 px-4 md:px-8 max-w-[1200px] mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
