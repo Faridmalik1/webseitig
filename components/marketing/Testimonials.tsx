@@ -10,7 +10,7 @@ const testimonials = [
     role: "Coiffeursalon",
     city: "Zürich",
     quote:
-      "Ich hab 11 Jahre lang nur über Weiterempfehlung gearbeitet. Irgendwann fragt ein neuer Kunde: ‚Haben Sie eine Website?' und ich stehe da. Das war mir peinlich ehrlich gesagt. Seit ich die Seite habe, buchen Leute die ich gar nicht kenne. Einfach weil sie mich bei Google gefunden haben.",
+      "Ich hab 11 Jahre lang nur über Weiterempfehlung gearbeitet. Irgendwann fragt ein neuer Kunde: 'Haben Sie eine Website?' und ich stehe da. Das war mir peinlich ehrlich gesagt. Seit ich die Seite habe, buchen Leute die ich gar nicht kenne. Einfach weil sie mich bei Google gefunden haben.",
     image: "/services/logo1.svg",
   },
   {
@@ -34,7 +34,7 @@ const testimonials = [
     role: "Elektroinstallationen",
     city: "Winterthur",
     quote:
-      "Hab ehrlich gesagt nicht viel erwartet. In meiner Branche wird viel versprochen. Aber die 7 Tage haben die eingehalten. Und seit die Website oben ist, fragen meine Kunden manchmal: ‚Hast du umgebaut?' Nein, ich hab einfach endlich eine ordentliche Website.",
+      "Hab ehrlich gesagt nicht viel erwartet. In meiner Branche wird viel versprochen. Aber die 7 Tage haben die eingehalten. Und seit die Website oben ist, fragen meine Kunden manchmal: 'Hast du umgebaut?' Nein, ich hab einfach endlich eine ordentliche Website.",
     image: "/services/logo4.svg",
   },
   {

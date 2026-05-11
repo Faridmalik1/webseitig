@@ -139,23 +139,23 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
               Tech-Stack
             </p>
             <div
-  className="flex flex-wrap items-center gap-2"
-  aria-label={`Tech stack: ${project.stack.join(", ")}`}
->
-  {project.stack.map((tag, i) => (
-    <div key={i} className="flex items-center gap-2">
-      <span className="text-[#F5F4F0] sm:text-[16px] md:text-[18px] 3xl:text-[24px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1">
-        {tag}
-      </span>
+              className="flex flex-wrap items-center gap-2"
+              aria-label={`Tech stack: ${project.stack.join(", ")}`}
+            >
+              {project.stack.map((tag, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="text-[#F5F4F0] sm:text-[16px] md:text-[18px] 3xl:text-[24px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1">
+                    {tag}
+                  </span>
 
-      {/* {i < project.stack.length - 1 && (
+                  {/* {i < project.stack.length - 1 && (
         <span className="text-[#888888]" aria-hidden="true">
           •
         </span>
       )} */}
-    </div>
-  ))}
-</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Timeline */}
@@ -185,20 +185,20 @@ export function Portfolio() {
   const jumping = useRef(false);
 
 
- const getIsLg = () => {
-  if (typeof window === "undefined") return true; // assume desktop on SSR
-  return window.matchMedia("(min-width: 1024px)").matches;
-};
+  const getIsLg = () => {
+    if (typeof window === "undefined") return true; // assume desktop on SSR
+    return window.matchMedia("(min-width: 1024px)").matches;
+  };
 
-const [isLg, setIsLg] = useState(false);
+  const [isLg, setIsLg] = useState(false);
 
-useEffect(() => {
-  setIsLg(window.matchMedia("(min-width: 1024px)").matches);
-  const mq = window.matchMedia("(min-width: 1024px)");
-  const handler = (e: MediaQueryListEvent) => setIsLg(e.matches);
-  mq.addEventListener("change", handler);
-  return () => mq.removeEventListener("change", handler);
-}, []);
+  useEffect(() => {
+    setIsLg(window.matchMedia("(min-width: 1024px)").matches);
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const handler = (e: MediaQueryListEvent) => setIsLg(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   // Each card occupies (100 / perPage) % of the visible window.
   // The track width = extTotal cards, so each card is (1/extTotal) of the track.
@@ -324,6 +324,8 @@ useEffect(() => {
                 key={`${project.num}-${i}`}
                 style={{ width: `${100 / extTotal}%` }}
                 className="px-1 md:px-2.5 box-border"
+                aria-hidden={i < OFFSET || i >= OFFSET + total}
+                tabIndex={i < OFFSET || i >= OFFSET + total ? -1 : undefined}
               >
                 <ProjectCard project={project} />
               </div>
@@ -346,11 +348,10 @@ useEffect(() => {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === realIndex
-                    ? "bg-[#C8F135] w-5 h-2.5"
-                    : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
-                }`}
+                className={`rounded-full transition-all duration-300 ${i === realIndex
+                  ? "bg-[#C8F135] w-5 h-2.5"
+                  : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
+                  }`}
                 aria-label={`Slide ${i + 1}`}
               />
             ))}
