@@ -86,6 +86,7 @@ export function Testimonials() {
   const offsetRef = useRef(0);
   const pausedRef = useRef(false);
   const isStepping = useRef(false);
+  const buttonHoveredRef = useRef(false);
 
   // Duplicate cards once — we reset when we've scrolled one full set width
   const loopedTestimonials = [...testimonials, ...testimonials];
@@ -190,9 +191,8 @@ export function Testimonials() {
       else if (Math.abs(rawDiff - oneSet) < Math.abs(rawDiff)) target -= oneSet;
 
       animateTo(target, () => {
-        // Resume auto-scroll after 2 seconds
         setTimeout(() => {
-          pausedRef.current = false;
+          if (!buttonHoveredRef.current) pausedRef.current = false;
         }, 2000);
       });
     },
@@ -241,17 +241,21 @@ export function Testimonials() {
           <div className="flex gap-3 shrink-0 self-end md:self-auto">
             <button
               onClick={() => step(-1)}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
+              onMouseEnter={() => { pausedRef.current = true; buttonHoveredRef.current = true; }}
+              onMouseLeave={() => { buttonHoveredRef.current = false; if (!isStepping.current) pausedRef.current = false; }}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Previous testimonials"
             >
-              <ChevronLeft size={20} className="text-black" />
+              <ChevronLeft size={20} className="" />
             </button>
             <button
               onClick={() => step(1)}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
+              onMouseEnter={() => { pausedRef.current = true; buttonHoveredRef.current = true; }}
+              onMouseLeave={() => { buttonHoveredRef.current = false; if (!isStepping.current) pausedRef.current = false; }}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Next testimonials"
             >
-              <ChevronRight size={20} className="text-black" />
+              <ChevronRight size={20} className="" />
             </button>
           </div>
         </div>
@@ -273,7 +277,7 @@ export function Testimonials() {
             {loopedTestimonials.map((t, i) => (
               <div
                 key={i}
-                className="p-6 flex flex-col gap-4 border-r border-[#262626] flex-shrink-0 testimonial-card"
+                className="p-6 flex flex-col gap-4 relative flex-shrink-0 testimonial-card"
                 aria-hidden={i >= testimonials.length ? "true" : undefined}
               >
                 {/* Avatar + name */}
@@ -306,6 +310,12 @@ export function Testimonials() {
                 <p className="text-white text-[16px] lg:text-[16px] xl:text-[18px] 3xl:text-[24px] leading-relaxed">
                   "{t.quote}"
                 </p>
+
+                <span
+                  className="absolute right-0 top-1/2 -translate-y-1/2 w-px bg-[#262626]"
+                  style={{ height: "70%" }}
+                  aria-hidden="true"
+                />
               </div>
             ))}
           </div>

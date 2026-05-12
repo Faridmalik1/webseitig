@@ -280,26 +280,25 @@ export function Portfolio() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mb-10">
           <div className="mb-6 md:mb-0">
             <p className="text-[#C8F135] text-[16px] md:text-[20px] 3xl:text-[24px] tracking-wide">Unsere Arbeit</p>
-            <h2 className="text-white text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] leading-tight">
+            <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]">
               Ausgewählte Projekte. Alle in 7 Tagen geliefert.
             </h2>
           </div>
 
-          {/* Navigation Buttons (Top Right) - Only visible on Mobile/Tablet (lg:hidden) */}
-          <div className="flex gap-3 shrink-0 self-end md:self-auto lg:hidden">
+          <div className="flex gap-3 shrink-0 self-end md:self-auto">
             <button
               onClick={prev}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Previous project"
             >
-              <ChevronLeft size={20} className="text-black" />
+              <ChevronLeft size={20} className="" />
             </button>
             <button
               onClick={next}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#C8F135] hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Next project"
             >
-              <ChevronRight size={20} className="text-black" />
+              <ChevronRight size={20} className="" />
             </button>
           </div>
         </div>
@@ -333,8 +332,21 @@ export function Portfolio() {
           </div>
         </div>
 
-        {/* Navigation (Bottom) - Original position around dots, only visible on Desktop (lg:flex) */}
-        <div className="hidden lg:flex items-center justify-center gap-3 sm:gap-4 mt-8">
+        <div className="flex justify-center gap-2 items-center mt-8">
+  {projects.map((_, i) => (
+    <button
+      key={i}
+      onClick={() => goTo(i)}
+      className={`rounded-full transition-all duration-300 ${
+        i === realIndex
+          ? "bg-[#C8F135] w-5 h-2.5"
+          : "bg-white/25 hover:bg-white/40 w-2.5 h-2.5"
+      }`}
+      aria-label={`Slide ${i + 1}`}
+    />
+  ))}
+</div>
+        {/* <div className="hidden lg:flex items-center justify-center gap-3 sm:gap-4 mt-8">
           <button
             onClick={prev}
             className="w-9 h-9 rounded-full border border-[#C8F135] flex items-center justify-center hover:bg-[#C8F135]/10 transition-all duration-200"
@@ -364,7 +376,7 @@ export function Portfolio() {
           >
             <ChevronRight size={18} className="text-[#C8F135]" />
           </button>
-        </div>
+        </div> */}
 
       </div>
     </section>
