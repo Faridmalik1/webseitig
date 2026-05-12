@@ -278,7 +278,7 @@ export function Portfolio() {
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mb-10">
-          <div className="mb-6 md:mb-0">
+          <div className="">
             <p className="text-[#C8F135] text-[16px] md:text-[20px] 3xl:text-[24px] tracking-wide">Unsere Arbeit</p>
             <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]">
               Ausgewählte Projekte. Alle in 7 Tagen geliefert.
