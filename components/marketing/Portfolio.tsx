@@ -115,12 +115,12 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
     >
       <div
         className="w-full overflow-hidden rounded-tl-[28px] rounded-tr-[28px] sm:rounded-tl-[42px] sm:rounded-tr-[42px] rounded-bl-[18px] rounded-br-[18px] sm:rounded-bl-[42px] sm:rounded-br-[42px] border-3 md:border-4 border-[#3F3F3F]"
-        style={{ aspectRatio: "16/9" }}
+        style={{ aspectRatio: "755 / 520" }}
       >
         <img
           src={project.image}
           alt="webseitig"
-          className="w-full h-full object-cover object-top block"
+          className="w-full h-full object-cover object-center block"
         />
       </div>
 
