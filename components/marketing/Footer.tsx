@@ -54,7 +54,7 @@ export function Footer() {
             <div className="relative w-full sm:w-auto">
               
               {/* 🔥 Clean layout (no grid issues) */}
-              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-x-3 gap-y-2 text-center">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-x-3 gap-y-2 text-center pr-12 sm:pr-12">
                 
                 {links.map((item, index) => (
                   <div key={item.label} className="flex items-center">
@@ -74,7 +74,7 @@ export function Footer() {
               {/* Scroll to top */}
               <button
                 onClick={scrollToTop}
-                className="absolute -top-10 right-2 w-9 h-9 rounded-full flex items-center justify-center 
+                className="absolute -top-24 sm:-top-10 right-12 w-9 h-9 rounded-full flex items-center justify-center 
                 transition-all duration-200 active:scale-90 group z-10"
                 style={{
                   background: `

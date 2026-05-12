@@ -39,6 +39,7 @@ export function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [bannerVisible, setBannerVisible] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ export function ChatWidget() {
 
     const handleConsent = (e: any) => {
       setBannerVisible(e.detail.visible);
+      setIsMinimized(!!e.detail.minimized);
     };
 
     window.addEventListener("webseitig:consent-changed" as any, handleConsent);
@@ -117,7 +119,7 @@ export function ChatWidget() {
   return (
     <div 
       className={`fixed right-6 z-[110] flex flex-col items-end gap-2 transition-all duration-300 ${
-        bannerVisible 
+        (bannerVisible && !isMinimized) 
           ? "bottom-[35vh] md:bottom-32" 
           : "bottom-6"
       }`}

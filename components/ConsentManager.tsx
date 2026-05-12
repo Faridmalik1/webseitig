@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { Cookie } from "lucide-react";
 
 const CONSENT_KEY = "webseitig.analyticsConsent";
 const GA_ID = "G-2P2YS88WWB";
@@ -22,6 +23,7 @@ function clearAnalyticsCookies() {
 export function ConsentManager() {
   const [choice, setChoice] = useState<ConsentChoice | null>(null);
   const [ready, setReady] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   useEffect(() => {
     const savedChoice = window.localStorage.getItem(CONSENT_KEY);
@@ -43,10 +45,29 @@ export function ConsentManager() {
     };
   }, []);
 
+  const showBanner = ready && choice === null;
+
+  useEffect(() => {
+    if (showBanner && !isMinimized) {
+      const timer = setTimeout(() => {
+        setIsMinimized(true);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showBanner, isMinimized]);
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("webseitig:consent-changed", {
+      detail: {
+        visible: showBanner,
+        minimized: isMinimized
+      }
+    }));
+  }, [showBanner, isMinimized]);
+
   const saveChoice = (nextChoice: ConsentChoice) => {
     window.localStorage.setItem(CONSENT_KEY, nextChoice);
     setChoice(nextChoice);
-    window.dispatchEvent(new CustomEvent("webseitig:consent-changed", { detail: { visible: false } }));
 
     if (nextChoice === "rejected") {
       clearAnalyticsCookies();
@@ -54,7 +75,6 @@ export function ConsentManager() {
   };
 
   const analyticsAllowed = choice === "accepted";
-  const showBanner = ready && choice === null;
 
   return (
     <>
@@ -81,44 +101,67 @@ export function ConsentManager() {
       )}
 
       {showBanner && (
-        <div
-          className="fixed inset-x-0 bottom-0 z-[100] border-t border-white/10 bg-[#121212]/95 px-4 py-4 shadow-[0_-18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-          role="dialog"
-          aria-live="polite"
-          aria-label="Cookie-Einstellungen"
-        >
-          <div className="mx-auto flex max-w-[1568px] flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-5xl">
-              <p className="text-[16px] font-semibold text-white md:text-[18px]">
-                Wir verwenden Cookies
-              </p>
-              <p className="mt-1 text-[14px] leading-relaxed text-white/70 md:text-[16px]">
-                Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Wenn Sie fortfahren, akzeptieren Sie unsere Verwendung von Cookies.{" "}
-                {/* <Link href="/datenschutz" className="text-[#C8F135] hover:underline">
-                  Datenschutzerklärung
-                </Link>
-                . */}
-              </p>
+        <>
+          {/* Mobile-only fixed tab (outside translating container to avoid transform issues) */}
+          <button
+            onClick={() => setIsMinimized(!isMinimized)}
+            className={`fixed right-0 z-[120] flex h-12 w-12 items-center justify-center border border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-all duration-500 -rotate-90 origin-center md:hidden ${
+              isMinimized ? "bottom-40" : "bottom-[50vh]"
+            }`}
+            aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schließen"}
+          >
+            <Cookie className="h-6 w-6 rotate-90" />
+          </button>
+
+          <div
+            className={`fixed inset-x-0 bottom-0 z-[100] transition-all duration-500 ease-in-out pointer-events-none ${
+              isMinimized ? "translate-y-full md:translate-y-[calc(100%-52px)]" : "translate-y-0"
+            }`}
+            role="dialog"
+            aria-live="polite"
+            aria-label="Cookie-Einstellungen"
+          >
+            {/* Desktop-only attached tab (inside translating container) */}
+            <div className="mx-auto hidden max-w-[1568px] justify-end pl-4 pr-48 pointer-events-none md:flex">
+              <button
+                onClick={() => setIsMinimized(!isMinimized)}
+                className="relative z-[10] translate-y-[1px] flex h-[52px] w-[52px] items-center justify-center border-l border-r border-t border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-colors hover:text-[#C8F135] pointer-events-auto"
+                aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schließen"}
+              >
+                <Cookie className="h-6 w-6" />
+              </button>
             </div>
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-              <button
-                type="button"
-                onClick={() => saveChoice("rejected")}
-                className="rounded-full border border-white/20 px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
-              >
-                Mehr erfahren
-              </button>
-              <button
-                type="button"
-                onClick={() => saveChoice("accepted")}
-                className="rounded-full bg-[#C8F135] px-5 py-3 text-[15px] font-semibold text-[#171717] transition-colors hover:bg-[#d4f050]"
-              >
-                Akzeptieren
-              </button>
+            <div className="border-t border-white/10 bg-[#121212]/95 shadow-[0_-18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl pointer-events-auto">
+              <div className="mx-auto flex max-w-[1568px] flex-col gap-4 px-4 py-6 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-5xl">
+                  <p className="text-[16px] font-semibold text-white md:text-[18px]">
+                    Wir verwenden Cookies
+                  </p>
+                  <p className="mt-1 text-[14px] leading-relaxed text-white/70 md:text-[16px]">
+                    Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Wenn Sie fortfahren, akzeptieren Sie unsere Verwendung von Cookies.
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                  <Link
+                    href="/datenschutz"
+                    className="rounded-full border border-white/20 px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:border-[#C8F135] hover:bg-white/5 text-center"
+                  >
+                    Mehr erfahren
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => saveChoice("accepted")}
+                    className="rounded-full bg-[#C8F135] px-5 py-3 text-[15px] font-semibold text-[#171717] transition-colors hover:bg-[#d4f050]"
+                  >
+                    Akzeptieren
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
