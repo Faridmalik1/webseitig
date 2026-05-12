@@ -54,7 +54,7 @@ export function Footer() {
             <div className="relative w-full sm:w-auto">
               
               {/* 🔥 Clean layout (no grid issues) */}
-              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-x-3 gap-y-2 text-center pr-4 sm:pr-12">
+              <div className="flex flex-wrap justify-center sm:justify-start py-2 items-center gap-x-3 gap-y-2 text-center pr-4 sm:pr-12">
                 
                 {links.map((item, index) => (
                   <div key={item.label} className="flex items-center">
