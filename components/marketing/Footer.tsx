@@ -39,7 +39,7 @@ export function Footer() {
   return (
     <footer className="w-full relative pt-8 overflow-visible">
       <div className="relative bg-[#151515] ">
-        <div className="max-w-[1568px] mx-auto pr-5 md:pr-8">
+        <div className="max-w-[1568px] mx-auto px-4 md:px-8">
           <div className="flex flex-col sm:flex-row sm:justify-between py-6 gap-6">
             
             {/* Logo */}
@@ -55,7 +55,7 @@ export function Footer() {
             <div className="relative w-full sm:w-auto">
               
               {/* 🔥 Clean layout (no grid issues) */}
-              <div className="flex flex-wrap justify-center sm:justify-start py-2 items-center gap-x-3 gap-y-2 text-center pr-4 sm:pr-12">
+              <div className="flex flex-wrap justify-center sm:justify-start py-2 items-center gap-x-3 gap-y-2 text-center pr-12 sm:pr-12">
                 
                 {links.map((item, index) => (
                   <div key={item.label} className="flex items-center">

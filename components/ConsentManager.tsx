@@ -105,7 +105,7 @@ export function ConsentManager() {
           {/* Mobile-only fixed tab (outside translating container to avoid transform issues) */}
           <button
             onClick={() => setIsMinimized(!isMinimized)}
-            className={`fixed left-0 z-[120] flex h-12 w-12 items-center justify-center border border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-all duration-500 -rotate-90 origin-center md:hidden ${
+            className={`fixed left-0 z-[120] flex h-12 w-12 items-center justify-center border-x border-l border-b  border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-all duration-500 -rotate-90 origin-center md:hidden ${
               isMinimized ? "bottom-10" : "bottom-[50vh]"
             }`}
             aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schliessen"}
