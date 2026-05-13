@@ -34,6 +34,7 @@ export function ContactModal() {
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
@@ -45,6 +46,22 @@ export function ContactModal() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      handleClose();
+    }
+  };
+
+  if (isOpen) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [isOpen]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -132,8 +149,9 @@ export function ContactModal() {
             className="fixed inset-0 z-[101] flex items-center justify-center p-4"
           >
             <div
-              className="relative w-full max-w-[480px] rounded-2xl p-8"
-              style={{ background: "#1a1a1a", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
+              ref={modalRef}
+              className="relative w-full max-w-[780px] rounded-[40px] p-8"
+              style={{ background: "#151515", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
               onClick={(event) => event.stopPropagation()}
             >
               <button
@@ -161,26 +179,26 @@ export function ContactModal() {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <div>
                     <h2 className="mb-1 text-2xl font-extrabold text-white">Kostenlos starten</h2>
-                    <p className="text-sm text-white/45">
+                    <p className="text-[16px] sm:text-[18px] 3xl:text-[20px] text-white/45">
                       Kurze Infos - wir melden uns innerhalb von 24 Stunden per WhatsApp.
                     </p>
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm font-medium text-white">Dein Name</label>
+                    <label className="mb-1.5 block text-[16px] sm:text-[18px] 3xl:text-[20px] font-medium text-white">Dein Name</label>
                     <input
                       type="text"
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                       placeholder="Max Mustermann"
                       required
-                      className="w-full rounded-full px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
-                      style={INPUT_STYLE}
+                      className="w-full rounded-full border border-[#262626] bg-[#0F0F0F] px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
+                      // style={INPUT_STYLE}
                     />
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm font-medium text-white">
+                    <label className="mb-1.5 block text-[16px] sm:text-[18px] 3xl:text-[20px] font-medium text-white">
                       E-Mail
                     </label>
                     <input
@@ -189,13 +207,13 @@ export function ContactModal() {
                       onChange={(event) => setEmail(event.target.value)}
                       placeholder="max@beispiel.de"
                       required
-                      className="w-full rounded-full px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
-                      style={INPUT_STYLE}
+                      className="w-full rounded-full border border-[#262626] bg-[#0F0F0F] px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
+                      // style={INPUT_STYLE}
                     />
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm font-medium text-white">
+                    <label className="mb-1.5 block text-[16px] sm:text-[18px] 3xl:text-[20px] font-medium text-white">
                       WhatsApp / Telefon
                     </label>
                     <input
@@ -204,13 +222,13 @@ export function ContactModal() {
                       onChange={(event) => setPhone(event.target.value)}
                       placeholder="+41 79 000 00 00"
                       required
-                      className="w-full rounded-full px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
-                      style={INPUT_STYLE}
+                      className="w-full rounded-full border border-[#262626] bg-[#0F0F0F] px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition-colors"
+                      // style={INPUT_STYLE}
                     />
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm font-medium text-white">
+                    <label className="mb-1.5 block text-[16px] sm:text-[18px] 3xl:text-[20px] font-medium text-white">
                       Deine Branche
                     </label>
                     <div ref={dropdownRef} className="relative">
@@ -226,12 +244,12 @@ export function ContactModal() {
 
                           setDropdownOpen((prev) => !prev);
                         }}
-                        className="flex w-full items-center justify-between rounded-full px-4 py-3 text-sm outline-none hover:bg-[#C8F13533] hover:text-[#C8F135] transition-colors"
-                        style={{
-                          background: "rgba(255,255,255,0.06)",
-                          border: `1px solid ${dropdownOpen ? "rgba(200,230,70,0.5)" : "rgba(255,255,255,0.1)"}`,
-                          color: branche ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.25)",
-                        }}
+                        className="flex w-full items-center border border-[#262626] justify-between rounded-full px-4 py-3 text-sm outline-none bg-[#0F0F0F]"
+                        // style={{
+                        //   background: "rgba(255,255,255,0.06)",
+                        //   border: `1px solid ${dropdownOpen ? "rgba(200,230,70,0.5)" : "rgba(255,255,255,0.1)"}`,
+                        //   color: branche ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.25)",
+                        // }}
                       >
                         <span>{branche || "Bitte waehlen..."}</span>
                         <motion.span
@@ -320,16 +338,16 @@ export function ContactModal() {
                     {loading ? (
                       <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-[#171717]/30 border-t-[#171717]" />
                     ) : (
-                      <>
-                        Jetzt kostenlos beraten lassen
+                      <div className="flex items-center gap-2">
+                        <span className="text-[16px] md:text-[20px]">Jetzt kostenlos beraten lassen</span>
                         <span className="text-lg">
                           <ArrowRight />
                         </span>
-                      </>
+                      </div>
                     )}
                   </button>
 
-                  <p className="-mt-1 text-center text-xs text-white/30">
+                  <p className="-mt-1 text-center text-[16px] sm:text-[18px] 3xl:text-[20px] text-white/30">
                     Kein Spam. Keine Kosten. Deine Daten werden nicht weitergegeben.
                   </p>
                 </form>

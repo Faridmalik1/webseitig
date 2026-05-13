@@ -41,6 +41,7 @@ export function ChatWidget() {
   const [bannerVisible, setBannerVisible] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const chatRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const savedChoice = window.localStorage.getItem("webseitig.analyticsConsent");
@@ -54,6 +55,22 @@ export function ChatWidget() {
     window.addEventListener("webseitig:consent-changed" as any, handleConsent);
     return () => window.removeEventListener("webseitig:consent-changed" as any, handleConsent);
   }, []);
+
+  useEffect(() => {
+  if (!isOpen) return;
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (chatRef.current && !chatRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -125,7 +142,9 @@ export function ChatWidget() {
       }`}
     >
       {isOpen && (
-        <div className="flex h-[420px] w-[calc(100vw-3rem)] max-w-[320px] flex-col rounded-3xl border border-white/10 bg-[#0F0F0F] shadow-2xl sm:w-[320px]">
+        <div
+        ref={chatRef}
+         className="flex h-[420px] w-[calc(100vw-3rem)] max-w-[320px] flex-col rounded-3xl border border-white/10 bg-[#0F0F0F] shadow-2xl sm:w-[320px]">
           {/* Header */}
           <div className="flex items-center justify-between rounded-t-3xl bg-[#0F0F0F] border-b border-white/10 px-4 py-3 text-white">
             <div className="flex items-center gap-2 text-sm font-semibold">

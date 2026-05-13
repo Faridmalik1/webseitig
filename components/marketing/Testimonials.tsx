@@ -87,6 +87,7 @@ export function Testimonials() {
   const pausedRef = useRef(false);
   const isStepping = useRef(false);
   const buttonHoveredRef = useRef(false);
+  const lockedRef = useRef(false);
 
   // Duplicate cards once — we reset when we've scrolled one full set width
   const loopedTestimonials = [...testimonials, ...testimonials];
@@ -118,7 +119,7 @@ export function Testimonials() {
   // Main RAF loop
   useEffect(() => {
     const tick = () => {
-      if (!pausedRef.current && !isStepping.current) {
+      if (!pausedRef.current && !isStepping.current && !lockedRef.current) {
         offsetRef.current += SPEED;
         const oneSet = getOneSetWidth();
         if (offsetRef.current >= oneSet) {
@@ -192,8 +193,10 @@ export function Testimonials() {
 
       animateTo(target, () => {
         setTimeout(() => {
-          if (!buttonHoveredRef.current) pausedRef.current = false;
-        }, 2000);
+  if (!buttonHoveredRef.current && !lockedRef.current) {
+    pausedRef.current = false;
+  }
+}, 2000);
       });
     },
     [getCardWidth, getOneSetWidth, animateTo]
@@ -222,6 +225,19 @@ export function Testimonials() {
     [getCardWidth, animateTo]
   );
 
+  const toggleAuto = (dir: any) => {
+  const next = !lockedRef.current;
+  lockedRef.current = next;
+
+  if (!next) {
+    pausedRef.current = false;
+  } else {
+    pausedRef.current = true;
+  }
+
+  step(dir);
+};
+
   return (
     <section id="testimonials" className="bg-[#0F0F0F] py-10 md:py-16 relative px-6 md:px-8">
       <div className="max-w-[1568px] mx-auto w-full">
@@ -240,18 +256,24 @@ export function Testimonials() {
           {/* Navigation Buttons */}
           <div className="flex gap-3 shrink-0 self-end md:self-auto">
             <button
-              onClick={() => step(-1)}
+              onClick={() => toggleAuto(-1)}
               onMouseEnter={() => { pausedRef.current = true; buttonHoveredRef.current = true; }}
-              onMouseLeave={() => { buttonHoveredRef.current = false; if (!isStepping.current) pausedRef.current = false; }}
+              onMouseLeave={() => {
+  buttonHoveredRef.current = false;
+  if (!isStepping.current && !lockedRef.current) pausedRef.current = false;
+}}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Previous testimonials"
             >
               <ChevronLeft size={20} className="" />
             </button>
             <button
-              onClick={() => step(1)}
+              onClick={() => toggleAuto(1)}
               onMouseEnter={() => { pausedRef.current = true; buttonHoveredRef.current = true; }}
-              onMouseLeave={() => { buttonHoveredRef.current = false; if (!isStepping.current) pausedRef.current = false; }}
+              onMouseLeave={() => {
+  buttonHoveredRef.current = false;
+  if (!isStepping.current && !lockedRef.current) pausedRef.current = false;
+}}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Next testimonials"
             >
