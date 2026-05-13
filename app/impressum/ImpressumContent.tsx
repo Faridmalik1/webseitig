@@ -37,7 +37,7 @@ export default function ImpressumContent() {
             <h2 className="text-white text-[18px] sm:text-[20px]  mb-2">Angaben zum Unternehmen</h2>
             <div className="bg-gray-800 p-4 rounded my-4 text-[16px] sm:text-[18px]">
               <p>
-                Web<span className="text-[#C8F135]">.</span>Seitig <br />
+                web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich
               </p>
@@ -57,7 +57,7 @@ export default function ImpressumContent() {
 
           <section>
             <h2 className="text-white text-[18px] sm:text-[20px]  mb-3">Verantwortlich für den Inhalt</h2>
-            <p className="text-[16px] sm:text-[18px] mb-1">Web.seitig, vertreten durch die Geschäftsführung.</p>
+            <p className="text-[16px] sm:text-[18px] mb-1">web.seitig, vertreten durch die Geschäftsführung.</p>
             <p className="text-[16px] sm:text-[18px] ">Alle Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäss den geltenden gesetzlichen Vorschriften für eigene Inhalte auf unserer Website verantwortlich.</p>
           </section>
 

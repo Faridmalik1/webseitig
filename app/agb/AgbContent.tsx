@@ -231,7 +231,7 @@ export default function AgbContent() {
             </div>
             <div className="bg-gray-800 p-4 rounded mt-4">
               <p>
-                Web<span className="text-[#C8F135]">.</span>Seitig <br />
+                web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>

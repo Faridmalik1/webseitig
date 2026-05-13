@@ -41,7 +41,7 @@ export default function DatenschutzContent() {
             </p>
             <div className="bg-gray-800 p-4 rounded mt-4 text-[16px] sm:text-[18px]">
               <p>
-                Web<span className="text-[#C8F135]">.</span>Seitig <br />
+                web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
                 
@@ -180,7 +180,7 @@ export default function DatenschutzContent() {
                 Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:<br />
                 <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">
                   hello@webseitig.ch
-                </a>
+                </a>{" "}
                 Wir beantworten Ihre Anfrage innerhalb von 30 Tagen.
               </p>
             </div>
@@ -215,7 +215,7 @@ export default function DatenschutzContent() {
             </p>
             <div className="bg-gray-800 p-4 rounded my-4">
               <p className="text-[16px] sm:text-[18px]">
-                Web<span className="text-[#C8F135]">.</span>Seitig <br />
+                web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>
