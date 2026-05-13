@@ -86,7 +86,7 @@ export const KNOWN_ANSWERS: KnowledgeEntry[] = [
   {
     keywords: ["datenschutz", "privacy", "data", "daten"],
     answer:
-      "Die Datenschutzerklärung von webseitig beschreibt Prinzipien wie Rechtmäßigkeit, Zweckbindung, Datensparsamkeit, Integrität und Vertraulichkeit sowie die Verarbeitung technischer Besucherdaten und Kontaktanfragen.",
+      "Die Datenschutzerklärung von webseitig beschreibt Prinzipien wie Rechtmässigkeit, Zweckbindung, Datensparsamkeit, Integrität und Vertraulichkeit sowie die Verarbeitung technischer Besucherdaten und Kontaktanfragen.",
   },
   {
     keywords: ["cookies", "tracking", "analytics", "google analytics"],

@@ -102,31 +102,22 @@ export function ConsentManager() {
 
       {showBanner && (
         <>
-          {/* Mobile-only fixed tab (outside translating container to avoid transform issues) */}
-          <button
-            onClick={() => setIsMinimized(!isMinimized)}
-            className={`fixed left-0 z-[120] flex h-12 w-12 items-center justify-center border border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-all duration-500 -rotate-90 origin-center md:hidden ${
-              isMinimized ? "bottom-40" : "bottom-[50vh]"
-            }`}
-            aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schließen"}
-          >
-            <Cookie className="h-6 w-6 rotate-90" />
-          </button>
+          
 
           <div
             className={`fixed inset-x-0 bottom-0 z-[100] transition-all duration-500 ease-in-out pointer-events-none ${
-              isMinimized ? "translate-y-full md:translate-y-[calc(100%-52px)]" : "translate-y-0"
+              isMinimized ? "translate-y-[calc(100%-52px)]" : "translate-y-0"
             }`}
             role="dialog"
             aria-live="polite"
             aria-label="Cookie-Einstellungen"
           >
             {/* Desktop-only attached tab (inside translating container) */}
-            <div className="mx-auto hidden max-w-[1568px] justify-start pl-0 pr-4 pointer-events-none md:flex">
+            <div className="mx-auto max-w-[1568px] justify-start pl-8 pr-4 pointer-events-none flex">
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
                 className="relative z-[10] translate-y-[1px] flex h-[52px] w-[52px] items-center justify-center border-l border-r border-t border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-colors hover:text-[#C8F135] pointer-events-auto"
-                aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schließen"}
+                aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schliessen"}
               >
                 <Cookie className="h-6 w-6" />
               </button>
