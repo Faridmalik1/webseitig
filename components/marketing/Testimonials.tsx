@@ -226,16 +226,16 @@ export function Testimonials() {
   );
 
   const toggleAuto = (dir: any) => {
-  const next = !lockedRef.current;
-  lockedRef.current = next;
-
-  if (!next) {
+  if (lockedRef.current) {
+    // Second click: unlock and resume autoplay
+    lockedRef.current = false;
     pausedRef.current = false;
   } else {
+    // First click: lock (stop autoplay) and step
+    lockedRef.current = true;
     pausedRef.current = true;
+    step(dir);
   }
-
-  step(dir);
 };
 
   return (
@@ -260,7 +260,9 @@ export function Testimonials() {
               onMouseEnter={() => { pausedRef.current = true; buttonHoveredRef.current = true; }}
               onMouseLeave={() => {
   buttonHoveredRef.current = false;
-  if (!isStepping.current && !lockedRef.current) pausedRef.current = false;
+  if (!isStepping.current && !lockedRef.current) {
+    pausedRef.current = false;
+  }
 }}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Previous testimonials"
@@ -270,9 +272,11 @@ export function Testimonials() {
             <button
               onClick={() => toggleAuto(1)}
               onMouseEnter={() => { pausedRef.current = true; buttonHoveredRef.current = true; }}
-              onMouseLeave={() => {
+             onMouseLeave={() => {
   buttonHoveredRef.current = false;
-  if (!isStepping.current && !lockedRef.current) pausedRef.current = false;
+  if (!isStepping.current && !lockedRef.current) {
+    pausedRef.current = false;
+  }
 }}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#C8F135] text-[#C8F135] hover:text-black hover:bg-[#b8ea4f] transition-all duration-200 flex items-center justify-center"
               aria-label="Next testimonials"
