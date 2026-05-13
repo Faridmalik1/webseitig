@@ -10,17 +10,17 @@ const steps = [
   },
   {
     num: "02",
-    title: "Fertiger Entwurf in 48 Stunden",
+    title: "Fertiger Entwurf in 48 \nStunden",
     desc: "Innerhalb von zwei Tagen sehen Sie, wie Ihre Website aussieht. Sie geben Feedback. Wir passen an, bis Sie 100 % zufrieden sind.",
   },
   {
     num: "03",
-    title: "Live in 7 Tagen",
+    title: "Live in \n7 Tagen",
     desc: "Nach Ihrer Freigabe gehen wir live. Domain, Hosting, SSL, Texte: alles inklusive. Sie bezahlen erst jetzt.",
   },
   {
     num: "04",
-    title: "Wir bleiben bei Ihnen",
+    title: "Wir bleiben bei \nIhnen",
     desc: "Updates, Sicherheit, kleine Änderungen: alles im Preis enthalten. Keine Überraschungsrechnungen. Kein Support, der plötzlich extra kostet.",
   },
 ];
@@ -67,7 +67,7 @@ export function Features() {
                 </span>
               </div>
 
-              <h3 className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px] leading-snug mb-3">
+              <h3 className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px] leading-snug mb-3 whitespace-pre-line">
                 {step.title}
               </h3>
               <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed">

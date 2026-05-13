@@ -1,0 +1,67 @@
+# User-agent: * applies to all search engine crawlers
+User-agent: *
+Allow: /
+
+# Disallow specific sensitive directories
+Disallow: /admin/
+Disallow: /config/
+Disallow: /temp/
+Disallow: /private/
+Disallow: /cgi-bin/
+
+# Disallow specific file types
+Disallow: /*.php$
+Disallow: /*.inc$
+
+# Disallow internal search result pages to prevent crawl budget waste
+Disallow: /search/
+Disallow: /query/
+
+# Prevent crawling of login and registration pages
+Disallow: /login/
+Disallow: /signup/
+Disallow: /crm/
+
+
+# Explicitly Allow AI Bots for ChatGPT Search & Perplexity
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Explicitly Allow Google AI (Gemini/Bard)
+User-agent: Google-Extended
+Allow: /
+
+# Explicitly Allow Anthropic (Claude)
+User-agent: AnthropicAI
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Explicitly Allow Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Explicitly Allow Common Crawl (Used by many LLMs)
+User-agent: CCBot
+Allow: /
+
+# Explicitly Allow ByteDance (TikTok AI)
+User-agent: Bytespider
+Allow: /
+
+# Explicitly Allow Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap Location (REPLACE WITH YOUR ACTUAL DOMAIN)
+Sitemap: https://webseitig.ch/sitemap.xml
