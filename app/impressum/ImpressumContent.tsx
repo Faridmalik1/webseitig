@@ -82,7 +82,7 @@ export default function ImpressumContent() {
             <div className="bg-gray-800 p-4 rounded my-4 text-[16px] sm:text-[18px] ">
               <p>
                 Alle auf dieser Website verwendeten Marken, Logos und Markennamen sind Eigentum von <br />
-                Web.seitig oder der jeweiligen Rechteinhaber und dürfen ohne ausdrückliche <br />
+                web.seitig oder der jeweiligen Rechteinhaber und dürfen ohne ausdrückliche <br />
                 Genehmigung nicht verwendet werden.
               </p>
             </div>

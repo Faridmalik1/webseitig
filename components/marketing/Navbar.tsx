@@ -17,12 +17,13 @@ const pathname = usePathname();
   const handleLogoClick = (e: React.MouseEvent) => {
   e.preventDefault();
 
-  if (pathname === "/") {
-    router.refresh();
-    window.location.reload();
-  } else {
-    router.push("/");
-  }
+  router.push("/");
+  // if (pathname === "/") {
+  //   router.refresh();
+  //   window.location.reload();
+  // } else {
+  //   router.push("/");
+  // }
   window.scrollTo(0, 0);
 };
 

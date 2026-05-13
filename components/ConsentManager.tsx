@@ -105,7 +105,7 @@ export function ConsentManager() {
           {/* Mobile-only fixed tab (outside translating container to avoid transform issues) */}
           <button
             onClick={() => setIsMinimized(!isMinimized)}
-            className={`fixed right-0 z-[120] flex h-12 w-12 items-center justify-center border border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-all duration-500 -rotate-90 origin-center md:hidden ${
+            className={`fixed left-0 z-[120] flex h-12 w-12 items-center justify-center border border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-all duration-500 -rotate-90 origin-center md:hidden ${
               isMinimized ? "bottom-40" : "bottom-[50vh]"
             }`}
             aria-label={isMinimized ? "Cookie-Einstellungen öffnen" : "Cookie-Einstellungen schließen"}
@@ -122,7 +122,7 @@ export function ConsentManager() {
             aria-label="Cookie-Einstellungen"
           >
             {/* Desktop-only attached tab (inside translating container) */}
-            <div className="mx-auto hidden max-w-[1568px] justify-end pl-4 pr-38 pointer-events-none md:flex">
+            <div className="mx-auto hidden max-w-[1568px] justify-start pl-0 pr-4 pointer-events-none md:flex">
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
                 className="relative z-[10] translate-y-[1px] flex h-[52px] w-[52px] items-center justify-center border-l border-r border-t border-white/10 bg-[#121212]/95 text-white backdrop-blur-xl transition-colors hover:text-[#C8F135] pointer-events-auto"

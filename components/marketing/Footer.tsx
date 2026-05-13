@@ -18,12 +18,13 @@ export function Footer() {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    if (pathname === "/") {
-      router.refresh();
-      window.location.reload();
-    } else {
-      router.push("/");
-    }
+    router.push("/");
+    // if (pathname === "/") {
+    //   router.refresh();
+    //   window.location.reload();
+    // } else {
+    //   router.push("/");
+    // }
     window.scrollTo(0, 0);
   };
 
@@ -37,7 +38,7 @@ export function Footer() {
 
   return (
     <footer className="w-full relative pt-8 overflow-visible">
-      <div className="relative bg-[#151515] px-8">
+      <div className="relative bg-[#151515] ">
         <div className="max-w-[1568px] mx-auto px-4 md:px-8">
           <div className="flex flex-col sm:flex-row sm:justify-between py-6 gap-6">
             
