@@ -11,7 +11,7 @@ export default function DatenschutzContent() {
     <div className="min-h-screen bg-[#171717] text-white">
       <Navbar />
       <div className="max-w-[1568px] mx-auto px-6 md:px-8 py-16 pt-28">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-[16px] sm:text-[18px] mb-10 hover:opacity-80 transition-opacity">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#C8F135] text-[16px] lg:text-[20px] 3xl:text-[24px] mb-10 hover:opacity-80 transition-opacity">
           <ArrowLeft size={20} /> Zurück zur Startseite
         </Link>
 
@@ -24,7 +24,7 @@ export default function DatenschutzContent() {
           Datenschutzerklärung
         </motion.h1>
 
-        <p className="text-white/70 text-[16px] sm:text-[18px] leading-relaxed mb-4">
+        <p className="text-white/70 text-[16px] lg:text-[20px] 3xl:text-[24px] leading-relaxed mb-4">
           Gültig ab {new Date().getFullYear()} · gemäss Schweizer DSG
         </p>
 
@@ -35,11 +35,11 @@ export default function DatenschutzContent() {
           className="space-y-8 text-white/70 leading-relaxed"
         >
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">1.</span> Verantwortliche Stelle</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">1.</span> Verantwortliche Stelle</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Verantwortlich für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne des Schweizer Datenschutzgesetzes (DSG) ist:
             </p>
-            <div className="bg-gray-800 p-4 rounded mt-4 text-[16px] sm:text-[18px]">
+            <div className="bg-gray-800 p-4 rounded mt-4 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />
@@ -52,12 +52,12 @@ export default function DatenschutzContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">2.</span> Grundsätze der Datenverarbeitung</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">2.</span> Grundsätze der Datenverarbeitung</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Wir verarbeiten personenbezogene Daten nur, wenn dies gesetzlich erlaubt ist oder Sie Ihre Einwilligung erteilt haben. Wir halten uns an folgende Grundsätze:
             </p>
 
-            <ul className="list-disc pl-6 space-y-1 text-[16px] sm:text-[18px]">
+            <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <li>Rechtmässigkeit: Datenverarbeitung nur auf gesetzlicher Grundlage</li>
               <li>Zweckbindung: Nutzung nur für den festgelegten Zweck</li>
               <li>Datensparsamkeit: Erhebung nur der notwendigen Daten</li>
@@ -68,56 +68,56 @@ export default function DatenschutzContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">3.</span> Erhobene Daten und Zwecke</h2>
-            <h4 className="text-white text-[18px] sm:text-[20px] mb-2">Beim Besuch unserer Website</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">3.</span> Erhobene Daten und Zwecke</h2>
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mb-2">Beim Besuch unserer Website</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Beim Aufrufen unserer Website werden automatisch folgende technische Daten erfasst:
             </p>
 
-            <ul className="list-disc pl-6 space-y-1 text-[16px] sm:text-[18px]">
+            <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <li>IP-Adresse (anonymisiert)</li>
               <li>Datum und Uhrzeit des Zugriffs</li>
               <li>Aufgerufene Seiten und Verweildauer</li>
               <li>Verwendeter Browser und Betriebssystem</li>
               <li>Verweisende Website (Referrer)</li>
             </ul>
-            <p className="mt-2 text-[16px] sm:text-[18px]">
+            <p className="mt-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Diese Daten werden ausschliesslich zur Sicherstellung des technischen Betriebs und zur anonymisierten Statistik verwendet. Eine Zusammenführung mit anderen Daten findet nicht statt.
             </p>
             <div>
-              <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Beim Kontaktformular / Erstgespräch-Buchung</h4>
-              <p className="text-[16px] sm:text-[18px]">
+              <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Beim Kontaktformular / Erstgespräch-Buchung</h4>
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Wenn Sie unser Kontaktformular ausfüllen oder ein Erstgespräch buchen, erheben wir:
               </p>
-              <ul className="list-disc pl-6 space-y-1 text-[16px] sm:text-[18px]">
+              <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 <li>Name und Vorname</li>
                 <li>E-Mail-Adresse</li>
                 <li>Telefonnummer (optional)</li>
                 <li>Name Ihres Unternehmens</li>
                 <li>Inhalt Ihrer Anfrage</li>
               </ul>
-              <p className="text-[16px] sm:text-[18px]">
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Diese Daten werden verwendet, um Ihre Anfrage zu bearbeiten und mit Ihnen in Kontakt zu treten. Eine Weitergabe an Dritte erfolgt nicht ohne Ihre Einwilligung.
               </p>
-              <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Im Rahmen eines Vertragsverhältnisses</h4>
-              <p className="text-[16px] sm:text-[18px]">
+              <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Im Rahmen eines Vertragsverhältnisses</h4>
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Zur Vertragserfüllung verarbeiten wir zusätzlich: Rechnungsadresse, Zahlungsinformationen sowie alle projektbezogenen Kommunikationsdaten. Rechtsgrundlage ist die Vertragserfüllung gemäss Art. 6 DSG.
               </p>
             </div>
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">4.</span> Cookies und Tracking</h2>
-            <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Technisch notwendige Cookies</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">4.</span> Cookies und Tracking</h2>
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Technisch notwendige Cookies</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Diese Cookies sind für den Betrieb der Website erforderlich und können nicht deaktiviert werden. Sie speichern keine personenbezogenen Daten und werden nach dem Schliessen des Browsers gelöscht.
             </p>
-            <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Analyse-Cookies (Google Analytics)</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Analyse-Cookies (Google Analytics)</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Mit Ihrer Einwilligung verwenden wir Google Analytics, um das Nutzerverhalten auf unserer Website zu verstehen und unser Angebot zu verbessern. Die IP-Adresse wird vor der Speicherung anonymisiert. Sie können der Datenerfassung durch Google Analytics jederzeit widersprechen.
             </p>
             <div className="bg-gray-800 p-4 rounded mt-4">
-              <p className="text-[16px] sm:text-[18px]">
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Hinweis: Sie können Cookies in den Einstellungen Ihres Browsers jederzeit deaktivieren
                 oder löschen. Bitte beachten Sie, dass die Deaktivierung bestimmter Cookies die
                 Funktionalität unserer Website einschränken kann.
@@ -126,32 +126,32 @@ export default function DatenschutzContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">5.</span> Drittanbieter und Dienste</h2>
-            <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Google Maps</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">5.</span> Drittanbieter und Dienste</h2>
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Google Maps</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Auf Kunden-Websites binden wir Google Maps ein. Dabei werden Daten an Google LLC (USA) übertragen. Grundlage ist ein Standardvertragsklausel-Abkommen gemäss DSG/DSGVO. Datenschutzerklärung: policies.google.com/privacy
             </p>
-            <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Google Analytics</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Google Analytics</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Zur Website-Analyse nutzen wir Google Analytics 4 mit IP-Anonymisierung. Eine Weitergabe der Daten an Google LLC (USA) erfolgt nur mit Ihrer Einwilligung. Sie können der Analyse unter tools.google.com/dlpage/gaoptout widersprechen.
             </p>
-            <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">Hosting</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Hosting</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Unsere Website und Kunden-Websites werden bei einem europäischen Hosting-Anbieter gehostet. Die Daten werden ausschliesslich auf Servern in der Schweiz oder der EU verarbeitet.
             </p>
-            <h4 className="text-white text-[18px] sm:text-[20px] mt-4 mb-2">E-Mail-Kommunikation</h4>
-            <p className="text-[16px] sm:text-[18px]">
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">E-Mail-Kommunikation</h4>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Für unsere E-Mail-Kommunikation verwenden wir sichere, verschlüsselte Verbindungen (TLS). E-Mails werden auf Servern innerhalb der Schweiz gespeichert.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">6.</span> Datenspeicherung und Löschung</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">6.</span> Datenspeicherung und Löschung</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Wir speichern personenbezogene Daten nur so lange, wie dies für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.
             </p>
 
-            <ul className="list-disc pl-6 space-y-1 text-[16px] sm:text-[18px]">
+            <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <li>Kontaktanfragen: 2 Jahre nach Abschluss der Kommunikation</li>
               <li>Vertragsdaten: 10 Jahre nach Vertragsende (gesetzliche Aufbewahrungspflicht)</li>
               <li>Rechnungen: 10 Jahre (OR Art. 958f)</li>
@@ -161,12 +161,12 @@ export default function DatenschutzContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">7.</span> Ihre Rechte</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">7.</span> Ihre Rechte</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Gemäss dem Schweizer Datenschutzgesetz (DSG) haben Sie folgende Rechte:
             </p>
 
-            <ul className="list-disc pl-6 space-y-1 text-[16px] sm:text-[18px]">
+            <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <li>Auskunftsrecht: Sie können jederzeit Auskunft über die zu Ihrer Person gespeicherten Daten verlangen.</li>
               <li>Berichtigungsrecht: Sie können die Korrektur unrichtiger Daten verlangen.</li>
               <li>Löschungsrecht: Sie können die Löschung Ihrer Daten verlangen, sofern keine gesetzliche Aufbewahrungspflicht besteht.</li>
@@ -176,7 +176,7 @@ export default function DatenschutzContent() {
             </ul>
 
             <div className="bg-gray-800 p-4 rounded mt-4">
-              <p className="text-[16px] sm:text-[18px]">
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:<br />
                 <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">
                   hello@webseitig.ch
@@ -187,12 +187,12 @@ export default function DatenschutzContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">8.</span> Datensicherheit</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">8.</span> Datensicherheit</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Wir setzen technische und organisatorische Sicherheitsmassnahmen ein, um Ihre Daten gegen Verlust, Zerstörung, Verfälschung und unberechtigten Zugriff zu schützen. Zu diesen Massnahmen gehören:
             </p>
 
-            <ul className="list-disc pl-6 space-y-1 text-[16px] sm:text-[18px]">
+            <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <li>SSL/TLS-Verschlüsselung aller Datenübertragungen</li>
               <li>Regelmässige Sicherheitsupdates und Patches</li>
               <li>Zugriffsbeschränkungen auf personenbezogene Daten</li>
@@ -202,26 +202,26 @@ export default function DatenschutzContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">9.</span> Änderungen dieser Datenschutzerklärung</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">9.</span> Änderungen dieser Datenschutzerklärung</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, um sie an geänderte Rechtslage oder bei Änderungen unserer Dienstleistungen zu aktualisieren. Die jeweils aktuelle Version ist auf unserer Website abrufbar. Bei wesentlichen Änderungen informieren wir Sie per E-Mail.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-[18px] sm:text-[20px] mb-3"><span className="text-[#C8F135]">10.</span> Kontakt Datenschutz</h2>
-            <p className="text-[16px] sm:text-[18px]">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">10.</span> Kontakt Datenschutz</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Bei Fragen zum Datenschutz oder zur Geltendmachung Ihrer Rechte wenden Sie sich bitte an:
             </p>
             <div className="bg-gray-800 p-4 rounded my-4">
-              <p className="text-[16px] sm:text-[18px]">
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />
                 8052 Zürich <br />
               </p>
-              <p className="text-[16px] sm:text-[18px]">E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">hello@webseitig.ch</a></p>
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">E-Mail: <a href="mailto:hello@webseitig.ch" className="text-[#C8F135] hover:underline">hello@webseitig.ch</a></p>
             </div>
-            <p className="text-[16px] sm:text-[18px]">
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Beschwerden können Sie auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) richten: www.edoeb.admin.ch
             </p>
           </section>

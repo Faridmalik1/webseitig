@@ -27,7 +27,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-center mb-10"
+          className="text-white text-[24px] sm:text-[32px] lg:text-[40px] xl:text-[48px] text-center mb-10"
         >
           Unternehmen, die uns vertrauen. Quer durch die Schweiz.
         </motion.h2>

@@ -248,7 +248,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]"
+            className="text-white text-[24px] sm:text-[32px] lg:text-[40px] xl:text-[48px] text-left tracking-wide mb-6 md:mb-0"
           >
             Was unsere Kunden sagen. In ihren eigenen Worten.
           </motion.h2>
@@ -314,7 +314,7 @@ export function Testimonials() {
                       <p className="text-white text-[18px] lg:text-[20px] 3xl:text-[24px]">
                         {t.name}
                       </p>
-                      <span className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px]">
+                      <span className="text-[#888888] text-[16px] lg:text-[20px] 3xl:text-[24px]">
                         {" "}— {t.role}
                       </span>
                     </div>
@@ -325,7 +325,7 @@ export function Testimonials() {
                         aria-hidden="true"
                         className="w-4 h-4 shrink-0"
                       />
-                      <p className="text-white text-[16px] lg:text-[18px] 3xl:text-[24px] leading-none">
+                      <p className="text-white text-[16px] lg:text-[20px] 3xl:text-[24px] leading-none">
                         {t.city}
                       </p>
                     </div>
@@ -333,7 +333,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-white text-[16px] lg:text-[16px] xl:text-[18px] 3xl:text-[24px] leading-relaxed">
+                <p className="text-white text-[16px] lg:text-[16px] xl:text-[20px] 3xl:text-[24px] leading-relaxed">
                   "{t.quote}"
                 </p>
 

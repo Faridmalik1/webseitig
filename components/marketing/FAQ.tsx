@@ -117,7 +117,7 @@ export function FAQ() {
   return (
     <section id="faq" className="bg-[#0F0F0F] py-10 md:py-16 px-6 md:px-8">
       <div className="max-w-[1568px] mx-auto w-full">
-        <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-center mb-12">
+        <h2 className="text-white text-[24px] sm:text-[28px] lg:text-[40px] xl:text-[48px] text-center mb-12">
           Häufig gestellte Fragen
         </h2>
 
@@ -144,7 +144,7 @@ export function FAQ() {
                     </div>
 
                     <span
-                      className={`flex-1 text-[18px] lg:text-[20px] 3xl:text-[24px] transition-colors ${isOpen ? "text-[#C8F135]" : "text-white"
+                      className={`flex-1 text-[20px] lg:text-[24px] 3xl:text-[24px] transition-colors ${isOpen ? "text-[#C8F135]" : "text-white"
                         }`}
                     >
                       {faq.q}
@@ -171,7 +171,7 @@ export function FAQ() {
                     className="overflow-hidden"
                     aria-hidden={!isOpen}
                   >
-                    <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed py-5 ps-[1.5rem] whitespace-pre-line">
+                    <p className="text-[#888888] text-[16px] lg:text-[20px] 3xl:text-[24px] leading-relaxed py-5 px-5 whitespace-pre-line">
                       {faq.a}
                     </p>
                   </motion.div>
@@ -191,8 +191,8 @@ export function FAQ() {
               // border: "1px solid rgba(200,230,70,0.15)",
             }}
           >
-            <h3 className="text-white text-[24px] sm:text-[28px] mb-2">Noch Fragen?</h3>
-            <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed mb-5">
+            <h3 className="text-white text-[20px] sm:text-[28px] mb-2">Noch Fragen?</h3>
+            <p className="text-[#F5F4F0] text-[16px] lg:text-[20px] 3xl:text-[24px] leading-relaxed mb-5">
               Schreiben Sie uns einfach. Wir antworten schnell und unkompliziert.
 
             </p>
@@ -268,7 +268,7 @@ export function FAQ() {
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-[#C8F135] text-base mt-2"
+                  className="text-center text-[#C8F135] text-[16px] sm:text-[20px] mt-2"
                 >
                   Vielen Dank! Wir haben Ihre Nachricht erhalten. Unser Team wird sich in Kürze bei Ihnen melden.
                 </motion.p>

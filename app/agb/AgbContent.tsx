@@ -23,7 +23,7 @@ export default function AgbContent() {
         >
           Allgemeine Geschäftsbedingungen (AGB).
         </motion.h1>
-        <div className="bg-gray-800 p-4 rounded mb-4">
+        <div className="bg-gray-800 p-4 text-[16px] lg:text-[20px] 3xl:text-[24px] rounded mb-4">
           <p>
             Gültig ab 1. Januar {new Date().getFullYear()} · Stand: April {new Date().getFullYear()} <br />
              webseitig.ch
@@ -37,22 +37,22 @@ export default function AgbContent() {
           className="space-y-8 text-white/70 leading-relaxed"
         >
           <section>
-            <h2 className="text-white text-lg mb-3"> <span className="text-[#C8F135]">1.</span> Geltungsbereich</h2>
-            <p>
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"> <span className="text-[#C8F135]">1.</span> Geltungsbereich</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Web.seitig (nachfolgend «web.seitig» oder «Anbieter») und ihren Kunden (nachfolgend «Kunde») im Rahmen der Erstellung, Gestaltung und Betreuung von Websites sowie damit verbundener Dienstleistungen.
               Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Kunden werden nicht Vertragsbestandteil, auch wenn web.seitig ihnen nicht ausdrücklich widerspricht, es sei denn, ihrer Geltung wird ausdrücklich schriftlich zugestimmt.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">2.</span> Leistungsumfang</h2>
-            <p>
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">2.</span> Leistungsumfang</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               web.seitig erbringt Dienstleistungen im Bereich der Erstellung professioneller Websites für Schweizer KMU. Der genaue Leistungsumfang ergibt sich aus dem jeweiligen Angebot bzw. der Auftragsbestätigung.
             </p>
 
-            <h4 className="text-white text-base mt-4 mb-2">Standardleistungen umfassen:</h4>
+            <h4 className="text-white text-[16px] sm:text-[20px] 3xl:text-[24px] mt-4 mb-2">Standardleistungen umfassen:</h4>
 
-            <ul className="list-disc pl-6 space-y-1">
+            <ul className="list-disc pl-6 space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <li>Konzeption und Gestaltung der Website nach Kundenvorgaben</li>
               <li>Technische Umsetzung und Entwicklung</li>
               <li>Einrichtung von Hosting und Domain (gemäss gewähltem Paket)</li>
@@ -61,45 +61,45 @@ export default function AgbContent() {
               <li>Technischer Support während der Vertragslaufzeit</li>
             </ul>
 
-            <p className="mt-4">
+            <p className="mt-4 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Leistungen, die über den vereinbarten Umfang hinausgehen, werden nach Aufwand zum gültigen Stundensatz in Rechnung gestellt. Solche Mehrleistungen werden vorab schriftlich kommuniziert und bedürfen der Zustimmung des Kunden.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">3.</span> Vertragsabschluss</h2>
-            <p>
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">3.</span> Vertragsabschluss</h2>
+            <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Ein Vertrag kommt zustande durch die schriftliche Auftragsbestätigung seitens web.seitig nach Eingang der Bestellung des Kunden. Angebote von web.seitig sind freibleibend und unverbindlich, sofern sie nicht ausdrücklich als verbindlich gekennzeichnet sind.
               Das kostenlose Erstgespräch (15 Minuten) stellt kein bindendes Angebot dar. Nach dem Gespräch erhalten Interessenten ein individuelles, schriftliches Angebot. Erst nach dessen Annahme durch den Kunden kommt ein Vertragsverhältnis zustande.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3">
               <span className="text-[#C8F135]">4.</span> Preise und Zahlungsbedingungen
             </h2>
 
-            <p className="mb-4">
+            <p className="mb-4 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               Alle Preise verstehen sich in Schweizer Franken (CHF) und, sofern nicht anders angegeben, zuzüglich der gesetzlichen Mehrwertsteuer.
             </p>
 
-            <p className="mb-3">Aktuelle Pakete:</p>
+            <p className="mb-3 text-[16px] lg:text-[20px] 3xl:text-[24px]">Aktuelle Pakete:</p>
 
             <div className="bg-gray-800 p-4 rounded mb-4">
-              <p className="mb-2">
+              <p className="mb-2 text-[16px] lg:text-[20px] 3xl:text-[24px] font-bold text-white">
                 Starter – CHF 179/Monat
               </p>
-              <p>
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Bis zu 5 Seiten, Mobile-optimiert, Kontaktformular, Hosting & Domain inklusive, <br />
                 SEO-Grundlagen, Lieferung in 7 Tagen.
               </p>
             </div>
 
             <div className="bg-gray-800 p-4 rounded">
-              <p className="mb-2">
+              <p className="mb-2 text-[16px] lg:text-[20px] 3xl:text-[24px] font-bold text-white">
                 Business Pro – CHF 249/Monat
               </p>
-              <p>
+              <p className="text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 Bis zu 10 Seiten, Blog-/News-Bereich, Google Maps & Bewertungen, <br />
                 SEO-Optimierung, 1 Std. Änderungen pro Monat, <br />
                 24h Support-Zeit, Google Analytics Setup.
@@ -108,8 +108,8 @@ export default function AgbContent() {
             </div>
 
             <div className="mt-4">
-              <p className=" mb-3">Zahlungsmodalitäten:</p>
-              <ul className="list-disc pl-6 space-y-2 text-white">
+              <p className=" mb-3 text-[16px] sm:text-[20px] 3xl:text-[24px] font-bold text-white">Zahlungsmodalitäten:</p>
+              <ul className="list-disc pl-6 space-y-2 text-white text-[16px] lg:text-[20px] 3xl:text-[24px]">
                 <li>
                   Die monatliche Gebühr wird jeweils zu Beginn des Abrechnungsmonats in Rechnung gestellt.
                 </li>
@@ -127,11 +127,11 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-4">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-4">
               <span className="text-[#C8F135]">5.</span> Mitwirkungspflichten des Kunden
             </h2>
 
-            <div className="space-y-1">
+            <div className="space-y-1 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Der Kunde ist verpflichtet, web.seitig alle für die Durchführung des Auftrags erforderlichen Informationen, Unterlagen, Texte, Bilder und sonstigen Inhalte rechtzeitig und vollständig zur Verfügung zu stellen.
               </p>
@@ -140,7 +140,7 @@ export default function AgbContent() {
               </p>
             </div>
 
-            <div className="bg-gray-800 p-4 rounded mt-2">
+            <div className="bg-gray-800 p-4 rounded mt-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Hinweis: Die Lieferzeit von 7 Tagen gilt unter der Voraussetzung, dass der Kunde alle
                 benötigten Inhalte und Informationen vollständig und fristgerecht liefert. Verzögerungen
@@ -150,8 +150,8 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">6.</span> Lieferung und Abnahme</h2>
-            <div className="space-y-2">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">6.</span> Lieferung und Abnahme</h2>
+            <div className="space-y-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Nach Fertigstellung der Website erhält der Kunde einen Freigabe-Link zur Überprüfung. Der Kunde hat 5 Arbeitstage Zeit, Mängel oder Änderungswünsche zu melden. Werden innerhalb dieser Frist keine Mängel gemeldet, gilt die Website als abgenommen.
               </p>
@@ -162,8 +162,8 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">7.</span> Nutzungsrechte und Urheberrecht</h2>
-            <div className="space-y-2">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">7.</span> Nutzungsrechte und Urheberrecht</h2>
+            <div className="space-y-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Mit vollständiger Bezahlung erhält der Kunde ein einfaches, nicht übertragbares Nutzungsrecht an der erstellten Website für den vertraglich vorgesehenen Zweck.
               </p>
@@ -178,8 +178,8 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">8.</span> Gewährleistung und Haftung</h2>
-            <div className="space-y-2">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">8.</span> Gewährleistung und Haftung</h2>
+            <div className="space-y-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 web.seitig gewährleistet, dass die erstellten Websites zum Zeitpunkt der Abnahme den vereinbarten Spezifikationen entsprechen. Technische Mängel werden innerhalb angemessener Frist behoben.
               </p>
@@ -193,8 +193,8 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">9.</span> Vertragsdauer und Kündigung</h2>
-            <div className="space-y-2">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">9.</span> Vertragsdauer und Kündigung</h2>
+            <div className="space-y-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Verträge laufen zunächst für eine Mindestlaufzeit von 12 Monaten. Danach verlängern sie sich automatisch um jeweils 12 weitere Monate, sofern sie nicht mit einer Frist von 3 Monaten zum Ende der Laufzeit schriftlich gekündigt werden.
               </p>
@@ -208,8 +208,8 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">10.</span> Datenschutz</h2>
-            <div className="space-y-2">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">10.</span> Datenschutz</h2>
+            <div className="space-y-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Der Umgang mit personenbezogenen Daten erfolgt gemäss unserer Datenschutzerklärung und den geltenden datenschutzrechtlichen Bestimmungen, insbesondere dem Schweizer Datenschutzgesetz (DSG).
               </p>
@@ -217,8 +217,8 @@ export default function AgbContent() {
           </section>
 
           <section>
-            <h2 className="text-white text-lg mb-3"><span className="text-[#C8F135]">11.</span> Schlussbestimmungen</h2>
-            <div className="space-y-2">
+            <h2 className="text-white text-[20px] sm:text-[24px] mb-3"><span className="text-[#C8F135]">11.</span> Schlussbestimmungen</h2>
+            <div className="space-y-2 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 Es gilt ausschliesslich Schweizer Recht unter Ausschluss des Kollisionsrechts. Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist Zürich, Schweiz.
               </p>
@@ -229,7 +229,7 @@ export default function AgbContent() {
                 web.seitig behält sich das Recht vor, diese AGB jederzeit zu ändern. Änderungen werden dem Kunden mindestens 30 Tage vor Inkrafttreten schriftlich mitgeteilt.
               </p>
             </div>
-            <div className="bg-gray-800 p-4 rounded mt-4">
+            <div className="bg-gray-800 p-4 rounded mt-4 text-[16px] lg:text-[20px] 3xl:text-[24px]">
               <p>
                 web<span className="text-[#C8F135]">.</span>seitig <br />
                 Schärenmoosstrasse 77 <br />

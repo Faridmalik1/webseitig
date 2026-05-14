@@ -125,10 +125,10 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       </div>
 
       <div className="p-6 flex flex-col flex-1">
-        <h3 className="text-white text-[18px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">
+        <h3 className="text-white text-[20px] sm:text-[20px] lg:text-[28px] font-semibold mb-2">
           {project.name}
         </h3>
-        <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed mb-5 min-h-[78px]">
+        <p className="text-[#888888] text-[16px] lg:text-[20px] 3xl:text-[24px] leading-relaxed mb-5 min-h-[78px]">
           {project.desc}
         </p>
 
@@ -144,7 +144,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             >
               {project.stack.map((tag, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="text-[#F5F4F0] sm:text-[16px] md:text-[18px] 3xl:text-[24px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1">
+                  <span className="text-[#F5F4F0] sm:text-[16px] md:text-[20px] 3xl:text-[24px] bg-[#FFFFFF1A] rounded-full px-3.5 py-1">
                     {tag}
                   </span>
 
@@ -160,10 +160,10 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
           {/* Timeline */}
           <div className="flex items-center justify-between pt-4">
-            <p className="text-white text-[16px] font-paytone sm:text-[18px] md:text-[20px] 3xl:text-[24px]">
+            <p className="text-white text-[16px] font-paytone sm:text-[16px] md:text-[20px] 3xl:text-[24px]">
               Zeitleiste
             </p>
-            <p className="text-[#C8F135] text-[16px] sm:text-[18px] md:text-[20px] 3xl:text-[24px] font-paytone">
+            <p className="text-[#C8F135] text-[16px] sm:text-[16px] md:text-[20px] 3xl:text-[24px] font-paytone">
               {project.days}
             </p>
           </div>
@@ -277,10 +277,10 @@ export function Portfolio() {
       <div className="max-w-[1568px] mx-auto w-full ">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mb-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full mb-10">
           <div className="">
-            <p className="text-[#C8F135] text-[16px] md:text-[20px] 3xl:text-[24px] tracking-wide">Unsere Arbeit</p>
-            <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] text-left tracking-wide mb-6 md:mb-0 max-w-[900px]">
+            <p className="text-[#C8F135] text-[16px] lg:text-[16px] 3xl:text-[20px] tracking-wide">Unsere Arbeit</p>
+            <h2 className="text-white text-[24px] sm:text-[32px] lg:text-[40px] xl:text-[48px] text-left tracking-wide mb-6 md:mb-0">
               Ausgewählte Projekte. Alle in 7 Tagen geliefert.
             </h2>
           </div>

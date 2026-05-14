@@ -42,7 +42,7 @@ export function Hero() {
               transition={{ duration: 0.55, ease: "easeOut" }}
               className="lg:col-span-2"
             >
-              <p className="text-[#C8F135] text-[14px] md:text-[16px] 3xl:text-[20px] mb-4 sm:mb-5 tracking-wide">
+              <p className="text-[#C8F135] text-[16px] lg:text-[16px] 3xl:text-[20px] mb-4 sm:mb-5 tracking-wide">
                 Für Selbstständige und KMU in der Schweiz
               </p>
               <h1 className="text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] leading-[1.05] text-white mb-5 sm:mb-6">
@@ -64,11 +64,11 @@ export function Hero() {
                     className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:rotate-45"
                   />
                 </button>
-                <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px]">
+                <p className="text-[#888888] text-[16px] lg:text-[16px] 3xl:text-[20px]">
                   Über 40 Unternehmen in der Schweiz vertrauen uns. Von Zürich bis St. Gallen.
                 </p>
               </div>
-              <div className="text-[#888888] flex gap-2 items-center mt-6 text-[16px] lg:text-[18px] 3xl:text-[20px]">
+              <div className="text-[#888888] flex gap-1 items-center mt-6 text-[16px] lg:text-[16px] 3xl:text-[20px]">
                 <img
                   src="/star.svg"
                   alt="webseitig"
@@ -124,10 +124,10 @@ export function Hero() {
                       179
                     </p>
                   </div>
-                  <p className="text-[#F5F4F0] text-[16px] md:text-[18px] 3xl:text-[24px] mb-2">
+                  <p className="text-[#F5F4F0] text-[16px] md:text-[20px] 3xl:text-[24px] mb-2">
                     Monat
                   </p>
-                  <p className="text-[#888888] text-[16px] md:text-[18px] 3xl:text-[24px] italic">
+                  <p className="text-[#888888] text-[16px] md:text-[20px] 3xl:text-[24px] italic">
                     inkl. Hosting, Updates & Support
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export function Hero() {
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center text-center gap-3 py-8 px-4">
               <img src={f.icon} alt="webseitig" className="w-9 h-9 object-contain" />
-              <p className="text-[#F5F4F0] text-[16px] sm:text-[18px] md:text-[20px] 3xl:text-[24px] leading-tight max-w-[150px] sm:max-w-[280px] break-words">
+              <p className="text-[#F5F4F0] text-[16px] sm:text-[20px] md:text-[20px] 3xl:text-[24px] leading-tight max-w-[150px] sm:max-w-[280px] break-words">
                 {f.label}
               </p>
             </div>

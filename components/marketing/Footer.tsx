@@ -34,7 +34,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   const linkClass =
-    "inline-flex items-center text-white/70 text-[16px] sm:text-[18px] 3xl:text-[24px] hover:text-white transition-colors leading-none";
+    "inline-flex items-center text-white/70 text-[16px] sm:text-[20px] 3xl:text-[24px] hover:text-white transition-colors leading-none";
 
   return (
     <footer className="w-full relative pt-8 overflow-visible">
@@ -100,7 +100,7 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="py-4 flex items-center justify-center text-center">
-            <p className="text-[#888888] text-base 3xl:text-[24px]">
+            <p className="text-[#888888] text-[16px] sm:text-[20px] 3xl:text-[24px]">
               © {year} web.seitig. Alle Rechte vorbehalten.
             </p>
           </div>

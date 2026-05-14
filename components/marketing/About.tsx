@@ -31,10 +31,10 @@ export function About() {
       <div className="max-w-[1568px] mx-auto w-full">
 
         <div className="text-center mb-12 md:mb-16">
-          <p className="text-[#C8F135] text-[16px] lg:text-[18px] 3xl:text-[24px] mb-5 tracking-wide">
+          <p className="text-[#C8F135] text-[16px] lg:text-[16px] 3xl:text-[20px] mb-5 tracking-wide">
             Kennen Sie das?
           </p>
-          <h2 className="text-white text-[28px] sm:text-[32px] lg:text-[40px] xl:text-[52px] leading-tight">
+          <h2 className="text-white text-[24px] sm:text-[32px] lg:text-[40px] xl:text-[48px] leading-tight">
             Warum Sie und so viele andere immer noch ohne Website arbeiten. Und was das jeden Monat wirklich kostet.
           </h2>
         </div>
@@ -54,8 +54,8 @@ export function About() {
   transition-all duration-300
 `}
             >
-              <h3 className="text-white text-[18px] sm:text-[20px] 3xl:text-[24px] mb-3">{pain.title}</h3>
-              <p className="text-[#888888] text-[16px] lg:text-[18px] 3xl:text-[24px] leading-relaxed">{pain.desc}</p>
+              <h3 className="text-white text-[20px] sm:text-[28px] 3xl:text-[32px] mb-3">{pain.title}</h3>
+              <p className="text-[#888888] text-[16px] lg:text-[20px] 3xl:text-[24px] leading-relaxed">{pain.desc}</p>
             </motion.div>
           ))}
         </div>

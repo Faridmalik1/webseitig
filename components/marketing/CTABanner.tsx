@@ -42,7 +42,7 @@ export function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="text-[#737373] text-base md:text-xl 3xl:text-[24px] font-medium mb-8 max-w-[600px] mx-auto"
+          className="text-[#737373] text-[16px] lg:text-[20px] 3xl:text-[24px] font-medium mb-8 max-w-[600px] mx-auto"
           style={{ fontFamily: "var(--font-outfit)" }}
         >
           Kostenlose Beratung. Kein Druck. Unverbindlich.
