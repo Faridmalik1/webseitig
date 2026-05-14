@@ -311,7 +311,7 @@ export function Testimonials() {
                   <TestimonialAvatar image={t.image} name={t.name} />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="text-white text-[18px] lg:text-[20px] 3xl:text-[24px]">
+                      <p className="text-white text-[20px] lg:text-[20px] 3xl:text-[24px]">
                         {t.name}
                       </p>
                       <span className="text-[#888888] text-[16px] lg:text-[20px] 3xl:text-[24px]">
