@@ -124,10 +124,10 @@ export function Hero() {
                       179
                     </p>
                   </div>
-                  <p className="text-[#F5F4F0] text-[16px] md:text-[20px] 3xl:text-[24px] mb-2">
+                  <p className="text-[#F5F4F0] text-[16px] md:text-[16px] 3xl:text-[24px] mb-2">
                     Monat
                   </p>
-                  <p className="text-[#888888] text-[16px] md:text-[20px] 3xl:text-[24px] italic">
+                  <p className="text-[#888888] text-[16px] md:text-[16px] 3xl:text-[24px] italic">
                     inkl. Hosting, Updates & Support
                   </p>
                 </div>
