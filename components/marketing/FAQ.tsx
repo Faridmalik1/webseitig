@@ -138,13 +138,13 @@ export function FAQ() {
                   >
                     <div className="flex items-end gap-2 shrink-0 ps-1">
                       <div className="w-6 h-[1.5px] bg-[#C8F135] rounded-full mb-2 opacity-40" />
-                      <span className="text-[#C8F135] text-[16px] sm:text-[20px] lg:text-[28px] opacity-40 font-bold tracking-widest">
+                      <span className="text-[#C8F135] text-[20px] sm:text-[20px] lg:text-[28px] opacity-40 font-bold tracking-widest">
                         {faq.num}
                       </span>
                     </div>
 
                     <span
-                      className={`flex-1 text-[20px] lg:text-[24px] 3xl:text-[24px] transition-colors ${isOpen ? "text-[#C8F135]" : "text-white"
+                      className={`flex-1 text-[20px] lg:text-[24px] 3xl:text-[24px] transition-colors ${isOpen ? "text-white" : "text-white"
                         }`}
                     >
                       {faq.q}
