@@ -146,7 +146,7 @@ export function ContactModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 16 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[101] flex items-center justify-center p-8"
           >
             <div
   ref={modalRef}
@@ -343,9 +343,9 @@ export function ContactModal() {
                     {loading ? (
                       <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-[#171717]/30 border-t-[#171717]" />
                     ) : (
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-0.5  sm:gap-2">
                         <span className="text-[16px] md:text-[20px]">Jetzt kostenlos beraten lassen</span>
-                        <span className="text-lg">
+                        <span className="text-base sm:text-lg">
                           <ArrowRight />
                         </span>
                       </div>
