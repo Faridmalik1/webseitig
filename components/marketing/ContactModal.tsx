@@ -163,15 +163,17 @@ export function ContactModal() {
               </button>
 
               {submitted ? (
-                <div className="flex flex-col items-center text-center py-6">
+                <div
+                ref={modalRef}
+                 className="flex flex-col items-center text-center py-6">
                   <div
                     className="mb-6 flex h-16 w-16 items-center justify-center rounded-full"
                     style={{ background: "rgba(200,230,70,0.18)" }}
                   >
                     <Check size={28} className="text-[#C8F135]" strokeWidth={2.5} />
                   </div>
-                  <h2 className="mb-2 text-3xl font-extrabold text-white">Danke!</h2>
-                  <p className="text-sm leading-relaxed text-white/50">
+                  <h2 className="mb-2 text-[28px] sm:text-[28px] lg:text-[40px] xl:text-[52px] text-white">Danke!</h2>
+                  <p className="text-[16px] sm:text-[20px] 3xl:text-[24px] leading-relaxed text-[#888888]">
                     Wir melden uns innerhalb von 24 Stunden per WhatsApp bei Ihnen.
                   </p>
                 </div>

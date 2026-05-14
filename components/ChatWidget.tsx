@@ -138,7 +138,7 @@ export function ChatWidget() {
       className={`fixed right-6 z-[110] flex flex-col items-end gap-2 transition-all duration-300 ${
         (bannerVisible && !isMinimized) 
           ? "bottom-[35vh] md:bottom-32" 
-          : "bottom-6"
+          : "bottom-12 md:bottom-6"
       }`}
     >
       {isOpen && (
@@ -272,7 +272,7 @@ export function ChatWidget() {
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-label="Open site chat"
-        className="flex h-20 w-20 items-center justify-center 
+        className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center 
              transition-all duration-200 ease-out 
              hover:scale-110 hover:shadow-lg active:scale-95"
       >
