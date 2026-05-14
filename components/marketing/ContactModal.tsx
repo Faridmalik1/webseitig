@@ -153,7 +153,7 @@ export function ContactModal() {
   className="relative w-full max-w-[780px] rounded-[40px]
              max-h-[80vh] overflow-y-auto
              sm:max-h-none sm:overflow-visible
-             p-8"
+             px-6 py-8 sm:px-8"
   style={{ background: "#151515", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
   onClick={(event) => event.stopPropagation()}
 >
