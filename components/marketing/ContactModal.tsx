@@ -149,11 +149,14 @@ export function ContactModal() {
             className="fixed inset-0 z-[101] flex items-center justify-center p-4"
           >
             <div
-              ref={modalRef}
-              className="relative w-full max-w-[780px] rounded-[40px] max-h-[600px] overflow-y-auto p-8"
-              style={{ background: "#151515", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
-              onClick={(event) => event.stopPropagation()}
-            >
+  ref={modalRef}
+  className="relative w-full max-w-[780px] rounded-[40px]
+             max-h-[80vh] overflow-y-auto
+             sm:max-h-none sm:overflow-visible
+             p-8"
+  style={{ background: "#151515", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
+  onClick={(event) => event.stopPropagation()}
+>
               <button
                 type="button"
                 onClick={handleClose}
