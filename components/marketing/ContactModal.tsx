@@ -150,7 +150,7 @@ export function ContactModal() {
           >
             <div
               ref={modalRef}
-              className="relative w-full max-w-[780px] rounded-[40px] p-8"
+              className="relative w-full max-w-[780px] rounded-[40px] max-h-[600px] overflow-y-auto p-8"
               style={{ background: "#151515", boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
               onClick={(event) => event.stopPropagation()}
             >
