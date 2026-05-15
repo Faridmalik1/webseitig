@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useModal } from "../shared/modal-context";
 
 const features = [
-  { icon: "/electric_bolt.svg", label: "Website fertig in 7 Tagen. Garantiert." },
+  { icon: "/electric_bolt.svg", label: <>Website fertig<br className="block sm:hidden" /> in 7 Tagen. Garantiert.</>},
   { icon: "/credit_card.svg", label: "Keine Vorauszahlung. Nur monatlich, kündbar." },
   { icon: "/headphones.svg", label: "Schweizer Team. Ihr persönlicher Ansprechpartner." },
   { icon: "/cloud.svg", label: "Alles inklusive: Hosting, Updates, Support." },
@@ -17,6 +17,7 @@ export function Hero() {
   return (
     <div>
       <section
+
         id="home"
         className="relative flex flex-col bg-[#0F0F0F] py-12 md:py-18 px-6 md:px-8"
       >
