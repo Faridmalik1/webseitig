@@ -62,7 +62,7 @@ export function Features() {
               {/* Line + number */}
               <div className="flex items-end gap-3 mb-5">
                 <div className="w-8 h-[2px] mb-2 bg-[#C8F135] rounded-full opacity-40" />
-                <span className="text-[#C8F135] text-[16px] sm:text-[20px] lg:text-[28px] font-bold tracking-widest opacity-40">
+                <span className="text-[#C8F135] text-[20px] sm:text-[20px] lg:text-[28px] opacity-40 font-bold tracking-widest">
                   {step.num}
                 </span>
               </div>
